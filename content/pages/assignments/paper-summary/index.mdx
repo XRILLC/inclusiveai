@@ -1,0 +1,91 @@
+---
+title: "Paper Summary"
+slug: "/assignments/paper-summary"
+---
+
+![Types of Scientific Papers](https://imgs.xkcd.com/comics/types_of_scientific_paper.png)
+^ See https://xkcd.com/2456/
+
+In this assignment, you will select a research paper related to NLP and/or DL and provide an easy-to-digest summary ([see the README in this repo for details on how to modify this site](https://github.com/uazhlt-ms-program/ling-582-course-blog#1-paper-summary)).
+
+As part of this assignment, you will select an open source/open weight LLM to assist with this task. One LLM model suggestion is [Llama 3.2 3B instruct variant](https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct) and the [Jan UI](https://jan.ai/docs/tools/retrieval) (or [huggingchat](https://huggingface.co/chat/); see also [this post about tools for HuggingChat](https://huggingface.co/blog/community-tools)), or a multimodal VLM such as one of the [InternVL 2.0](https://internvl.github.io/blog/2024-07-02-InternVL-2.0/) variants.
+
+
+<figure>
+  <img src="https://public.parsertongue.com/courses/snlp-2/images/jan-example-nlp-paper-summary.png" alt="Jan UI" width="100%"/>
+  <figcaption>Jan UI using a custom system prompt and <a href="https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct">Llama 3.2 3B Instruct Q8</a>.  Try to experiment with different system prompts to help achieve the apprpriate level of detail (elicit supporting quotes, etc.).</figcaption>
+</figure>
+
+In addition to answering the provided questions and including the prompts you used for each, you will also be expected to describe your experience using your selected LLM and **identify limitations or errors that it produced**.
+
+- [rubrics](/assignments/paper-summary/rubric)
+
+# Questions
+
+Here are some questions your summary should answer:
+
+- what are the authors proposing?
+- what is the motivation for the work?
+- what is the approach or innovation?
+- what are the results and how do they compare with competing approaches?
+  - is the comparison fair?
+- what are the takeaways according to the authors?
+- what are the takeaways according to you?
+- Would you use this?  If so, how/where would you use this?
+- what problems remain and what are the next steps?
+
+
+# Where to look for papers
+
+Here are few resources to peruse when looking for a paper
+- https://aclanthology.org
+- That site formerly known as Twitter
+- [Semantic Scholar](https://www.semanticscholar.org)
+  - search for a topic, sort by Date/Most Influential/etc
+- [ArXiv cs.CL](https://arxiv.org/list/cs.CL/recent)
+  - alternative interface: https://arxiv-sanity-lite.com/
+- [/r/machinelearning](https://www.reddit.com/r/machinelearning/)
+
+# Tips
+
+When you first start reading research papers, it can be quite an intimidating process full of strange symbols and acronyms.  You may not have a deep familiarity of prior work on the topic, so some sections of the paper may not be immediately accessible.
+
+Andrew Ng has some great tips on how to read a research paper (see 6:30-13:52):
+
+`youtube:  https://www.youtube.com/v/733m6qBH-jI&start=390s&end=830s`
+
+### TL;DWatch
+
+Don't just read the paper from beginning to end.  Instead, he recommends "reading" the paper in multiple passes:
+
+- **Pass 1**: title + abstract + figures and captions
+- **Pass 2**: Careful read of abstract, intro, and conclusions
+   - review figures and captions
+   - skim the rest (feel free to skip the Related Work section at this stage)
+- **Pass 3**: Read the paper, but skip the math (at least for now)
+- **Pass 4**: Read the whole thing, but skip parts that don't make sense (at least for now)
+
+
+## Additional tips
+
+- If you have a tablet, scribble your notes on the paper as you go (star key areas, circle points of confusion, and add notes to the margins)
+  - If you don't have a tablet, consider printing out the paper, so that you can take notes in context as you read
+
+
+# Examples of summaries
+
+**Attention is all you need** \cite{Vaswani2017AttentionIA}
+
+`youtube: https://www.youtube.com/watch?v=iDulhoQ2pro`
+
+@@bibliography@@
+@article{Vaswani2017AttentionIA,
+  title={Attention is All you Need},
+  author={Ashish Vaswani and Noam M. Shazeer and Niki Parmar and Jakob Uszkoreit and Llion Jones and Aidan N. Gomez and Lukasz Kaiser and Illia Polosukhin},
+  journal={ArXiv},
+  year={2017},
+  volume={abs/1706.03762}
+}
+@@bibliography@@
+
+

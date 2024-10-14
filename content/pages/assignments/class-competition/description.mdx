@@ -1,0 +1,42 @@
+---
+title: ""
+slug: "/assignments/class-competition/description"
+---
+
+This page provides some information on the structure of the task.
+
+
+# Task
+
+Given two spans of text, determine if both spans were produced by the same author.
+
+## Notes
+- You are not given the name/ID of either span's author
+- You are free to supplement the provided training data
+- Both spans are authored in English
+- Span length varies
+- Spans are joined by the `[SNIPPET]` delimiter
+- This task relates to [author profiling](https://en.wikipedia.org/wiki/Author_profiling), digital stylometry, and authorship identification
+
+## Requirements
+- Your solution should be reproducible and make use of **open source/open weight** models and tools
+  - i.e., Open AI API and models can only be used for dataset augmentation
+
+## Labels
+This is presented as a binary classification problem.  Classify the documents into one of the following categories:
+
+0: Not the same author
+1: Same author
+
+
+## Instructions
+
+While you are encouraged to engineer features, you may use any classification algorithm and supplemental data that you like.
+
+## Dataset
+
+The majority of data comes from [Project Gutenberg](https://www.gutenberg.org/).
+
+... supplemented with data aggregated and preprocessed from a variety of other sources 😈
+
+[See this page for more information](/assignments/class-competition/dataset).

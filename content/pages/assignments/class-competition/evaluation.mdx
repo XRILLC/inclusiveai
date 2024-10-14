@@ -1,0 +1,24 @@
+---
+title: "Evaluation"
+slug: "/assignments/class-competition/evaluation"
+---
+
+The evaluation metric for this competition is the macro [F1 score](https://en.wikipedia.org/wiki/F-score) (i.e., the unweighted mean F1). The F1 score, commonly used in information retrieval, measures accuracy using the statistics precision $$\text{p}$$ and recall $$\text{r}$$.
+
+Precision is the ratio of true positives $$\text{tp}$$ to all predicted positives $$\text{tp} + \text{fp}$$. Recall is the ratio of true positives $$\text{tp}$$ to all actual positives $$\text{tp} + \text{fn}$$. The F1 score is given by:
+
+$\text{F1} = 2\frac{\text{p} \cdot \text{r}}{\text{p}+\text{r}}\ \ \mathrm{where}\ \ \text{p} = \frac{\text{tp}}{\text{tp}+\text{fp}},\ \ \text{r} = \frac{\text{tp}}{\text{tp}+\text{fn}}$
+
+The F1 metric weighs recall and precision equally. Moderately good performance on both will be favored over extremely good performance on one and poor performance on the other.
+
+## Submission Format
+
+You must produce a single submission file based on `test.csv` containing exactly two columns: `ID` and `LABEL`. 
+
+
+The file should contain a header and have the following format:
+```
+ID,LABEL
+18742,0
+14108,1
+```

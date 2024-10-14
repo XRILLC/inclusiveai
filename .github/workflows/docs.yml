@@ -1,0 +1,50 @@
+
+name: github pages
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+env:
+  ORG: "uazhlt"
+  IMAGE_NAME: "ling-582-course-blog"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    #runs-on: self-hosted
+    container:
+      image: uazhlt/ling-582-course-blog
+    steps:
+      - uses: actions/checkout@v4
+      # install deps
+      - run: yarn install --network-timeout=300000
+      # - name: Cache dependencies
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: ~/.npm
+      #     key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-node-
+
+      #- run: npm ci
+      #- run: yarn run format
+      #- run: yarn run test
+      - run: yarn run clean
+      - run: PREFIX_PATHS=true yarn run build
+      - name: Deploy
+        if: github.ref == 'refs/heads/main'
+        # see https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-gatsby
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          # see https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: ${{ github.event.head_commit.message }}
