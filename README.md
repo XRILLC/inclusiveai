@@ -129,13 +129,13 @@ The site should be developed using `docker`.
 Pull the docker image:
 
 ```bash
-docker pull "uazhlt/ling-582-fall-2024-course-blog:latest"
+docker pull "uazhlt/ling-582-course-blog:latest"
 ```
 
 Launch the site in development mode on port 8881:
 
 ```bash
-docker run -it -p "8881:8000" -v "$PWD:/app" "uazhlt/ling-582-fall-2024-course-blog"
+docker run -it -p "8881:8000" -v "$PWD:/app" "uazhlt/ling-582-course-blog:latest"
 ```
 
 Open your browser to `localhost:8881` for a live preview of the site.
