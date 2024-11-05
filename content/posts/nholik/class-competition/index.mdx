@@ -1,9 +1,9 @@
 ---
-title: "EXAMPLE: My clever approach to the class-wide shared task"
+title: "Siamese Neural Network with Some Feature Engineering"
 slug: "/nholik/class-competition"
-date: 2024-10-30
+date: 2024-11-04
 author: Nick Holik 
-description: "My approach can be summarized as ..."
+description: ""
 tags:
   - class competition
 ---
@@ -22,19 +22,19 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>???</td>
+    <td>0.49858</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
-    <td>???</td>
+    <td>Nick Holik</td>
   </tr>
   <tr>
     <th><b>Kaggle username</b></th>
-    <td>???</td>
+    <td>nickholik</td>
   </tr>
   <tr>
     <th><b>Code Repository URL</b></th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-???</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-nholik</td>
   </tr>
 </tbody>
 </table>
@@ -42,30 +42,51 @@ tags:
 
 ## Task summary
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
+I need to create a model that when provided two samples of text, the model should indicate if they are from the same author or not.
+
+My prposed initial approach, which I am certain will change as I dig further into things, is to use a Siamese Neural Network for making my classification.  From [this book](https://link.springer.com/book/10.1007/978-1-0716-0826-5),
+> Similarity has always been a key aspect in computer science and statistics. Any time two element vectors are
+> compared, many different similarity approaches can be used, depending on the final goal of the comparison ...
+> But if the comparison has to be applied to more complex data samples, with features having different
+> dimensionality and types which might need compression before processing, these measures would be
+> unsuitable. In these cases, a siamese neural network may be the best choice...
+
+Of course I will need more than just this idea, and after an initial look at the data, I will likely want to supplement heavily.  
+
+My proposed initial line of "attack" is:
+
+- Pick some existing word embedding method (BERT?)
+- Use some supplemental data like [this](https://www.kaggle.com/datasets/michaelrussell4/10000-books-and-their-genres-standardized) to augment with some features like genre, author sex, time period.
+- use the supplemental data to help make input vectors to my "twin" networks
+- use the supplemental data to also feed into my "twin" networks
+- create the similarity network by concatenating the outputs as the input
+
+There are a lot of things I am still learning and not sure how to do, but I think with some persistence this will get me above the baseline.
+
+I really want to keep the initial approach simple and lean on existing models and libraries I can leverage.
+
+
 
 ## Exploratory data analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+I don't have a lot of data to work with, so supplementing and using that to help add more information to my model seems like a good path to go down.
 
-## Exploratory data analysis
-
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
+Nothing yet.
+
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+Nothing yet.
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+I will have full instructions on the final draft.
 
 
 ## Future Improvements
 
-_Describe how you might best improve your approach_
+I am sure I will have plenty of ideas once this gets off the ground.
+
