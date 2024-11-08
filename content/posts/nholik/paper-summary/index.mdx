@@ -1,17 +1,15 @@
 ---
-title: "EXAMPLE: My Paper Summary"
+title: "Paper Summary - Mass Editing Memory In A Transformer"
 slug: "/nholik/paper-summary"
-date: 2023-10-30
+date: 2024-11-06
 author: Nick Holik
-description: "My incredible paper summary ..."
+description: "My LLM-assisted summary of Mass Editing Memory In A Transformer"
 tags:
   - paper summary
 ---
 
 
 ## Citation
-
-_Replace this text with a complete citation_
 
 <table>
   <caption>
@@ -26,39 +24,52 @@ _Replace this text with a complete citation_
 <tbody>
   <tr>
     <td><b>Paper</b></td>
-    <td>???</td>
+    <td>Mass-Editing Memory in a Transformer</td>
   </tr>
   <tr>
     <td><b>Authors</b></td>
-    <td>???</td>
+    <td>Kevin Meng, Arnab Sen Sharma, Alex Andonian, Yonatan Belinkov, David Bau</td>
   </tr>
   <tr>
     <td><b>Year published</b></td>
-    <td>???</td>
+    <td>2023</td>
   </tr>
   <tr>
     <td><b>Venue</b></td>
-    <td>???</td>
+    <td>The Eleventh International Conference on Learning Representations (ICLR)</td>
   </tr>
   <tr>
     <td><b>Paper URL</b></td>
-    <td>???</td>
+    <td>https://arxiv.org/abs/2210.07229</td>
   </tr>
   <tr>
     <td><b>Code URL</b></td>
-    <td>???</td>
+    <td>https://github.com/kmeng01/memit</td>
   </tr>
 </tbody>
 </table>
 
 ## Description
 
-_In your own words, what is this paper about?_
+The paper goes over a technique for updating a deep network's weight Mass-Editing Memory in a Transformer or MEMIT,
+which aims to solve the problem that large scale models become obsolete and need to be updating without fully retraining.
+The author's propose MEMIT as a way to efficiently bulk adds new memories to an existing model
+and provides performance benefits over other knowledge editing techniques.  The paper provides 
+the MEMIT Algorithm and an analysis of its performance on two LLMs GPT-J (6B) and GPT-NeoX (20B) 
+compared against other knowledge editing algorithms: FT-W, MEND, and ROME.
 
 ## Motivation
 
-_Why did you select this paper?_
-<!-- NOTE: don't use an LLM to generate this! 🙃 -->
+I originally found this while exploring papers where one explored the efficacy on knowledge editing for correcting 
+hallucinations, which in turn led me through sifting through a few more papers before settling on this particular paper.
+The exploration of how to keep models up to date efficiently and the somewhat recentness of this paper made me 
+feel it was worth exploring as it dives deep into one technique.  While I do not think I will quickly grasp all the 
+material, it seems like a paper that has utility and will expose me to some important pratical ideas for an obvious 
+problem.  In some sense I see this as how can one go from development to maintenance mode on an LLM.  Further 
+some of the implications for how to "patch" a model for safety and accuracy considerations without throwing out 
+the whole thing seem to be ideas of high utility.  In short, I think this paper will really challenge me and 
+expose me to some things and will be one I may want to continue to go back to later as my knowledge expands 
+from my current place as both this class and my continued learning progress.
 
 ## LLM
 
