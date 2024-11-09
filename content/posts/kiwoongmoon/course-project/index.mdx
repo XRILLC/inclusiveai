@@ -1,9 +1,9 @@
 ---
-title: "My course project"
+title: "Fine-tuning LM for translating Korean typoglycemia"
 slug: "/kiwoongmoon/course-project"
-date: 2024-10-31
+date: 2024-11-08
 author: Ki Woong Moon
-description: "My submission for the ..."
+description: "This is a course project for LING582 focusing on whether pre-trained LM (Language Model) could interpret Korean typoglycemia with fine-tuning."
 tags:
   - course project
 ---
@@ -15,7 +15,7 @@ tags:
 <tbody>
   <tr>
     <th>Code Repository URL</th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-???</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-nmt_finetune</td>
   </tr>
   <tr>
     <th>Demo URL (optional)</th>
@@ -23,7 +23,7 @@ tags:
   </tr>
   <tr>
     <th>Team name</th>
-    <td></td>
+    <td> nmt-finetune</td>
   </tr>
 </tbody>
 </table>
@@ -32,7 +32,28 @@ tags:
 ## Project description
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility).  Use subsections to organize components of the description._
-
+<table>
+<tr> 
+<th> Summary of the project </th>
+<td> Korean langguage is fascinating. For the past few years, Koreans used some kinds of typoglycemia to write review on foreign websites, such as Airbnb and  Google Map, to write reviews that cannot be translated into English using Google Translator or other Machine Learning Translators.
+For example, if a Korean wants to write a bad review for a restaurant due to its awful services, they might write it as "이 싞땅운 넘뮤 뷸칞절핽엵" (which in standard Korean would be "이 식당은 너무 불친절해요", meaning "this restaurant is very unkind")to make the readers difficult to translate. Although the sentence written by the reviewer is not a standard Korean that we usually use in our daily life, most of Koreans would understand what the meaning of sentence is without any learning what the transformation rules arguments.
+Based on this interesting fact, the present project aims to investigate whether fine-tuning pre-trained language model (mT5) with transformation texts would improve its translation from Korean typoglycemia texts to English. If it could succeed, it would shed a light in translating low-resource language to English. </td>
+</tr>
+<tr>
+<th> Approach of the study</th>
+<td> To collect Korean-English parellel corpus, the present project used a partial datasets from Huggingface (lemon-mint/korean_english_parallel_wiki_augmented_v1). 20,000 utterances from English wikipedia (with their Korean machine translation) will be used in the project.
+After collecting the data, the study will use Korean website(https://xeno.work/koenc.html#) which tranforms the standard texts into typoglecymia texts with Python package Selenium. Since there are several ways to create typoglecymia texts in Korean, the project randomly assigned the method for creating typoglecymia text. 
+The scrapping method is provided in "scrpping.ipynb" file.</td>
+</tr>
+<th>Aspects of NLP </th>
+<td>
+The syntactic data that I made based on the Korean-English parallel corpus could be regarded as low-resource language. As the pre-trained language model takes small amount of data (scrambbled or typoglycemia texts), the projects wants to reveal whether it can outperform current Machine Translation model or LLM.
+</td>
+<tr>
+<th> Progress so far </th>
+<td> Data collection using huggingface and transformation of Korean texts into scrambled texts was done (11/08)</td>
+</tr>
+</table>
 
 ## Summary of individual contributions
 <table>
@@ -44,17 +65,10 @@ _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/co
   </thead>
 <tbody>
   <tr>
-    <th><b>???</b></th>
-    <td>???</td>
+    <th><b>Ki Woong Moon</b></th>
+    <td>Create dataset for fine-tuning & build a neural machine translation model (Kor(scrambled)-EN)</td>
   </tr>
-  <tr>
-    <th><b>???</b></th>
-    <td>???</td>
-  </tr>
-  <tr>
-    <th><b>???</b></th>
-    <td>???</td>
-  </tr>
+  
 </tbody>
 </table>
 
