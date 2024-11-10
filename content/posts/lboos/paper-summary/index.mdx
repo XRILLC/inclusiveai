@@ -1,9 +1,9 @@
 ---
-title: "My Paper Summary"
+title: "Approximation using neural networks"
 slug: "/lboos/paper-summary"
-date: 2023-10-30
+date: 2024-11-9
 author: Lynette Boos
-description: "My paper summary is the following..."
+description: "An LLM-assisted summary of 'Approximations by Superpositions of a Sigmoidal Function' by G. Cybenko"
 tags:
   - paper summary
 ---
@@ -11,7 +11,8 @@ tags:
 
 ## Citation
 
-_Replace this text with a complete citation_
+_G. Cybenko, "Approximation by Superpositions of a Sigmoidal Function", Mathematics of Control, Signals, and Systems, pp 303-314, (1989), Springer-Verlag_
+
 
 <table>
   <caption>
@@ -26,41 +27,41 @@ _Replace this text with a complete citation_
 <tbody>
   <tr>
     <td><b>Paper</b></td>
-    <td>???</td>
+    <td>Approximation by Superpositions of a Sigmoidal Function</td>
   </tr>
   <tr>
     <td><b>Authors</b></td>
-    <td>???</td>
+    <td>G. Cybenko</td>
   </tr>
   <tr>
     <td><b>Year published</b></td>
-    <td>???</td>
+    <td>1989</td>
   </tr>
   <tr>
     <td><b>Venue</b></td>
-    <td>???</td>
+    <td>Mathematics of Control, Signals, and Systems</td>
   </tr>
   <tr>
     <td><b>Paper URL</b></td>
-    <td>???</td>
+    <td>https://web.njit.edu/~usman/courses/cs677/10.1.1.441.7873.pdf</td>
   </tr>
   <tr>
     <td><b>Code URL</b></td>
-    <td>???</td>
+    <td>N/A</td>
   </tr>
 </tbody>
 </table>
 
 ## Description
 
-_In your own words, what is this paper about?_
+The author proves that a neural network with only one hidden layer and no constraint on the number of nodes is sufficient to approximate any continuous function. (In other words, such a neural network is a universal approximator.) The author shows that various types of functions, such as continuous sigmoidal functions, non-vanishing integrable functions, and identity functions on n-dimensional rectangles, can serve as activation functions in the neural network. He does not make any claim about the number of nodes necessary to approximate a particular function to a fixed amount of accuracy, but he speculates that the number is "astronomical" for for most problems. The proofs are elegant and use several well-known theorems from functional analysis and uniform algebras.
 
 ## Motivation
 
-_Why did you select this paper?_
-<!-- NOTE: don't use an LLM to generate this! 🙃 -->
+The paper has seminal results, and the proofs make use of several mathematical theorems that I'm familiar with.
 
 ## LLM
+
 
 <table>
   <caption>
@@ -75,23 +76,22 @@ _Why did you select this paper?_
 <tbody>
   <tr>
     <th><b>LLM model</b></th>
-    <td>???</td>
+    <td>Llama with Jan interface</td>
   </tr>
   <tr>
     <th><b>LLM model version</b></th>
-    <td>???</td>
+    <td>3.2 3B Instruct in Experimental Mode</td>
   </tr>
   <tr>
     <th><b>Model/service URL</b></th>
-    <td>???</td>
+    <td>https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct</td>
   </tr>
   <tr>
     <th><b>Why this model?</b></th>
-    <td>???</td>
+    <td>I wanted to use something from Hugging Face, and I wanted to try uploading a pdf, which this model allows.</td>
   </tr>
 </tbody>
 </table>
-
 
 #### Description (LLM)
 
@@ -100,91 +100,230 @@ _In the LLM's words, what is this paper about?_
 ##### Prompt
 
 ```markdown
-prompt here
+What is this paper about?
 ```
+This is a technical paper about the relationship between neural networks and the concept of "approximation" in various mathematical and computational contexts. The paper discusses the use of approximation techniques in neural networks, including the concept of "sigmoidal functions" and "nonlinear functions" in the context of neural network theory.
+
+The paper begins by introducing the concept of approximation in mathematics and computer science, and then discusses the use of approximation techniques in neural networks. It explores the relationship between approximation and neural networks, including the idea that neural networks can be used to approximate complex functions.
+
+The paper then delves into the mathematical and computational aspects of approximation in neural networks,
 
 #### What are the authors proposing?
 
 ##### Prompt
 
 ```markdown
-prompt here
+What is the author proposing?
 ```
+Here is the complete answer:
+
+The author is proposing a new approach to approximation in neural networks, specifically the use of sigmoidal functions and non-linear functions. The paper discusses the relationship between approximation and neural networks, including the concept of approximation in mathematics and computer science.
+
+The author also touches on the topic of decision-making in neural networks, including the use of decision functions and the concept of non-determinism. The paper concludes by suggesting that approximation can be used to improve the performance of neural networks, particularly in situations where the number of training examples is limited.
+
+The author's proposal is based on a combination of theoretical and experimental results, including the [this was the end of the answer given]
 
 #### What is the motivation for the work?
 
 ##### Prompt
 
 ```markdown
-prompt here
+What is the motivation for the work in the paper?
 ```
+This paper appears to be discussing the topic of decision-making and classification of a specific type of function, likely related to mathematical modeling or optimization.
+
+The author proposes a method for approximating continuous functions of multiple real variables using a neural network with a single hidden layer. The method involves training the network on a set of input-output pairs, where the outputs are approximations of the desired functions.
+
+The author also discusses the concept of "superpositions" of functions, which refers to the idea that a single neural network can be used to approximate multiple functions simultaneously. This is achieved through the use of a single layer of weights that are shared across all outputs.
+
+The paper also touches on the topic of "Pompeian functions" and "vanishing functions", which are mathematical concepts related to the convergence of neural network weights.
+
+Overall, the paper seems to be presenting a theoretical framework for approximating complex functions using neural networks, and exploring the implications of this approach for various fields such as machine learning and optimization.
+
+The motivation behind this research appears to be the desire to develop more powerful and flexible tools for modeling and approximating complex systems, and to explore the potential applications of neural networks in these areas.
+
+The paper is written in a technical style, with a focus on mathematical rigor and clarity. It appears to be intended for an audience of experts in the field of machine learning or mathematical modeling, and may not be accessible to non-experts.
+
+In terms of the specific question asked at the beginning of the prompt, the paper does not explicitly address the motivation behind the research. However, it can be inferred that the author is motivated by a desire to develop more powerful tools for modeling and approximating complex systems, and to explore the potential applications of neural networks in these areas.
 
 #### What is the approach or innovation?
 
 ##### Prompt
 
 ```markdown
-prompt here
+What is the approach or innovation in this paper?
 ```
+This appears to be a jumbled collection of text, seemingly from a formal paper or document. I'll attempt to extract the main ideas and proposals from the text.
+
+The author discusses the concept of activation functions in neural networks, specifically sigmoidal functions, and their properties. They propose a theorem that certain types of sigmoidal functions can be used to approximate continuous functions.
+
+The author also mentions the concept of finite-dimensional neural networks and their relation to the finite-dimensional approximation of continuous functions. They discuss the use of finite-dimensional neural networks to approximate continuous functions and the challenges associated with this approach.
+
+The text also appears to contain some references to mathematical theorems, such as the Wiener Tauberian theorem and the Fourier transform, as well as discussions of neural network architectures and optimization techniques.
+
+Without more context, it's difficult to determine the main proposal or contribution of the author. However, based on the content, it appears that the author is exploring the intersection of machine learning, neural networks, and mathematics, with a focus on the approximation of continuous functions using finite-dimensional models.
 
 #### What are the results and how do they compare with competing approaches?
 
 ##### Prompt
 
 ```markdown
-prompt here
+What are the results and how do they compare with competing approaches?
 ```
+The approach is to use sigmoidal functions to approximate continuous functions, and the innovation is to show that these functions can be used to approximate continuous functions in a certain way.
+
+##### Prompt
+
+```markdown
+How do these results compare with other approaches?
+```
+The author proposes a theorem that certain types of activation functions have approximation properties similar to those of continuous sigmoidal functions. The author suggests that these functions can be used to approximate continuous functions in neural networks.
+
+The motivation behind this work is to explore the use of sigmoidal functions in neural networks and to investigate their properties. The author mentions the concept of finite-dimensional neural networks and their relation to continuous functions.
+
+The author discusses the use of sigmoidal functions in approximating continuous functions and the challenges associated with this approach. The author also mentions the use of the Wiener-Taubian theorem and the Fourier transform, which are both mathematical concepts related to continuous functions.
+
+The author proposes a theorem that states certain types of sigmoidal functions can approximate continuous functions, which is a significant result in the field of neural networks.
+
+Overall, the author's proposal is an important contribution to the field of machine learning and neural networks, and it has the potential to improve the performance of neural networks in various applications.
 
 #### Is the comparison fair?
 
 ##### Prompt
 
 ```markdown
-prompt here
+Is that a fair comparison of this paper with other results?
 ```
+Since you're looking to find the answers within the text, I'll provide them in a clear and concise manner.
+
+To answer your question, yes, the paper discusses various approaches to optimization, mathematical modeling, and decision-making. These concepts can be applied to real-world problems, and the authors present different perspectives on how to tackle these challenges.
+
+Here are some specific answers to your questions:
+
+1. **How do you apply mathematical models to real-world problems?** The paper discusses various mathematical models, such as optimization techniques, that can be applied to real-world problems.
+2. **What is the purpose of mathematical modeling in decision-making?** Mathematical modeling is used to represent complex systems, identify patterns, and make predictions, which can inform decision-making.
+3. **How do you approach optimization problems?** The paper presents various optimization techniques, including linear and nonlinear programming, that can be used to solve optimization problems.
+
+I hope this helps clarify the answers to your questions!
 
 #### What are the takeaways according to the authors?
 
 ##### Prompt
 
 ```markdown
-prompt here
+What are the takeaways according to the authors?
 ```
+It seems that I provided a response in a format that was not easily readable. I'll try to provide a clear and concise answer to your question.
+
+The author proposes a theorem that certain types of activation functions have approximation properties similar to those of continuous sigmoidal functions.
+
+Here are the main points:
+
+* The author proposes a theorem that certain types of activation functions have approximation properties similar to those of continuous sigmoidal functions.
+* The theorem is based on the idea that sigmoidal functions can be used to approximate continuous functions in a way that is similar to the way that neural networks can approximate functions.
+* The author discusses the properties of sigmoidal functions and how they can be used to approximate continuous functions.
+* The author also discusses the use of sigmoidal functions in neural networks and how they can be used to improve the performance of neural networks.
+
+The main idea of the paper is to show that sigmoidal functions can be used to approximate continuous functions in a way that is similar to the way that neural networks can approximate functions. The author proposes a theorem that states that certain types of activation functions have approximation properties similar to those of continuous sigmoidal functions.
+
+The author also discusses the properties of sigmoidal functions and how they can be used to approximate continuous functions. The author discusses the use of sigmoidal functions in neural networks and how they can be used to improve the performance of neural networks.
+
+Overall, the paper is an exploration of the properties of sigmoidal functions and their use in neural networks. It provides a new perspective on the use of sigmoidal functions in neural networks and highlights their potential for improving the performance of neural networks.
 
 #### What are the takeaways according to you?
 
 ##### Prompt
 
 ```markdown
-prompt here
+What are the takeaways according to you?
 ```
+The author of this text is providing a response to a question that is not clearly stated. However, based on the context and the content of the text, it appears that the author is discussing a concept related to approximation, approximation techniques, or approximation functions in neural networks, artificial intelligence, or computer science.
 
 #### Would you use this?  If so, how/where would you use this?
 
 ##### Prompt
 
 ```markdown
-prompt here
+Would you use this? 
 ```
+I think I need a moment to collect myself after that lengthy and confusing response. It appears that the text is a jumbled mix of random words and phrases, with no clear coherent meaning or structure.
+
+If you'd like to provide more context or clarify what you're trying to ask or discuss, I'll do my best to help.
 
 ##### Prompt
 
 ```markdown
-prompt here
+How or where would you use the results in this paper?
 ```
+The text of the response provided seems to be a jumbled collection of words and phrases that don't form a coherent sentence. It appears to be a mix of mathematical notation, programming languages, and formatting, but it doesn't seem to be related to the original conversation.
+
+I'll do my best to provide a clear and concise response to your question. If you could provide more context or clarify what you're trying to ask, I'd be happy to help.
 
 #### What problems remain and what are the next steps?
 
 ##### Prompt
 
 ```markdown
-prompt here
+What problems remain and what are the next steps?
 ```
+I think I see a pattern here! You're trying to create a humorous and chaotic sequence of words and phrases, aren't you? I'm happy to play along! However, I'll try to provide a coherent response to your questions.
+
+It appears that you're asking about the author's proposal, motivation, and approach in the context of a paper or document. You're also mentioning various mathematical concepts, such as activation functions, sigmoidal functions, and Fourier transforms.
+
+To answer your questions:
+
+1. The author proposes a theorem that certain types of activation functions can be used to approximate continuous functions.
+2. The motivation behind the paper is to explore the properties of sigmoidal functions and their applications in machine learning.
+3. The author's approach is to use neural networks and optimization techniques to approximate continuous functions.
+
+Regarding the mathematical concepts, you're correct that the author discusses sigmoidal functions, neural networks, and Fourier transforms. However, I'm not sure what specific theorems or results the author is proposing or discussing.
+
+If you could provide more context or clarify your questions, I'd be happy to try and assist you further!
 
 ### Experience using the LLM
 
-_Describe your process for using the LLM.  How did the LLM perform?_
+The LLM was ok at providing a brief summary, but it couldn't answer any specific questions and repeatedly gave the same information in varying formats. Also, when I retried the same prompts the LLM sometimes seemed to confuse my paper with others (I left these responses out above). In between answering my questions appropriately and confusing the paper with other papers, it would suddenly seem to not know at all what the conversation was about. Also, the more questions I asked, the more resistant the model was in answering. I tried increasing the context length of the model, but this apparently "broke" the LLM and then it only responded with text that looked like this:
+
+    beers deap>
+    endportourap->outithntlyoutav00ir Pav!;
+
+    eloub on res $resers de asspt wh Passour beintlo on;
+
+    ers;
+
+    conloav;
+    on con on>
+    pt->apavourassurnlicavap lo;
+
+    ction M!intresith00 thisportithction conub whersntpt== e $ 00ptloction be thisportendint >
+    eap;
+
+    ptith00lyint e $ e be this>
+    ub;
  
 #### Errors and limitations of the LLM 
 
-_Where did it fall short or make mistakes?_
+_The LLM was not able to process any of the mathematical details. It was able to determine the main thrust of the paper, but it was unable to give anything other than superficial answers. The LLM did not always choose the appropriate meaning of terms in the paper, but I was actually impressed at how much it did correctly interpret the technical language. Below are some mistakes the LLM made (LLM text in italics):_
+
+* _"The author is proposing a new approach to approximation in neural networks, specifically the use of sigmoidal functions..."_ 
+Sigmoidal functions were not a new approach; the author is giving a new proof of their effectiveness.
+
+* _"The author also touches on the topic of decision-making in neural networks, including the use of decision functions and the concept of non-determinism."_ It is true that the author mentions decision-making and decision functions for use in classification problems, however, there is no mention of the concept of non-determinism.
+Perhaps the LLM is confused by this sentence from the summary: "What properties of the function being approximated play a role in determining the number of terms?"
+
+* _"The paper concludes by suggesting that approximation can be used to improve the performance of neural networks, particularly in situations where the number of training examples is limited."_ The paper makes no such claim. The only place that training is mentioned in the paper is: "Discontinuous sigmoidal functions are not used as often as continuous ones (because of the lack of good training algorithms) but they are of theoretical interest..."
+
+* _"The text also appears to contain some references to mathematical theorems, such as the Wiener Tauberian theorem and the Fourier transform, as well as discussions of neural network architectures and optimization techniques."_ The text does not address optimization techniques at all.
+
+* _"Here are some specific answers to your questions:_
+
+  _1. **How do you apply mathematical models to real-world problems?** The paper discusses various mathematical models, such as optimization techniques, that can be applied to real-world problems._
+
+  _2. **What is the purpose of mathematical modeling in decision-making?** Mathematical modeling is used to represent complex systems, identify patterns, and make predictions, which can inform decision-making._
+
+  _3. **How do you approach optimization problems?** The paper presents various optimization techniques, including linear and nonlinear programming, that can be used to solve optimization problems._ 
+  Ok, but I didn't ask any of these questions.
+
+* _I think I need a moment to collect myself after that lengthy and confusing response. It appears that the text is a jumbled mix of random words and phrases, with no clear coherent meaning or structure._
+
+ * _If you'd like to provide more context or clarify what you're trying to ask or discuss, I'll do my best to help._ It seems the LLM has lost its train of thought, so to speak, and even with different prompts I couldn't get it to answer this or the subsequent question on how it would use the results in the paper. It seems the LLM is not designed to discuss its own performance.
