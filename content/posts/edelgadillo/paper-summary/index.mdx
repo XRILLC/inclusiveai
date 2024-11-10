@@ -1,0 +1,201 @@
+---
+title: "Can AI do my homework?: A Window Into LLM Performance When Summarizing Research Papers"
+slug: "/edelgadillo/paper-summary"
+date: 2024-11-08
+author: Emily Delgadillo
+description: "The goal of this will be to summarize how the Llama 3.2 3b insruct variant performs when asked to summarize the paper 'Growing a Tail: Increasing Output Diversity in Large Language Models'. I will not only review the results of the summary, but as various follow-up questions related to the paper. Additionally, I will also describe the user experience throughout the process."
+tags:
+  - paper summary
+---
+
+
+## Citation
+
+[1] M. Shur-Ofry, B. Horowitz-Amsalem, A. Rahamim, and Y. Belinkov, “Growing a Tail: Increasing Output Diversity in Large Language Models,” 2024, arXiv. doi: 10.48550/ARXIV.2411.02989.
+
+<table>
+  <caption>
+    Citation summary
+  </caption>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <td><b>Paper</b></td>
+    <td>Growing a Tail: Increasing Output Diversity in Large Language Models</td>
+  </tr>
+  <tr>
+    <td><b>Authors</b></td>
+    <td>Michael Shur-Ofry, Bar Horowitz-Amsalem, Adir Rahamim, Yonatan Belinkov</td>
+  </tr>
+  <tr>
+    <td><b>Year published</b></td>
+    <td>2024</td>
+  </tr>
+  <tr>
+    <td><b>Venue</b></td>
+    <td>arXiv</td>
+  </tr>
+  <tr>
+    <td><b>Paper URL</b></td>
+    <td>https://arxiv.org/abs/2411.02989</td>
+  </tr>
+  <tr>
+    <td><b>Code URL</b></td>
+    <td>N/A</td>
+  </tr>
+</tbody>
+</table>
+
+## Description
+
+This paper compares the diversity of responses from 8 LLM models (2 closed models and 6 open models) to responses from people collected on the X app(formerly twitter). 
+The authors' goal is to highlight one of the drawbacks of LLM responses to open ended opinionated questions and how it could negatively impact the world from an anthropological perspective
+and provide potential easy solutions to help ensure diversity of LLM responses. For their research, they asked each model the same 3 questions, 10 times and for the X responses, they took 
+the first 10 responses for each question. They had a total of 6 rounds of testing for the open models; a baseline round, increasing the temperature to 1, changing the prompt two different 
+ways, and then combining each of the prompt changes with the temperature increase. For the closed models, they were only able to perform the 2 prompt changes. Their results indicated that 
+the baseline diversity was indeed much lower for the LLM's compared to the human responses, with an average of about 26 different answers per question whereas the LLMs had a baseline average
+of only 10 different answers per question. They also found that for open models having a higher temperature of 1 and updating the prompt vastly improved the diversity in the LLM responses. 
+For the closed models, they found that updating the prompt on its own still made a significant difference in the number of different responses provided by the LLMs. 
+
+## Motivation
+
+_Why did you select this paper?_
+<!-- NOTE: don't use an LLM to generate this! 🙃 -->
+I selected this paper as the lack of diversity in LLM responses is an observation that I have made as a user in my current position as a conversation analyst. With how LLMs are gaining 
+traction in society, whether through a job, school, or on your phone, LLMs are starting to effect our everyday life. Bringing attention to the potential cultural effects that LLMs could have,
+whether it is positive or negative, was a motivating factor for this choice. Learning how to help diversify one of the drawbacks of this technology is very important for me as I hope to lead 
+my career in the direction of LLM development and I want to make sure that I keep important details like this in mind. 
+
+## LLM
+
+<table>
+  <caption>
+    LLM model summary
+  </caption>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <th><b>LLM model</b></th>
+    <td>Llama</td>
+  </tr>
+  <tr>
+    <th><b>LLM model version</b></th>
+    <td>3.2 3B Instruct</td>
+  </tr>
+  <tr>
+    <th><b>Model/service URL</b></th>
+    <td>https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct</td>
+  </tr>
+  <tr>
+    <th><b>Why this model?</b></th>
+    <td></td>
+  </tr>
+</tbody>
+</table>
+
+
+#### Description (LLM)
+
+_In the LLM's words, what is this paper about?_
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### What are the authors proposing?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### What is the motivation for the work?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### What is the approach or innovation?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### What are the results and how do they compare with competing approaches?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### Is the comparison fair?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### What are the takeaways according to the authors?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### What are the takeaways according to you?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### Would you use this?  If so, how/where would you use this?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### What problems remain and what are the next steps?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+### Experience using the LLM
+
+_Describe your process for using the LLM.  How did the LLM perform?_
+ 
+#### Errors and limitations of the LLM 
+
+_Where did it fall short or make mistakes?_
