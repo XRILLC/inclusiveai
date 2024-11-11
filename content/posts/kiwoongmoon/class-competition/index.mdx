@@ -1,9 +1,9 @@
 ---
-title: "EXAMPLE: My clever approach to the class-wide shared task"
+title: "First draft describing the approach for the class-competition tasks."
 slug: "/kiwoongmoon/class-competition"
-date: 2024-11-05
+date: 2024-11-12
 author: Ki Woong Moon
-description: "My approach can be summarized as ..."
+description: "My approach can be summarized as initially using Bert Model for authorship identification."
 tags:
   - class competition
 ---
@@ -22,25 +22,32 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>???</td>
+    <td>0.58400</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
-    <td>???</td>
+    <td>Ki Woong Moon</td>
   </tr>
   <tr>
     <th><b>Kaggle username</b></th>
-    <td>???</td>
+    <td>kiwoong0325</td>
   </tr>
   <tr>
     <th><b>Code Repository URL</b></th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-???</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-Ki-Woong95</td>
   </tr>
 </tbody>
 </table>
 
 
 ## Task summary
+The class competition tasks involve predicting whether the given two spans in TEXT columns are written by the same author or not. The given training dataset has 1601 tokens with 1245 tokens written by different authors and 356 tokens written by the same author.
+By using the given training dataset, the model which used the pre-trained BERT tokenizer ('bert-based-uncased') 
+and BERTSequenceClassification ('bert-based-uncased') showed a slightly lower F1 score (0.53) 
+and high training and validation loss (training loss: 0.53, validation loss: 0.53). 
+Therefore, I plan to augment training data  to increase the number of tokens for both Label 1 and Label 0.
+Using the scraping method to collect more training data from Gutenberg sites, total number of 26596 (Label 1: 15958, Label 0: 10638) was collected. This new training set was added to the original training data.
+However, due to the limit of GPU, 20% of the total training dataset was used for model training(5,639 tokens (Label 1: 3231, Label 2: 2408))
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
 
