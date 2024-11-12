@@ -1,0 +1,80 @@
+---
+title: "---"
+slug: "/mdcoronel/class-competition"
+date: 2024-10-31
+author: Moises Coronel
+description: "---"
+tags:
+  - class competition
+---
+
+
+<table>
+  <caption>
+    Class Competition Info
+  </caption>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <th><b>Leaderboard score</b></th>
+    <td>0.44683</td>
+  </tr>
+  <tr>
+    <th><b>Leaderboard team name</b></th>
+    <td>MoisesDCoronel</td>
+  </tr>
+  <tr>
+    <th><b>Kaggle username</b></th>
+    <td>MoisesDCoronel</td>
+  </tr>
+  <tr>
+    <th><b>Code Repository URL</b></th>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-Desert-moi</td>
+  </tr>
+</tbody>
+</table>
+
+
+## Task summary
+
+ The task is a binary classification of text segments to determine if two spans of text were produced by the same author. The dataset contains 1,601 samples, with each sample labeled as either `0` (one author) or `1` (different author). The label space is therefore binary, with 1,245 samples labeled `0` and 356 samples labeled `1`.
+
+ This task is closely related to author verification and text attribution tasks, often utilized in plagiarism detection, forensic linguistics, and literary analysis.
+
+ Author identification can be challenging due to stylistic overlaps in language, especially if authors share similar genres or linguistic patterns. Also, the notable class imbalance (with `0` being the dominant class) could complicate model training, potentially leading to biased predictions. This is understood and attemped to be addressed during the creation of the pipeline.
+
+ Embedding-based models, especially those using Convolutional Neural Networks (CNNs), have shown promise in recent author identification tasks. This approach was taken as the first step towards creating a competitive submission. 
+
+## Exploratory data analysis
+
+The dataset includes 1,245 instances labeled `0` and 356 labeled `1`, showing a significant imbalance.
+
+Text lengths vary widely, with an average length of around 1,048 characters. The range of text lengths (from 164 to 5,491 characters) suggests a high variability in text samples, which could impact feature representation and model performance.
+
+## Approach
+
+The Jupyter notebook takes advantage of a CNN-based model to extract features from embeddings, chosen for its ability to capture local patterns within text. Various machine learning libraries were used in order to create a CNN tailored to this dataset. CNNs could suitable for this task as they are efficient in processing sequential data and can be less computationally intensive than alternatives.
+
+## Results
+
+The results from the first pass, using CNN, were not ideal. As output only came to around 44%. This would reuslt in a more computationally taxing approach of looking at integrating transformers or RNNs to test against the output of the CNN.
+
+## Error analysis
+
+- This code had to balance the class imbalance of `0` and `1` due to minimal data being available in the test set. 
+- Hyperparameter tuning may also have contributed to a lower accuracy score.
+- There could also have been errors stemming from the variation in text passsage lengths.
+
+## Reproducibility
+
+_See [README.md](https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-Desert-moi/blob/main/README.md) for reproducibility of code_
+
+
+## Future Improvements
+
+Future improvements would look at exploring Hyperparameter tuning, the results of an RNN with transformers, addressing the text passage lenths more thoroughly, and looking into more state-of-the-art approaches for this particular task.

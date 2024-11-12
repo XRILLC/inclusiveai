@@ -1,0 +1,185 @@
+---
+title: "Adversarially Confused but Robust"
+slug: "/mdcoronel/paper-summary"
+date: 2024-11-06
+author: Moises Coronel
+description: I found a paper to help me start my internship! INTERESTING?
+tags:
+  - paper summary
+---
+
+
+## Citation
+
+Shuaibo Wang, Yufeng Chen, Songming Zhang, Deyi Xiong, and Jinan Xu. 2022. Adversarially Improving NMT Robustness to ASR Errors with Confusion Sets. In Proceedings of the 2nd Conference of the Asia-Pacific Chapter of the Association for Computational Linguistics and the 12th International Joint Conference on Natural Language Processing (Volume 2: Short Papers), pages 221–227, Online only. Association for Computational Linguistics.
+
+
+<table>
+  <caption>
+    Citation summary
+  </caption>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Paper</b></td>
+      <td>Adversarially Improving NMT Robustness to ASR Errors with Confusion Sets</td>
+    </tr>
+    <tr>
+      <td><b>Authors</b></td>
+      <td>Shuaibo Wang, Yufeng Chen, Songming Zhang, Deyi Xiong, and Jinan Xu</td>
+    </tr>
+    <tr>
+      <td><b>Year published</b></td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <td><b>Venue</b></td>
+      <td>Proceedings of the 2nd Conference of the Asia-Pacific Chapter of the Association for Computational Linguistics and the 12th International Joint Conference on Natural Language Processing (Volume 2: Short Papers)</td>
+    </tr>
+    <tr>
+      <td><b>Paper URL</b></td>
+      <td>https://aclanthology.org/2022.aacl-short.28/</td>
+    </tr>
+    <tr>
+      <td><b>Code URL</b></td>
+      <td>???</td>
+    </tr>
+  </tbody>
+</table>
+
+## Description
+This paper describes the authors' approach to use adversairal example generation using confusion sets to make Neural Machine Translation more resilient to Automatic Speech Recognition errors. 
+
+## Motivation
+This paper was selected due to its relevance to a project I am working on for my internship. We are working with ASR and NMT and my desire was to find how what latest advancement was being made to datasets to make ASR or NMT better from the start. While this paper didn't address that, I still found it interesting and worth reading. 
+
+## LLM
+
+<table>
+  <caption>
+    LLM model summary
+  </caption>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+
+  </thead>
+<tbody>
+  <tr>
+    <th><b>LLM model</b></th>
+    <td>meta-llama</td>
+  </tr>
+  <tr>
+    <th><b>LLM model version</b></th>
+    <td>Llama-3.2-3B-Instruct Q8</td>
+  </tr>
+  <tr>
+    <th><b>Model/service URL</b></th>
+    <td>https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct</td>
+  </tr>
+  <tr>
+    <th><b>Why this model?</b></th>
+    <td>This model was chosen as it is a collection of pretrained and 
+    instruction-tuned generative models. It's optimized for agentic retrieval
+    and summarization tasks which makes it well chosen for the tast of
+    summarizing text from a reasearch article. </td>
+  </tr>
+</tbody>
+</table>
+
+
+#### Description (LLM)
+
+
+##### Prompt 
+```
+What is this paper about?
+```
+_This paper proposes a method for generating adversarial examples to improve the robustness of Neural Machine Translation (NMT) models against Automatic  Speech Recognition (ASR) errors. The authors aim to create examples that have weak acoustic relations with the original source inputs, making it difficult for the NMT model to distinguish between the true and generated sentences._
+
+
+
+#### Prompt
+```
+What are the authors proposing?
+```
+_The authors are proposing a method for generating adversarial examples to  improve the robustness of Neural Machine Translation (NMT) models against  Automatic Speech Recognition (ASR) errors. Their approach is based on crafting 
+adversarial examples that have weak acoustic relations with the original sentences, with the goal of attacking the NMT model by exploiting the ASR  errors._
+
+#### Prompt
+```
+What is the motivation for the work?
+```
+_The motivation for the work appears to be to address the limitation of  previous methods in handling homophone errors caused by ASR errors, which can  lead to incorrect translations, and to develop a new approach to generate  adversarial examples that can help improve the robustness of NMT models  against such errors._
+
+#### Prompt
+```
+What is the approach or innovation?
+```
+_The approach or innovation proposed is an adversarial example generation  method based on confusion sets, which involves using token and ground-truth  token embeddings to generate adversarial examples that can help improve the  robustness of NMT models against ASR errors._
+
+#### Prompt
+```
+What are the results and how do they compare with competing approaches?
+```
+- _According to the text, the results show that the proposed method can improve the robustness of NMT models against ASR errors in both hand-crafted and  real-world scenarios, and outperforms baseline methods on the clean test sets._
+
+- _The comparison with competing approaches is not explicitly stated in the  text, but it is mentioned that previous works (Sperber et al., 2017 and  Martucci et al., 2021) generate noisy training examples by uniformly selecting 
+tokens from a sampled vocabulary or using a lexical noise model to emulate  noisy transcripts, respectively. However, these approaches do not model the  acoustic relations between words, which is a key aspect of the proposed method._
+
+- _The text also mentions that the proposed method can generate diversified  adversarial examples, which is not mentioned as a feature of competing  approaches._
+
+#### Prompt
+```
+What are the takeaways according to the authors?
+```
+
+_The takeaways according to the authors are:_
+
+- _The authors have proposed a method for generating adversarial examples to  improve the robustness of NMT models against ASR errors, specifically  targeting homophone errors caused by complicated acoustic-linguistics  relations._
+- _The addition of NMT gradient information can help generate diversified  adversarial examples, which is critical for handling ASR errors._ 
+- _The proposed method outperforms previous approaches, as evident from the  better results on the clean and noisy test sets, particularly when λ = 0.05._
+- _The authors' approach is necessary because previous methods fail to provide correct translations when ASR errors occur, highlighting the need for a more  comprehensive approach to handle realistic ASR errors._
+
+#### Prompt
+```
+What are the takeaways according to you?
+```
+
+- _I don't know._
+
+#### Prompt
+```
+Would you use this?  If so, how/where would you use this?
+```
+
+
+- _Based on the provided context, it appears that the proposed method can be  used to improve the robustness of Neural Machine Translation (NMT) models  against Automatic Speech Recognition (ASR) errors._
+
+- _The method could be useful in various applications where NMT models are used in real-world scenarios, such as:_
+
+  -  _Speech-to-Text systems: The proposed method could be used to improve the  accuracy of speech recognition systems, which are often used in voice  assistants, speech-to-text applications, and other areas where ASR errors can have significant consequences._
+  - _Machine translation: The method could be applied to improve the robustness of NMT models to ASR errors in machine translation systems, which can be used  in applications such as language translation, subtitling, and closed captions._
+
+- _However, I do not know the specific use cases or applications where this method would be most effective or practical._
+
+#### Prompt
+```
+What problems remain and what are the next steps?
+```
+- _I don't know._
+
+### Experience using the LLM
+
+Using this LLM was not the most difficult. Getting the Jan UI to work was the most complicated part of this experience. It was easy to ask the questions and  the language returned was layman and easy to interrupt as an United States American speaking a Western American Dialect. It was a very basic  analysis though and not much was gleamed that I couldn't just read on my own. I primarily asked fairly straight-forward questions. But I did ask the model various questions about who the paper would be bested suited to, or how this could be implemented in one's daily life. Again, when the questions were non domain specific, like the latter, the response was "I don't know." The prompt responses were factual to the best of my knowledge, I didn't see any kind of mistakes being made. It seems that the questions that could have had more mistakes would be the opionion based questions that the LLM just answered "I don't know to." 
+
+#### Errors and limitations of the LLM 
+
+This model fell short when asked to generate its own thoughts and opinion. In those examples, the model generated an answer of "I don't know". I found this humorous but did find it's limitation there to make this not the most help LLM for me. It's basic language and lack of elaboration might make this a tool better suited for long documents. But for shorter paper summaries. It does the same job I do at a more simplistic level.
