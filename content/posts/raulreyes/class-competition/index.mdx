@@ -1,9 +1,9 @@
 ---
-title: "EXAMPLE: My clever approach to the class-wide shared task"
+title: "Author Identification"
 slug: "/raulreyes/class-competition"
-date: 2024-10-22
+date: 2024-11-12
 author: Raul Reyes
-description: "My approach can be summarized as ..."
+description: "Fine-tuning DistilBERT for Author Identification"
 tags:
   - class competition
 ---
@@ -22,50 +22,154 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>???</td>
+    <td>0.56136</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
-    <td>???</td>
+    <td>ruloyimar</td>
   </tr>
   <tr>
     <th><b>Kaggle username</b></th>
-    <td>???</td>
+    <td>ruloyimar</td>
   </tr>
   <tr>
     <th><b>Code Repository URL</b></th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-???</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-raul-yimar-reyes</td>
   </tr>
 </tbody>
 </table>
 
 
 ## Task summary
+_[Rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
+Given two spans of text, the goal is to determine if both spans were produced by the same author. The key aspects of the task are:
+- The author’s identity (name/ID) is not provided for either span.
+- Both spans are authored in English and vary in length.
+- Spans are joined by the `[SNIPPET]` delimiter.
+
+One of the primary challenges of this task is the class imbalance:
+- **Class 0 (different author)**: 1,245 examples
+- **Class 1 (same author)**: 356 examples
+
+To address the class imbalance, we duplicated the examples from the minority class (same author) to ensure a more balanced representation in the training data. Then used stratified sampling when splitting the data into training and validation sets. Stratified sampling ensures that both classes are proportionally represented in each split.
+
+We chose a Transformer model (DistilBERT) due to its well-known natural language understanding capabilities and efficient runtime. Transformers excel at capturing contextual relationships and linguistic features within text, making them a safe bet for author attribution tasks. By leveraging a pre-trained language model, we can fine-tune it to detect subtle textual differences between authors within our training data. Our current performance stands at around 56%, and we seek to improve our training data to enhance model accuracy.
 
 ## Exploratory data analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+_[Rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+#### Data Structure
+- Our dataset consists of three main columns:
+  - `ID`: A unique identifier for each text example.
+  - `TEXT`: A string containing two text snippets separated by a delimiter `[SNIPPET]`.
+  - `LABEL`: A binary value where:
+    - `0`: The snippets are authored by different individuals.
+    - `1`: The snippets are authored by the same individual.
 
-## Exploratory data analysis
+#### Class Distribution
+- We observed a significant class imbalance:
+  - The `0` class (different author) has 1,245 examples, while the `1` class (same author) has only 356 examples.
+  - This imbalance could negatively impact model performance, especially in recognizing the minority class (`1`).
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+#### Text Characteristics
+- **Text Length Analysis**:
+  - The average text length is **1048 tokens**, with a standard deviation of **546 tokens**.
+  - Text lengths range from a minimum of **164 tokens** to a maximum of **5491 tokens**, with 50% of the data having a length under **920 tokens**.
+  - The text length distribution is right-skewed, with most text examples between **500 and 1500 tokens**.
+- **Frequent Bigrams**:
+  - The top bigrams in the `TEXT` feature include common phrases such as `"don know"`, `"ve got"`, and `"old man"`.
+
+## Approach
+_[Rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+#### Step 1: Data Preparation
+1. **Balancing the Dataset**:
+   - We created additional examples of the minority class (`1`) by duplicating them.
+   - We then shuffled the combined dataset to ensure a random distribution of classes, preparing it for training.
+
+2. **Tokenization**:
+   - Used the DistilBERT tokenizer to convert text data into integer sequences (`input_ids`). Each text pair was formatted with a `[SEP]` token between the two snippets to signal the model that it is dealing with two distinct pieces of text.
+   - Padding and truncation were applied to ensure all sequences had a uniform length, considering the average text length of **1048 tokens** and the right-skewed distribution.
+
+3. **Stratified Train-Test Split**:
+   - Used `train_test_split` with stratification to ensure the class distribution remained consistent across the training and validation sets.
+
+#### Step 2: Model Training
+1. **Model Initialization**:
+   - We used the `TFAutoModelForSequenceClassification` from the `transformers` library to initialize a DistilBERT model for binary classification.
+   - If a previously trained model exists, we load it for continued training; otherwise, we initialize a fresh model.
+
+2. **Model Compilation**:
+   - The model was compiled using the `Adam` optimizer and the `BinaryCrossentropy` loss function. We also tracked performance metrics like `BinaryAccuracy` and `AUC` to monitor how well the model distinguishes between the two classes.
+
+3. **Training Process**:
+   - To prevent overfitting, we implemented early stopping, which stops training if the validation performance stops improving. We also used model checkpointing to save the best model based on validation AUC.
+
+#### Step 3: Prediction
+   - We loaded the trained model and prepared it for inference.
+   - We use the model to make predictions. 
+   - The final predictions were saved in a CSV file containing `ID` and `LABEL` columns, ready for submission.
 
 ## Results
+_[Rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
+Our DistilBERT-based model was trained over four epochs, achieving a training loss that decreased to 0.0717, with a binary accuracy of 98.36% and an AUC of 0.9788. Despite these strong metrics, the model appears to be overfitting, as its performance on unseen data remains relatively low, with an accuracy of approximately 56%.
+
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+_[Rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+
+Our code includes several measures to facilitate **error analysis** and improve our understanding of model performance.
+- We address the issue of class imbalance by **duplicating the minority class (label `1`)** examples. This adjustment ensures that the model does not overly favor predicting the majority class (`0`).
+- By balancing the data, we make error analysis more interpretable, allowing us to see if the model still struggles to correctly classify the minority class.
+- During training, we monitor the model's performance using metrics such as **Binary Accuracy** and **AUC (Area Under the Curve)**.
+- The **AUC** metric is particularly helpful in assessing the model's ability to correctly rank positive examples higher than negative ones, which is crucial for understanding its effectiveness on imbalanced data.
+- Our best model achieved a score of **0.56136**, indicating room for further improvement.
+- We implement **early stopping** to prevent the model from overfitting the training data. This ensures that we only save the best version of the model based on validation performance.
+- We use a **stratified train-test split** to maintain consistent class distribution across the training and validation sets. 
+- Stratification also helps us determine whether the model performs consistently across both classes or still shows bias despite the balanced training data.
+- We consider the text length distribution during preprocessing to choose an appropriate `max_length` for tokenization, minimizing information loss from truncation.
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+_[Rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
 
+###### Prerequisites
+
+- Python >= 3.8
+
+###### File Descriptions
+- **balanced_train.csv**: The balanced training dataset used for training.
+- **dev.csv**: The validation dataset created from the original training data.
+- **requirements.txt**: Dependencies required for the project.
+- **test.csv**: The test dataset on which predictions will be made.
+- **train.csv**: The original training dataset before balancing.
+- **train_predict_script.py**: The main script for training and predicting.
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-raul-yimar-reyes.git
+   cd your-repo-name
+
+2. **Create a virtual environment (optional but recommended):**:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On macOS/Linux
+   venv\Scripts\activate     # On Windows
+3. **Install the dependencies:**:
+   ```bash
+   pip install -r requirements.txt
+4. **Running the script to train model:**: 
+   ```bash
+   python train_predict_script.py train --continue_training
+5. **Making Predictions**:
+   ```bash
+   python train_predict_script.py predict
+- The predictions will be saved to submission.csv in the project directory
 
 ## Future Improvements
 
-_Describe how you might best improve your approach_
+
+For now, we will experiment with different model architectures and hyperparameters, such as learning rate, batch size, and sequence length, to optimize performance. Additionally, we will explore incorporating features that capture important text attributes such as syntactic and stylistic characteristics.
+

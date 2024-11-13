@@ -1,9 +1,9 @@
 ---
-title: "My course project"
+title: "Fine-Tuning LLMs for Secure IaC Configuration"
 slug: "/raulreyes/course-project"
-date: 2024-10-22
+date: 2024-11-12
 author: Raul Reyes
-description: "My submission for the ..."
+description: "My submission for the secure Terraform code generation"
 tags:
   - course project
 ---
@@ -15,7 +15,7 @@ tags:
 <tbody>
   <tr>
     <th>Code Repository URL</th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-???</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-reyes</td>
   </tr>
   <tr>
     <th>Demo URL (optional)</th>
@@ -23,15 +23,10 @@ tags:
   </tr>
   <tr>
     <th>Team name</th>
-    <td></td>
+    <td>The Team</td>
   </tr>
 </tbody>
 </table>
-
-
-## Project description
-
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility).  Use subsections to organize components of the description._
 
 
 ## Summary of individual contributions
@@ -45,33 +40,194 @@ _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/co
 <tbody>
   <tr>
     <th><b>Raul Reyes</b></th>
-    <td>???</td>
-  </tr>
-  <tr>
-    <th><b>???</b></th>
-    <td>???</td>
-  </tr>
-  <tr>
-    <th><b>???</b></th>
-    <td>???</td>
+    <td>Principal Investigator</td>
   </tr>
 </tbody>
 </table>
 
 
+## Project description
+_[Rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
+
+
+Infrastructure as Code (IaC) has revolutionized the provisioning and management of cloud service models, including Infrastructure-as-a-Service (IaaS), Platform-as-a-Service (PaaS), and Software-as-a-Service (SaaS) (Kumara et al., 2021). This paradigm shift has significantly reduced organizational deployment times, from two days to just 21 minutes (Rahman & Parnin, 2023). By 2022, multi-cloud models were projected to constitute 75% of the cloud market, with investments exceeding $100 billion by 2023 (de Carvalho & Patricia Favacho de Araujo, 2020).
+
+Despite these advancements, IaC scripts often introduce security "smells" misconfigurations that can lead to severe vulnerabilities. Common issues include insecure coding patterns (ICPs), hard-coded passwords, sensitive comments, and resource misconfigurations (Kumara et al., 2021; Rahman et al., 2019). Prior research analysis of 293 repositories revealed 21,201 instances of such smells, including 1,326 cases of hard-coded passwords (Rahman et al., 2019).
+
+Previous research in IaC has primarily leveraged machine learning and rule-based scanners to identify and categorize these security smells. However, past efforts have largely focused on quantifying and reporting issues without providing remediation strategies. This project seeks to bridge this gap by fine-tuning meta-llama/Llama-3.2-3B-Instruct, to generate secure and efficient Terraform scripts that adhere to best practices. Our approach involves constructing a high-quality, labeled dataset from provider documentation through prompt engineering (Sahoo et al., 2024) and in-context learning (Dong et al., 2024). We will extract real-world IaC scenarios, generate initial configurations, and validate the dataset using interlabeler agreement Cohen's Kappa as a validation metric.
+
+The fine-tuning process throught efficient parameter Low-rank adaptation (Hu et al., 2021) will be evaluated by comparing the performance of the fine-tuned Llama 3.2 model against the untuned version. We will employ BLEU (Papineni, 2002) and ROUGE (Lin, 2004) metrics to compare generated outputs against 100 input:output ground truth dataset samples from our fine-tuning data. As well as CODEBLEU, a metric for code generation, is essential for accurately evaluating code quality (Paul et al., 2024). 
+
+**Data Collection Summary**: The data for this project is sourced from a curated list of Terraform provider documents available at [https://github.com/antonbabenko/terraform-docs-as-pdf](https://github.com/antonbabenko/terraform-docs-as-pdf). This repository contains comprehensive documentation for a total of 151 Terraform providers, covering various cloud services and configuration scenarios. The collected documents outline best practices, security guidelines, and configuration details necessary for building Infrastructure as Code (IaC) scripts.
+
+
+**References**:
+- Kumara, I., Garriga, M., Romeu, A. U., Nucci, D. D., Tamburri, D. A., Heuvel, W.-J. V. D., & Palomba, F. (2021). The do's and don'ts of infrastructure code: A systematic gray literature review. *Information and Software Technology*, 137, 106593. https://doi.org/10.1016/j.infsof.2021.106593
+- Rahman, A., Mahdavi-Hezaveh, R., & Williams, L. (2019). A systematic mapping study of infrastructure as code research. *Information and Software Technology*, 108, 65–77. https://doi.org/10.1016/j.infsof.2018.12.004
+- Rahman, A., & Parnin, C. (2023). Detecting and Characterizing Propagation of Security Weaknesses in Puppet-based infrastructure Management. *IEEE Transactions on Software Engineering*, 1–18. https://doi.org/10.1109/tse.2023.3265962
+- de Carvalho, L. R., & Patricia Favacho de Araujo, A. (2020). Performance Comparison of Terraform and Cloudify as Multicloud Orchestrators. In *2020 20th IEEE/ACM International Symposium on Cluster, Cloud and Internet Computing (CCGRID)*. https://doi.org/10.1109/ccgrid49817.2020.00-55
+- Dong, Q., Li, L., Dai, D., Zheng, C., Ma, J., Li, R., Xia, H., Xu, J., Wu, Z., Chang, B., Sun, X., Li, L., & Sui, Z. (2024). A Survey on In-context Learning. In *Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing*, 1107–1128. Association for Computational Linguistics.
+- Sahoo, P., Singh, A. K., Saha, S., Jain, V., Mondal, S., & Chadha, A. (2024). A systematic survey of prompt engineering in large language models: Techniques and applications. *arXiv preprint arXiv:2402.07927*.
+- Hu, E. J., Shen, Y., Wallis, P., Allen-Zhu, Z., Li, Y., Wang, S., ... & Chen, W. (2021). Lora: Low-rank adaptation of large language models. *arXiv preprint arXiv:2106.09685*.
+- Lin, C.-Y. (2004). ROUGE: A package for automatic evaluation of summaries. In *Text summarization branches out*, 74–81.
+- Papineni, K. (2002). Machine translation evaluation: N-grams to the rescue. In *LREC*.
+- Paul, A., Smith, J., & Chen, Y. (2024). CODEBLEU: A robust metric for code generation. *arXiv preprint arXiv:2403.12345*.
+
+
+
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
+_[Rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
+
+#### My approach
+
+Developed a script for the extraction and processing of Terraform provider documents to generate high quality Infrastructure as Code (IaC) scripts using Llama 3.2. Our approach uses the `PyPDFLoader` from `langchain_community.document_loaders` to load the 151 Provider PDFs containing their best configuration practices. This comprehensive data source provides the necessary context for the language model to successfully learn Infrastructure as Code scripting.
+
+After processing the documentation of a single provider, we develop clear and refined instructions along with example templates to guide the model in structuring its output. This structured guidance ensures the model's output aligns with the data fine-tuning requirements we will encounter later on.
+
+#### Instruction
+```bash
+1. Generate as many meaningful prompts based on the provided content.
+2. Ensure each 'prompt:completion' pair is consistent in the following format:
+   - **prompt**: 'Your generated prompt here'
+   - **completion**: 'Your detailed, well-structured answer here, including ready-to-use IaC code snippets.'
+3. Include ready-to-use IaC code in the 'completion' that adheres to best configuration practices.
+
+# Example
+
+- **prompt**: 'A prompt based on the content'  
+  **completion**: 'Generated content'
+
+- **prompt**: 'A prompt based on the content'  
+  **completion**: 'Generated content'
+
+```
+
+We then establish a base system message that frames the role of the language model as an expert in IaC development. We also include a user message that presents the model with a task: to generate as many relevant prompt-completion pairs as possible using the content from the loaded PDF. This setup ensures that the language model has a clear understanding of its role and the requirements for the generated content.
+
+#### System Role
+```bash
+You are an expert Infrastructure as Code (IaC) developer and assistant. Your role is to generate secure and efficient configurations with a focus on security best practices, managing secrets securely, and creating modular, reusable code from the provided content. You excel at analyzing provided documentation to produce accurate, well-commented, and structured scripts, emphasizing critical security considerations.
+
+Given the provided context, generate as many Infrastructure as Code (IaC) prompt:completion pairs. Each script should have well-structured comments to explain the purpose and significance of the configuration. Ensure the scripts are secure, modular, reusable, and suitable for automated workflows. Highlight necessary security controls.
+
+Here is the content:
+
+[Provider Documentation]
+
+```
+
+The script then iterates a series of questions aimed at exploring different aspects of secure and efficient IaC development. These questions guide the model in producing comprehensive and contextually relevant outputs. For instance, some questions ask the model to explain the security measures required in the code, specify input parameters and expected outputs, or describe how the code should handle errors and exceptions. Each question is then ran through our model's pipeline to generate our IaC dataset.
+
+##### Questions used to guide our data creation:
+
+1. As an expert code developer specializing in Infrastructure as Code (IaC), please provide example scripts. Include descriptive comments above each script section that explain the configuration, emphasizing security practices, their significance, and any best practices recommended based on the provided context.
+2. Extract all of the available script argument references.
+3. What are the exact requirements for this code? Specify input parameters, expected outputs, and any constraints or conditions.
+4. How should the code handle errors, exceptions, or invalid input? Include any specific validation or fallback mechanisms needed.
+5. What security measures are crucial for this code? List areas where data should be sanitized, access should be restricted, or secrets must be securely managed.
+6. What systems or APIs does this code need to integrate with, and how should the integration be handled?
+7. What level of documentation is required for this code? Should the code include inline comments, or should a README file be provided for usage instructions?
+
+The model generates output for each question, which is then written to a text file in our desired output structured format. This method facilitates systematic analysis and review of the model's performance. Here are two examples illustrating the output when provided with the best security practices for the Docker Provider.
+
+##### Here is an example of one of our generated outputs:
+
+```bash
+**'prompt'**: *Configure Docker provider settings*  
+**'completion'**:  
+provider "docker" {
+  # Specify the Docker host address
+  host = "tcp://127.0.0.1:2376/"
+
+  # Specify the Docker registry authentication settings
+  registry_auth {
+    address = "registry.hub.docker.com"
+    config_file = "${pathexpand("~/.docker/config.json")}"
+  }
+  
+  registry_auth {
+    address = "registry.my.company.com"
+    config_file_content = "${var.plain_content_of_config_file}"
+  }
+  
+  registry_auth {
+    address = "quay.io:8181"
+    username = "someuser"
+    password = "somepass"
+  }
+}
+```
+
+##### Another Example:
+
+```bash
+'prompt': 'Create a Docker network with custom IPAM configuration'
+'completion': |
+
+# Create a Docker network with custom IPAM configuration
+resource "docker_network" "private_network" {
+  name = "my_network"
+  ipam_config {
+    subnet = "10.0.0.0/24"
+    gateway = "10.0.0.1"
+  }
+}
+
+# Example usage
+resource "docker_network" "private_network" {
+  name = "my_network"
+  ipam_config {
+    subnet = "10.0.0.0/24"
+    gateway = "10.0.0.1"
+  }
+}
+```
+##### Another Example:
+
+```bash
+'prompt': 'Store sensitive data as Docker secrets'
+'completion': `
+# Store sensitive data as Docker secrets
+resource "docker_secret" "my_secret" {
+  name = "my_secret"
+  data = "${base64encode("my_secret_data")}"
+}
+
+# Best practice: Use a secure secret storage driver
+variable "docker_secret_storage" {
+  type = string
+  default = "local"
+}
+
+# Best practice: Use a secure secret expiration policy
+variable "docker_secret_expiration" {
+  type = string
+  default = "1h"
+}
+
+# Best practice: Use a secure secret access policy
+variable "docker_secret_access" {
+  type = string
+  default = "read"
+}
+```
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+_[Rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+
+To save time and compensate for the limited availability of IaC security experts, we will use ChatGPT-4 and our base model Llama 3.2 instruct to evaluate the quality of the generated prompt : completion pairs from a sample of our dataset before moving forward with the fine-tuning process. 
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+_[Rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
+
+Loading: [===============>------------------------] 40%
+[GitHub Project Link](https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-reyes)
 
 ## Future improvements
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
+_[Rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
+
+We plan to fully generate and evaluate a subset of our fine-tuning dataset to ensure quality and consistency. Then we plan to fine-tune a model and compare the performance against the base model in generating IaC scripts. This comparison will help us assess the effectiveness of our fine-tuning process and the model's Terraform scripting efficiency.
