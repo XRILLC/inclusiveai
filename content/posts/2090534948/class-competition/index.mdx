@@ -1,13 +1,19 @@
 ---
-title: "EXAMPLE: My clever approach to the class-wide shared task"
+title: "The Write Match: A Multi-Method Approach to Authorship Verification"
 slug: "/2090534948/class-competition"
-date: 2024-10-31
+date: 2024-11-14
 author: 2090534948
-description: "My approach can be summarized as ..."
+description: "A hybrid authorship detection approach using Google Search API, stylometric analysis, and LLM ensemble for robust text span matching."
 tags:
   - class competition
+  - authorship detection
+  - ensemble method
+  - Google Search API
+  - stylometry
+  - NLP
+  - language models
+  - text classification
 ---
-
 
 <table>
   <caption>
@@ -22,11 +28,11 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>???</td>
+    <td>0.48105</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
-    <td>???</td>
+    <td>2090534948</td>
   </tr>
   <tr>
     <th><b>Kaggle username</b></th>
@@ -34,23 +40,35 @@ tags:
   </tr>
   <tr>
     <th><b>Code Repository URL</b></th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-???</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-ciioprof0</td>
   </tr>
 </tbody>
 </table>
 
 
-## Task summary
+## Task Summary
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
+Given two spans of text, determine whether the two spans of text were authored by the same individual or not. The two spans are in the same cell separated by the delimiter string '[SNIPPET] '. The model may use any open-source / open-weight method(s) available to make this determination to include assessing the stylistic and linguistic similarities between the passages or searching for the passage on the Internet.
 
-## Exploratory data analysis
+This is a binary classification task rooted in authorship identification, a subfield of [author profiling](https://en.wikipedia.org/wiki/Author_profiling) and digital stylometry. The task requires classifying the passages as follows:
+
+- `0`: The two spans were not authored by the same individual.
+- `1`: The two spans were authored by the same individual.
+
+Stylistic consistency in word choice, syntax, and overall language usage may serve as an indicator in this task. Leveraging these features, the model should infer the probability of shared authorship.
+
+## Exploratory Data Analysis
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
 
-## Exploratory data analysis
+### Dataset Description
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+This dataset, designed for a binary classification task, consists of English text samples with labels indicating one of two classes. The dataset is primarily sourced from [Project Gutenberg](https://www.gutenberg.org/), enriched by additional aggregated text sources, processed for task relevance. Each data row in train.csv and test.csv consists of an `ID`, `TEXT`, and in the case of the training data, a `LABEL`. The text spans vary significantly in length, from brief excerpts to lengthy passages, providing diversity for model evaluation. Text spans are separated by a delimiter '[SNIPPET] '', marking transitions between text sections.
+
+### Data Files
+- `train.csv` (1.71 MB): Shape: 16011 rows by 3 columns. `ID` (int64, 0 - 1599 & 1999), `TEXT` (object, unstructured NL text encoded with UTF-8, average 1,066 characters (206-5156)), `LABEL` (int64, 0 (69.8%) or 1 (30.2%)).
+- `test.csv` (2.92 MB): The public test set. Shape: 899 rows by 2 columns. `ID` (int64, 1600 to 2499 excluding 199), `TEXT` (object, unstructured NL text, average 999 characters (40-5819)).
+- `sample_submission.csv` (6.3 kB): Sample submission file. Shape: 899 rows by 2 columns. `ID` (int64, 1600 to 2499 excluding 1999), `LABEL` (int64, 0 (TBD %) or 1 (TBD %)).
 
 ## Results
 

@@ -1,11 +1,23 @@
 ---
-title: "My course project"
+title: "Contradictions & Connections: A Kaggle NLP Adventure" 
 slug: "/2090534948/course-project"
-date: 2024-10-31
+date: 2024-11-14
 author: 2090534948
-description: "My submission for the ..."
+description: "An educational Kaggle Notebook template and environment for university students, guiding them through a NLP classification competition with practical insights into data preprocessing, model development, and error analysis."
 tags:
   - course project
+  - Kaggle
+  - NLP
+  - Classification
+  - Multilingual
+  - Machine Learning
+  - Data Science Education
+  - Notebook Template
+  - Docker Environment
+  - BERT
+  - XLM-RoBERTa
+  - Error Analysis
+  - Reproducibility
 ---
 
 <table>
@@ -15,24 +27,85 @@ tags:
 <tbody>
   <tr>
     <th>Code Repository URL</th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-???</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-ciioprof0</td>
   </tr>
   <tr>
-    <th>Demo URL (optional)</th>
-    <td></td>
+    <th>Competition URL</th>
+    <td>https://www.kaggle.com/competitions/contradictory-my-dear-watson</td>
   </tr>
   <tr>
     <th>Team name</th>
-    <td></td>
+    <td>2090534948</td>
   </tr>
 </tbody>
 </table>
 
+## Project Description
 
-## Project description
+This project centers on creating a Kaggle Notebook template and a supporting development environment that will guide new users through solving a trinary classification problem in NLP, based on the Kaggle competition [Contradictory, My Dear Watson](https://www.kaggle.com/competitions/contradictory-my-dear-watson). The competition tasks participants with predicting relationships between pairs of sentences across various languages, requiring a model to identify whether sentence pairs are contradictory, neutral, or entail each other. By leveraging a custom setup that mirrors the Kaggle environment, this project aims to provide a scaffolded learning experience for university-level students beginning in competitive machine learning.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility).  Use subsections to organize components of the description._
+### Project Motivation
+Many students entering Kaggle competitions face challenges adapting to the competition environment and pipeline requirements. This project addresses these challenges by providing a structured, reproducible notebook template that guides users through each stage of model development for an NLP task. With a focus on trinary classification, the project showcases the process of loading and preprocessing multilingual data, feature extraction, model training, and evaluation—all essential steps for NLP competitions.
 
+### Problem Overview
+In the "Contradictory, My Dear Watson" competition, the objective is to classify pairs of sentences into three categories: **contradiction**, **neutral**, or **entailment**. This trinary classification task requires robust language understanding across 15 languages, including English, Swahili, and Russian. The training dataset is inherently challenging due to language diversity and potential ambiguities in sentence meaning, making it an ideal case study for demonstrating NLP model training and evaluation for multilingual classification tasks.
+
+### Novelty and Educational Focus
+This project is novel in that it provides a beginner-friendly introduction to Kaggle NLP competitions, emphasizing trinary classification and multilingual challenges. By using a notebook setup that includes Docker configurations replicating Kaggle’s runtime environment, it ensures reproducibility and minimizes setup issues for students working locally. Additionally, the template simplifies the trinary classification process, making it accessible for those new to natural language processing and competition-style machine learning.
+
+### Challenges and State-of-the-Art Approaches
+Multilingual NLP tasks bring unique challenges, including cross-linguistic variability and the risk of overfitting to high-resource languages like English. Current state-of-the-art approaches often involve transformer-based models, such as BERT or XLM-RoBERTa, which excel at understanding sentence relationships across languages. However, fine-tuning these models requires careful balancing of computational resources and training strategies to avoid performance drops in low-resource languages. This notebook template will guide students in implementing and tuning models like XLM-RoBERTa, using domain-appropriate techniques to address cross-linguistic challenges.
+
+### Solution Approach
+The notebook template provides a modular pipeline, with sections covering:
+- **Data Loading and Preprocessing**: Loading data from multiple languages and performing necessary tokenization and cleaning.
+- **Feature Extraction and Embeddings**: Utilizing pre-trained transformer embeddings for multilingual data.
+- **Model Development**: Fine-tuning transformer-based architectures such as XLM-RoBERTa for trinary classification.
+- **Evaluation**: Analyzing model performance across languages and class categories using metrics like F1-score and accuracy.
+- **Error Analysis**: Highlighting common classification errors, with visualizations to aid students in understanding model behavior on multilingual data.
+
+This structured approach serves as a learning resource for students, emphasizing model interpretation and cross-linguistic error analysis.
+
+### Expected Results
+The notebook aims to achieve competitive accuracy on the Kaggle leaderboard by employing cross-validation strategies and hyperparameter tuning. It provides students with tangible results to compare and improve upon, while the inclusion of baseline models allows students to quantify the improvements gained through advanced methods like transformer-based fine-tuning.
+
+## Project Timeline
+
+**Start Date**: November 11, 2024
+**Due Date**: December 9, 2024
+
+### Week 1 (Nov 11 - Nov 17)
+- **Project Setup and Environment Configuration**
+  - [ ] Set up the project repository using the provided course-project-code assignment template.
+  - [ ] Create a Docker configuration to mirror Kaggle’s runtime environment locally, ensuring compatibility with Kaggle’s Python packages and library versions.
+  - [ ] Begin initial exploration of the "Contradictory, My Dear Watson" dataset, familiarizing yourself with data structure and key features.
+  - [ ] Outline the notebook template structure, identifying sections for data loading, preprocessing, model development, and evaluation.
+
+### Week 2 (Nov 18 - Nov 24)
+- **Data Preprocessing and Exploration**
+  - [ ] Develop code for loading and preprocessing the multilingual dataset, including tokenization and language handling.
+  - [ ] Conduct exploratory data analysis (EDA) on the dataset, highlighting language distributions, sentence-pair characteristics, and any imbalances across classification labels.
+  - [ ] Implement data visualization for multilingual distribution and sentence pair statistics to support understanding of model requirements and challenges.
+  - [ ] Begin drafting the project description and initial goals in the course blog-style summary document.
+
+### Week 3 (Nov 25 - Dec 1)
+- **Model Development and Baseline Testing**
+  - [ ] Implement baseline models, such as logistic regression or a simple neural network, for comparison with transformer-based models.
+  - [ ] Develop and fine-tune an XLM-RoBERTa or similar transformer-based model suited for trinary classification across multiple languages.
+  - [ ] Experiment with different hyperparameters and batch sizes to optimize the model for trinary classification on multilingual data.
+  - [ ] Begin documenting results and observations, focusing on model performance and any challenges encountered.
+
+### Week 4 (Dec 2 - Dec 8)
+- **Final Evaluation and Error Analysis**
+  - [ ] Conduct detailed evaluation of the trained model, using metrics such as accuracy, F1-score, and confusion matrices, focusing on language-specific performance.
+  - [ ] Perform error analysis on held-out data, identifying common misclassifications and examining the model’s handling of low-resource languages.
+  - [ ] Finalize and polish the notebook template, ensuring clear instructions and comments throughout for ease of use by new Kaggle competitors.
+  - [ ] Refine the course blog-style summary to include project goals, results, error analysis, and future improvements.
+
+### Final Submission (Dec 9, 2024)
+- **Submission of Code and Report**
+  - [ ] Submit the completed project code and notebook template, with all components verified for reproducibility.
+  - [ ] Submit the final blog-style summary to the course blog repository, ensuring it meets all project requirements, including a detailed project description, error analysis, reproducibility instructions, and proposal for future improvements.
 
 ## Summary of individual contributions
 <table>
@@ -44,7 +117,7 @@ _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/co
   </thead>
 <tbody>
   <tr>
-    <th><b>???</b></th>
+    <th><b>This is a solo effort.</b></th>
     <td>???</td>
   </tr>
   <tr>
@@ -57,7 +130,6 @@ _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/co
   </tr>
 </tbody>
 </table>
-
 
 ## Results
 
