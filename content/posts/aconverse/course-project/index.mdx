@@ -1,0 +1,84 @@
+---
+title: "Synthetic Error Generation for Token-Level Error Correction in Spanish"
+slug: "/aconverse/course-project"
+date: 2024-10-28
+author: Amber Converse
+description: "This project has the goal of augmenting existing GEC systems for Spanish by providing a very large corpus of synthetically-generated errors with token-level transformations."
+tags:
+  - course project
+---
+
+<table>
+  <caption>
+    Course Project Info
+  </caption>
+<tbody>
+  <tr>
+    <th>Code Repository URL</th>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-SkitCon</td>
+  </tr>
+  <tr>
+    <th>Demo URL (optional)</th>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <th>Team name</th>
+    <td>SkitCon</td>
+  </tr>
+</tbody>
+</table>
+
+## Project description
+
+This project has the goal of augmenting existing Grammatical Error Correction (GEC) systems for Spanish by providing a very large corpus of synthetically-generated errors. This project is to be used as training data for a Spanish-adaptation of *GECToR – Grammatical Error Correction: Tag, Not Rewrite* (2020) which performs GEC as a token-level sequence classification task, rather than as a seq2seq task as in Neural Machine Translation (NMT) inspired approaches. The token-level classification approach has the advantage of 1) training faster, 2) requiring less data to train, and 3) offering a framework for generating explanations of error corrections. NMT systems simply offer a corrected sentence with no framework for explaining the corrections, which is not as helpful for computer-assisted second language acquisition implementations. However, the disadvantage is that token-level label transformations must be designed and applied to existing datasets in expensive minimization algorithms, which I aim to solve for Spanish with this project.
+
+Token-level labels are in the form of transformations. Therefore, each token in the input sentence is assigned at least one label which determines how it is reflected in the corrected sentence. Basic transformations are familiar: KEEP, DELETE, and REPLACE. However, *GECToR – Grammatical Error Correction: Tag, Not Rewrite* (2020) introduces *g-transformations* which are transformations which mutate tokens based on specific morphological categories, such as changing case, tense, or number. While all errors can theoretically be corrected with just KEEP, DELETE, and REPLACE, a model can more easily generalize to new words with something like a mutation than with a REPLACE. For an example in English, imagine the model needs to correct the word *is* to *are* in the sentence "\*The scientists is doing an experiment." In an implementation, REPLACE would be an integer within the output vector of the classification layer which has the range of 0 to the size of the vocabulary. In this example, using only REPLACE would mean the respective integer parameter for the REPLACE transformation would just be index of the *are* token in the vocab. While the model learns this fine, there is no connection to the fact that all that is happening here is we are changing the number of the lemma *be* to be plural instead of singular. Which means if we gave it a similar example like replacing *experiments* with *experiment* in the sentence "\*The scientists experiments every day," the model would be unlikely to recognize the similarity between these two corrections. However, if we use a transformation which changes the number of a verb and set the parameter to plural, the mutation from the model's perspective would be the same in both of these cases, allowing the model to generalize much easier. Therefore, I incorporate a label schema adapted for Spanish grammar (incorporating categories like mood, augmented tenses, and gender) defined in the README of the [project Github](https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-skitcon).
+
+These token-level transformations can be applied to existing Spanish GEC datasets (such as COWS-L2H) with correct + errorful sentence pairs by creating a set of transformations that connect both sentences and minimizes the Levenshtein distance (with morphological transformations having a very low cost). However, for generating our own synthetic errors, the goal of this project, I will define common errors such as subject-verb disagreement, mood-incompatibility, gender mismatch, common L2 learner mix-ups (*por* vs. *para*, *ser* vs. *estar*, etc.), and incorrect word order, and introduce them individually through an iterative process on the correct sentence from a corpus (such as a portion of Google Books in Spanish), recording the transformations required to undo these corrections to easily generate the gold token labels.
+
+Once the corpus has been generated, I will evaluate the efficacy of this corpus for improving GEC by comparing 4 different GEC models:
+* Token-level classification using BETO (Spanish BERT) for sequence classification with only the existing COWS-L2H corpus as training data
+* Token-level classification using BETO with COWS-L2H and my synthetically-generated corpus as training data
+* Seq2seq classification (as in NMT-inspired models) using BARTO (Spanish BART) with the existing COWS-L2H corpus as training data
+* Seq2seq classification (as in NMT-inspired models) using BARTO with COWS-L2H and my synthetically-generated corpus as training data
+
+Therefore, this is a 2x2 experimental design:
+
+| Model | COWS-L2H | COWS-L2H + Synthetic Dataset |
+| ---- | ---- | ----------- |
+| BETO (Token classification) | X | X|
+| BARTO (Seq2seq) | X | X |
+
+As of the submission of this proposal, this project is still a work-in-progress. I currently have the decoding logic and morphological mapping system completed and working, so the token label schema is complete, but I need to finish the algorithm for generating labels for correct + errorful sentence pairs (a modified version of minimum edit distance) and for introducing synthetic errors. Once these two tasks are complete, I will be able to begin training on the experimental models.
+
+## Summary of individual contributions
+<table>
+  <thead>
+  <tr>
+    <th>Team member</th>
+    <th>Role/contributions</th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <th><b>Amber Converse</b></th>
+    <td>Entire project (solo)</td>
+  </tr>
+</tbody>
+</table>
+
+## Results
+
+Results are pending.
+
+## Error analysis
+
+Error analysis is pending for after completed dataset and model results are complete.
+
+## Reproducibility
+
+Reproducibility instructions and code are available in the Github for this project at: https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-skitcon
+
+## Future improvements
+
+For the future, this project could be improved by experimentation with different token label schemes. For example, my theory is that having PRE-ADD and POST-ADD will improve correction performance, but I do not have empirical testing on this, this is purely based on intuition.

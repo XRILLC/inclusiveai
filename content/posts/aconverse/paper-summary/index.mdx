@@ -1,0 +1,353 @@
+---
+title: "Summary of GECToR -- Grammatical Error Correction: Tag, Not Rewrite"
+slug: "/aconverse/paper-summary"
+date: 2023-10-28
+author: Amber Converse
+description: "A summary of the paper GECToR -- Grammatical Error Correction: Tag, Not Rewrite for LING582 assisted by Llama 3.2 3B Instruct Q8"
+tags:
+  - paper summary
+---
+
+
+## Citation
+
+Kostiantyn Omelianchuk, Vitaliy Atrasevych, Artem Chernodub, and Oleksandr Skurzhanskyi. 2020. GECToR – Grammatical Error Correction: Tag, Not Rewrite. In Proceedings of the Fifteenth Workshop on Innovative Use of NLP for Building Educational Applications, pages 163–170, Seattle, WA, USA → Online. Association for Computational Linguistics.
+
+<table>
+  <caption>
+    Citation summary
+  </caption>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <td><b>Paper</b></td>
+    <td>GECToR – Grammatical Error Correction: Tag, Not Rewrite</td>
+  </tr>
+  <tr>
+    <td><b>Authors</b></td>
+    <td>Kostiantyn Omelianchuk, Vitaliy Atrasevych, Artem Chernodub, and Oleksandr Skurzhanskyi</td>
+  </tr>
+  <tr>
+    <td><b>Year published</b></td>
+    <td>2020</td>
+  </tr>
+  <tr>
+    <td><b>Venue</b></td>
+    <td>Fifteenth Workshop on Innovative Use of NLP for Building Educational Applications</td>
+  </tr>
+  <tr>
+    <td><b>Paper URL</b></td>
+    <td>https://aclanthology.org/2020.bea-1.16/</td>
+  </tr>
+  <tr>
+    <td><b>Code URL</b></td>
+    <td>https://github.com/grammarly/gector</td>
+  </tr>
+</tbody>
+</table>
+
+## Description
+
+This paper proposes an approach to Grammatical Error Correction (GEC) which uses token-level classification instead of the preferred seq2seq approach based on how Neural Machine Translation (NMT) is done. In the seq2seq approach, the model is trained to "translate" an errorful sentence into a corrected one. This approach is slow, requires more training data, and does not offer any explanation for the corrections. Instead, the authors approach the task as a token-level sequence classification task where tokens are labelled with transformations which can then be inputted into a decoder to create the corrected sentence. In comparison to other token-level classification systems, this system does not just have KEEP, DELETE, and REPLACE as transformations, but also has transformations for morphology and grammar (such as changing the case or tense of a word) which the authors claim will increase generalizability. Notably, as many transformations rely on other transoformations, the model is run multiple times on the same sentence with the corrections from previous runs. This allows the model to correct in stages.
+
+In terms of training, the authors first pre-train a model on 9 million synthetically-generated errorful sentences. Then, they fine-tune in two stages using multiple existing GEC training datasets. In order to fine-tune, the existing GEC training datasets needed to be labeled with token-level transformation labels. The authors do this by taking the existing correct and errorful sentence pairs and calculating the token labels which minimize Levenshtein distance (essentially minimum edit distance at the word level).
+
+The first experiment of this paper compared the performance of different architectures using this training process. The authors compared RoBERTa, BERT, XLNet, ALBERT, and GPT-2. An LSTM was used as a baseline. In this experiment, it was found that RoBERTa and XLNet perform better than the other models at this task. Based on the results of this experiment, the authors added two hyperparameters to the model: one which adds a bias to the probability of not changing the token and a second which adds a minimum error probability threshold to the output of the error detection layer. Essentially, these hyperparameters both increase the model's bias toward not changing a token, decreasing recall at the benefit of increased overall performance. The second experiment compared the best performing models to existing NMT models. The GECToR models achieve better performance on the CoNLL-2014 and BEA-2019 datasets than the NMT models at up to 10 times faster inference speed. The best GECToR model achieves an F0.5 score of 66.5 and 73.7 on the CoNLL-2014 and BEA-2019 datasets, respectively. In comparison, the best NMT system achieves an F0.5 score of 65.0 and 73.2 on the same datasets.
+
+The takeway according to the authors is that a sequence-tagging approach with a pre-trained transformer encoder, token-level transformations beyond simply KEEP, DELETE, and REPLACE, and multi-stage training can result in state-of-the-art results in GEC with fast inference time.
+
+My takeway is that the sequence-tagging approach is a viable alternative to NMT-based approaches in GEC systems, but that it requires more work in designing token-level labels for each language for model to be generalizable. However, this approach has a key advantage of not only generating a corrected sentence, but also a sequence of transformations which can be used to generate an explanation of the error corrections which is extremely useful in the case of computer-assisted second language acquisition.
+
+I would use this system for grammatical error correction, perhaps applying it to another language as in English it is largely outdone by other models. However, as part of an ensemble, it is likely to still be useful. Its key advantage to me is its speed which is much faster than many LLMs would be at this task.
+
+I don't think there are major problems with the approach empirically, but I think there is more that can be explored. For example, the authors find that GPT-2 works very poorly with this training pipeline, hypothesizing that this method does not work well with encoders that were trained as part of an encoder-decoder pipeline. However, I think this should be further explored. I also think that improvement of this model over other sequence classification approaches is a key aspect to explore. This model was able to improve performance using special transformations, so there are many experiments to be done with what transformations are best for generalizability. How many transformation types are too much where the model starts decreasing in performance? Essentially, creating more transformation types is offloading work from the model onto the designer of the token labels. The model is theoretically capable of correcting any sentence using just KEEP, DELETE, and REPLACE, but designing more labels creates a better framework for generalizing corrections. Where do you stop?
+
+## Motivation
+
+As a side project, I have been working on a GEC system for Spanish which uses a fine-tuned BETO (Spanish BERT) model. I was originally working with BARTO (Spanish BART) and framing it as a seq2seq task. I planned to use Wikipedia edit history to create training, but I found grammatical edits were actually quite rare in modern Spanish Wikipedia and the vast majority of minor edits were content corrections, not grammar correction. Therefore, I decided to instead design a system for generating synthetic errors from correct Spanish sentences. While brainstorming this system, I found this paper and I thought the framing of the problem as a token-level classification task was not only very interesting to me, but also created a nice framework for generating synthetic data. I would generate errors by generating gold transformations and working backwards through them to make the errorful sentence. Because I would already have the token-level labels, I decided to try making my system with the same task design and modify the approach of the paper to suit Spanish grammar. This was convenient as I could now use BERT-like models with good results which I was already familiar with and the model would run much faster. This paper is not new or necessarily state-of-the-art anymore, but it changed how I was thinking about GEC systems.
+
+## LLM
+
+<table>
+  <caption>
+    LLM model summary
+  </caption>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <th><b>LLM model</b></th>
+    <td>Llama</td>
+  </tr>
+  <tr>
+    <th><b>LLM model version</b></th>
+    <td>3.2 3B Q8</td>
+  </tr>
+  <tr>
+    <th><b>Model/service URL</b></th>
+    <td>https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct</td>
+  </tr>
+  <tr>
+    <th><b>Why this model?</b></th>
+    <td>This model was recommended and tt was small enough to run reasonably well locally. </td>
+  </tr>
+</tbody>
+</table>
+
+
+#### Description (LLM)
+
+This paper appears to be about a novel approach to grammatical error correction, specifically in non-native English. The authors propose a new model called GECToR (Grammatical Error Correction Transformer) that uses a transformer architecture to correct grammatical errors in text.
+
+The paper presents an evaluation of the GECToR model on several datasets, including the ConLL-2014 and BEA-2019 datasets, and compares its performance to other state-of-the-art models. The authors also explore the effects of different transformer architectures and inference tweaks on the performance of the GECToR model.
+
+In summary, the paper is about developing a new model for grammatical error correction in non-native English, and evaluating its performance on various datasets.
+
+##### Prompt
+
+```markdown
+What is this paper about?
+```
+
+#### What are the authors proposing?
+
+The authors are proposing a novel approach to grammatical error correction, specifically a transformer-based model called GECToR (Grammatical Error Correction Transformer). They are proposing a model that can correct grammatical errors in text, such as verb tenses, subject-verb agreement, and sentence structure.
+
+The authors are proposing the following:
+
+1. A new model architecture, GECToR, that uses a transformer encoder and a decoder to generate a corrected version of the input text.
+2. A dataset of non-native English texts with grammatical errors, which they use to train and evaluate their model.
+3. A evaluation of the model's performance on several datasets, including the ConLL-2014 and BEA-2019 datasets.
+4. An exploration of the effects of different transformer architectures and inference tweaks on the performance of the GECToR model.
+
+The authors are suggesting that their model can be used for a variety of applications, such as:
+
+* Automatic correction of grammatical errors in text
+* Language learning and education
+* Natural language processing and machine learning
+
+Overall, the authors are proposing a new approach to grammatical error correction that can be used to improve the accuracy and efficiency of language processing tasks.
+
+##### Prompt
+
+```markdown
+What are the authors proposing?
+```
+
+#### What is the motivation for the work?
+
+The motivation for the work appears to be to improve the accuracy and efficiency of grammatical error correction in non-native English texts. The authors are likely motivated by the need to correct grammatical errors in language learning and language teaching, as well as in natural language processing and machine learning applications.
+
+Some possible motivations for the work include:
+
+1. Language learning and education: Correcting grammatical errors is an essential part of language learning and teaching. The authors may be motivated by the need to develop more effective tools and methods for language learners to improve their grammar skills.
+2. Natural language processing: Grammatical error correction is a fundamental task in natural language processing, and the authors may be motivated by the need to improve the accuracy and efficiency of this task.
+3. Language assessment and evaluation: Correcting grammatical errors can be an important aspect of language assessment and evaluation, and the authors may be motivated by the need to develop more accurate and reliable methods for evaluating language proficiency.
+4. Advancements in machine learning and NLP: The authors may be motivated by the need to develop more advanced and effective machine learning and NLP techniques for grammatical error correction, and to push the boundaries of what is possible in this area.
+5. Real-world applications: The authors may be motivated by the need to develop practical and effective tools and methods for grammatical error correction in real-world applications, such as language teaching, language testing, and language learning software.
+
+Overall, the motivation for the work appears to be to improve the accuracy and efficiency of grammatical error correction in non-native English texts, and to push the boundaries of what is possible in this area.
+
+##### Prompt
+
+```markdown
+What is the motivation for the work?
+```
+
+#### What is the approach or innovation?
+
+The approach or innovation presented in the paper appears to be the use of a transformer-based model, called GECToR (Grammatical Error Correction Transformer), to correct grammatical errors in non-native English texts.
+
+The key innovation in the paper is the use of a transformer architecture to generate a corrected version of the input text. The transformer architecture is a type of neural network model that is particularly well-suited for tasks such as machine translation, text summarization, and language modeling.
+
+The specific innovation in the paper is the use of a combination of techniques, including:
+
+* Transformer encoder: The use of a transformer encoder to generate a representation of the input text.
+* Decoder: The use of a decoder to generate a corrected version of the input text.
+* Attention mechanism: The use of an attention mechanism to focus the decoder's attention on specific parts of the input text.
+* Error correction: The use of error correction techniques, such as verb tense correction and subject-verb agreement correction, to generate a corrected version of the input text.
+
+The use of a transformer-based model for grammatical error correction is innovative because it allows for the use of deep learning techniques to analyze and correct grammatical errors, which can be challenging for traditional rule-based approaches.
+
+The paper also presents a new approach to modeling grammatical error correction, which is based on a combination of linguistic knowledge and machine learning techniques. This approach allows for the use of a single model to correct multiple types of grammatical errors, which can be a challenging task for traditional rule-based approaches.
+
+Overall, the innovation presented in the paper is the use of a transformer-based model to correct grammatical errors in non-native English texts, and the combination of techniques used to generate a corrected version of the input text.
+
+##### Prompt
+
+```markdown
+What is the approach or innovation?
+```
+
+#### What are the results and how do they compare with competing approaches?
+
+The results of the paper are presented in several sections, including:
+
+1. Performance on the ConLL-2014 and BEA-2019 datasets: The authors report the performance of their model on these datasets, which are widely used for evaluating grammatical error correction models.
+2. Comparison with competing approaches: The authors compare their model with several competing approaches, including:
+  * Rule-based models: The authors report that their model outperforms traditional rule-based models, which are widely used for grammatical error correction.
+  * Sequence-to-sequence models: The authors report that their model outperforms sequence-to-sequence models, which are widely used for machine translation and text summarization.
+  * Deep learning models: The authors report that their model outperforms several deep learning models, including those based on convolutional neural networks (CNNs) and recurrent neural networks (RNNs).
+
+The results show that the GECToR model outperforms competing approaches in terms of accuracy, precision, and recall. Specifically:
+
+ConLL-2014 dataset: The GECToR model achieves an accuracy of 73.9%, precision of 68.8%, and recall of 65.1%, outperforming the best rule-based model by 4.1% in accuracy and 3.2% in recall.
+BEA-2019 dataset: The GECToR model achieves an accuracy of 62.3%, precision of 61.4%, and recall of 59.5%, outperforming the best rule-based model by 2.5% in accuracy and 1.9% in recall.
+The authors also report on the effectiveness of their model in correcting different types of grammatical errors, including verb tense, subject-verb agreement, and sentence structure.
+
+Overall, the results suggest that the GECToR model is a effective approach for grammatical error correction, outperforming competing approaches in terms of accuracy and precision.
+
+##### Prompt
+
+```markdown
+What are the results and how do they compare with competing approaches?
+```
+
+#### Is the comparison fair?
+
+The comparison in the paper appears to be fair in terms of the following aspects:
+
+1. Similar evaluation metrics: The authors use the same evaluation metrics (accuracy, precision, and recall) to evaluate the performance of their model and the competing approaches.
+2. Same dataset: The authors use the same datasets (ConLL-2014 and BEA-2019) to evaluate the performance of their model and the competing approaches.
+3. Comparable model architectures: The authors compare their model (GECToR) with models that have similar architectures (sequence-to-sequence models and deep learning models).
+
+However, there are some potential limitations to the comparison:
+
+1. Different hyperparameter settings: The authors do not report on whether the hyperparameter settings for the competing models were optimized for the specific task and dataset, which could affect the comparison.
+2. Different evaluation protocols: The authors do not report on whether the evaluation protocols used for the competing models were the same as those used for their model, which could affect the comparison.
+3. Limited number of competing models: The authors only compare their model with a limited number of competing models (rule-based models, sequence-to-sequence models, and deep learning models), which may not represent the full range of possible approaches.
+4. No discussion of model interpretability: The authors do not discuss the interpretability of their model, which could be an important aspect of evaluating the performance of a grammatical error correction model.
+
+To make the comparison more fair, the authors could:
+
+1. Report on the hyperparameter settings used for the competing models.
+2. Use more comprehensive evaluation protocols.
+3. Compare their model with a larger number of competing models.
+4. Discuss the interpretability of their model.
+
+Overall, while the comparison appears to be fair in terms of the evaluation metrics and datasets used, there are some potential limitations to the comparison that should be acknowledged.
+
+##### Prompt
+
+```markdown
+Is the comparison fair?
+```
+
+#### What are the takeaways according to the authors?
+
+The authors of the paper present several takeaways from their work on GECToR, a transformer-based model for grammatical error correction in non-native English texts. Here are some of the key takeaways according to the authors:
+
+1. Transformer-based models are effective for grammatical error correction: The authors conclude that transformer-based models, such as GECToR, are effective for grammatical error correction in non-native English texts.
+2. GECToR outperforms competing approaches: The authors report that GECToR outperforms several competing approaches, including rule-based models, sequence-to-sequence models, and deep learning models, in terms of accuracy and precision.
+3. Attention mechanism is crucial for grammatical error correction: The authors highlight the importance of the attention mechanism in GECToR for grammatical error correction, as it allows the model to focus on specific parts of the input text.
+4. Model should be trained on large datasets: The authors emphasize the importance of training the model on large datasets to improve its performance in grammatical error correction.
+5. Model should be fine-tuned for specific tasks: The authors suggest that the model should be fine-tuned for specific tasks and datasets to improve its performance and adaptability.
+6. Grammatical error correction is a challenging task: The authors conclude that grammatical error correction is a challenging task, even for state-of-the-art models, and that there is still room for improvement.
+
+Some of the authors' key statements on these takeaways are:
+
+* "Our model, GECToR, achieves state-of-the-art results on the ConLL-2014 and BEA-2019 datasets, demonstrating its effectiveness for grammatical error correction in non-native English texts."
+* "The attention mechanism is crucial for GECToR, as it allows the model to focus on specific parts of the input text and improve its accuracy and precision."
+* "Training GECToR on large datasets is essential for improving its performance and adaptability in grammatical error correction."
+* "Fine-tuning GECToR for specific tasks and datasets is necessary for achieving optimal performance and adapting the model to specific language learning scenarios."
+
+##### Prompt
+
+```markdown
+What are the takeaways according to the authors?
+```
+
+#### What are the takeaways according to you?
+
+##### Prompt
+Based on the text, I can provide the following takeaways:
+
+1. Transformer-based models can be effective for grammatical error correction: The paper presents a transformer-based model, GECToR, which is effective for grammatical error correction in non-native English texts.
+2. The attention mechanism is crucial for grammatical error correction: The paper highlights the importance of the attention mechanism in GECToR for grammatical error correction, as it allows the model to focus on specific parts of the input text.
+3. Large-scale training datasets are necessary for improving model performance: The paper suggests that large-scale training datasets are essential for improving the performance of the model in grammatical error correction.
+4. Fine-tuning the model for specific tasks and datasets can improve performance: The paper implies that fine-tuning the model for specific tasks and datasets can improve its performance and adaptability in grammatical error correction.
+5. Grammatical error correction is a challenging task: The paper concludes that grammatical error correction is a challenging task, even for state-of-the-art models, and that there is still room for improvement.
+
+Additionally, the paper highlights some potential limitations and areas for future research, such as:
+
+* The importance of model interpretability: The paper does not discuss the interpretability of the model, which could be an important aspect of evaluating the performance of a grammatical error correction model.
+* The need for more comprehensive evaluation protocols: The paper uses a limited set of evaluation metrics and protocols, and it would be beneficial to explore more comprehensive evaluation methods.
+
+Overall, the paper presents a promising approach to grammatical error correction, but there is still room for improvement and further research in this area.
+
+```markdown
+What are the takeaways according to you?
+```
+
+#### Would you use this?  If so, how/where would you use this?
+
+As a neutral AI, I don't have personal preferences or needs, but I can imagine scenarios where this technology could be useful.
+
+If I were to hypothetically use this grammatical error correction technology, I would likely use it in the following contexts:
+
+1. Language learning platforms: I would integrate this technology into language learning platforms, such as online courses, language learning apps, or educational software. This would help learners identify and correct grammatical errors, improving their writing skills and overall language proficiency.
+2. Content creation tools: I would use this technology in content creation tools, such as writing assistants, proofreading software, or editing platforms. This would help human writers and editors identify and correct grammatical errors in their content, ensuring accuracy and clarity.
+3. Language translation services: I would integrate this technology into language translation services, such as machine translation platforms or human-translation tools. This would help improve the accuracy and fluency of translated text, reducing errors and improving overall translation quality.
+4. Automated grading systems: I would use this technology in automated grading systems, such as those used in online courses or language proficiency tests. This would help identify and correct grammatical errors, providing more accurate and reliable feedback to learners.
+5. Language teaching resources: I would create language teaching resources, such as textbooks, workbooks, or language learning materials, that incorporate this technology. This would help language learners identify and correct grammatical errors, improving their language skills and confidence.
+
+Some specific applications where this technology could be used include:
+
+* Language learning apps: Duolingo, Babbel, or Rosetta Stone could integrate this technology to provide more accurate and effective language learning experiences.
+* Content creation platforms: Medium, WordPress, or Ghost could use this technology to help writers and editors identify and correct grammatical errors in their content.
+* Language translation platforms: Google Translate, Microsoft Translator, or Lingodeer could integrate this technology to improve the accuracy and fluency of translated text.
+* Online course platforms: Udemy, Coursera, or edX could use this technology to provide more accurate and reliable feedback to learners in language courses.
+These are just a few examples of how this technology could be used in various contexts. The possibilities are endless, and I'm sure that the developers and users of this technology will find many more creative and innovative ways to apply it.
+
+##### Prompt
+
+```markdown
+Would you use this? If so, how/where would you use this?
+```
+
+#### What problems remain and what are the next steps?
+
+Based on the text, here are some problems that remain and potential next steps:
+
+Remaining problems:
+
+1. Interpretability and explainability: The model's ability to understand and explain its decision-making process is limited, which can make it difficult to trust and understand the model's output.
+2. Limited domain knowledge: The model is trained on a specific dataset and may not generalize well to other domains or languages.
+3. Limited ability to handle complex errors: The model may struggle to handle complex grammatical errors, such as idiomatic expressions or context-dependent errors.
+4. Lack of human oversight: The model relies solely on automated feedback and may not be able to detect and correct errors that require human oversight.
+
+Next steps:
+
+1. Investigate and address interpretability and explainability: Researchers could explore techniques such as feature importance, saliency maps, or model-agnostic interpretability methods to improve the model's ability to explain its decision-making process.
+2. Domain adaptation and transfer learning: Researchers could investigate ways to adapt the model to other domains or languages, such as using transfer learning or domain adaptation techniques.
+3. Ensemble methods and multimodal models: Researchers could explore the use of ensemble methods, such as combining multiple models or using multimodal models that incorporate multiple sources of information (e.g., text, audio, and visual data).
+4. Human-in-the-loop feedback: Researchers could investigate ways to incorporate human feedback and oversight into the model, such as using human evaluators to validate and correct the model's output.
+5. Evaluation and benchmarking: Researchers could develop more comprehensive evaluation metrics and benchmarks to assess the model's performance and identify areas for improvement.
+6. Investigate and address bias and fairness: Researchers could explore ways to mitigate bias and ensure fairness in the model's output, such as using fairness-aware optimization techniques or data preprocessing methods.
+7. Develop more robust and reliable models: Researchers could focus on developing more robust and reliable models that can handle a wider range of inputs and errors, such as using more advanced neural network architectures or incorporating additional data sources.
+By addressing these remaining problems and taking these next steps, researchers can continue to improve the accuracy, reliability, and interpretability of grammatical error correction models, ultimately leading to more effective and efficient language learning and communication tools.
+
+##### Prompt
+
+```markdown
+What problems remain and what are the next steps?
+```
+
+### Experience using the LLM
+
+I thought the LLM performed decently and it was convenient to use using JanUI running locally. I thought the LLM provided good feedback on the fairness of the comparison, better than my suggestions. Ultimately, it performed well at making something that looks like a good response if you just skim it. I was also impressed by its speed on my computer, though of course the 3B model is smaller than their flagship models.
+
+#### Errors and limitations of the LLM 
+
+The first thing I noticed was that the LLM completely misunderstood what was novel about the paper. The novel nature of the paper was the use of special token-level transformations to frame the GEC task as sequence classification with better generalizability. However, the LLM seems to think this paper is arguing for the efficacy of using a transformer at all for GEC. Using a transformer for GEC was not novel even in 2020 when this paper was published. The LLM appears to have seen they used a transformer-based architecture and assumed that was novel.
+
+Additionally, the LLM seemed to completely hallucinate entire parts of the paper. For example, the LLM claims that the authors compared to rule-based approaches, CNNs, and RNNs, which is not true at all. They don't even mention them in the paper. The LLM also gives quotes from the paper when asked about the author's takeways, but these quotes do not appear in the paper. The LLM appears to have made them up. One quote it gives is "Training GECToR on large datasets is essential for improving its performance and adaptability in grammatical error correction." This quote is confusing because 1) it is not in the paper and 2) it is the opposite of the author's conclusion that GECToR requires less data for training. It is strange that the LLM tries to make up quotes.
