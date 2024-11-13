@@ -53,7 +53,7 @@ Shu Zhong, Zetao Zhou, Christopher Dawes, Giada Brianz, Marianna Obrist. "Sniff 
 
 ## Description
 
-In this paper, the authors begin by discussing why developing AI that understand how humans physically interact with the world is critical for building benefiical AI. While some senses, such as vision and hearing, are already being using in AI applications, smell remains an underdeveloped area of research. The authors focus on using LLMs for their work as they are becoming more common as a human interface and can learn concepts by grouping relationships in an embedding space. While LLMs have proven themselves successful in other areas, smell is trickier to describe by humans without using specialized terms, suggesting that it may be difficult for LLMs to create strong embeddings. To test how similar the LLM and human experience are in terms to conceptualizing smell, the authors create two separate tasks, one human based and one LLM based.    
+In this paper, the authors discuss how developing AI with understandings about how humans physically interact with the world is critical for building beneficial AI. If the human and AI assessments of the physical world are considered to be the same, we can say that there is human-AI alignment. This alignment leads to better design and heightens user experiences. While some senses, such as vision and hearing, are already being using in AI applications, smell remains an underdeveloped area of research. The authors focus on analyzing if human-AI alignment is possible for smell through LLMs for their work as LLMs are becoming more common as a human interface and can learn concepts by grouping relationships in an embedding space. While LLMs have proven themselves possible to be aligned for other senses, smell is trickier because it is difficult for humans to conceptualize, suggesting that it may be difficult for LLMs to build the concepts necessary to make human-like judgements. The authors set out to test how similar the AI and human concepts of smell are by creating "Sniff AI", a system that analyzes how LLMs encode human scent descriptions and if that embedding space is capable of human-like judgements. The system works by giving human study participants two separate tasks, a Scent Description and an Interactive Scent Comparison Description. The study found that the AI achieved a success rate for the first task of 27.5% and a success rate of 37.5% for the second task. The authors also used other LLMs, such as OpenAI GPT-4, to describe how scents smell to see if AI descriptions would differ from the human participant ones. By comparing term frequency wordclouds produced from both descriptions, it was additionaly confirmed that alignment was low. The outcome could be due to the lack of standardized descriptions for scent, something participants noted they struggled with in the post-experiment interviews. This discrepancy could be also be explained by LLMs use of expert terminology, such as "nutty undertones" or "subtly spicy", descriptions unlikely to be used by a standard participant. The moderately more successful secondary task could be due to the participants' comfortability or experience gained by completing task one. In the future, I think there are two specific additions that could lead to more insight on the AI's results. One would be to add participants who are experts on scent, such as perfumers or sommeliers, and see if their human-AI alignment is closer. Alternatively, if the AI is to cater to the general public, adding training data that is more casual in nature and less chemical could lead to an increased success rate as well.                     
 
 ## Motivation
 
@@ -74,19 +74,19 @@ I selected this paper while scrolling through the most recent papers available t
 <tbody>
   <tr>
     <th><b>LLM model</b></th>
-    <td>???</td>
+    <td>Llama via Jan UI</td>
   </tr>
   <tr>
     <th><b>LLM model version</b></th>
-    <td>???</td>
+    <td>Llama-3.2-3B-Instruct Q8</td>
   </tr>
   <tr>
     <th><b>Model/service URL</b></th>
-    <td>???</td>
+    <td>https://jan.ai/</td>
   </tr>
   <tr>
     <th><b>Why this model?</b></th>
-    <td>???</td>
+    <td>I noticed that the Jan UI allows you to download a pdf as opposed to typing out the paper which seemed like an interesting feature. Additionally, the desktop UI allows you to select from a number of different models, and it could be interesting to try downloading a few and seeing how they perform against each other. In terms of using Llama, Meta Llama 3.2 released very recently (Sept 25!) with expectations to beat out other open source models. I was curious to give it a try and see how accurate it would be.</td>
   </tr>
 </tbody>
 </table>
@@ -99,7 +99,7 @@ _In the LLM's words, what is this paper about?_
 ##### Prompt
 
 ```markdown
-prompt here
+Good evening! Could you describe to me what you think this paper is about?
 ```
 
 #### What are the authors proposing?
@@ -182,7 +182,7 @@ prompt here
 
 ### Experience using the LLM
 
-_Describe your process for using the LLM.  How did the LLM perform?_
+The LLM ran quite slowly on my machine. I was running it on a system with an Nvidia RTX 2060, which is not necessarily the newest GPU on the market but has more power than your average computer. Running such a large model such as Llama is probably not ideal, or useful, to the average user. 
  
 #### Errors and limitations of the LLM 
 
