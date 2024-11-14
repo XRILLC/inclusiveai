@@ -46,11 +46,12 @@ By using the given training dataset, the model which used the pre-trained BERT t
 and BERTSequenceClassification ('bert-based-uncased') showed a slightly lower F1 score (0.53) 
 and high training and validation loss (training loss: 0.53, validation loss: 0.53). 
 Therefore, I plan to augment training data  to increase the number of tokens for both Label 1 and Label 0.
-Using the scraping method to collect more training data from Gutenberg sites, total number of 26596 (Label 1: 15958, Label 0: 10638) was collected. This new training set was added to the original training data.
-However, due to the limit of GPU, 20% of the total training dataset was used for model training(5,639 tokens (Label 1: 3231, Label 2: 2408))
+Using the scraping method to collect more training data from Gutenberg sites, the total number of 26596 (Label 1: 15958, Label 0: 10638) was collected. This new training set was added to the original training data.
+However, due to the limit of GPU, 20% of the total training dataset was used for model training(5,639 tokens (Label 1: 3231, Label 0: 2408))
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
-
+## Planned Approach
+With the augmented dataset, the pre-trained BERTSequenceClassification Model showed a better F1 score (0.584). However, the model still did not perform well with a sufficient amount of data. To improve the performance, I found a paper that fine-tuned BERT for Authorship Attribution (https://aclanthology.org/2020.icon-main.16.pdf). This paper added stylistic features and hybrid features to the pre-trained BERT model which improved the model's F1 score up to 2.7%. Therefore, I am planning to add stylistic features (word frequency, number of punctuations, number of characters, etc.) to my base model to check whether these features improve the performance of the model significantly.
 ## Exploratory data analysis
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
