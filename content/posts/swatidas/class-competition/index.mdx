@@ -1,9 +1,9 @@
 ---
-title: "Authorship Attribution via Stylometric Features: A Support Vector Machine Approach"
+title: "Authorship Attribution Using Writing Style Analysis"
 slug: "/swatidas/class-competition"
 date: 2024-11-15
 author: Swati Das
-description: "This project combines Word2Vec embeddings and n-gram features to analyze text. These features are then input into a Support Vector Machine (SVM) model to predict whether two pieces of text were written by the same author."
+description: "This project combines Word2Vec embeddings and n-gram features to analyze text. These features are then input into a Support Vector Machine(SVM) model to predict whether two pieces of text were written by the same author."
 tags:
   - class competition
 ---
@@ -42,15 +42,22 @@ tags:
 
 ## Task summary
 
-- The goal of this project is to determine if two spans of text were written by the same author. Given two text spans, the task is to classify them as either being from the same author (label 1) or from different authors (label 0).
+- The goal of this project is to determine if two spans of text were written by the same author. Given two text spans, the task is to classify them as either being from the same author(label 1) or from different authors(label 0).
 
 ## Exploratory data analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+- The Training Dataset has 1,601 rows and 3 columns: ID, TEXT and LABEL. The ID column gives each text sample a unique number. The TEXT column contains the actual text we’ll analyze to determine authorship. The LABEL column shows whether the texts have the same author(1) or different authors(0). There are no missing values in this dataset, so each row has values in all three columns. Additionally, the TEXT column is of type object(string), while ID and LABEL columns are of type int64.
 
-## Exploratory data analysis
+- The test dataset has 899 rows and 2 columns: ID and TEXT. The ID column gives each text sample a unique number, while the TEXT column contains the text samples which will be used to predict if they share the same author. Like the training dataset, this one has no missing values, all rows have data in both columns. The TEXT column is of type object(string) and the ID column is of type int64.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+## Planned Approach
+
+- Text Preprocessing - The texts are cleaned and normalized by tokenizing, removing punctuations and stopwords and lemmatizing. This is applied to both training and test datasets, converting each text entry into a cleaned list of words.
+- Feature Enginnering - Word2Vec is used to create vector embedding from the preprocessed training data, capturing semantic details. The average  of Word2Vec embedding vector is computed for a document based on its tokens. CountVectorizer is applied to generate unigram features, adding frequency information to complement the embeddings. And the Word2Vec embeddings are combined with unigram features, producing a unified feature matrix for training and test data.
+- Model Training - The SVM classifier is trained using the combined features, with the LABEL column serving as the target. This enabled the model to learn to distinguish author labels based on the processed text data.
+- Prediction - The trained SVM model is used to predict the labels for the test dataset. These predictions are saved into a CSV file.
+
+- For the final submission, I plan to split the training set into a validation set to evaluate the model’s performance using accuracy and other metrics. This will help me understand how well the model predicts the correct labels.  Additionally, I will focus on improving feature engineering to refine the data and boost the model’s performance. Additionally, I will try advanced machine learning models like BERT as these transformer-based models.
 
 ## Results
 
