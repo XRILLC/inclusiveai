@@ -1,9 +1,9 @@
 ---
-title: "My course project"
+title: "Utilizing LLM's to Perform Adverse Events Analysis"
 slug: "/edelgadillo/course-project"
-date: 2024-10-31
+date: 2024-11-13
 author: Emily Delgadillo
-description: "My submission for the ..."
+description: "My submission for the course project will be a potential solution for identifying user inputs with adverse events and then determine if they were mapped to appropriate units."
 tags:
   - course project
 ---
@@ -15,7 +15,7 @@ tags:
 <tbody>
   <tr>
     <th>Code Repository URL</th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-???</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-edelgadillo</td>
   </tr>
   <tr>
     <th>Demo URL (optional)</th>
@@ -23,13 +23,21 @@ tags:
   </tr>
   <tr>
     <th>Team name</th>
-    <td></td>
+    <td>edelgadillo</td>
   </tr>
 </tbody>
 </table>
 
 
 ## Project description
+
+For this course project, I decided to automate a simple but time consuming task. As a part of my current role, each month user data is compiled from a pharmaceutical company's online virtual assistant in the form of CSV files. Those files include the user input and the unit to which it was mapped by the language model. The task is to determine from those inputs, which ones contain potential adverse events (AEs) for their medication and for inputs that do contain AEs, did the language model map them to the appropriate units? 
+There are two different approaches that I could take- I could have one task where an LLM both identifies AE's and determines the validity of the unit mapping at the same time, or I could split it out into two tasks so the LLM only has to perform one task at a time. I have opted for the second option, splitting out the tasks as I have noticed through personal use and testing that LLM's appear to perform better when only having to focus on one task at a time.
+First, I will need to compile three data sets; one with unit names and their descriptions; a set of training data which will include inputs, mapped units, and labels for AE/non-AE; another set of training data with inputs, units, and labels for correct unit/incorrect unit; and a set of testing data with just inputs and units. This should be complete by 11/17.
+I will be using python to feed the set of training data containing the AE labels, the test set of data, and a prompt into an LLM via an API. The output of this first task should be another CSV file with 3 columns, input, unit, and AE label. 
+The output of the first task, will then be trimmed down to only inputs which contain AEs and their mapped units. The trimmed down file will then be passed again into the LLM along with the files containing the units and their descriptions, the training data with the correct/incorrect labels, and another prompt. I am hoping to have the python portion completed by 11/24.
+Once I have a working script, I will then manually analyze the outputs to determine if I need to change any LLM settings or make any prompt updates. The analysis and subsequent changes shall be completed from the 24th - 30th. I will be working on finalizing my blog post from 12/1-12/6.
+In theory, these tasks could be accomplished using the concepts and principles that we have learned about statistical NLP by creating a classifier similar to what we are working on for the class competition. I have two tasks which I could make binary classifiers by utilizing the AEs as potential features for example, but instead I will be leveraging an LLM as it will have more context for what could be considered an adverse event and it will be able to take into consideration the document of unit names and descriptions for more context. 
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility).  Use subsections to organize components of the description._
 
@@ -39,7 +47,7 @@ _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/co
   <thead>
   <tr>
     <th>Team member</th>
-    <th>Role/contributions</th>
+    <th>Only Member, Emily Delgadillo</th>
   </tr>
   </thead>
 <tbody>
