@@ -1,9 +1,9 @@
 ---
-title: "EXAMPLE: My clever approach to the class-wide shared task"
+title: "Digital Stylometry for Authorship Identification using Machine Learning"
 slug: "/poojithapasala/class-competition"
-date: 2024-10-31
+date: 2024-11-14
 author: Poojitha Pasala
-description: "My approach can be summarized as ..."
+description: "My approach combines TF-IDF vectorization and logistic regression with GridSearch-based hyperparameter tuning to optimize and streamline authorship prediction."
 tags:
   - class competition
 ---
@@ -22,19 +22,19 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>???</td>
+    <td>0.51626</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
-    <td>???</td>
+    <td>Poojitha Pasala</td>
   </tr>
   <tr>
     <th><b>Kaggle username</b></th>
-    <td>???</td>
+    <td>poojithapasala10</td>
   </tr>
   <tr>
     <th><b>Code Repository URL</b></th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-???</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-poojithapasala</td>
   </tr>
 </tbody>
 </table>
@@ -42,19 +42,55 @@ tags:
 
 ## Task summary
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
+The task is to determine if two given spans of text were written by the same author. This is a binary classification problem where the documents are labeled as 0 for "not the same author" and 1 for "same author."
 
 ## Exploratory data analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+1.The training CSV file consists of three columns: ID, TEXT and  LABEL, while the test CSV file contains only the ID and TEXT columns. It was observed that the TEXT field included special characters, which required the use of UTF-8 encoding for proper handling.
 
-## Exploratory data analysis
+2.Missing values in the TEXT column of both the training and test files were addressed by replacing them with empty strings. It was found that no missing values were present in the TEXT field of either dataset.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+3.The distribution of text span lengths and labels (same author vs. different authors) was analyzed to evaluate potential class imbalance within the dataset.
+
+4.The diversity of the dataset is analyzed by stylometric features such as average word length, unique word and character diversity and vocabulary diversity , which helped in understanding the variation in writing styles across the classes.
+
+## Project Approach
+
+### Importing Libraries & Loading Data: 
+- Essential libraries for data manipulation (e.g., pandas), text preprocessing (e.g., re, nltk), model training (e.g., LogisticRegression, TfidfVectorizer) and evaluation (e.g., GridSearchCV, f1_score) are imported. 
+- The training and test datasets are then loaded from the respective CSV files to prepare for the text classification task.
+
+### Pre-processing text:
+- Handling Missing Values: 
+Missing values in the 'TEXT' column of both the training and test datasets are handled by filling them with empty strings.
+- Custom Text Preprocessing: 
+A custom preprocessor function is applied to the text data in both the training and test datasets. The preprocessing steps include:
+  - Converting text to lowercase.
+  - Replacing URLs with a placeholder.
+  - Removing quotes from the text.
+  - Eliminating common stopwords using the NLTK library to preserve important stylistic features relevant for identifying writing style.
+
+### Feature engineering with TF-IDF vectorization:
+- The TfidfVectorizer is used to transform text data into numerical vectors, extracting word and character n-grams with a range of 2 to 5, while the max_features parameter limits the number of features to 30,000.
+- "char_wb" is used as the analyzer to capture character-level n-grams, focusing on sequences of 2-5 characters helping to detect unique stylistic details.
+
+### Handling Class imbalance:
+- To address potential class imbalances, class weights are computed based on the unique classes in the training data.
+- These weights are then applied to the Logistic Regression model to ensure that all classes are represented equally in the model’s predictions.
+
+### Hyperparameter Tuning with GridSearchCV:
+- A Logistic Regression model is initialized with max_iter=5000 to allow sufficient iterations for convergence.
+- Grid Search was performed with cross-validation to find the best hyperparameters. 
+
+### Model Evaluation, Training ,Prediction & Output:
+- After identifying the best model parameters, the model is evaluated using 5-fold cross-validation to obtain an average F1-score. It is then trained on the full dataset and predictions are made on the test data, with results saved to the submission csv file.
+- The final submission file contains the predicted labels for the test set.
+
+### Motivation
+My motivation is to build a reliable text classification model using logistic regression, with a focus on character-level features extracted through TF-IDF to identify unique writing patterns for authorship profiling. This approach aims to account for imbalanced data and utilizes grid search with cross-validation to optimize the model, ensuring both accuracy and consistency across different datasets.
 
 ## Results
-
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
+The F1 Score achieved on the Kaggle leaderboard is 0.51626.
 
 ## Error analysis
 
