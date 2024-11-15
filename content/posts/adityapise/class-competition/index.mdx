@@ -1,9 +1,9 @@
 ---
-title: "EXAMPLE: My clever approach to the class-wide shared task"
+title: "My Approach for Binary Classification of Author"
 slug: "/adityapise/class-competition"
-date: 2024-10-31
+date: 2024-11-13
 author: Aditya Pise
-description: "My approach can be summarized as ..."
+description: "My Approach for Binary Classification of Author"
 tags:
   - class competition
 ---
@@ -22,23 +22,27 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>???</td>
+    <td>0.47376</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
-    <td>???</td>
+    <td>Aditya Pise</td>
   </tr>
   <tr>
     <th><b>Kaggle username</b></th>
-    <td>???</td>
+    <td>adityapise1302aditya</td>
   </tr>
   <tr>
     <th><b>Code Repository URL</b></th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-???</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-adityapise1302</td>
   </tr>
 </tbody>
 </table>
 
+## Task Approach
+For this project, I plan to fine-tune a pre-trained BERT model to classify whether a given text is written by a specific author or not.
+My plan is to preprocess the text data by tokenizing it using BERT's tokenizer, which converts the text into a format that BERT can understand. The text will be tokenized into subwords, padded, and truncated to a fixed length as required by BERT. I'll then fine-tune the pre-trained BERT model by adding a simple classification layer on top, which takes the output corresponding to the [CLS] token which captures the overall meaning of the text to predict the label 0 or 1. 
+The fine-tuning process will involve training on the dataset with a small learning rate to adjust BERT's pre-trained weights, allowing it to adapt to the specific task of identifying whether the text matches the author's style.
 
 ## Task summary
 
