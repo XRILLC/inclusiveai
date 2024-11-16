@@ -1,9 +1,9 @@
 ---
-title: "EXAMPLE: My clever approach to the class-wide shared task"
+title: "Author Identification: Assessing Textual Consistency Between Spans"
 slug: "/joeljojo/class-competition"
 date: 2024-11-15
 author: Joel Jojo
-description: "My approach can be summarized as ..."
+description: "This code implements a machine learning pipeline to determine if two spans of text were produced by the same author. It preprocesses the text, extracts features using TF-IDF, and incorporates differences, similarities, and cosine similarity into the feature set. The model combines Gradient Boosting, Random Forest, and Logistic Regression using a Voting Classifier to predict author similarity."
 tags:
   - class competition
 ---
@@ -22,19 +22,20 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>???</td>
+
+    <td>47.404</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
-    <td>???</td>
+    <td>joel1310</td>
   </tr>
   <tr>
     <th><b>Kaggle username</b></th>
-    <td>???</td>
+    <td>joel1310</td>
   </tr>
   <tr>
     <th><b>Code Repository URL</b></th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-???</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-joeljojo1310</td>
   </tr>
 </tbody>
 </table>
@@ -42,15 +43,35 @@ tags:
 
 ## Task summary
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
+
+-The task is to determine if two spans of text were written by the same author. Using machine learning, we analyze and compare the two spans to classify them as either "same author" or "different authors." The process involves cleaning the text, extracting features, and building models to predict the relationship between the spans.-
 
 ## Exploratory data analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+- 1. Data Inspection
+   - Started by loading the `train.csv` and `test.csv` datasets.
+   - Checked that the `TEXT` column contained two spans of text separated by `[SNIPPET]`.
+   - Verified that the training data had a `LABEL` column with binary values indicating whether the spans are from the same author or not.
 
-## Exploratory data analysis
+2. Splitting Text
+   - Split the `TEXT` column into two separate columns, `span1` and `span2`, to make it easier to analyze and compare each span individually.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+3. Text Analysis
+   - Looked at the word and character counts of `span1` and `span2` to ensure the spans were formatted consistently.
+   - Noticed some differences in content and vocabulary between the two spans, providing clues about their potential relationships.
+
+4. Data Cleaning
+   - Standardized the text by converting everything to lowercase.
+   - Removed special characters (like punctuation) to make the data cleaner and easier to process.
+
+5. Target Analysis
+   - Examined the `LABEL` column in the training data to check if the classes (same author vs. different authors) were evenly distributed or imbalanced.
+
+6. Feature Exploration
+   - Used TF-IDF vectors to represent the text spans and studied how well these features captured patterns in the data.
+   - Looked at cosine similarity scores between spans to understand how similar they were and whether this metric could help distinguish between same and different authors. -
+
+
 
 ## Results
 
