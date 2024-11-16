@@ -1,9 +1,9 @@
 ---
-title: "EXAMPLE: My clever approach to the class-wide shared task"
+title: "My approach to the author identification task"
 slug: "/kasa/class-competition"
-date: 2024-10-31
+date: 2024-11-15
 author: Tejashwini Kasa
-description: "My approach can be summarized as ..."
+description: "My approach can be summarized as a machine learning pipeline that uses TF-IDF vectorization to transform the text spans and logistic regression for binary classification. I focused on text preprocessing, feature engineering, and performance optimization to improve accuracy and achieve a balanced F1 score."
 tags:
   - class competition
 ---
@@ -22,25 +22,64 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>???</td>
+    <td>0.48688</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
-    <td>???</td>
+    <td>TEJASHWINI KASA</td>
   </tr>
   <tr>
     <th><b>Kaggle username</b></th>
-    <td>???</td>
+    <td>TEJASHWINI KASA</td>
   </tr>
   <tr>
     <th><b>Code Repository URL</b></th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-???</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-kasa</td>
   </tr>
 </tbody>
 </table>
 
 
 ## Task summary
+
+In this task, we are required to determine if two spans of text were written by the same author. This task falls under author profiling and authorship identification. The dataset is a collection of text pairs joined by a [SNIPPET] delimiter, and the objective is to classify these pairs as either "same author" (1) or "not the same author" (0).
+
+The training data is provided in CSV format, with a test set for final evaluation. Performance is measured using the macro F1 score to ensure balanced precision and recall for both classes.
+
+## Exploratory Data Analysis
+
+### Dataset Overview
+
+The dataset contains two partitions: a training set (`train.csv`) and a test set (`test.csv`). Each document contains a pair of text spans joined by the `[SNIPPET]` delimiter. Our target is binary (0 or 1), indicating whether both spans were authored by the same individual.
+
+Key observations:
+- Span lengths vary considerably, ranging from short sentences to longer paragraphs.
+- The dataset exhibits some class imbalance, with slightly more examples labeled "not the same author" (0).
+- Most text is well-formed, but some examples show differences in punctuation or capitalization, which could signal author identity.
+
+**Class distribution:**
+
+```python
+train_data['LABEL'].value_counts().plot(kind='bar')
+```
+
+## Approach
+### Preprocessing
+- Text Cleaning: 
+  - I removed punctuation, digits, and extra whitespace from both text spans. I also converted everything to lowercase to ensure case insensitivity.
+
+- Feature Engineering:
+  - I used TF-IDF vectorization to transform text data into numerical form. This representation captures word importance based on its frequency in the dataset, with n-grams ranging from unigrams to trigrams.
+  - I applied the vectorizer to both training and test sets, limiting the vocabulary size to 5000 features for computational efficiency.
+- Model:
+  - I employed Logistic Regression with balanced class weights to handle slight class imbalance.
+  - After experimenting with hyperparameters, I used the 'liblinear' solver for better convergence.
+  - I used a train-test split on the training data to perform cross-validation and monitor performance.
+- Evaluation:
+    - I used the macro F1 score as the primary metric to ensure balanced performance across both classes.
+## Results
+
+The final macro F1 score on the validation set is 0.48688
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
 
@@ -61,6 +100,9 @@ _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/cl
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
 
 ## Reproducibility
+
+
+https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-TejashwiniKasa/blob/main/README.md
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
 _If you'ved covered this in your code repository's README, you can simply link to that document with a note._
