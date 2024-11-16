@@ -1,0 +1,301 @@
+---
+title: "Objection, Leading the Witness: Training Large Language Models to Handle Basic Legal Text"
+slug: "/rodriguezr5/paper-summary"
+date: 2023-10-31
+author: Reilly Rodriguez
+description: "Reilly Rodriguez Paper Summary"
+tags:
+  - paper summary
+---
+
+
+## Citation
+
+Blair-Stanek et al., "[BLT: Can Large Language Models Handle Basic Legal Text?](https://aclanthology.org/2024.nllp-1.18)," in *Proceedings of the Natural Legal Language Processing Workshop (NLLP 2024)*, ACL Anthology, 2024.
+
+
+<table>
+  <caption>
+    Citation summary
+  </caption>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <td><b>Paper</b></td>
+    <td>BLT: Can Large Language Models Handle Basic Legal Text?</td>
+  </tr>
+  <tr>
+    <td><b>Authors</b></td>
+    <td>Blair-Stanek et al.</td>
+  </tr>
+  <tr>
+    <td><b>Year published</b></td>
+    <td>2024</td>
+  </tr>
+  <tr>
+    <td><b>Venue</b></td>
+    <td>Natural Legal Language Processing Workshop (NLLP 2024)</td>
+  </tr>
+  <tr>
+    <td><b>Paper URL</b></td>
+    <td><a href="https://aclanthology.org/2024.nllp-1.18">https://aclanthology.org/2024.nllp-1.18</a></td>
+  </tr>
+  <tr>
+    <td><b>Code URL</b></td>
+    <td>https://github.com/blairstanek/blt</td>
+  </tr>
+</tbody>
+</table>
+
+## Description
+
+This paper identifies a weakness of current popular LLM models in regards to parsing and producing what the authors refer to as Basic Legal Text. 
+
+## Motivation
+
+_Why did you select this paper?
+I selected this paper because my undergraduate degree was in Pre-Law and my goal was to become a lawyer. While I am now pursuing a different career path,
+I am nevertheless deeply invested in the ethical and legal aspects of prominent issues in the field of data science. 
+The title is also my favorite sandwich. 
+
+## LLM
+
+<table>
+  <caption>
+    LLM model summary
+  </caption>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <th><b>LLM model</b></th>
+    <td>Llama</td>
+  </tr>
+  <tr>
+    <th><b>LLM model version</b></th>
+    <td>3.2 3B Instruct</td>
+  </tr>
+  <tr>
+    <th><b>Model/service URL</b></th>
+    <td>Used GPT4All https://www.llama.com/llama3_2/license/</td>
+  </tr>
+  <tr>
+    <th><b>Why this model?</b></th>
+    <td>I chose this model because I found it was easy to start up with GPT4All</td>
+  </tr>
+</tbody>
+</table>
+
+
+#### Description (LLM)
+
+#### In the LLM's words, what is this paper about?_
+
+##### Prompt
+
+```markdown
+In your words, what is this paper about?
+```
+The paper appears to be about a new dataset and model designed to improve the performance of large language models (LLMs) on legal tasks. The authors created this dataset, which they call BLT-4k, by generating synthetic text that mimics real-world legal documents, such as contracts, statutes, and court transcripts.
+The paper's main goal is to evaluate the ability of LLMs to handle novel legal questions and provide accurate answers. To do this, the authors fine-tuned a small model (GPT-3) on their BLT-4k dataset and tested its performance on various tasks, such as:
+Finding specific text within hierarchical documents (e.g., contracts or statutes).
+Identifying citations to relevant sections of texts.
+Applying amended laws to specific scenarios.
+The results show that the fine-tuned model performs significantly better than the original LLMs on these tasks, indicating a potential improvement in their reliability for basic legal tasks.
+Overall, this paper aims to contribute to the development of more accurate and reliable LLMs for legal applications, which could have significant implications for various fields, such as law firms, courts, and regulatory agencies.
+
+#### What are the authors proposing?
+
+##### Prompt
+
+```markdown
+What are the authors proposing?
+```
+Based on the text file you provided, it appears that the authors are proposing a study to evaluate the performance of Large Language Models (LLMs) in tasks related to legal citations and U.S. Code sections.
+Specifically, they seem to be investigating whether LLMs can accurately perform tasks such as:
+Converting plain text to citation format
+Converting citation format back to plain text
+Identifying specific sections or subsections of the U.S. Code
+The authors are using a combination of synthetic sections and actual U.S. Code sections to test these models, with the goal of understanding their strengths and weaknesses in this domain.
+It's worth noting that the study appears to be focused on identifying errors made by LLMs when performing these tasks, rather than proposing new methods or approaches for improving legal citation accuracy.
+
+
+#### What is the motivation for the work?
+
+##### Prompt
+
+```markdown
+What is the motivation for the work?
+```
+Based on the text file, it appears that the motivation for this work is to evaluate and improve the performance of Large Language Models (LLMs) in tasks related to legal citations and U.S. Code sections.
+The authors seem to be motivated by a desire to understand how well LLMs can perform these tasks, particularly in situations where they may need to provide accurate information to lawyers or paralegals for use in court proceedings.
+Specifically, the motivation is driven by the following:
+The importance of accurately citing and referencing legal documents, such as U.S. Code sections
+The potential consequences of errors in citation formatting (e.g., pointing a court or another lawyer)
+The need to improve text-handling skills for lawyers and paralegals
+The authors are motivated to study LLMs' performance on these tasks because they have seen the benefits of using LLMs, such as:
+Their ability to process large amounts of information quickly
+Their potential to automate routine tasks that require a high degree of accuracy
+However, the authors also recognize that LLMs can make mistakes in these tasks, particularly when it comes to complex or nuanced legal concepts.
+By studying and improving LLM performance on these tasks, the authors hope to develop more accurate and reliable tools for lawyers and paralegals.
+
+#### What is the approach or innovation?
+
+##### Prompt
+
+```markdown
+What is the approach or innovation?
+```
+Based on the text file, it appears that the approach or innovation is to use a combination of synthetic sections and actual U.S. Code sections to test Large Language Models (LLMs) in tasks related to legal citations.
+The authors seem to be innovating by:
+Using both synthetic sections and real-world data from the U.S. Code to train and evaluate LLMs
+Focusing on specific tasks, such as converting plain text to citation format or identifying specific sections of the U.S. Code
+Investigating how the location within a transcript impacts accuracy
+The authors are also innovating by:
+Using a novel approach to generate synthetic sections that mimic real-world legal documents
+Developing prompts that require LLMs to perform complex tasks, such as finding text at a specific citation or identifying changes to U.S. Code sections.
+By using this combination of approaches and data, the authors aim to develop more accurate and reliable tools for lawyers and paralegals.
+Some key innovations mentioned in the text include:
+Using Levenshtein distance to determine whether two lines are similar
+Developing prompts that require LLMs to find specific text within a transcript or identify changes to U.S. Code sections
+These innovations aim to improve the performance of LLMs on tasks related to legal citations and provide more accurate information for lawyers and paralegals.
+
+#### What are the results and how do they compare with competing approaches? Is the comparison fair?
+
+##### Prompt
+
+```markdown
+What are the results and how do they compare with competing approaches? Is the comparison fair?
+```
+Based on the text file, it appears that the results of the study are as follows:
+Results:
+The authors found that GPT-4 achieves 84.8% accuracy in converting plain text to citation format for two-page transcripts.
+This is nearly identical to the performance of GPT-4 when given a single page transcript (i.e., no splitting).
+However, when GPT-4 is asked to find specific text within a longer prompt, its accuracy decreases significantly.
+The authors also found that other models, such as Claude-3.5 and GPT-4o, perform poorly on tasks related to legal citations.
+Comparison with competing approaches:
+The comparison between the results of this study and competing approaches is not entirely fair for several reasons:
+Task selection: The authors only tested their approach on a specific set of tasks (e.g., converting plain text to citation format) that may be more challenging than other tasks.
+Model selection: The authors compared GPT-4 with Claude-3.5 and GPT-4o, which are not the most advanced models available for this task.
+Data quality: The data used in this study is likely to be of high quality (i.e., well-formatted transcripts), whereas real-world legal documents may contain errors or inconsistencies that could affect model performance.
+Fairness concerns:
+Lack of control group: There is no comparison with a baseline approach, such as a simple text-to-text transformer without any fine-tuning.
+Overemphasis on GPT-4: The authors focus primarily on the results for GPT-4 and do not provide enough information about other models or approaches that may have performed better.
+To make a fair comparison, it would be necessary to:
+Test multiple models (including more advanced ones) on a broader range of tasks.
+Use a larger dataset with varying levels of quality and complexity.
+Include a control group for baseline performance comparisons.
+However, the study does provide some valuable insights into the strengths and weaknesses of GPT-4 in specific tasks related to legal citations, which can inform future research and development efforts.
+
+#### What are the takeaways according to the authors?
+
+##### Prompt
+
+```markdown
+What are the takeaways according to the authors?
+```
+Based on the text file, it appears that the authors' takeaways are as follows:
+Key findings:
+Length affects performance: The authors found that GPT-4's accuracy decreases significantly when given longer prompts (i.e., two-page transcripts) compared to shorter prompts.
+Text location matters: The results show a generally downwards trend in accuracy as the text is located further away from the beginning of the prompt, indicating that the model struggles with finding specific text within longer contexts.
+Implications:
+Length and complexity are important considerations: When working with legal documents or other long-form texts, it's essential to consider the length and complexity of the input data when selecting a language model.
+Model limitations should be acknowledged: The authors highlight that GPT-4 is not well-suited for tasks requiring finding specific text within longer contexts, emphasizing the need for more advanced models or specialized approaches.
+Future research directions:
+Improving performance on long-form texts: The authors suggest exploring techniques to improve model performance on longer texts, such as using more advanced architectures or incorporating additional training data.
+Developing domain-specific language models: Given the limitations of GPT-4 in handling complex legal documents, the authors propose developing specialized language models for specific domains (e.g., law) that can better address these challenges.
+Takeaways from the study:
+GPT-4 is not a one-size-fits-all solution: The results demonstrate that GPT-4's performance varies significantly depending on the task and input data, highlighting the need for more nuanced evaluation and selection of language models.
+Understanding model limitations is crucial: By acknowledging the strengths and weaknesses of GPT-4 (and other models), researchers can better design and develop language models that meet specific needs and applications.
+
+#### What are the takeaways according to you?
+
+##### Prompt
+
+```markdown
+What are the takeaways according to you?
+```
+Based on the text file, I'll provide my interpretation of the takeaways:
+Key insights:
+Language models are not perfect: The study highlights that GPT-4 is not well-suited for tasks requiring finding specific text within longer contexts, which has significant implications in various applications such as law, medicine, and education.
+Length and complexity matter: The results demonstrate that the length and complexity of input data can significantly impact a language model's performance, emphasizing the need for more advanced models or specialized approaches to handle long-form texts.
+Implications:
+Improved evaluation methods are needed: The study suggests that traditional evaluation metrics may not accurately capture a language model's strengths and weaknesses, particularly in handling complex tasks.
+Domain-specific language models are necessary: Given the limitations of GPT-4 in specific domains (e.g., law), it is essential to develop specialized language models tailored to these areas.
+Takeaways:
+Language models have limitations: The study demonstrates that even advanced language models like GPT-4 can struggle with complex tasks, highlighting the need for more research and development.
+Contextual understanding is crucial: The results emphasize the importance of considering context when evaluating a language model's performance, as it can significantly impact its ability to provide accurate answers.
+Future directions:
+Advancements in long-form text handling: Researchers should focus on developing techniques to improve language models' performance on longer texts and more complex tasks.
+Domain-specific language modeling: Developing specialized language models for specific domains (e.g., law, medicine) can help address the limitations of current models.
+By considering these takeaways, we can better understand the strengths and weaknesses of language models like GPT-4 and work towards developing more advanced and effective models that can handle complex tasks.
+
+#### Would you use this?  If so, how/where would you use this?
+
+##### Prompt
+
+```markdown
+Would you use this? If so, how/where would you use this?
+```
+Based on the text file, I would not use this model for tasks that require finding specific text within longer contexts. The results show a generally downwards trend in accuracy as the text is located further away from the beginning of the prompt, indicating that the model struggles with this type of task.
+However, if you need to perform other types of tasks such as:
+Text summarization: You could use GPT-4 for text summarization tasks where the input text is relatively short and straightforward.
+Language translation: The model's performance on language translation tasks might be acceptable, but it would depend on the specific task and dataset used.
+Creative writing or content generation: In creative writing or content generation applications, GPT-4 could potentially produce coherent and engaging text, although its accuracy and coherence may vary depending on the prompt.
+Where to use this:
+Research studies: Researchers might find this model useful for exploring language modeling techniques, testing hypotheses about human-computer interaction, or analyzing the limitations of current models.
+Education: Educators could utilize GPT-4 as a teaching tool to introduce students to natural language processing (NLP) concepts and help them develop their critical thinking skills.
+How to use this:
+Fine-tune for specific tasks: If you need to perform a task that is not well-represented in the original dataset, consider fine-tuning GPT-4 on your own dataset to adapt it to your specific needs.
+Use as a starting point: Treat GPT-4 as a starting point and combine its output with other models or techniques to improve performance for more complex tasks.
+Keep in mind that this model has limitations, and its accuracy may not be sufficient for critical applications such as:
+High-stakes decision-making
+Critical information retrieval
+Expert-level content generation
+In these cases, it's essential to use multiple models or techniques to ensure the highest level of accuracy and reliability.
+
+#### What problems remain and what are the next steps?
+
+##### Prompt
+
+```markdown
+What problems remain and what are the next steps?
+```
+Based on the text file, I can provide an answer to your question.
+Problems remaining:
+Length and complexity: The model struggles with tasks that require finding specific text within longer contexts or more complex prompts.
+Text retrieval: The model has difficulty retrieving clearly specified text, which is a critical aspect of legal questions.
+Novel situations: The model may not perform well in novel or unexpected situations, as it relies on patterns learned from its training data.
+Next steps:
+Fine-tuning for specific tasks: Fine-tune the GPT-4 model on your own dataset to adapt it to your specific needs and improve performance.
+Combining with other models: Combine the output of this model with other models or techniques to improve overall accuracy and reliability.
+Addressing length and complexity: Develop strategies to address the limitations related to length and complexity, such as using shorter prompts or simplifying complex tasks.
+Improving text retrieval: Investigate methods to improve the model's ability to retrieve clearly specified text, which is critical for legal questions.
+Potential solutions:
+Use multiple models in parallel: Use a combination of models with different strengths and weaknesses to provide more accurate results.
+Develop domain-specific models: Create specialized models that are trained on specific domains or tasks, such as law or medicine.
+Investigate transfer learning: Explore the use of transfer learning techniques to adapt pre-trained models to new tasks or datasets.
+Future research directions:
+Investigating human-computer interaction: Study how humans interact with language models and identify areas for improvement.
+Developing more robust models: Research methods to develop more robust and reliable language models that can handle a wider range of inputs and situations.
+Addressing bias and fairness: Investigate ways to address biases in the training data and ensure that the model is fair and unbiased.
+
+### Experience using the LLM
+
+_Describe your process for using the LLM.  How did the LLM perform?_
+I had some trouble figuring out how to launch the model. Once I figured out how to use GPT4All, it was fairly easy to give the model a text file version of 
+the paper I chose.
+ 
+#### Errors and limitations of the LLM 
+
+_Where did it fall short or make mistakes?_
+The model was slow but did not make any major mistakes. 
