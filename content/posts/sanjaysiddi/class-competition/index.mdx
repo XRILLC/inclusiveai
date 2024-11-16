@@ -1,9 +1,9 @@
 ---
-title: "EXAMPLE: My clever approach to the class-wide shared task"
+title: "Authorship Classification from Text Spans"
 slug: "/sanjaysiddi/class-competition"
-date: 2024-10-31
+date: 2024-11-15
 author: Sanjay Bhargav Siddi
-description: "My approach can be summarized as ..."
+description: "My approach focuses on preprocessing text, applying TF-IDF for feature extraction, and using Logistic Regression with hyperparameter tuning to classify text spans by authorship"
 tags:
   - class competition
 ---
@@ -22,7 +22,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>0.40331</td>
+    <td>0.47384</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -30,7 +30,7 @@ tags:
   </tr>
   <tr>
     <th><b>Kaggle username</b></th>
-    <td>Sanjay Bhargav Siddi</td>
+    <td>sanjaysiddi</td>
   </tr>
   <tr>
     <th><b>Code Repository URL</b></th>
@@ -42,20 +42,31 @@ tags:
 
 ## Task summary
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
+The task is to determine whether two spans of text were written by the same author. The spans are separated by a "[SNIPPET]" delimiter, and the goal is to classify them as either coming from the same author or different authors. The classification is binary, with the output being:
+
+0: Not the same author
+
+1: Same author
 
 ## Exploratory data analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+I noticed a class imbalance, with 1,245 examples of "different author" (Label = 0) and only 356 examples of "same author" (Label = 1). Luckily there were no missing values in any column.
+## Approach
 
-## Exploratory data analysis
+- Data Preprocessing: 
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+    To ensure the text is clean and usable for the model, I first preprocessed the text. This involved converting the text to lowercase to standardize it and removing unnecessary characters  that do not contribute to the analysis. I also replaced the "[SNIPPET]" delimiter with a space preserved marker to separate the two spans of text. I also removed stopwords which don't add significant meaning to the content for the classification purpose.
 
+- Feature Extraction:
+
+    I used TF-IDF to transform the cleaned text into numerical vectors. This technique helps quantify the importance of words in the context of the entire dataset, allowing the model to focus on significant terms while ignoring less informative ones. I chose to include unigrams, bigrams, and trigrams in the feature extraction process to capture a broader context from the text.
+
+- Training:
+
+    For the classification task, I selected Logistic Regression due to its simplicity and effectiveness in binary classification. To optimize the model, I used Grid Search to tune hyperparameters such as regularization strength and solver type. I evaluated the model using 5-fold cross-validation to ensure it generalizes well on unseen data.
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
-
+Once the model was trained and evaluated, I applied it to the test data. The model predicted whether each pair of spans was written by the same author (Label = 1) or different authors (Label = 0). In this case, 112 rows were classified as Label = 1 (same author) and 787 rows as Label = 0 (different authors). I achived an F1 score of 0.4738 in the kaggle competition leaderboard.
 ## Error analysis
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
@@ -68,4 +79,4 @@ _If you'ved covered this in your code repository's README, you can simply link t
 
 ## Future Improvements
 
-_Describe how you might best improve your approach_
+To further improve the performance, I plan to explore more advanced models such as DistilRoBERTa or BERT. My current system lacks a sufficient GPU to train these large models efficiently, so I will use the University of Arizona's HPC resources to run these heavy models. I will also try to include supplemental data from the Gutenberg site, which could provide a larger and more diverse dataset, helping to improve the model’s generalization and robustness.
