@@ -1,9 +1,9 @@
 ---
-title: "EXAMPLE: My clever approach to the class-wide shared task"
+title: "Class competition"
 slug: "/lwdozal/class-competition"
-date: 2024-10-31
-author: lwdozal
-description: "My approach can be summarized as ..."
+date: 2024-11-15
+author: Laura W. Dozal
+description: "Started by using Naive Bayes - The results are based on feature engineering where here I use tokens as features. I've been playing around with chracters as features and might use that for the final project, along with another model."
 tags:
   - class competition
 ---
@@ -22,19 +22,19 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>???</td>
+    <td>.39451</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
-    <td>???</td>
+    <td>LauraW_D</td>
   </tr>
   <tr>
     <th><b>Kaggle username</b></th>
-    <td>???</td>
+    <td>LauraW_D</td>
   </tr>
   <tr>
     <th><b>Code Repository URL</b></th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-???</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-lwdozal</td>
   </tr>
 </tbody>
 </table>
@@ -43,6 +43,32 @@ tags:
 ## Task summary
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
+
+Started by using Naive Bayes - The results are based on feature engineering where here I use tokens as features. I've been playing around with chracters as features and might use that for the final project, along with another model. 
+Another model for the second attempt can possibly be decision tree as it's an example in chapter 5 of the O'Reilly Book, Getting started with NLP
+https://learning.oreilly.com/library/view/getting-started-with/9781617296765/OEBPS/Text/05.htm
+
+Based on the wikipedia page on author profiling there are various techniques that can be applied to predict information about the author, which in turn can help with identifying an author from text.
+Usual process:
+- Identifying specific features to be extracted from text
+- Building an adopted, standard representation (Bag of Words model) for the target profile
+- Building a classification model using a standard classifier (SVM) for the target profile.
+
+Problems:
+- Wide variation in lengths of texts used
+- Class imbalance in data
+
+So ML models are SVMs; Naive Bayes Classifiers; Deep averaging layers in a cycle of machine learning that uses the mean of word embeddings within a text; also long short-term memory.
+- for Blogs Instance based learning and random decision forests worked. 
+
+Other possible implementations include 
+Feature Engineering: identify the set of distinguishable characteristics which uniquely describe each author class.
+    - Define the task in terms of classes
+    - Get and preprocess the data
+    - Extract features
+    - Apply ML algo
+    - Evaluate results
+Instance based learning like k-nearest neighbors or LSTM might be a good starting point for the draft leaderboard. Then I might use Naive Bayes Classifiers or some type of graph NN because I want to practice implementing.
 
 ## Exploratory data analysis
 
