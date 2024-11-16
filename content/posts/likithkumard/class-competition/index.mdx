@@ -1,0 +1,94 @@
+---
+title: "Decoding Authorship: A Machine Learning Approach for LING 582"
+slug: "/likithkumard/class-competition"
+date: 2024-11-15
+author: Likith Kumar Dundigalla
+description: "My approach can be summarized as utilizing TF-IDF vectorization for feature extraction and a Random Forest Classifier for authorship detection."
+tags:
+  - class competition
+---
+
+
+<table>
+  <caption>
+    Class Competition Info
+  </caption>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <th><b>Leaderboard score</b></th>
+    <td>0.40638</td>
+  </tr>
+   <tr>
+    <th><b>Leaderboard team name</b></th>
+    <td>Likith Kumar Dundigalla</td>
+  </tr>
+  <tr>
+    <th><b>Kaggle username</b></th>
+    <td>Likith Kumar Dundigalla</td>
+  </tr>
+  <tr>
+    <th><b>Code Repository URL</b></th>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-LikithKumarDundigalla</td>
+  </tr>
+</tbody>
+</table>
+
+
+## Task summary
+
+The task involves predicting whether two spans of text were authored by the same person. This is a binary classification problem, where labels are 1 (same author) and 0 (not the same author). The dataset was provided in CSV format, and the evaluation metric is the Macro F1 score.
+
+## Exploratory data analysis
+
+Initial analysis revealed:
+
+- Text spans vary in length, requiring preprocessing for consistent feature extraction.
+- Labels are imbalanced, with more 0s (not the same author) than 1s.
+- Texts are rich in stylistic and lexical cues, ideal for feature extraction using TF-IDF.
+
+## Approach
+
+### Data Preparation:
+
+- Split the dataset into training (80%) and validation (20%) sets.
+- Text spans were preprocessed using TF-IDF vectorization to represent textual data numerically.
+- Limited features to the top 5000 for computational efficiency.
+- Model Selection:
+  - A Random Forest Classifier was chosen for its robustness and ease of interpretability.
+  - The pipeline was built with TfidfVectorizer for feature extraction and RandomForestClassifier for classification.
+- Validation:Achieved a Macro F1 score of 0.4338 on the validation set, indicating the need for further tuning.
+
+- Test Performance:
+Achieved a Macro F1 score of 0.40638 on the test set, slightly lower than validation performance, indicating potential overfitting or generalization challenges.
+
+### Submission:
+
+Predictions on the test dataset were saved in the required submission format.
+
+##  Results
+
+Validation Macro F1 Score: 0.40638
+
+## Error analysis
+
+- Class Imbalance: The model failed to predict the minority class (1: same author) effectively, as evident from low recall.
+- Text Length Variance: Large disparities in span lengths likely impacted feature uniformity.
+
+## Reproducibility
+
+https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-LikithKumarDundigalla/blob/main/README.md
+
+## Future Improvements
+
+Address Class Imbalance:
+- Use techniques like oversampling or class-weight adjustments.
+- Experiment with Advanced Models:
+  - Fine-tune BERT or similar pre-trained language models for better contextual understanding.
+  - Feature Engineering:Incorporate lexical, syntactic, and stylistic features beyond TF-IDF.
+  - Hyperparameter Tuning:Optimize the Random Forest model's parameters for improved performance.
