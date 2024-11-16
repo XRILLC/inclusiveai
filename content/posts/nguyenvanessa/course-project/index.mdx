@@ -1,9 +1,9 @@
 ---
-title: "My course project"
+title: "Cross-Comparison of LLM Sentiment Capabilities"
 slug: "/nguyenvanessa/course-project"
-date: 2024-10-31
+date: 2024-11-15
 author: Vanessa Nguyen
-description: "My submission for the ..."
+description: "A project to evaluate how different decoder-only transformer models interpret and reflect a user's desired emotional tone at varying levels of intensity in response to a prompt on a specific topic."
 tags:
   - course project
 ---
@@ -15,7 +15,7 @@ tags:
 <tbody>
   <tr>
     <th>Code Repository URL</th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-???</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-desert-moi</td>
   </tr>
   <tr>
     <th>Demo URL (optional)</th>
@@ -23,7 +23,7 @@ tags:
   </tr>
   <tr>
     <th>Team name</th>
-    <td></td>
+    <td>desert-moi</td>
   </tr>
 </tbody>
 </table>
@@ -31,10 +31,20 @@ tags:
 
 ## Project description
 
+The goal of our project is to assess how different decoder-only transformer models interpret a user's desired emotional tone in response to a prompt on a specific topic, including when the prompt requires varying levels of intensity. This involves both sentiment analysis and emotion intensity quantification within the context of statistical NLP. Using the monologg/bert-base-cased-goemotions-original model from Hugging Face, we will score and categorize the intensity of a requested emotion in text responses. We will prompt multiple models with the same question, ask for responses that vary in emotional intensity, and evaluate how well the models convey not only the requested emotion but also the specified intensity of that emotion.
+
+# Project
+- Nov 18 - identify models for comparison
+- Nov 22 - create prompts (15; 5 topics, 3 sentiments); ready sentiment analyzer for use
+- Nov 25 - analyze performance; adjust prompts
+- Nov 29 - report results
+
+
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility).  Use subsections to organize components of the description._
 
 
 ## Summary of individual contributions
+
 <table>
   <thead>
   <tr>
@@ -44,16 +54,16 @@ _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/co
   </thead>
 <tbody>
   <tr>
-    <th><b>???</b></th>
-    <td>???</td>
+    <th><b>Moises Coronel</b></th>
+    <td>Sentiment analyzer code, prompt running</td>
   </tr>
   <tr>
-    <th><b>???</b></th>
-    <td>???</td>
+    <th><b>Ashton Levier</b></th>
+    <td>Prompt creation, project summary drafting</td>
   </tr>
   <tr>
-    <th><b>???</b></th>
-    <td>???</td>
+    <th><b>Vanessa Nguyen</b></th>
+    <td>Error analysis, code checking</td>
   </tr>
 </tbody>
 </table>
