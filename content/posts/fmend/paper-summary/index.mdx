@@ -1,0 +1,216 @@
+---
+title: "M-RAG Summary"
+slug: "/fmend/paper-summary"
+date: 2023-11-14
+author: Freddy Mendoza
+description: "A summary of 'M-RAG: Reinforcing Large Language Model Performance
+              through Retrieval-Augmented Generation with Multiple Partitions"
+tags:
+  - paper summary
+---
+
+
+## Citation
+
+_Replace this text with a complete citation_
+
+<table>
+  <caption>
+    Citation summary
+  </caption>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <td><b>Paper</b></td>
+    <td>M-RAG: Reinforcing Large Language Model Performance through Retrieval-Augmented Generation with Multiple Partitions</td>
+  </tr>
+  <tr>
+    <td><b>Authors</b></td>
+    <td>Wang, Z., Teo, S., Ouyang, J., Xu, Y., & Shi, W.</td>
+  </tr>
+  <tr>
+    <td><b>Year published</b></td>
+    <td>2024</td>
+  </tr>
+  <tr>
+    <td><b>Venue</b></td>
+    <td>Association for Computational Linguistics</td>
+  </tr>
+  <tr>
+    <td><b>Paper URL</b></td>
+    <td>https://aclanthology.org/2024.acl-long.108.pdf</td>
+  </tr>
+  <tr>
+    <td><b>Code URL</b></td>
+    <td>N/A</td>
+  </tr>
+</tbody>
+</table>
+
+## Description
+
+This paper introduces M-RAG, a framework for enhancing Large Language Models (LLMs) through Retrieval-Augmented Generation (RAG).
+The study goes over some limits of then-current RAG methods, mainly in that they treat an entire database as one unit, which can cause
+noise which then in turn causes issues in retrieval and generation. The intuition is to separate the data into multiple partitions
+which are then treated as individual units, allowing the model to focus on relevant data subsets. The hope is to reduce noise and
+improve retrieval quality.
+
+In their methodology, they introduce two distinct agents, Agent-S and Agent-R, and train both of those agents for distinct tasks
+through the use of LLMs. Agent-S focuses on iteratively selecting partitions once it receives a query, of which it gains a better 
+understanding through the use of a reward system, ultimately refining its retrieval capabilities. Agent-R then takes over, refining the
+information retrieved from the partition, ensuring that it is relevant, aiming to better improve generation.
+
+M-RAG demonstrated a marked improvement across multiple tasks across seven datasets. Text summarization had an improvement of 11%
+against traditional RAG, machine translation had an 8% improvement, and dialogue generation had a 12% improvement. These scores show
+an impressive result, though it did come with some limitations, especially in complexity due to relying on the reinforcement learning
+of its two agents.
+
+
+
+## Motivation
+
+_Why did you select this paper?_
+
+I chose this specific paper because I'm currently working for a company called View, which is aiming to provide ones own data as a
+service. This means that one would be able to harness the power of LLMs on their local machine without having to send their data
+elsewhere, meaning that it protects the data privacy of the user. Currently, I am working on evaluating their RAG system and also
+providing user-friendly metrics so that a user may also view this type of evaluation, and, whether or not they know about NLP, will
+be able to understand, at least on a surface level, how well the system is performing on their data.
+
+While I'm not currently working on improving their RAG system per se, it helps to understand new RAG practices for the purposes of 
+improving metrics overall. This paper stood out to me, though its application seems a bit too taxing for the purposes of a local
+machine which may or may not have the power of a GPU. In any case, it was a good read.
+
+## LLM
+
+<table>
+  <caption>
+    LLM model summary
+  </caption>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <th><b>LLM model</b></th>
+    <td>???</td>
+  </tr>
+  <tr>
+    <th><b>LLM model version</b></th>
+    <td>???</td>
+  </tr>
+  <tr>
+    <th><b>Model/service URL</b></th>
+    <td>???</td>
+  </tr>
+  <tr>
+    <th><b>Why this model?</b></th>
+    <td>???</td>
+  </tr>
+</tbody>
+</table>
+
+
+#### Description (LLM)
+
+_In the LLM's words, what is this paper about?_
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### What are the authors proposing?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### What is the motivation for the work?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### What is the approach or innovation?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### What are the results and how do they compare with competing approaches?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### Is the comparison fair?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### What are the takeaways according to the authors?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### What are the takeaways according to you?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### Would you use this?  If so, how/where would you use this?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+#### What problems remain and what are the next steps?
+
+##### Prompt
+
+```markdown
+prompt here
+```
+
+### Experience using the LLM
+
+_Describe your process for using the LLM.  How did the LLM perform?_
+ 
+#### Errors and limitations of the LLM 
+
+_Where did it fall short or make mistakes?_
