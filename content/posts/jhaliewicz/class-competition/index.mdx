@@ -1,0 +1,82 @@
+---
+title: "My Approach to the Class Competition"
+slug: "/jhaliewicz/class-competition"
+date: 2024-11-15
+author: Jennifer Haliewicz
+description: "Description of my approach to the class competition including process, challenges, the approach overall, results, etc."
+tags:
+  - class competition
+---
+
+# My Approach to the Class Competition
+
+## Class Competition Info
+
+<table>
+  <caption>Class Competition Info</caption>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th><b>Leaderboard score</b></th>
+      <td>0.48879</td>
+    </tr>
+    <tr>
+      <th><b>Leaderboard team name</b></th>
+      <td>Jennifer Haliewicz</td>
+    </tr>
+    <tr>
+      <th><b>Kaggle username</b></th>
+      <td>jenniferhaliewicz</td>
+    </tr>
+    <tr>
+      <th><b>Code Repository URL</b></th>
+      <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-rofljen</td>
+    </tr>
+  </tbody>
+</table>
+
+## Task Summary
+
+- understanding and properly pre-processing data
+- selecting features
+- challenging to determine if I should use my own features or something else
+
+## Exploratory Data Analysis
+
+
+## Approach
+
+My approach is to compare the effectiveness of both classical and modern machine learning techniques. Specifically, I will explore the use of a pretrained BERT model for advanced semantic representation as well as attempt the task with Random Forest for interpretable, structured feature analysis. The comparison of the two models will show the differences in effectiveness of deep contextual understanding versus structured feature-based methods.
+
+Pretrained BERT Model: I will fine-tune BERT to capture the nuances of natural language, utilizing its capability to handle sentence-level semantics and context. This approach is particularly suited for textual data where the relationships between words and phrases play a critical role - this is integral in understanding the style of a writer. I plan to experiment with layers of BERT and incorporate custom feature extraction such as sentence structure, length and number of sentences, POS counts, etc.
+
+Random Forest Model: Secondly, I will implement a Random Forest classifier using features like Part-of-Speech (POS) counts, sentence length, and syntactic complexity. To enhance feature richness, I may incorporate statistical measures such as TF-IDF and explore the importance of each feature in model performance. Feature importance scores will be analyzed to determine which features contribute most significantly, and I will refine the feature set in order to optimize the model.
+
+Creative Integration and Novelty: To introduce an innovative aspect, I will explore the possibility of combining the two models using an ensemble method, where BERT handles semantic nuances and Random Forest emphasizes syntactic and structural features. This hybrid approach could lead to a more comprehensive model that balances deep learning's strengths with interpretable insights from traditional methods. 
+
+Feature Engineering and Optimization: If features like POS counts show limited impact, I will experiment with transforming or replacing them using advanced NLP techniques, such as dependency parsing metrics or word embeddings derived from Word2Vec. Fine-tuning BERT: add info
+
+Iterative Improvement: The model that demonstrates superior performance during initial testing will be further fine-tuned using techniques like cross-validation and model ensembling. If time allows, I will explore patterns causing errors.
+
+## Results
+
+my results will go here!
+
+## Error Analysis
+
+my error analysis will go here!
+
+## Reproducibility
+
+Reproducibility and/or link to readme will go here!
+
+## Future Improvements
+
+- Different features
+- More complex syntactic structure analysis
+- sentiment analysis

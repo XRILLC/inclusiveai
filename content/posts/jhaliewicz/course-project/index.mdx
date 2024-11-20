@@ -1,0 +1,105 @@
+---
+title: "My Approach to the Course Project"
+slug: "/jhaliewicz/course-project"
+date: 2024-11-15
+author: "Jennifer Haliewicz"
+description: "Description of my approach to the class competition including process, challenges, the approach overall, results, etc."
+tags:
+  - class competition
+---
+
+<table>
+  <caption>
+    Course Project Info
+  </caption>
+<tbody>
+  <tr>
+    <th>Code Repository URL</th>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-team-sarcasm</td>
+  </tr>
+  <tr>
+    <th>Demo URL (optional)</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Team Name</th>
+    <td>Team Sarcasm</td>
+  </tr>
+</tbody>
+</table>
+
+
+## Project description
+
+### Overview
+We decided to create a dataset to fill in gaps in sentiment analysis when detecting sarcasm. 
+Sarcasm is a particularly hard tone for humans to detect sometimes, and is a harder task for a machine.
+In order to create a dataset for this, we referred to multiple existing English corpora, focusing on those that were comprised of text & transcripts from the internet. 
+Once a dataset has been compiled, we will compare the ability of logistic regression to predict sarcasm with and without this dataset.
+
+### Novelty of the Project
+The project is novel for a variety of reasons. 
+ - the creation of a dataset specifically for detecting sarcasm created from a wide range of internet-based sources such as blogs, reddit, and other popular sites.
+ The dataset is also as timely as possible, and we have supplemented data from available corpora with data scraped from various sources as needed.
+ 
+ - Our dataset includes expressions of sarcasm found in social media and online forums, providing a better resource for model training. 
+ 
+ - By providing a comparison of the perforance of the logistic regression model with and without the new dataset, by evaluating a logistic regression model's performance both with and without our dataset, we will show the impact of the dataset on the models ability to better detect sarcasm in the process of sentiment analysis.
+
+### Motivation for the project
+The motivation for the project is to look for ways to improve the process of sentiment analysis. When it comes to detection of sarcasm, the ability to detect it sometimes even eludes humans. In using corpus resources that focus on the internet, we seek to determine what kind of texts might improve the process and what features are the most important in detection of sarcasm using sentiment analysis.
+
+
+### Challenges of task
+- Finding up-to-date corpora & the need to supplement through web-scraping
+  - Many internet corpora on the larger side (Brown, etc) are not up-to-date to the current year. It might not be as relavent as data from the more recent year or two.
+- Determining what model to use for sentiment analysis/classification
+  - Should we use a model that is better for sentiment analysis?
+  - Would it be more indicative of the model's improvement with new data if we use a model that is not as well-regarded for sentiment analysis? 
+- Feature Selection
+  - sarcasm doesn't necessarily rely on specific syntactic structures, vocab or other obvious features.
+  - What do we need to do to ensure that context is taken into account and to identify other features that are common when sarcasm is present.
+  - Is there even a way to do this?
+
+
+## Summary of individual contributions
+<table>
+  <thead>
+  <tr>
+    <th>Team Member</th>
+    <th>Role/contributions</th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <th><b>Jennifer Haliewicz</b></th>
+    <td>Corpus research, data collection, cleanup and compilation, analysis to find features for manual Selection.</td>
+  </tr>
+  <tr>
+    <th><b>Julian</b></th>
+    <td>???</td>
+  </tr>
+  <tr>
+    <th><b></b></th>
+    <td>???</td>
+  </tr>
+</tbody>
+</table>
+
+
+## Results
+
+_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
+
+## Error analysis
+
+_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+
+## Reproducibility
+
+_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
+_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+
+## Future improvements
+
+_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
