@@ -11,7 +11,10 @@ tags:
 
 ## Citation
 
-_Replace this text with a complete citation_
+- "Poisoning Web-Scale Training Datasets is Practical." In International Conference on Machine Learning (ICML), 2023.
+
+- Florian Tramèr, Nicholas Carlini, Matthew Jagielski, Chris Choquette-Choo, Daniel Paleka, Will Pearce, Hyrum Anderson, Andreas Terzis, Kurt Thomas.
+
 
 <table>
   <caption>
@@ -26,23 +29,23 @@ _Replace this text with a complete citation_
 <tbody>
   <tr>
     <td><b>Paper</b></td>
-    <td>???</td>
+    <td>Poisoning Web-Scale Training Datasets is Practical."</td>
   </tr>
   <tr>
     <td><b>Authors</b></td>
-    <td>???</td>
+    <td>Florian Tramèr, Nicholas Carlini, Matthew Jagielski, Chris Choquette-Choo, Daniel Paleka, Will Pearce, Hyrum Anderson, Andreas Terzis, Kurt Thomas.</td>
   </tr>
   <tr>
     <td><b>Year published</b></td>
-    <td>???</td>
+    <td>2023</td>
   </tr>
   <tr>
     <td><b>Venue</b></td>
-    <td>???</td>
+    <td>In International Conference on Machine Learning (ICML)</td>
   </tr>
   <tr>
     <td><b>Paper URL</b></td>
-    <td>???</td>
+    <td>https://floriantramer.com/docs/slides/mlsys23poison.pdf</td>
   </tr>
   <tr>
     <td><b>Code URL</b></td>
@@ -53,12 +56,11 @@ _Replace this text with a complete citation_
 
 ## Description
 
-_In your own words, what is this paper about?_
+- This paper explores the risks of dataset poisoning attacks in deep learning, where malicious data is intentionally inserted to undermine a model's performance.
 
 ## Motivation
 
-_Why did you select this paper?_
-<!-- NOTE: don't use an LLM to generate this! 🙃 -->
+- I'm interested in biases created in NLP
 
 ## LLM
 
@@ -75,7 +77,7 @@ _Why did you select this paper?_
 <tbody>
   <tr>
     <th><b>LLM model</b></th>
-    <td>???</td>
+    <td>Various</td>
   </tr>
   <tr>
     <th><b>LLM model version</b></th>
@@ -95,82 +97,148 @@ _Why did you select this paper?_
 
 #### Description (LLM)
 
-_In the LLM's words, what is this paper about?_
+- This paper highlights the vulnerability of web-scale datasets used to train large language models (LLMs). It introduces two novel poisoning attacks that can introduce malicious examples into these datasets, potentially compromising the integrity and reliability of the trained models.
+
+The first attack, split-view poisoning, exploits the mutable nature of internet content to ensure that the dataset annotators see different content than the clients who download the dataset later. This allows attackers to inject malicious examples that will be included in the training data.
+
+The second attack, frontrunning poisoning, targets web-scale datasets that periodically snapshot crowd-sourced content, such as Wikipedia.
+
+1  Attackers can inject malicious examples within a limited time window before the snapshot is taken, ensuring that the malicious content is included in the training data.
 
 ##### Prompt
 
 ```markdown
-prompt here
+What is this paper about?
+
+"Poisoning Web-Scale Training Datasets is Practical"
 ```
 
 #### What are the authors proposing?
+- The authors propose two novel poisoning attacks that exploit the mutable nature of web-scale datasets to introduce malicious examples:  
+
+Split-view poisoning: This attack takes advantage of the fact that dataset annotators and subsequent users may see different versions of the same content. By manipulating the content before it's indexed and after, attackers can introduce malicious examples that will be included in the training data.  
+
+Frontrunning poisoning: This attack targets datasets that periodically snapshot crowd-sourced content, like Wikipedia. Attackers can inject malicious examples within a limited time window before the snapshot is taken, ensuring that the malicious content is included in the training data.  
+
+The authors demonstrate the feasibility of these attacks on several popular web-scale datasets, highlighting the need for robust defenses to protect against dataset poisoning.
+
+They also propose several low-overhead defenses, such as cryptographic integrity checks and randomized crawling, to mitigate these attacks.
 
 ##### Prompt
 
 ```markdown
-prompt here
+What are the authors proposing?
 ```
 
 #### What is the motivation for the work?
+- The authors' primary motivation is to highlight the vulnerability of web-scale datasets used to train large language models. They aim to raise awareness about the potential for malicious actors to manipulate these datasets, leading to compromised model integrity and reliability.
+
+By demonstrating the feasibility of their proposed attacks, the authors hope to spur the development of robust defenses and security measures to protect web-scale datasets from poisoning. Their research contributes to a better understanding of the security challenges in the field of machine learning and artificial intelligence.
 
 ##### Prompt
 
 ```markdown
-prompt here
+What are the authors' motivations?
 ```
 
 #### What is the approach or innovation?
 
 ##### Prompt
+- The authors' approach is novel in that it targets the fundamental assumptions about the integrity of web-scale datasets used to train large language models. They identify two key vulnerabilities:
+
+Mutable nature of internet content: They exploit the fact that web content can change over time, leading to discrepancies between what annotators see and what subsequent users download. This allows attackers to inject malicious examples that will be included in the training data.
+
+Periodic snapshots of crowd-sourced content: They target datasets that periodically snapshot content from sources like Wikipedia. By injecting malicious examples within a limited time window before the snapshot, attackers can ensure that the malicious content is included in the training data.
+
+This approach is novel because it challenges the traditional assumption that web-scale datasets are static and reliable. By demonstrating the feasibility of these attacks, the authors highlight the need for robust security measures to protect the integrity of these datasets.
 
 ```markdown
-prompt here
+What is their approach and why is it novel?
 ```
 
 #### What are the results and how do they compare with competing approaches?
 
 ##### Prompt
+- The authors demonstrate the feasibility of their proposed attacks on several popular web-scale datasets, including LAION-400M and COYO-700M. They estimate that a low-resourced attacker could poison 0.01% of these datasets for just $60.  
+
+This research is novel compared to previous work on poisoning attacks, which often focuses on targeted attacks against specific models or datasets. The authors' approach targets the fundamental vulnerabilities of web-scale datasets themselves, making it more broadly applicable and impactful.  
+
+To mitigate these attacks, the authors propose two low-overhead defenses:
+
+Integrity verification: This defense involves distributing cryptographic hashes for all indexed content, ensuring that clients observe the same data as when maintainers first indexed and annotated it.  
+
+Randomized crawling: This defense involves randomly selecting content to crawl, making it more difficult for attackers to target specific pages or time windows for injection.
+
+While these defenses can help mitigate the risks of poisoning attacks, they are not foolproof. The authors emphasize the need for ongoing research and development to address the evolving landscape of dataset poisoning threats.
 
 ```markdown
-prompt here
+What are the results and how do they compare with competing approaches?
 ```
 
 #### Is the comparison fair?
 
 ##### Prompt
+- The fairness of the comparison depends on the specific context and the criteria used to evaluate the competing approaches. However, some general considerations can be made:
+
+Strengths of the Proposed Approach:
+
+Novelty: The proposed approach targets fundamental vulnerabilities in web-scale datasets, making it a novel and impactful contribution to the field.
+Feasibility: The authors demonstrate the feasibility of their attacks, highlighting the need for robust defenses.
+Practicality: The proposed defenses are relatively low-overhead, making them practical to implement.
+Limitations of the Proposed Approach:
+
+Scope: The attacks are primarily focused on web-scale datasets, and their impact on other types of datasets may be limited.
+Defense effectiveness: The proposed defenses may not be completely effective against more sophisticated attacks.
+Evolving threat landscape: As the landscape of dataset poisoning attacks evolves, new defenses may be required.
+To make a fair comparison, it is important to consider the following factors:
+
+Attack effectiveness: How effective are the proposed attacks in compromising the integrity of the target datasets?
+Defense effectiveness: How effective are the proposed defenses in mitigating the risks of poisoning attacks?
+Practicality: How practical are the proposed attacks and defenses to implement in real-world scenarios?
+Novelty: How novel is the approach compared to existing research?
+By carefully considering these factors, it is possible to make a more informed judgment about the fairness of the comparison between the proposed approach and competing approaches.
 
 ```markdown
-prompt here
+Is the comparison fair?
 ```
 
 #### What are the takeaways according to the authors?
+- The authors' main takeaways are:
+
+Vulnerability of Web-Scale Datasets: They highlight the vulnerability of web-scale datasets used to train large language models to poisoning attacks. These datasets are often not static and can be manipulated by malicious actors.
+Practicality of Poisoning Attacks: They demonstrate the feasibility of their proposed attacks, showing that even low-resourced attackers can effectively poison datasets.
+Need for Robust Defenses: The authors emphasize the importance of developing robust defenses to protect web-scale datasets from poisoning. They propose several low-overhead defenses, such as integrity verification and randomized crawling.
+Ongoing Research: They acknowledge that the landscape of dataset poisoning attacks is constantly evolving and that further research is needed to develop more effective defenses.
+Overall, the authors' research underscores the importance of securing web-scale datasets and implementing robust defenses to protect the integrity and reliability of trained models.
 
 ##### Prompt
 
 ```markdown
-prompt here
+What are the takeaways according to the authors?
 ```
 
 #### What are the takeaways according to you?
+- TBD
 
 ##### Prompt
 
 ```markdown
-prompt here
+What are the takeaways according to you?
 ```
 
 #### Would you use this?  If so, how/where would you use this?
+- TBD
 
 ##### Prompt
 
 ```markdown
-prompt here
+Would you use this?  If so, how/where would you use this?
 ```
 
 ##### Prompt
 
 ```markdown
-prompt here
+What problems remain and what are the next steps?
 ```
 
 #### What problems remain and what are the next steps?
