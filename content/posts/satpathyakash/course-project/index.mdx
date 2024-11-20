@@ -1,9 +1,10 @@
 ---
-title: "My course project"
+title: "Can Transformers _learn_ how to play the Knight's Tour?"
 slug: "/satpathyakash/course-project"
-date: 2024-11-14
+date: 2024-11-15
 author: Akash Satpathy
-description: "My submission for the ..."
+description: "I plan to train a Transformer model on millions of Knight's Tour puzzle
+solutions to investigate model performance and generalization."
 tags:
   - course project
 ---
@@ -15,7 +16,7 @@ tags:
 <tbody>
   <tr>
     <th>Code Repository URL</th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-???</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-seaweedmuncher</td>
   </tr>
   <tr>
     <th>Demo URL (optional)</th>
@@ -23,7 +24,7 @@ tags:
   </tr>
   <tr>
     <th>Team name</th>
-    <td></td>
+    <td>SeaweedMuncher</td>
   </tr>
 </tbody>
 </table>
@@ -31,7 +32,79 @@ tags:
 
 ## Project description
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility).  Use subsections to organize components of the description._
+### Introduction
+
+The **Knight's Tour puzzle** can be summarized concisely using the following question:
+_Given the rules of chess, is it possible for a knight to traverse the board and visit
+each square only once?_
+
+The Knight's Tour puzzle was formally investigated by the mathematician Euler in 1759,
+although versions of the game can be traced back to [ancient China and India](https://www.mayhematics.com/t/1a.htm).
+In the puzzle, while the Knight always moves according to the rules of chess (i.e.,
+L-shaped hops), variations have been investigated for cases where the board is larger
+or smaller than a standard chessboard, or rectangularly shaped. There are two types of
+solutions to the puzzle:
+1. **Closed solutions**: After visiting every square exactly once, if the Knight ends up
+at a position which is exactly one move away from its starting position, the solution
+is considered to be closed.
+2. **Open Solutions**: Cases where the Knight completes the tour, however, the starting
+and ending positions are more than one step away.
+
+The Knight's tour puzzle has been extensively studied by mathematicians and computer
+scientists, and several solutions to the puzzle have been presented. While earlier
+solutions relied on analytical solutions, more modern solutions have involved
+back-tracking and search algorithms. However, the use of transformers models ([Vaswani
+et al., 2017](https://arxiv.org/abs/1706.03762)) to solve this puzzle haven't yet
+been explored. Therefore, for this project, I will train a transformer model on
+millions of generated Knight's Tour solutions, and gauge to what extent it is able to
+solve this age-old puzzle. Further, I will conduct some rudimentary tests to gauge if
+such a predictive sequence generating model generalizes.
+
+### Planned Approach
+
+1. **Synthetic solution generation** (by 22nd of November): Transformer models need a
+lot of data to _learn_. Thankfully, in the case of the Knight's Tour, it is possible
+to generate hundreds of millions of solutions using simple heuristics like the
+[Warnsdorff Rule](https://en.wikipedia.org/wiki/Knight%27s_tour#:~:text=Warnsdorf's%20rule%20is%20a%20heuristic,User%20Book%20of%20Computer%20Puzzles.) or [back-tracking algorithms](https://www.geeksforgeeks.org/backtracking-algorithms/). The order of magnitude of total
+solutions possible is [in the trillions](https://oeis.org/A165134), thus, availability of data isn't an issue.
+Another upside of the data is uniformity — for an 8 x 8 chessboard, the sequences
+are always 64 units in length. Here, the data will be represented using letters and
+numbers as is common in chess (A1, B3, C5, etc.) After implementing one of the standard
+algorithms and parallelizing the code, it should be feasible to generate these
+millions of solutions in a matter of hours.
+2. **Model and training pipeline design** (by 27th of November): Creating a
+transformer model, it's data ingestion and training pipeline on the University of
+Arizona's High-Performance Computing (HPC) cluster.
+3. **Model training** (by 4th of December): Training the model on the millions of
+generated solutions and monitoring the model performance as training proceeds.
+4. **Evaluation and Error Analysis** (by 7th of December): Evaluating to what extent
+the model is able to solve the puzzles when given an unseen solution. Further,
+measuring the amount of error / illegal moves that the model makes.
+5. **Compiling the Final Post** (by 9th of December): Drafting up results, key
+findings, and visualizations.
+
+### Motivation and Goals
+
+There are broadly two sets of goals motivating this project:
+1. **Primary Goal**: I have never built an end-to-end training pipeline for a
+transformer model and trained it on multiple GPUs on an HPC cluster. I think the best
+way to learn how to engineer such a pipeline is by building one, and this project
+would enable me to work on everything from data engineering to model design to
+parallelization to evaluation; this would be incredibly valuable as I am hoping to
+explore research engineering roles in the near-future.
+2. **Secondary Goal**: There are a set of research questions that I want to lightly
+investigate, such as: To what extent can transformer models _learn_ puzzles such as
+the Knight's Tour and do they generalize? That is, are they able to understand how
+this single piece moves once exposed to enough training examples? How do they perform
+on unseen situations? This is interesting because there is contentious debate about
+transformers as regurgitation vs. learning machines.There are more questions here
+which I won't get to investigate deeply in the next three weeks, but it could be
+interesting to explore them later. For instance, if models do learn, at which training
+epoch or scale doesn't this learning ability emerge? When exactly do they [grok](https://arxiv.org/abs/2201.02177) the puzzle?
+
+This project is both feasible and interesting, and I am looking forward to working on it!
+
+(This project is inspired by [Ruoss et al., 2024](https://arxiv.org/pdf/2402.04494v1).)
 
 
 ## Summary of individual contributions
@@ -44,16 +117,8 @@ _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/co
   </thead>
 <tbody>
   <tr>
-    <th><b>???</b></th>
-    <td>???</td>
-  </tr>
-  <tr>
-    <th><b>???</b></th>
-    <td>???</td>
-  </tr>
-  <tr>
-    <th><b>???</b></th>
-    <td>???</td>
+    <th><b>Akash Satpathy</b></th>
+    <td>Sole Project Lead</td>
   </tr>
 </tbody>
 </table>
