@@ -88,19 +88,26 @@ from my current place as both this class and my continued learning progress.
 <tbody>
   <tr>
     <th><b>LLM model</b></th>
-    <td>???</td>
+    <td>Google gemma</td>
   </tr>
   <tr>
     <th><b>LLM model version</b></th>
-    <td>???</td>
+    <td>version 2, 27b</td>
   </tr>
   <tr>
     <th><b>Model/service URL</b></th>
-    <td>???</td>
+    <td>https://huggingface.co/google/gemma-2-27b</td>
   </tr>
   <tr>
     <th><b>Why this model?</b></th>
-    <td>???</td>
+    <td>
+    I choose the model for a few reasons: It is an open weight model as required, 
+    it has a 27b parameter version which can run on my home hardware at a reasonable speed,
+    from its description: "Text Summarization: Generate concise summaries of a text corpus, research papers, or reports."
+    which is clearly aligned with my use case, and finally, according to the creators
+    "These models can serve as a foundation for researchers to experiment with NLP techniques, develop algorithms, and contribute to the advancement of the field"
+    so having something that can run on home hardware and supposedly fits this task seems like a great thing to be exposed to.
+    </td>
   </tr>
 </tbody>
 </table>
@@ -110,94 +117,310 @@ from my current place as both this class and my continued learning progress.
 
 _In the LLM's words, what is this paper about?_
 
+This paper introduces MEMIT, a new way to make changes to existing language models without having to retrain them from scratch. Imagine you have a big, complex language model that's already good at understanding and generating text. But maybe you want it to be better at something specific, like summarizing factual topics or writing in a particular style.
+
+MEMIT lets you tweak the model by focusing on just a few key parts (think of them like dials) instead of changing the whole thing. They found that making changes near the end of the model where it generates text works best.  They also experiment with how much these "dials" should influence the output and find a sweet spot.
+
+Essentially, MEMIT is a powerful tool for fine-tuning language models in a targeted and efficient way, which is really helpful for researchers exploring new NLP applications!
+
 ##### Prompt
 
 ```markdown
-prompt here
+As an expert in NLP with deep knowledge yet an exceptional ability to distill ideas to the level of a student getting started with DL techniques,  describe to me, a student in the process of learning about NN, DL for NLP, what this paper is about.
 ```
 
 #### What are the authors proposing?
 
+This paper introduces MEMIT (Masked Edit with Model-guided Iteration for Truthfulness), a technique for "knowledge editing" in large language models (LLMs).
+
+Essentially, they're trying to make LLMs more accurate by directly modifying their internal workings rather than just fine-tuning the entire model on new data. 
+
+Here's how it works:
+
+* **Identifying Important Layers:** They first figure out which parts of the LLM are most responsible for generating a specific piece of information (like "Percy Snow plays linebacker"). This involves analyzing the causal relationships between different layers in the model.
+* **Targeted Edits:**  They then make small, precise changes to these crucial layers using a technique called "masked editing". Think of it like surgically tweaking specific neurons instead of retraining the whole brain.
+* **Controlling the Impact:** They use a parameter (λ) to control how much the edits affect the original model's behavior. This helps balance accuracy with preserving the LLM's overall fluency and ability to generate coherent text.
+
+Think of it like this: imagine you have a complex machine that sometimes makes mistakes. Instead of rebuilding the whole thing, MEMIT lets you carefully adjust specific gears or levers to fix those errors without messing up everything else.
+
+
+Let me know if you have any other questions!
+
 ##### Prompt
 
 ```markdown
-prompt here
+You are an expert in deep learning and NLP, in particular the technique of "knowledge editing" for LLMs.  You are able to distill complex ideas to me a graduate student just getting started with deep learning techniques for NLP.  Please review the paper and tell me what the authors are proposing.
 ```
 
 #### What is the motivation for the work?
 
+That's great you're diving into deep learning for natural language processing! It's a fascinating field. 
+
+The MEMIT paper addresses a big challenge with large language models (LLMs): they sometimes generate incorrect or biased information, even if they sound very confident. Imagine an LLM saying something factually wrong like "the Earth is flat".  
+
+The researchers who created MEMIT wanted to find a way to *edit* these LLMs so they could be more accurate and reliable. Think of it like carefully proofreading and correcting an essay written by a smart but sometimes unreliable student.
+
+Essentially, the motivation for MEMIT is to make LLMs more trustworthy sources of information by giving us the ability to directly adjust their knowledge base.
+
 ##### Prompt
 
 ```markdown
-prompt here
+I am just getting started with learning about DL for NLP.  I am working through reading this paper on MEMIT, a technique for knowledge editing in LLMs.  Please act as a friendly and knowledge instructor on this material who can distill the complex ideas to my level.  Keeping this all in mind, please tell me what the motivation for the work in the paper is.
 ```
 
 #### What is the approach or innovation?
 
+This paper introduces an innovative approach to knowledge editing called MEMIT (Multimodal Editing with Model Interpretability and Targeting).
+
+Essentially, they figured out a way to edit a pre-trained language model without needing to retrain the whole thing from scratch. This is a big deal because retraining large models can be incredibly time-consuming and resource-intensive.
+
+Here's how MEMIT works:
+
+1. **Identifying Key Components:** They first use a technique called "causal analysis" to pinpoint the specific parts of the model (called MLP layers) that are most responsible for generating certain knowledge. Think of it like finding the neurons in your brain that fire when you think about a particular concept.
+2. **Targeted Edits:** Instead of making broad changes, they focus on editing only those key MLP layers identified in step 1. This makes the edits more precise and less likely to disrupt other aspects of the model's performance.
+
+3. **Controlling the Impact:** They introduce a "covariance adjustment factor" (λ) to control how much the edits change the model's output. This helps ensure that the edits are effective without causing unintended consequences.
+
+**Think of it like surgery:** Instead of doing a full-body transplant, MEMIT performs a targeted surgery on specific parts of the model to achieve the desired knowledge edit.
+
+This approach is groundbreaking because it opens up new possibilities for customizing and improving language models in a more efficient and controllable way.
+
 ##### Prompt
 
 ```markdown
-prompt here
+You are an expert in DL and NLP, particularly the area of knowledge editing covered in this paper.  Explain to me, student in a graduate certificate program who has read this paper and posses a basic knowledge for DL techniques having studied them the last few weeks what the innovation and approach to knowledge editing  is in this paper.  Please provide your explanation at a level appropriate for me.
 ```
 
 #### What are the results and how do they compare with competing approaches?
 
+Here are the key takeaways from the paper regarding MEMIT's performance and its comparison to other knowledge editing techniques:
+
+* **Causal Analysis Guides Effective Editing:** MEMIT leverages causal analysis to identify critical MLP layers for editing, leading to higher efficacy and generalization compared to randomly selecting layers or focusing on late-layer MLPs.
+* **MLP Modules Outperform Attention Modules:** Edits targeting MLP modules demonstrate significantly better performance than edits targeting attention modules.
+
+* **Covariance Adjustment Factor (λ) Balances Performance:** Increasing λ improves specificity and fluency by preserving the original model's behavior, but it comes at the cost of reduced efficacy and generalization. An optimal value around 10⁴ is identified for a balance between these factors.
+* **No Direct Comparison to Competing Approaches:**  The paper focuses on demonstrating MEMIT's effectiveness through ablation studies rather than directly comparing its performance to other knowledge editing methods.
+
+**Comparison with Competing Approaches (Based on General Knowledge):**
+
+While the paper doesn't provide direct comparisons, MEMIT's approach of using causal analysis for targeted editing aligns with recent trends in knowledge editing that emphasize precision and minimizing unintended side effects. Other common approaches include:
+
+* **Prompt Engineering:** Carefully crafting input prompts to guide the LLM towards desired outputs.
+* **Fine-Tuning:** Adapting pre-trained LLMs on specific datasets to improve performance on a particular task or domain.
+* **Adapter Modules:** Inserting small, trainable modules into existing LLMs to modify their behavior without altering the original model weights significantly.
+
+MEMIT's focus on causal understanding and targeted edits positions it as a potentially more precise and controllable approach compared to broader methods like fine-tuning, which can lead to more widespread changes in the LLM's behavior.  However, further research and comparisons are needed to solidify its position within the landscape of knowledge editing techniques.
+
 ##### Prompt
 
 ```markdown
-prompt here
+You are an expert in knowledge editing of LLMs.  Please explain to me, someone who has carefully run through this paper what the results of it are and how they compare to competing approaches for knowledge editing.  Provide your results as a specific bulleted list of the most salient items in this regard.
 ```
 
 #### Is the comparison fair?
 
+You're right to question the fairness of comparing MEMIT to other knowledge editing techniques without direct empirical evidence from the paper itself. Here's my breakdown:
+
+* **Prompt Engineering:** This comparison is **not entirely fair**. Prompt engineering focuses on input manipulation, while MEMIT directly modifies the model's internal workings. They address different aspects of LLM control and aren't necessarily competing approaches.
+
+* **Fine-Tuning:** This comparison has **some merit**. Both fine-tuning and MEMIT aim to modify an LLM's behavior. However, fine-tuning is a more brute-force approach that often requires significant computational resources and can lead to overfitting. MEMIT's targeted edits could be viewed as a more precise and potentially efficient alternative.
+
+* **Adapter Modules:** This comparison is **fairly accurate**. Both MEMIT and adapter modules aim for controlled modification of LLMs without altering the core model weights extensively. However, MEMIT's reliance on causal analysis for identifying edit locations distinguishes it. Adapter modules typically rely on pre-defined insertion points or architectural modifications, while MEMIT dynamically identifies crucial areas based on the specific knowledge to be edited.
+
+**In Conclusion:**
+
+While comparisons with other techniques can provide context, it's crucial to remember that each approach has its strengths and weaknesses. Direct empirical comparisons are necessary to establish a clear hierarchy of effectiveness and efficiency. The paper's focus on demonstrating MEMIT's internal workings through ablation studies is valuable but leaves room for future research comparing its performance against existing knowledge editing techniques.
+
 ##### Prompt
 
 ```markdown
-prompt here
+In your expert opinion, do you find these comparisons fair.  For each comparison listed, give a brief judgment and rationale for your judgement.
 ```
 
 #### What are the takeaways according to the authors?
 
+The authors of this paper want readers to understand that their method, MEMIT, for editing language models is effective and relies on careful design choices. They demonstrate this through ablation studies, showing that:
+
+* Editing multiple layers in regions of high causal effect leads to better results.
+* Focusing edits on MLP modules rather than attention modules is more effective.
+*  The covariance adjustment factor λ plays a crucial role in balancing model performance (efficacy and generalization) with preserving original behavior (specificity and fluency).
+
+
+Essentially, the authors are arguing that MEMIT is a powerful tool for controlled language model editing, and they provide empirical evidence to support this claim. 
+
+
 ##### Prompt
 
 ```markdown
-prompt here
+Explain to me, someone who has read this paper, what you think the authors want a reader to take away from this paper.
 ```
 
 #### What are the takeaways according to you?
 
+You're right to ask! This paper dives deep into how to effectively edit the knowledge within large language models (LLMs). 
+
+Here are some key takeaways:
+
+* **Causal Analysis is Crucial:** The authors highlight the importance of understanding which parts of the LLM contribute most significantly to its output. They use a technique called "causal analysis" to pinpoint these critical areas.
+* **Targeting Specific Layers:**  Instead of broadly editing the entire model, MEMIT focuses on updating specific layers identified through causal analysis. This targeted approach leads to more precise and effective edits.
+* **Balancing Impact and Preservation:** The paper explores the trade-off between making significant changes to the LLM's knowledge and preserving its original behavior. They introduce a "covariance adjustment factor" (λ) to control this balance.
+
+Overall, MEMIT presents a novel and promising approach for editing LLMs in a controlled and effective manner. It emphasizes the use of causal analysis for targeted edits and offers strategies for balancing the impact of those edits on the model's performance.
+
 ##### Prompt
 
 ```markdown
-prompt here
+I have read this paper, and am asking you an expert in knowledge editing of LLMs to engage with me to push my understanding what you think the key takeaways of this paper are.
 ```
 
 #### Would you use this?  If so, how/where would you use this?
 
+You're asking the right questions! As someone who "plays" with LLMs a lot, I can see both the allure and the potential limitations of MEMIT.
+
+Here's my take on when I'd use it, and when I might opt for other techniques:
+
+
+**When MEMIT Shines:**
+
+* **Targeted Fact Corrections:** Imagine an LLM that consistently gets a specific historical detail wrong (e.g., the year a particular event happened). MEMIT's ability to pinpoint causal relationships within the model could allow me to precisely edit just the knowledge related to that event, leaving the rest of the model untouched.
+
+* **Bias Mitigation:** If I identify a subtle bias in the LLM's output (e.g., consistently associating certain professions with specific genders), MEMIT's targeted editing approach might help me address this bias without fundamentally altering the model's overall understanding.
+
+**When Other Techniques Might Be Better:**
+
+* **Large-Scale Knowledge Updates:** If I need to update a vast amount of information within the LLM (e.g., incorporating new scientific discoveries or reflecting changes in societal norms), MEMIT's layer-by-layer approach could be time-consuming and potentially miss broader contextual connections. In these cases, techniques like **fine-tuning** on a curated dataset might be more efficient.
+
+* **Injecting Novel Concepts:** MEMIT excels at modifying existing knowledge, but it's less suited for introducing entirely new concepts or domains of understanding to the LLM. For that, I might turn to **prompt engineering**, where I carefully craft prompts to guide the model towards generating desired outputs based on novel information.
+
+**Key Considerations:**
+
+* **Transparency and Explainability:** MEMIT's emphasis on causal analysis provides valuable insights into *why* edits are effective. This transparency is crucial for building trust in edited LLMs, especially when dealing with sensitive applications like healthcare or legal decision-making.
+* **Computational Cost:** Causal analysis can be computationally expensive. Depending on the size of the LLM and the complexity of the edits, MEMIT might require significant processing power.
+
+**In Conclusion:**
+
+MEMIT is a powerful tool for precisely editing existing knowledge within LLMs, offering advantages in terms of control and explainability. However, other techniques like fine-tuning or prompt engineering might be more suitable for large-scale updates or introducing new concepts. The best choice ultimately depends on the specific goals and constraints of the editing task.
+
 ##### Prompt
 
 ```markdown
-prompt here
+As an expert and practitioner, tell me where you would use MEMIT or why not.  Please give specific, compelling reasons for your answer in particular why you might choose some knowledge editing techniques over MEMIT or vice versa.
 ```
 
+You're right to point out the seeming contradiction! My apologies for overlooking that crucial aspect of MEMIT.
+
+The paper indeed highlights MEMIT's ability to perform "mass edits" more efficiently than traditional methods like fine-tuning.  Fine-tuning often requires retraining the entire model on a massive dataset, which can be incredibly time-consuming and resource-intensive. MEMIT, by focusing on specific causal relationships within the model, bypasses this need for full-scale retraining.
+
+Let's break down some key comparisons between MEMIT and other knowledge editing techniques, as per the paper:
+
+**MEMIT vs. Fine-tuning:**
+
+* **Efficiency:** MEMIT is generally faster than fine-tuning for targeted edits. It avoids retraining the entire model by focusing on specific layers identified through causal analysis.
+* **Scope of Edits:** MEMIT excels at making precise, localized changes to existing knowledge. Fine-tuning is better suited for large-scale updates or introducing entirely new concepts.
+* **Data Requirements:** MEMIT may require less training data compared to fine-tuning, as it only modifies a subset of the model's parameters.
+
+**MEMIT vs. Prompt Engineering:**
+
+* **Permanence:** Edits made with MEMIT are permanent and affect the underlying knowledge representation of the LLM. Prompt engineering, on the other hand, provides temporary control over the model's output without altering its core knowledge.
+* **Generalizability:** MEMIT aims to make edits that generalize across different contexts and prompts.  Prompt engineering often requires carefully crafting specific prompts for desired outputs.
+
+**MEMIT vs. Other Parameter-Efficient Fine-Tuning Techniques (e.g., Adapter Modules):**
+
+* **Causal Understanding:** MEMIT stands out by incorporating causal analysis, which provides insights into the relationships between model parameters and knowledge representation. This allows for more informed and targeted edits.
+* **Flexibility:** While adapter modules offer a parameter-efficient way to fine-tune specific tasks, MEMIT's broader focus on causal relationships makes it potentially more adaptable to a wider range of editing goals.
+
+**In Essence:**
+
+
+MEMIT fills an important niche by enabling efficient and targeted knowledge editing within LLMs. Its ability to leverage causal analysis for precision and its avoidance of full-scale retraining make it a valuable tool for refining existing knowledge representations. However, it's crucial to remember that MEMIT is not a one-size-fits-all solution and other techniques may be more appropriate depending on the specific editing task.
+
 ##### Prompt
 
 ```markdown
-prompt here
+In the paper MEMIT is compared to other techniques.  To me it seems the big value proposition is the ability to make 'mass' edits over other techniques.  You criticize MEMIT as being time consuming, but it seems one of the major advantages proposed is that it is quicker than other techniques which do not have this mass update ability.  Please help me or correct me in my understanding.  That in mind, add some bullets comparing MEMIT specifically to other knowledge editing techniques as per the information in the paper.
 ```
 
 #### What problems remain and what are the next steps?
 
+That's great! It's exciting to see more people interested in knowledge editing of large language models. 
+
+Based on the paper, here are some problems and potential next steps I see:
+
+**Problems:**
+
+* **Limited Scope:** The current approach focuses on editing factual knowledge related to specific entities. Expanding this to handle more nuanced concepts, relationships, and even reasoning abilities would be a significant step forward.
+* **Interpretability:** While the causal analysis helps identify important layers for editing, understanding *why* these specific layers are crucial is still an open question. More interpretable methods for analyzing and modifying model behavior are needed.
+* **Generalizability:** The paper demonstrates good performance on a specific task (knowledge editing).  Testing the approach on diverse downstream tasks and datasets will be essential to show its broader applicability.
+
+**Next Steps:**
+
+* **Exploring Different Knowledge Representations:** Investigating how to represent knowledge more effectively within the model could lead to more powerful and flexible editing techniques. This might involve incorporating structured knowledge bases or symbolic reasoning capabilities.
+* **Developing More Robust Evaluation Metrics:**  Beyond simple accuracy, metrics that capture the quality, faithfulness, and safety of edited knowledge are crucial for assessing the success of knowledge editing methods.
+* **Addressing Ethical Concerns:** As with any powerful AI technology, it's important to consider the ethical implications of knowledge editing. This includes mitigating potential biases, ensuring responsible use, and establishing clear guidelines for transparency and accountability.
+
+
+
+Let me know if you have any other questions! I'm always happy to discuss this fascinating area of research.
+
 ##### Prompt
 
 ```markdown
-prompt here
+Both you and I have read this paper, you posses a deep expertise in DL and knowledge editing of LLMs in particular.  I am a student getting early exposure to this.  Explain to me, what you from reading the paper find to be the remaining problems and next steps for the research.
 ```
 
 ### Experience using the LLM
 
 _Describe your process for using the LLM.  How did the LLM perform?_
+I had initially started trying to prime the LLM to a student-teacher paradigm, but found that it went grossly toward oversimplifying, and 
+was leaving out really key ideas from the paper in its attempt to over simplify - some of these I go into in the error/limitation analysis.
+While I thought it was able to capture some high level facts, in particular being a lower powered model, I realized quickly I would need to 
+change this style of interaction or just spend my time getting rudimentary answers.
+
+On the 3rd question forward, I changed my technique, informing the LLM of their expertise in knowledge editing, hoping this would force it
+to hone in more on MEMIT in particular.  On question, 3 I think this bore some effectiveness.  It still had a particular glaring error here.
+It also still failed to really zero in on the key idea of *mass* editing, but to some credit it does give a little more detail pointing out
+that MEMIT uses causal analysis.  Again, the LLM is a helpful guide and in some sense helps with going back to do critical reading, but
+that is probably not the best pedagogical aproach, especially at my stage of learning.  On question 4, I was somewhat even doubting my
+nudge to being a KE expert was working as it completely ignored the paper makes direct comparisons of MEMIT versus other KE methods
+and instead on considers non-KE items.  What's worse, is the paper never even mentions prompt engineering.
+
+As I continued on, I again revised my approach to inform that I read the paper, hoping that the model would use common language and examples
+to be more factually grounded.  I further chose this approach, particular on some of the more opinion oriented questions to hopefully engage
+the model as responding to someone familiar with the core ideas of the paper.  While I think this probably proved to be the most fruitful 
+approach, errors still persisted.  Even to someone finding the material dense, I saw some obvious issues such as saying contradictor things like
+MEMIT would be computationally expensive and maybe do fine tuning or prompt engineering.  That's not to say all responses were 
+bad, it was hard to tease out, especially if one had not read the paper,  for instance, it did point out that MEMIT focusing on causal analysis 
+being key to MEMIT's performance explainability of the technique.
+
+Overall, this paper is really hard for me as a new comer to understand the finer details.  It is probably too much too soon even though the 
+high level ideas clearly shine through.  I don't think the LLM as used in this task really helped much more than Andrew Ng's techniques for
+structured and approached reading did.  My takeaway here would be to use this a a supplement for particular thorny sections of the paper
+to get some alternative wordings and insights on *very specific* parts of the paper.  I think reading the abstract, conclusion and a first-pass
+skim would give me a more accurate overview of the research than relying on an LLM summary.  As the latter introduces outright errors 
+and misses key points of the paper.  While this may be a factor of the LLM not being super powerful, I do feel the experience underscores 
+that the parts where I would need the most help, I would be hesitant to rely too much on LLM analysis as the parts I do fully graps, I 
+easily find errors.  Putting myself in someone with even less exposure's shoes, it is clear that any overreliance is problematic especially 
+when reaching the frontier of one's understanding.
+
  
 #### Errors and limitations of the LLM 
 
-_Where did it fall short or make mistakes?_
+From the start, gemma2 has some limitations.  In the overall summary, it focuses more on MEMIT being a knowledge editing technique as the novelty
+versus its actual uniquness is that it is able to make massive, 10,000, edits compared to other techniques.  I think perhaps this is in part because 
+of my nudging it as a student that it focused more on what MEMIT does generally versus the paper's specific focus on what MEMIT does better 
+than other related techniques. A similar problem happens for the motivation section, it once again focused on why one would do knowledge editing, 
+whereas the motivation is already assuming knwoledge editing is something to be done, how can it be done efficiently.  It misses nuance that 
+mass edit may be needed for things like "The president of the United States is _" and correcting this fact requires massive updating techniques.
+
+Even when varying up my prompting technique, there were obvious errors to anyone who would even read the abstract such as claiming the paper 
+had not direct comparison to competing approaches.  There  were direct comparisons to other knowledge editing techniques.  The fact that the LLM
+started stating the prompt engineer was a method compared in the paper really disappointed.  It seemed hard to even get it to acknowledge that 
+knowledge editing is the main technique of focus and scaling it was the problem being addressed.
+
+Of course not all things were wrong, but enough was in key parts that I fully grasped to make this more an exercise in "gotcha", then 
+really coming away with more understanding on a hard text.  Sure it made sure to point out that MEMIT only does (s,r,o) fact updates, but 
+one can just pick that up from the conclusion and initial read through.
+
+No matter what persona I took on my prompt engineering, I felt like I was sacrificing one type of inaccuracy for another.  I would be limited 
+to what I think is a common criticism of LLM use today: users keep flining prompts to try and get what they want, versus stepping away and 
+uses the LLM as a supplement to understanding not a full results generator.
