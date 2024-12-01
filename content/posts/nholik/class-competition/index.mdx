@@ -1,5 +1,5 @@
 ---
-title: "Siamese Neural Network with Some Feature Engineering"
+title: "Siamese Neural Network with Some Feature Engineering - or so I thought"
 slug: "/nholik/class-competition"
 date: 2024-11-04
 author: Nick Holik 
@@ -22,7 +22,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>0.49858</td>
+    <td>0.59694</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -42,18 +42,31 @@ tags:
 
 ## Task summary
 
-I need to create a model that when provided two samples of text, the model should indicate if they are from the same author or not.
+The end goal of this task is to be able to when provided with two snippets of text to determine if said snippets are from the same author or not.
+In short this is a, seemingly simple, binary classification problem.  The main challenge is that we do not know who made the snippets.  Thus 
+we are in need of a rather general classifier.  Further this differs from a straight classification problem in a few ways.  Foremost is that 
+the classifier needs to be in some sense symmetric.  If I give snippetA and snippetB, I should fully expect the classifier should give the 
+same exact result, positive or negative to snippetB and snippetA.  This clearly differs from the type of classifier I made back in LING-539, as
+that would just take a single input to get a classification, while here I am feeding in a pair, and order should not matter.
 
-My prposed initial approach, which I am certain will change as I dig further into things, is to use a Siamese Neural Network for making my classification.  From [this book](https://link.springer.com/book/10.1007/978-1-0716-0826-5),
+Thus at a high level, I am tasked with taking a pair/tuple (text_1,text_2) and getting a number out 0 or 1 representing different and 
+same authorship respectively.
+In order to do this and with my observation that this is a bit different than other classification problems with this 'twist', 
+it was clear that I need to explore how this type of problem is done in practice.  Some initial research landed me on [this book](https://link.springer.com/book/10.1007/978-1-0716-0826-5),
+in particular its overview of the idea of a Siamese Neural Network:
 > Similarity has always been a key aspect in computer science and statistics. Any time two element vectors are
 > compared, many different similarity approaches can be used, depending on the final goal of the comparison ...
 > But if the comparison has to be applied to more complex data samples, with features having different
 > dimensionality and types which might need compression before processing, these measures would be
 > unsuitable. In these cases, a siamese neural network may be the best choice...
 
-Of course I will need more than just this idea, and after an initial look at the data, I will likely want to supplement heavily.  
+So my problem in more concrete terms, is one of 'fingerprinting'.  I don't need to know who the fingerprints belong to, but I just 
+need to devise a means so that ones that are similar move the model above .5 and those dissimilar below.
 
-My proposed initial line of "attack" is:
+Of course I will need more than just this idea, and after an initial look at the data which I go into my detail in the EDA section, 
+I found I will also need to supplement.
+
+My proposed initial line of "attack" was:
 
 - Pick some existing word embedding method (BERT?)
 - Use some supplemental data like [this](https://www.kaggle.com/datasets/michaelrussell4/10000-books-and-their-genres-standardized) to augment with some features like genre, author sex, time period.
@@ -61,32 +74,495 @@ My proposed initial line of "attack" is:
 - use the supplemental data to also feed into my "twin" networks
 - create the similarity network by concatenating the outputs as the input
 
-There are a lot of things I am still learning and not sure how to do, but I think with some persistence this will get me above the baseline.
+For the most part I kept faithful to this, but in doing this, I found a final method, much simpler but more effective.  So like before,
+I made some friends along the way through many false turns, but those relationships and what I learned were quite valuable, even if not
+ultimately fruitful.
 
-I really want to keep the initial approach simple and lean on existing models and libraries I can leverage.
+Comparing my approach with SOTA approaches, I can say it probably aligns with best practices and ideas to leverage pre-trained embeddings for 
+semantic similarity, but I'll fully admit I hardly did a vast research review.  One idea, though not taken directly I came across was
+from [this paper](https://www.nature.com/articles/s41598-022-13690-4) to use ensemble learning.  I felt like, and probably would do this more so 
+if time was not a constraint, I did this in some sense, with my genre-model and splitting my "main" model into two seperate models, one a 
+CNN to simulate word-level n-grams, and a sytlometric model to capture POS features, reading level (and genre as discussed).  Further, I added 
+simple 'raw-similarity' model to do some approximation of ensemble learning.
+
+So to conclude the intro,  take a data file with ID,TEXT where TEXT are two pieces of text delimited by " [SNIPPET] ", vectorize and analyze
+those texts for basic features, train a model such that when a given feature vector is fed in, texts from similar authors should result in 
+close by vectors, while different authors should 'repel'.  I did this, and it kind of worked, but some of the ideas explored led to one final,
+and simpler approach.  So let's get into it.
 
 
 
 ## Exploratory data analysis
 
-I don't have a lot of data to work with, so supplementing and using that to help add more information to my model seems like a good path to go down.
+So as any good NLP student should do, one must at least take a look at the data and gather a feel for it.  
 
+### Basic EDA
+
+To start, I went for my first tried-and-true tool good old csvkit:
+```
+ 1. "ID"
+
+	Type of data:          Number
+	Contains null values:  False
+	Non-null values:       1601
+	Unique values:         1601
+	Smallest value:        0
+	Largest value:         1,999
+	Sum:                   1,281,199
+	Mean:                  800.249
+	Median:                800
+	StDev:                 462.852
+	Most decimal places:   0
+	Most common values:    0 (1x)
+	                       1 (1x)
+	                       2 (1x)
+	                       3 (1x)
+	                       4 (1x)
+
+  2. "TEXT"
+
+	Type of data:          Text
+	Contains null values:  False
+	Non-null values:       1601
+	Unique values:         1601
+	Longest value:         5,491 characters
+	Most common values:    When his speaker remained silent Dirrul assumed he had been understood. He began to feel the pull of Vininese gravity, found himself in trouble with his ship. He tried to keep the disabled cargo carrier relatively stationary, so that the Vininese repair ships could locate him. With only one power tube, however, maneuver was impossible. The battered ship plunged out of control toward the planet. For an hour Dirrul fought with all the skill he knew. A thousand feet above the surface he managed to force the ship to level off temporarily. [SNIPPET] How big is a spation in space?" "Van Manderpootz has even measured that. A chronon is the length of time it takes one quantum of energy to push one electron from one electronic orbit to the next. There can obviously be no shorter interval of time, since an electron is the smallest unit of matter and the quantum the smallest unit of energy. (1x)
+	                       If she had only come to me and said she desired her freedom. If they had only both come together and faced me, saying that though it meant giving up all they had, they wanted only each other! I would have been generous. I would have been indulgent. But they did not. They had not the courage. They were afraid of me. And they hated me." [SNIPPET] Daddy was always shushing her.... But who was this big man in his dusty drab coveralls and dropped dust mask dangling upon his chest? "Don't you know me, Dear? It's Buhl, your husband." Buhl was fifteen and only a couple of inches taller than Ruth. Of course he had sandy hair like this man. But this man was old enough to be Buhl's father. This was crazy—like one of the dreams that always made her unhappy. So? (1x)
+	                       He took a step to a little mound of good grass as if he were climbing to a rostrum. "Wise one! Neither the holy one nor our own Grandmaster—both devoted patriots with their minds on the welfare of the City—thought to bring one very important fact to your attention. My apprentice's demonstration is not an original experiment; it is a reconstructed experiment. By Acknowledged Custom, reconstructed experiments are permitted regardless of mysteries and ideas so long as the experimenter does not comprehend any impious theory but merely follows the practical directions of old texts. "I declare that my apprentice is ignorant of the theory of his demonstration—and who is in a better position to know than his master?" Snubnose rejoiced. He was ready to forgive even the bread and water. [SNIPPET] Do you mind if I stroke one of your paws—hands—Professor?" (" So cuddly-looking!") He said yes, as a matter of fact, he was hot, and no, he didn't mind being touched in a spirit of scientific investigation. He had a moment of uplift at the teachers' cafeteria when he discovered lunch to be virtually inedible. (1x)
+	                       The light of the torch flared more brightly. Parr could make out figures in its glow—two of them. The torch itself was wedged in a crack of the rock, and beneath its flame the couple seemed to tug and wrench at something that gleamed darkly, like a great metal toadstool at the bottom of the depression. So engrossed were the workers that they did not notice Parr and his companions, and Parr, drawing near, had time to recognize both. One was Sadau, who would have remained his friend. The other was Varina Pemberton. In the torchlight she looked browner and more vigorous than when he had seen her last. [SNIPPET] And, despite the strangeness of their surroundings, the ceaseless, murmuring roar of the exhaust, the weird world outside, where endless space was waiting for man's exploration—despite the deadly menace that threatened, Chet dropped his head upon his outflung arms and slept. To his sleep-drugged brain it was scarcely a moment until a hand was dragging at his shoulder. "Forty-seven hours!" the voice of Schwartzmann was saying. And: "Some navigating!" Harkness was exclaiming in flattering amazement. " (1x)
+	                       "It's platinum," Carstairs said. Tim Carstairs was a night-shift chemist. " Anything wrong, Mr. Vogel?" "No." Vogel paused. " Thanks, Tim." [SNIPPET] You'd think that after a year I would have realized that nothing could penetrate that thick Canuck's skull. He gets me so mad sometimes that I want to forget I'm a lady." She paused thoughtfully. " Come to think of it. No one ever accused me of being a lady in the first place." "Sounds like love," Ben smiled. Hunched over on the jump seat with her elbows on her knees and her chin cupped in both hands, Kelly gave the senior officer a quizzical sideways look. Ben was watching his monitors and missed the glance. Kelly sighed and stared out into the light streaked night of the thruway. (1x)
+
+  3. "LABEL"
+
+	Type of data:          Boolean
+	Contains null values:  False
+	Non-null values:       1601
+	Unique values:         2
+	Most common values:    False (1245x)
+	                       True (356x)
+
+Row count: 1601
+```
+
+So the number one thing that jumps out is there just isn't much data, and it is heavily unbalanced favoring the negative class by a factor 
+of nearly 4.  One saving thing, is that the task description said the majority of data is from project Gutenberg, so it should be easy to supplement.
+
+Just opening up the file, nothing really jumped out, so I didn't think things were going to be too bad.  But there are always some outliers.
+
+```
+1121,It seems to want to explain something. Jack. It will never get the chance of that. ( Lighting a candle from mantel R.) Stella. [SNIPPET] I want you. Stella! Stella (stops singing a moment to call). I’m not coming! ( Resumes song off.) Walter (takes up parcel). My new coat at last. The moment I get Davidson under lock and key I’m[Pg 21] going to change into this and get away to Brighton. ( Puts parcel down.),1
+```
+This one is interesting, play instructions. Perhaps with this and the amount of quotes, punctuation could play a role. 
+
+```
+1330,CHAPTER I  CHAPTER I  CHAPTER I  CHAPTER I  CHAPTER V [SNIPPET] It was a female. The head crawled to it and made its way to the shoulders where it settled itself. At once the body sprang lightly erect. Another of those who had accompanied them from the fields approached with the harness and collar that had been taken from the dead body that the head had formerly topped.,0
+1534,"But there, I want you to shoot so that the captain will be proud of you, and some day you'll have to shoot a deer."" ""I don't think I should like to shoot a deer,"" said the boy, shaking his head. ""Why not?"" They're good to eat."" ""They look so nice and kind, with their big soft eyes."" ""Well, a man then."" ""Oh, no! I shouldn't like to shoot a man."" ""What not one of the captain's enemies who had come to kill him?"" [SNIPPET] OF THE KING OF OAKENREALM.  CHAPTER XXVII. OF THE HUSTING OF THE TOFTS.  CHAPTER XXVIII. OF THE HOSTING IN HAZELDALE.  CHAPTER XXIX.",0
+```
+
+Ah, some noise, and clearly intentional at least in the first case.  But I think this may be "good" noise, as if I supplement data, project Gutenbert meta-data, chapter markings etc
+will be in the mix, so I didn't see it as something that will have too much harm.
+
+I was told all data was English, but should I trust it?
+
+```
+ID 	TEXT 	LABEL 	lang 	TEXT_1 	TEXT_2 	LANG_1 	LANG_2
+576 	576 	35el-ki-šú-ma áš-ta-ka-an-š 36a-na a-ḫi-i 37um... 	1 	en 	35el-ki-šú-ma áš-ta-ka-an-š 36a-na a-ḫi-i 37um... 	Lines 38–40, completing the column, may be sup... 	hr 	en
+1070 	1070 	i-šim-šú dEnlil] 138dGiš pi-šú i-pu [šá-am-ma]... 	0 	en 	i-šim-šú dEnlil] 138dGiš pi-šú i-pu [šá-am-ma]... 	And when you talk about the non-enforcement of... 	hr 	en
+```
+
+Well 576 that's kind of mean.
+
+And looking at the other side
+
+```
+ID 	TEXT 	LABEL 	lang 	TEXT_1 	TEXT_2 	LANG_1 	LANG_2
+403 	403 	He hurried to eat and get ready for another pe... 	0 	en 	He hurried to eat and get ready for another pe... 	A se? Or In Se? Per suam essentiam, perhaps? O... 	en 	pt
+```
+Okay, a little Latin snip, that's probably good, especially if we're talking old public domain texts.  People just don't appreciate the classics anymore.
+
+I didn't find any snippets where snip1 = snip2 but the label is wrong.  I'm a little dissapointed.
+
+See my `basic-analysis` notebook for this.
+
+### Basic author same/not analysis
+
+I figured, one way to get a good leg up on things was to run some basic similarity metrics on the data and see how far that would get me.
+You can follow along in the `similarity-tests` notebook or take my word here.  Here are the results of some basic metrics:
+
+#### Jaccard similarity
+Same author:
+```
+count    356.000000
+mean       0.122878
+std        0.071886
+min        0.025000
+25%        0.092621
+50%        0.115268
+75%        0.140958
+max        0.867925
+```
+Different author:
+```
+count    1245.000000
+mean        0.096085
+std         0.028925
+min         0.007874
+25%         0.077922
+50%         0.096000
+75%         0.113821
+max         0.201439
+```
+
+Not revolutionary, but no item in the different set had higher that 20%, and the mean clearly shows a bias for same author. 
+Seems like we'll at least pick up on some of this signal in the model, even if I don't use it as a straight feature (maybe I should have).
+
+#### NER overlap
+
+I figured, the same author, fiction or not, will likely be talking about the same subjects.  I went ahead and did a little test:
+Same:
+```
+count    356.000000
+mean       0.068826
+std        0.198443
+min        0.000000
+25%        0.000000
+50%        0.000000
+75%        0.000000
+max        1.000000
+```
+
+Different:
+```
+count    1245.000000
+mean        0.000361
+std         0.009070
+min         0.000000
+25%         0.000000
+50%         0.000000
+75%         0.000000
+max         0.250000
+```
+
+I did go back and use the Spacy lg, but found little difference.  This one is a little dubious.  With the max in the negative set being 25% overlap,
+and it on average being pretty low (though on average basically non-existent in the negative side of things), it probably is more processing versus
+what I'll get in boosting things.
+
+#### Text Length
+
+Another pretty basic mesure, and it seems like it is not worth much.
+
+Same:
+```
+count    356.000000
+mean       0.381771
+std        0.228398
+min        0.000000
+25%        0.195775
+50%        0.362588
+75%        0.566412
+```
+
+Different:
+```
+count    1245.000000
+mean        0.425236
+std         0.234706
+min         0.000000
+25%         0.241379
+50%         0.432692
+75%         0.604278
+max         0.945652
+```
+
+On the balance, it seems the snippet lengths are pretty well aligned.  I kept this in mind when making supplemental data.
+
+
+#### Sentence embedding
+
+Throughout the probject, I used sentence-transformers (SBERT) for embedding (https://sbert.net/).  I decided to see what 
+information I could gleen here.
+
+Same:
+```
+count    356.000000
+mean       0.453445
+std        0.148123
+min       -0.005140
+25%        0.343376
+50%        0.447311
+75%        0.564454
+max        0.933425
+```
+
+```
+count    1245.000000
+mean        0.380671
+std         0.125944
+min        -0.022670
+25%         0.293853
+50%         0.381369
+75%         0.473882
+max         0.702127
+```
+
+Ok, well, this is interesting.  I thought this would be the way.  Clearly there is a bias to similar snippet embeddings, but it's not 
+as high as I had hoped.  Well, don't worry, this isn't the end for us SBERT, we're gonna figure you out.
+
+
+### Supplementing
+
+As noted, it was clear that more data is needed, and I wanted to balance the data out with more positive examples.  I really won't 
+be able to make a model learn much without examples of what makes two snippets come from the same authors.  I took a few turns here.  These are the 
+highlights:
+
+#### More Gutenberg
+
+I found https://shibamoulilahiri.github.io/gutenberg_dataset.html which was a nice clean data set.  In my project you'll find two scripts:
+- generate-extra-training.py
+- supplement-training.py
+
+This was originally one script, but it was more useful splitting into two parts.  The second script, ran through files, used spacy to
+break them into sentences, while the second made a balanced set.
+
+This proved to not be useful at all.  I don't know what it was, but watching your validation loss go over 1 and keep climbing, well something was 
+wrong.
+
+Before leaving this side (mis)adventure, I'll note that while glossing over a lot of trial-and-error, I found a heavy dose of sci-fi texts.
+This led me to https://huggingface.co/datasets/stevez80/Sci-Fi-Books-gutenberg but I ultimately decided agasint using it.  The temptation 
+to overweight on sci-fi was real, but I didn't have enough evidence and didn't want to spare the time to prove if the test set was sci-fi biased.
+Just a bad idea with nothing to back it, plus aren't I making a *general* classifier?  Anyway, it was there, but never used.  See the `sci-fi` notebook
+if you're bored.
+
+
+#### Even MORE Gutenberg
+
+With my cleaned gutenberg set not being useful and me not thinking it was a great use of time and brain power diagnosing, I decided to 
+veture out for other data sets.  There was [this](https://dataworks.indianapolis.iu.edu/handle/11243/23) which seemed interesting, albeit
+a bit too niche. But someone out on hugging face did me a solid with https://huggingface.co/datasets/eminorhan/gutenberg_en/tree/main. 
+It is a project gutenberg snapshot split into bit-size chunks.  The file is huge, but my ambitions were larger.
+
+Sparing a lot of gory details, I loaded up the 1024 file and promptly ran out of memory.  But persistence pays, and I streamed the JSON
+into chunks making a parquet file, dropped any entries where text, author or both birth+death date were missing and landed on a pretty 
+large but not totally unwiedly data set.  I've put a link to download in my project readme for reproducability with the "slim" version.
+
+With this I sampled out a balanced set with some pandas-fu and landed on an approximate 5,000 row balanced set where I could use my
+training data as a validation set.  Win-win.  But if you've been reading this far, you know there is a deep secret lurking, and this 
+data set was part of it.  
+
+On to the approach and results!
+
+
+## Approach
+
+As alluded to in my earlier sections, the goal was to use some pre-trained embeddings and make a siamese NN that took
+the embeddings plus some stylometric features to build a final model. For the actual model, see `classifier.py` which you
+should be able to run directly after downloading my supplementary data.  Diving into more specifics:
+
+I have the following submodels:
+- a genre classifier, which served more as a jumping off point and toying with torch.  It used sbert to give the average embedding and max embedding over all sentences in some gutenberg books.
+- a stylometric model.  this a simple sequential NN which took POS frequencies, token counts, unique token ratio, various reading level scores, sentence count, word size etc
+- a n-gram model using BERT embdddings and a CNN to simulate (?) capturing various word level n-grams, heavily inspired by comments in the class forum
+- what i called a 'basic similarity' model, which took the cosine similarity of the sbert embeddings of the snippet, and the "authorship" vector (explained below)
+- the siamese model which ran each snippet through these various models, then took the concatenated result + the basic similarity result and applied a simple NN to get a 0->1 score
+
+The authorship vector is where I started to explore some things "on the side".  You'll see why in the results section.  But forgoing that,
+I had some fun taking my large gutenberg paragraph dataframe, applying sbert and getting the average sbert embedding across all paragraphs
+for a given author to make a 'fingerprint' of sorts.  More details and replication can be found in the `AllGuten` notebook (it's not really 
+all of it, but it was my working nomeclature).  In the notebook, you will find some nice visualizations showing authorship clusters. *This was a key 
+realization.*  All along, I have been trying to fingerprint authors, well, I have a big corpus that I can reduce down to said fingerprint.
+
+### More on author fingerprinting
+
+Looking at visualizations of how authors cluster, and doing some sample queries, finding things like Schopenuer's embedding had top-5 
+closest to philosophical writers, Jack London - other 'outdorsy' writers, Asimov - sci-fi, I thought I had really hit on something here.
+So I pik'ld the vector and used it as a feature.  More in the results.  But this was the next key realization.  My wife mentioned when 
+I was showing her how fun it was to pick authors and how well it gave back similar authors, she said it was pretty much like a 
+recommendation system.  That is the key thought: *if make two search queries and they give back similar results, assuming your 
+search system is good, you are probably search for very similar if not the same thing*.
+
+Can you feel the excitment building?  I know, let's get to the results.
 
 ## Results
 
-Nothing yet.
+My result analysis was nothing too crazy.  First I trained (many times with many false steps) using just the initial training set.
+As mentioned, I tried some other augmented data sets, initially with worse results (yikes).  You'll see from my many submissions, I was 
+oscillating.  One thing was clear, I often got a final classification where everything is just predicted to be a different author.  Well, 
+I guess there was a natural bias there, you'd expect on balance, if randomly selected, you'd have things from two different authors.  I 
+am not sure sure, and had no real way to prove, that the 3-1-ish ratio in the training data was really indicative of the sampling method 
+for the test data - that is unless I got superior results, which, no I didn't get.
 
+While above the baseline (and near or below with limited original) my supplemental data, it still was not hovering a lot more than just picking at 
+random.  Still this really helped me see what tweaks in my model were working and which weren't.  While I did not get to doing any hyper-paramter
+tuning or k-fold validation, I was able to have a robust held out set, using the original inputs for validation.  On each training epoch, I was 
+capturing loss against what was the 'original' training data to be able to see how well.  This helped making clear when I had 
+a batch of supplemental gutenberg books, but watched the original training data as a validation set have huge loss, that my supplemental data was 
+not helpful, while when I did finally curate a good set, I saw a strong correlation with the various epochs showing downward loss.
+
+By way of example, I kept track with clear visual feedback seeing each batch loss and average per round
+
+```
+Epoch 4/5 [Val]: 100%|█████████████████████████████████████████████████████████████████████████████| 26/26 [02:16<00:00,  5.24s/it, batch_loss=0.3529]
+Epoch 4/5:[Val]: 100%|█████████████████████████████████████████████████████████████████████████████| 26/26 [02:16<00:00,  3.88s/it, batch_loss=0.3529]
+Training Loss: 0.5493
+Average Validation Loss: 0.5654
+```
+
+I would have loved to have done something more sophisticated, but will admit this was an uphill learning battle from the start taking in
+a lot of new ideas.  So my simple tracking loss and classfication report were the extent (more on this in the error analysis)
+
+So here is the moment we have all been waiting for.  As I said, nothing sophisticated here, in fact, I noticed as I took out various parts 
+of the model for the stylometric features, they were not adding a lot, not was the 'simple similarity' model.  It was quite disappointing, but
+having the multi-model architecture was great for helping to pick out pieces and see what did (and mostly didn't) help.  On a whim, I tried 
+an idea 'for kicks'.  When experimenting and taking various snippets from the training (or should i say validation) set and getting 
+the closest author, the results were kind of disappointing.  I should have kept better track, but the results, for things like clear sci-fi 
+or fantasy snippets gave back authors that just seemed purely random.  So anyway, no wonder.  But maybe this bad idea would work: SBERT 
+does semantic search and I have a large corpus of texts by author, maybe good tool but wrong usage?  This example was the inspiration:
+https://github.com/UKPLab/sentence-transformers/blob/master/examples/applications/semantic-search/semantic_search.py I hypothsized the following,
+I bet I won't get many if any false positives if I take the intersection of authors doing a semantic search for snippet 1 and same for snippet 2
+and say they're from the same person if they both result in the same author.  Finally, my hypothesis was right.  And the code is dead simple:
+
+```python
+import torch
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report
+
+y_pred = []
+y_true = []
+false_pos = 0
+for _, row in df_train.iterrows():
+    snip_1, snip_2 = row['TEXT'].split(' [SNIPPET] ')
+    
+    query_embedding_1 = model.encode(snip_1, convert_to_tensor=True)
+    query_embedding_2 = model.encode(snip_2, convert_to_tensor=True)
+    
+    similarity_scores_1 = model.similarity(query_embedding_1, corpus_embeddings)[0]
+    similarity_scores_2 = model.similarity(query_embedding_2, corpus_embeddings)[0]
+    
+    _, indices_1 = torch.topk(similarity_scores_1, k=5)
+    _, indices_2 = torch.topk(similarity_scores_2, k=5)
+    
+    selected_rows_1 = df.values[indices_1.cpu().numpy(),1]
+    selected_rows_2 = df.values[indices_2.cpu().numpy(),1]
+    common = set(selected_rows_1).intersection(set(selected_rows_2))
+    pred = 1 if len(common) > 0 else 0
+    actual = row['LABEL']
+    
+    y_true.append(actual)
+    y_pred.append(pred)
+    
+accuracy = accuracy_score(y_true, y_pred)
+precision = precision_score(y_true, y_pred)
+recall = recall_score(y_true, y_pred)
+f1 = f1_score(y_true, y_pred)
+
+conf_matrix = confusion_matrix(y_true, y_pred)
+
+class_report = classification_report(y_true, y_pred)
+
+print(f"Accuracy: {accuracy:.2f}")
+print(f"Precision: {precision:.2f}")
+print(f"Recall: {recall:.2f}")
+print(f"F1 Score: {f1:.2f}")
+print("Confusion Matrix:")
+print(conf_matrix)
+print("\nClassification Report:")
+print(class_report)
+
+```
+
+I actually got better results on this that my complicated model.  It doesn't feel right, but still within the spirit of the competition:
+- Use an open model and supplementary data set
+- Create embeddings for the supplementary corpus
+- Given two snippets, do a similarity search in the embedding corpus, get the corresponding indices for the top-2 and see if the intersection
+of authors is non empty
+
+So really that's the model?  It really became a search problem.  Now of course this has some limitations, the search space is frozen in 
+time for Gutenberg books, but for not a lot of work, it does surprisingly well.  I think this underscored to me a few things:
+
+- embeddings are powerful
+- having a lot of data helps
+- it doesn't matter who the authors are, we just need some reproducible method to make similar ones cluster (oh those pretty pictures on my side quest)
+
+Well, this came at the end, and I think with more time and knowledge I could have blended a lot of this into even better results.  
+
+But I couldn't believe moving to #3 on the board from something so...different (?) from what my less productive, but probably more 
+in the spirit of what I was learning about methods.  I would not necessarily present this as the ideal solution.  With real world constraints,
+having the large embedding corpus takes a lot of resources versus having some weights saved.  But I guess out there, I might have a 
+vector db, so it might not be all that much resource space.  Well, I'm still learning, but it was a nice insight, perhaps the best 
+way to have a 'fingerprinting' system where you only care about matching is to have a large store of finger prints and just make 
+sure that unseen finger prints match similar ones consistently.  Like I said, I'm learning, and in some wasy I 
+don't know if this summary quite pulls out all the ideas I tried will starting from zero on any practical knowledge of NNs. 
+But I think I am well position for having gone through this to do more exploring in a little more structured manner now.  And I guess 
+the results speak for themselves.
 
 ## Error analysis
 
-Nothing yet.
+I had a really hard time doing in depth error analysis, just getting the models off the ground and seeing them do something 
+was pretty much where I was at.  That withstanding, I did do some exploration on items.  For example:
+
+```
+"gasped Robbins, and without a word he turned and fled, leaving the Nice Girl transfixed with astonishment and staring after him with a frown on her pretty brow.  “What does he mean by such conduct?” she asked herself. But Robbins disappeared from the gathering throng in the large room of the hotel, dashed down the steps, and hurried along the narrow pavements toward the “Golden Dragon.” The proprietor was standing in the hallway with his hands behind him, a usual attitude with the Dragon.  “Where,” gasped Robbins, “is Mr.—Mr.——” and then he remembered he didn’t know the name. “ 
+[SNIPPET] 
+This story differs from others in having an assortment of morals. Most stories have one moral; here are several. The moral usually appears at the end—in this case a few are mentioned at the beginning, so that they may be looked out for as the reading progresses. First: it is well for a man—especially a young man—to attend to his own business. Second: in planning a person’s life for some little distance ahead, it will be a mistake if an allowance of ten per cent. at least, is not made for that unknown quantity—woman. Third: it is beneficial to remember that one man rarely knows everything.
+```
+This is a "1", but I just had no clue what to make of it to think of how I would predict this is the same author.  At least not with the knowledge level I am currently at.
+
+Another
+```
+And we fell to, tearing like hungry beasts at the succulent white meat in the jeweled trenchers. Strange monsters served us, and at a chill touch on my arm I turned to find a dreadful crimson thing, like a skinned child, refilling my goblet. Strange, strange and utterly blasphemous was our feast. We shouted and laughed and fed there in the hazy light, while all around us thundered the evil horde. There was hell beneath Castle Kralitz, and it held high carnival this night. Presently we sang a fierce drinking-song, swinging the deep cups back and forth in rhythm with our shouted chant. It was an archaic song, but the obsolete words were no handicap, for I mouthed them as though they had been learned at my mother's knee. 
+[SNIPPET] 
+And then pride came to my aid. I was a Kralitz. And a Kralitz would not acknowledge fear in the face of the devil himself! I stepped forward and confronted the warders, who were still seated regarding me intently from eyes in which a smoldering fire seemed to burn. Fighting down an insane dread that I might find before me an array of fleshless skeletons, I stepped to the head of the table, where there was a sort of crude throne, and peered closely at the silent figure on my right.
+```
+This one inspired some my early foray into considering NER features.  However, none of the spacy models recognized Kralitz as a consistent entity type.
+That is where I figured the CNN to appoximate n-grams would be useful.  But unfortunately, my analysis suffered with more 
+time spent just trying to get something off the ground.  I also feel this is another place where NN's are a bit mysterious.  If I had 
+done some basic BOW would do just fine.  I guess maybe I should have taken this type of situation where I used Jaccard similarity 
+and/or maybe TF-IDF - but I don't know how well the latter would really help for a generalizable model.
+
+Of course I did your standard fair classification report.  From my Siamese NN
+
+```
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.82      0.68      0.74      1245
+         1.0       0.30      0.48      0.37       356
+
+    accuracy                           0.63      1601
+   macro avg       0.56      0.58      0.56      1601
+weighted avg       0.70      0.63      0.66      1601
+```
+
+From my semantic search "model":
+
+```
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.83      0.94      0.88      1245
+           1       0.63      0.35      0.45       356
+
+    accuracy                           0.81      1601
+   macro avg       0.73      0.64      0.67      1601
+weighted avg       0.79      0.81      0.79      1601
+```
+
+These always pointed out the obvious though, my models bias toward not the same author.  Going back to my first error example, 
+I had difficulty coming up with ways to mitigate the over classification toward different.
+
 
 ## Reproducibility
 
-I will have full instructions on the final draft.
-
+The code repo linked at the top of this post provides full instructions in the README.md to get my leaderboard result as well 
+as some more details on the false steps I took during this process.
 
 ## Future Improvements
 
-I am sure I will have plenty of ideas once this gets off the ground.
+There is a ton to be improved.  My best score was not really that great.  Some ideas I have:
 
+- Do a better analysis of specific errors, particularly for same but not classified same, perhaps currate more examples to find misclassification patterns and use that more as a driving force to augment data + feature selection
+- Employ some more sophisticated NN architectures, I didn't even sniff things like LSTM or attention mechanisms.  But I think this would be not as useful without really employing the first bullet
+- Take my findings with the semantic search and see how pairing that with the Siamese NN approach could marry up and compliment each other.  This could probably inform some simpler ensemble methods
+- Explore how things would work with modern texts.  I have digital books I could use to supplement and test.  Other free data sets like news articles, blogs, etc could help build a more robust and generalizable model.
+
+There is plenty of room for improvement and I think back now to when I helped Marvin how much easier that task would be with my experience now.  I hope that holds true here as well.
