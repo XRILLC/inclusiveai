@@ -1,13 +1,12 @@
 ---
-title: "Authorship verification"
+title: "Authorship Verification"
 slug: "/shawnabirnbaum/class-competition"
 date: 2024-11-11
 author: Shawna Birnbaum
-description: "Class competition approach summary"
+description: "Class competition final submission summary"
 tags:
   - class competition
 ---
-
 
 <table>
   <caption>
@@ -22,7 +21,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>TBD</td>
+    <td>0.51703</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -39,32 +38,73 @@ tags:
 </tbody>
 </table>
 
+## Task Summary
 
-## Task summary
+The objective of this class competition was to determine whether text snippets were written by the same author. This binary classification task was evaluated using the **macro F1 score**, which balances precision and recall across all classes.
 
-The objective is to determine whether text snippets are written by the same author. The general idea is to use a binary classifier, but it is yet to be determined what model specifically.
+The baseline random weighted score for this competition was **0.50901**, and my final submission achieved a leaderboard score of **0.51703**, surpassing the baseline.
 
-## Exploratory data analysis
+## Exploratory Data Analysis
 
-TBD
+1. **Dataset Overview**:
+   - The training dataset consists of text snippets paired with binary labels (0 or 1) indicating whether the texts share the same author.
+   - The dataset appears to be highly imbalanced, with **label 0** dominating over **label 1** in the original distribution (approximately 3:1 ratio).
 
-## Exploratory data analysis
+2. **Text Characteristics**:
+   - Text lengths vary significantly, ranging from short phrases to longer passages. The mean and median text lengths were calculated, and most snippets were observed to fall within a medium-length range (~20-40 words).
+   - Common words and phrases were analyzed using frequency distributions, showing frequent generic terms like “the,” “and,” and “is,” which may not provide author-specific insights.
 
-TBD
+3. **Vocabulary Diversity**:
+   - Using TF-IDF, the dataset’s vocabulary size was explored, identifying the most significant unigrams and bigrams.
+   - Initial analysis revealed that distinctive word usage (e.g., rare words or specific phrase structures) could potentially aid in differentiating authorship.
+
+4. **Class Imbalance**:
+   - Class imbalance was addressed by oversampling the minority class using **SMOTE** to ensure balanced training data, reducing the risk of the model being biased toward the majority class.
 
 ## Results
 
-TBD
+### Final Results:
+- **Leaderboard Score:** 0.51703
+- **Macro F1 Validation:** 0.772  
 
-## Error analysis
+### Approach:
+1. Used **TF-IDF vectorization** to extract features from text snippets.  
+2. Balanced the dataset with **SMOTE** to address class imbalance.
+3. Utilized **Logistic Regression** with increased regularization (C=0.001) to reduce overfitting.
+4. Focused on fine-tuning hyperparameters to balance precision and recall, achieving an F1 score above the baseline.
 
-TBD
+## Error Analysis
+
+1. **Misclassifications**:
+   - Errors were observed more frequently in shorter text snippets, which often lacked sufficient context for the model to make an informed prediction.
+   - Texts with ambiguous or generic language (e.g., common phrases) were also prone to misclassification due to a lack of distinct features.
+
+2. **Class-Specific Challenges**:
+   - **False positives (label=1 misclassified as 0):**
+     - These often occurred when text snippets shared stylistic similarities (e.g., sentence length, tone) but came from different authors.
+   - **False negatives (label=0 misclassified as 1):**
+     - These were seen in cases where the model picked up on distinctive word usage that coincidentally aligned across authors.
+
+3. **Impact of Imbalance**:
+   - Despite using **SMOTE**, the model occasionally exhibited bias toward the majority class, particularly in edge cases where the features were not strongly indicative of either class.
+
+4. **Feature Representation Limitations**:
+   - The use of TF-IDF limited the model’s ability to capture semantic relationships between words. Advanced embeddings like **Word2Vec** or **BERT** could improve performance by better representing contextual meaning.
 
 ## Reproducibility
 
-TBD
+All experiments are logged and reproducible using the repository provided:
+[GitHub Repository](https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-korvmacka).
 
+The pipeline includes:
+- Text preprocessing with **TF-IDF vectorization**.
+- Dataset balancing using **SMOTE**.
+- Model training and evaluation with **Logistic Regression**.
 
 ## Future Improvements
 
-TBD
+Although I am satisfied with surpassing the baseline, future improvements could include:
+1. Fine-tuning the decision threshold for Logistic Regression to maximize F1 directly.
+2. Experimenting with alternative models, such as **Naive Bayes** or **Random Forest**.
+3. Using advanced text embeddings like **Word2Vec** or **BERT** for richer feature extraction.
+4. Conducting deeper error analysis to improve feature engineering.
