@@ -1,9 +1,9 @@
 ---
 title: "Author Identification: Assessing Textual Consistency Between Spans"
 slug: "/joeljojo/class-competition"
-date: 2024-11-15
+date: 2024-12-04
 author: Joel Jojo
-description: "This code implements a machine learning pipeline to determine if two spans of text were produced by the same author. It preprocesses the text, extracts features using TF-IDF, and incorporates differences, similarities, and cosine similarity into the feature set. The model combines Gradient Boosting, Random Forest, and Logistic Regression using a Voting Classifier to predict author similarity."
+description: "This code predicts the relationship between two text spans by analyzing their content. It cleans the text, compares features like similarity and differences, and uses a combination of advanced machine learning models to make predictions."
 tags:
   - class competition
 ---
@@ -23,7 +23,7 @@ tags:
   <tr>
     <th><b>Leaderboard score</b></th>
 
-    <td>47.404</td>
+    <td>58.16</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -43,51 +43,264 @@ tags:
 
 ## Task summary
 
+- The task involves predicting whether two text spans were authored by the same individual. The dataset contains **1601 training entries** and **899 test entries**, with a binary label space:
+  - **Class 0**: Text spans from different authors (**1,245 samples**)
+  - **Class 1**: Text spans from the same author (**356 samples**)
 
--The task is to determine if two spans of text were written by the same author. It preprocesses the text, extracts features using TF-IDF, and incorporates differences, similarities, and cosine similarity into the feature set. The model combines Gradient Boosting, Random Forest, and Logistic Regression using a Voting Classifier to predict author similarity.-
+The task involves text preprocessing (lemmatization and stopword removal), feature extraction using TF-IDF and sentence embeddings, and similarity metrics (cosine, Euclidean, Manhattan). A stacked ensemble model combining XGBoost and Random Forest is used to predict the labels.
 
+**Task challenges**
+- **Class Imbalance**: Class 0 dominates (78%), leading to potential bias in predictions and lower accuracy for Class 1.
+  - Example: Models may overpredict "different authors" (Class 0) due to its prevalence and fail to predict "same authors" (Class 1) as much.
+- **Writing Style Variability**: Differences in syntax, vocabulary, and tone within a single author or across authors can obscure patterns.
+  - Example: An author’s formal vs. casual texts could appear to be from different writers.
+- **Feature Overlap**: Similarities in writing style across authors can lead to false positives.
+  - Example: Two different authors using formal academic language may confuse the model. -
 
 ## Exploratory data analysis
 
-- 1. Data Inspection
-   - Started by loading the `train.csv` and `test.csv` datasets.
-   - Checked that the `TEXT` column contained two spans of text separated by `[SNIPPET]`.
-   - Verified that the training data had a `LABEL` column with binary values indicating whether the spans are from the same author or not.
+- **1. Data Inspection**
+  - The structure of `train.csv` and `test.csv` was reviewed to understand the columns and data format.
+  - Key columns include:
+    - `TEXT`: Contains the two spans of text.
+    - `LABEL`: The target variable (only in training data).
 
-2. Splitting Text
-   - Split the `TEXT` column into two separate columns, `span1` and `span2`, to make it easier to analyze and compare each span individually.
+- **2. Splitting Text**
+  - The `TEXT` column was split into `span1` and `span2` using the `[SNIPPET]` delimiter for easier analysis.
 
-3. Text Analysis
-   - Looked at the word and character counts of `span1` and `span2` to ensure the spans were formatted consistently.
-   - Noticed some differences in content and vocabulary between the two spans, providing clues about their potential relationships.
+- **3. Text Analysis**
+  - **Dataset Size (Per Class)**:
+    - Class 0: 1,245 samples
+    - Class 1: 356 samples
+    - The dataset is imbalanced, requiring techniques like class weighting or oversampling to prevent bias in model training.
 
-4. Data Cleaning
-   - Standardized the text by converting everything to lowercase.
-   - Removed special characters (like punctuation) to make the data cleaner and easier to process.
+  - **Sentence Length Statistics**:
+    - **Span1**: Average length 256 characters (range: 16–1,572)
+    - **Span2**: Average length 266 characters (range: 16–2,181)
+    - **Reason**: Sentence length variability is important to assess because it impacts preprocessing steps. Longer sentences may require truncation or
+    padding to ensure uniform input size for models.
 
-5. Target Analysis
-   - Examined the `LABEL` column in the training data to check if the classes (same author vs. different authors) were evenly distributed or imbalanced.
+  - **Vocabulary Diversity**:
+    - Both spans have a vocabulary diversity score of 0.189, indicating moderate lexical variety and a consistent domain.
+    - **Reason**: Vocabulary diversity provides insights into how varied the text is. Low diversity may suggest a more standardized language, while higher diversity
+    can indicate richer, more complex text. This analysis helps understand the complexity of language in the dataset.
 
-6. Feature Exploration
-   - Used TF-IDF vectors to represent the text spans and studied how well these features captured patterns in the data.
-   - Looked at cosine similarity scores between spans to understand how similar they were and whether this metric could help distinguish between same and different authors. -
+  - **Example Data Points**:
+    - **Example 1 (ID: 526)**:
+      - Span1: "Know home wanderer past age great distance worn traveler."
+      - Span2: "Want ye quick right say Rawson tersely man driving tasks."
+      - Label: 0 (low similarity between spans).
+    - **Example 2 (ID: 354)**:
+      - Span1: "Primary objective military term partly military analysis process."
+      - Span2: "Infinitesimally small part atom globe release energy calculations."
+      - Label: 0 (distinct contexts, low coherence).
+    - **Reason**: Reviewing example data points helps to understand the nature of the dataset and confirm whether the task of determining authorship similarity is reasonable. It also allows us to identify potential patterns or outliers in the text data.
+
+- **4. Data Cleaning**
+  - Text preprocessing using SpaCy:
+    - Converted text to lowercase, lemmatized tokens, and removed stopwords and non-alphanumeric tokens.
+  - Purpose: Standardized the text for analysis.
+
+- **5. Target Analysis**
+  - **Class Distribution**:
+    - Frequencies of each `LABEL` were calculated and visualized with a bar plot.
+    - Identified potential class imbalances.
+
+- **6. Feature Exploration**
+  - **Sample Data Points**:
+    - Random samples of `span1`, `span2`, and `LABEL` were reviewed to validate preprocessing. -
 
 
+## Approach
+-1. **Data Loading and Initial Inspection**:
+   - Loaded the training and test datasets (`train.csv` and `test.csv`).
+   - Inspected the structure and key columns (`TEXT`, `LABEL`) to understand the data format and target variable.
+
+2. **Text Splitting**:
+   - Split the `TEXT` column into `span1` and `span2` using the `[SNIPPET]` delimiter to isolate the two text spans for similarity comparison.
+
+3. **Text Preprocessing (Data Cleaning)**:
+   - Applied text cleaning using SpaCy, including lowercasing, lemmatization, and removal of stopwords and non-alphanumeric tokens.
+
+4. **Exploratory Data Analysis (EDA)**:
+   - Analyzed sentence lengths, vocabulary diversity, and class distribution.
+   - Visualized sentence length distributions and identified class imbalances.
+
+5. **Feature Extraction**:
+   - Used **TF-IDF Vectorization** to convert text data into numerical features (unigrams and bigrams).
+   - Applied **Sentence-BERT embeddings** to capture the semantic meaning of sentences.
+   - Calculated **cosine similarity**, **Euclidean distance**, and **Manhattan distance** between the spans.
+
+6. **Handling Class Imbalance**:
+   - Applied **class weighting** or **oversampling** to handle the imbalanced dataset.
+
+7. **Model Selection and Hyperparameter Tuning**:
+   - Chose **XGBoost** for its efficiency and performance with high-dimensional data.
+   - Used **Halving Random Search CV** for hyperparameter optimization.
+   - Implemented a **Stacking Classifier** combining XGBoost and **Random Forest** for improved accuracy.
+
+8. **Training and Model Evaluation**:
+   - Split the data into training and validation sets.
+   - Evaluated the model using accuracy to assess performance and generalization.
+
+9. **Final Predictions**:
+   - Applied the trained model to the test data and generated predictions.
+   - Saved the results in a CSV file for submission.
+
+**Motivation behind using this approach**:
+The approach was designed to systematically preprocess, extract relevant features, and address challenges like class imbalance to improve model performance.
+Text preprocessing and feature extraction focused on both lexical and semantic features to better capture text similarities.
+By utilizing advanced methods like **BERT embeddings** and **XGBoost**, combined with ensemble learning and hyperparameter tuning,
+the goal was to build a robust and high-performing model for the text classification task.
+
+## Key Features and Innovative Aspects
+1. **Combination of Traditional and Modern Techniques**:
+   - Blends **TF-IDF** (for capturing term importance) with **Sentence-BERT embeddings** (for semantic understanding), enhancing feature extraction by leveraging both lexical and semantic features.
+
+2. **Multiple Similarity Metrics**:
+   - Utilizes **cosine similarity**, **Euclidean distance**, and **Manhattan distance** to provide a comprehensive view of text similarity, capturing various aspects of relationships between the spans.
+
+3. **Stacking Classifier**:
+   - Implements a **Stacking Classifier** combining **XGBoost** and **Random Forest**, leveraging the strengths of both models for improved performance and generalization.
+
+4. **Efficient Hyperparameter Tuning**:
+   - Incorporates **Halving Random Search CV** to speed up hyperparameter optimization while ensuring effective model tuning, making the search process more efficient.
+
+-
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
+-
+1. **Quantitative Results on Leaderboard Noting Delta with Baseline**:
+On the test set, my model achieved an accuracy of 58.16%, which is 7.26% higher than the baseline accuracy of 50.90%.
+This shows that my model performs better than a random guess based on class proportions, but there’s still room for improvement.
+
+
+2. **Measure of Robustness**:
+To evaluate how reliable my model is, I used **Stratified k-Fold Cross-Validation**, which ensures each fold has the
+same proportion of classes as the original dataset. This is especially important since my target labels are slightly imbalanced,
+with label `0` having more data points than label `1`.
+
+Here’s what I observed during cross-validation:
+- **Accuracy (78.20%)**: The model performs well on training splits.
+- **Precision (51.98%)**: It correctly predicts a fair number of positive cases.
+- **Recall (26.96%)**: It misses many actual positives, likely due to the imbalance.
+- **F1 Score (35.42%)**: Combines precision and recall but highlights the challenge of capturing the minority class effectively. -
 
 ## Error analysis
+-
+### Error Analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+- **Dataset Imbalance**:
+  - The dataset has a significant class imbalance:
+    - **1245** instances of class 0 (negative)
+    - **356** instances of class 1 (positive)
+  - This imbalance contributes to the model’s tendency to predict the majority class (class 0) more often.
+
+- **Confusion Matrix Insights**:
+  - **True Negatives (1156)**: The model correctly predicts many **class 0** instances.
+  - **True Positives (96)**: The model identifies a small number of **class 1** instances correctly.
+  - **False Negatives (260)**: A high number of **class 1** instances are predicted as **class 0**. This shows poor recall for the minority class.
+  - **False Positives (89)**: **Class 0** instances are occasionally misclassified as **class 1**, but this is relatively low compared to false negatives.
+
+- **Model Performance Metrics**:
+  - **Accuracy**: 78.2% - This is decent, but it is skewed by the imbalance, as most instances are **class 0**.
+  - **Precision**: 51.98% - The model has a moderate ability to predict **class 1** correctly, but it’s still a bit lacking.
+  - **Recall**: 26.96% - The model has a **low recall** for **class 1**, missing many actual positives (false negatives are high).
+  - **F1 Score**: 35.42% - A combination of precision and recall, which is lower due to the imbalance and recall issues.
+
+- **Sentence Length Impact**:
+  - **Range**: The sentence lengths range from very short to very long (16–2,181 characters), indicating that some **class 1** instances might be misclassified due to the variability in span length.
+
+- **Example Error Cases**:
+  - **Example 1**:
+    - **Span 1**: "Know home wanderer past age great distance worn traveler."
+    - **Span 2**: "Want ye quick right say Rawson tersely man driving tasks."
+    - **Label**: 0 (Low similarity, correctly classified).
+    - **Why it could be misleading**: The model correctly predicts low similarity, but may miss subtler connections between the sentences,
+    making it difficult to generalize to more complex cases.
+
+  - **Example 2**:
+    - **Span 1**: "Primary objective military term partly military analysis process."
+    - **Span 2**: "Infinitesimally small part atom globe release energy calculations."
+    - **Label**: 0 (Distinct contexts, correctly classified).
+    - **Why it could be misleading**: The model flags these as distinct contexts, but it may overlook domain-specific overlaps (e.g., "analysis" or "process"),
+    making the classification misleading.
+ -
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+-
+1. **Access the File from the Repository**
 
+- Go to the GitHub repository: [uazhlt-ms-program/ling-582-fall-2024-class-competition-code-joeljojo1310](https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-joeljojo1310).
+- Locate the file `ClassCompetition-joeljojo1310.ipynb` in the repository.
+- Download the file to your local machine and open the file directly in Google Colab by clicking on "Upload" and then "browse".
+
+
+2. **Set Up the Colab Environment**
+
+- Google Colab already includes most of the necessary libraries, but the notebook includes instructions to install additional required libraries such as:
+  - **SpaCy** for natural language processing tasks.
+  - **Sentence Transformers** for generating sentence embeddings.
+  - **XGBoost and Scikit-learn** for machine learning models and utilities.
+
+- These libraries will be installed automatically when running the setup section in the notebook.
+Additionally, a language model for SpaCy will be downloaded to help with text processing tasks.
+
+3. **Connecting to GPU for Faster Execution**
+
+1. To speed up the execution of training and model evaluation, connect to a GPU (T4 GPU is recommended for better performance).
+2. To enable GPU:
+   - Click on the **Runtime** menu at the top.
+   - Select **Change runtime type**.
+   - Under the **Hardware accelerator** drop-down, choose **GPU** and make sure it’s set to **T4**.
+
+4. **Uploading Files from the File Icon**
+
+1. On the left side of the Colab interface, click the **file icon** to open the file explorer.
+2. Use the **Upload** button to upload the dataset files (e.g., `train.csv`, `test.csv`) from your local machine.
+3. Once uploaded, you can use these files in the notebook for training and evaluation.
+
+6. **Running the Notebook**
+
+- After uploading the dataset and setting up the GPU, you can run the code cells in sequence. Use the play button the left of each code block to run the cell or press CTRL+F9 to all code blocks at once.
+The notebook will guide you through data preprocessing, model training, and evaluation.
+- The outputs will be displayed in the notebook itself, including metrics such as accuracy, precision, recall, and F1 score.
+
+7. **Saving and Downloading the Results**
+
+- After running the notebook and generating the results, you can save the output files (e.g., `submission.csv`) which will be displayed on the left under the "files" tab and download them directly
+to your local machine using the file explorer in Colab.
+
+By following these steps in Google Colab, we can easily reproduce the leaderboard results with minimum effort -
+
+
+
+### Leaderboard results
+
+-
+- **Submission Name on Kaggle**: joel1310
+- **Submission Filename on Kaggle**: submission.csv
+
+My highest recorded score in the competition : 58.16%
+
+This exceeds the Baseline which is provided in the competition.
+
+-
 
 ## Future Improvements
 
-_Describe how you might best improve your approach_
+-
+1. **Hyperparameter Tuning**
+   - Use **GridSearchCV** or **RandomizedSearchCV** for more effective hyperparameter optimization, improving model performance.
+
+2. **Advanced Feature Engineering**
+   - Incorporate **BERT embeddings** or other **deep learning models** (e.g., **Word2Vec**), which can capture more nuanced contextual relationships between sentences.
+
+3. **Handling Class Imbalance**
+   - Address the class imbalance using techniques like **SMOTE** or **class weights adjustment** to improve performance on the minority class.
+
+4. **Data Augmentation**
+   - Apply **text augmentation** techniques like **synonym replacement** or **back translation** to increase dataset diversity and reduce overfitting.
+-
