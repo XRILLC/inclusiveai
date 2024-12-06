@@ -1,7 +1,7 @@
 ---
 title: "Sentiment Analysis with BERT: Kaggle Competition"
 slug: "/joeljojo/course-project"
-date: 2024-11-15
+date: 2024-12-05
 author: Joel Jojo
 description: "This kaggle competition I am participating in focuses on using BERT, a pre-trained transformer model, for sentiment analysis. The goal is to classify text into sentiment categories like positive, negative, and neutral. The process includes cleaning the data, tokenizing text, and fine-tuning BERT. The model's performance will be evaluated using metrics such as accuracy and F1-score, highlighting how well BERT captures sentiment nuances."
 tags:
@@ -32,71 +32,63 @@ tags:
 ## Project description
 
 -
-Link for the kaggle competition : https://www.kaggle.com/competitions/nlp-sentiment-analysis-xm/overview
+Link to the kaggle competition : https://www.kaggle.com/competitions/nlp-sentiment-analysis-xm/overview
+
+This project which is a kaggle competition involved working on **sentiment analysis** using **BERT**, one of the most advanced pre-trained language
+models in natural language processing. The goal was to predict sentiment categories (0, 1, 2, or 3) for a set of text
+samples provided in a Kaggle competition. Using the labeled training dataset, I fine-tuned BERT to extract meaningful
+features and accurately classify sentiments in the test dataset.
 
 
-**Task summary:**
-This kaggle competition I am participating in focuses on using BERT, a pre-trained transformer model, for sentiment analysis. The goal is to classify text into sentiment categories like positive, negative, and neutral. The process includes cleaning the data, tokenizing text, and fine-tuning BERT. The model's performance will be evaluated using metrics such as accuracy and F1-score, highlighting how well BERT captures sentiment nuances.
+**Novelty**:
+What made this project exciting was its reliance on **BERT**, a cutting-edge model capable of understanding the deep
+context and semantics of text. Instead of just relying on traditional machine learning approaches, BERT allowed me to
+directly leverage pre-trained language representations and fine-tune them for this specific task. Additionally, the
+dataset, adapted from the SMILE project, introduced unique challenges like handling social media-style text, which made
+it both novel and relevant to real-world applications.
 
 
-**Timeline for the project**
-Today - 18th Nov
-Goal: Understand project requirements and finalize the plan.
 
-19th - 25th Nov: Data Preparation and Exploration
-Load and preprocess the dataset (cleaning, missing values, etc.).
-Explore data distribution (sentiment categories, tweet lengths, etc.).
-Define tokenization and cleaning functions.
+**Motivation**:
+This Kaggle competition provided an exciting opportunity to use **BERT** for sentiment analysis, something I had
+been eager to explore. One of the appealing aspects of the dataset was its nearly balanced target labels:
+- Label 1: 409 occurrences
+- Label 3: 404 occurrences
+- Label 0: 394 occurrences
+- Label 2: 393 occurrences
 
-26th Nov - 2nd Dec: Model Setup and Training
-Tokenize data using the BERT tokenizer.
-Create datasets and dataloaders for training/validation.
-Train the BERT model, experiment with hyperparameters (learning rate, batch size).
-
-3rd - 6th Dec: Model Evaluation and Fine-tuning
-Evaluate model performance using validation data.
-Analyze results (accuracy, precision, recall, F1-score).
-Fine-tune hyperparameters for better performance.
-
-7th - 8th Dec: Final Analysis and Report Preparation
-Compile insights and create visualizations for results.
-Write a concise report detailing the methodology, results, and insights.
+This balance increased the likelihood of achieving good accuracy scores in the competition. Coupled with BERT’s
+capabilities as a high-level, state-of-the-art model, which would again help me in getting a high accuracy score
+convinced me to choose this task as my project.
 
 
-9th Dec: Submission
-Submit the final project report and any code deliverables.
+**Challenges**:
+Here are some challenges I encountered while working on this sentiment analysis task:
+
+1. **Data Imbalance**
+   The dataset isn’t evenly distributed across the sentiment categories. For example, Label **1** has 409 samples,
+while Label **2** has only 393. This could make the model favor the more frequent labels.
+
+2. **Messy Text Data**
+   The text data is noisy because it’s from social media. It has slang, emojis, hashtags, and even URLs.
+For instance, `@britishmuseum The stupid #French over something again! 😒` includes handles, hashtags, and emojis that
+need cleaning.
+
+3. **Short Text Context**
+   A lot of the text samples are really short, which makes it harder to figure out the full context.
+For example, `Gosh periscope is amazing!` doesn’t give much to work with and could be interpreted differently.
+
+4. **Confusing Sentiment Labels**
+   Some texts are hard to classify because the sentiment isn’t obvious. For instance,
+`We won't stop til @britishmuseum does something.` Could this be frustration or determination? It’s hard to tell.
 
 
-**Goals of the Final Project**
--Model Implementation: Build a sentiment classification system using BERT for multi-class sentiment detection.-
+5. **Fine-Tuning BERT Efficiently**
+   While BERT is powerful, training it takes time and resources. Here, I had to ensure training completed
+in under a minute per epoch, which meant tweaking things like batch size and sequence length carefully.
 
--Statistical NLP Insights: Analyze BERT’s ability to handle subtle and complex sentiment variations in the dataset.-
-
--Performance Evaluation: Evaluate the model on metrics like accuracy, precision, recall, and F1-score.-
-
--NLP Contribution: Investigate the role of pre-trained transformers in sentiment classification tasks, highlighting their efficiency and limitations.-
-
-
-**Goals of the Final Project**
--Model Implementation: Build a sentiment classification system using BERT for multi-class sentiment detection.-
-
--Statistical NLP Insights: Analyze BERT’s ability to handle subtle and complex sentiment variations in the dataset.-
-
--Performance Evaluation: Evaluate the model on metrics like accuracy, precision, recall, and F1-score.-
-
--NLP Contribution: Investigate the role of pre-trained transformers in sentiment classification tasks, highlighting their efficiency and limitations.-
-
-
-9th Dec: Submission
-Submit the final project report and any code deliverables.
-
-
-**Goals of the Final Project**
-Model Implementation: Build a sentiment classification system using BERT for multi-class sentiment detection.
-Statistical NLP Insights: Analyze BERT’s ability to handle subtle and complex sentiment variations in the dataset.
-Performance Evaluation: Evaluate the model on metrics like accuracy, precision, recall, and F1-score.
-NLP Contribution: Investigate the role of pre-trained transformers in sentiment classification tasks, highlighting their efficiency and limitations.
 -
+
 
 ## Summary of individual contributions
 <table>
@@ -109,25 +101,97 @@ NLP Contribution: Investigate the role of pre-trained transformers in sentiment 
 <tbody>
   <tr>
     <th><b>Joel Jojo</b></th>
-    <td>Sole Contributor</td>
+    <td>It is a solo project</td>
   </tr>
 </tbody>
 </table>
 
 
 ## Results
+- **Quantitative Performance**: The model achieved an **accuracy of 99.50%** on the testing set, demonstrating its
+strong ability to predict sentiment categories accurately.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
+- **Robustness of Approach**: To validate the model's robustness, a **stratified k-fold cross-validation** was
+conducted, ensuring the balance of sentiment categories across folds. This approach yielded a **mean accuracy of
+99.87%**, showcasing the consistency and reliability of the model across multiple subsets of the data.
+
+- **Baseline Comparison**: While no official baseline was provided for this competition, the results demonstrate
+excellent performance, indicating the effectiveness of leveraging BERT for sentiment analysis on this balanced dataset.
+
+Name of submission: final_submission.csv
+Team name on kaggle:joel1310
+
+-
+
 
 ## Error analysis
+-
+In this project, I used **Stratified K-Fold Cross Validation** to assess the robustness of the model, which ensures that
+the class distribution is preserved across different training and validation splits. This approach is particularly
+useful when we want to ensure that the model's performance generalization capabilities is evaluated . Based on the results, the model consistently performed well
+across all folds, with accuracy ranging from **99.375% to 100%**, indicating that the model is quite robust.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+Here are the key challenges I encountered:
+
+1. **Overfitting**: The model achieved perfect accuracy in some folds, raising concerns about overfitting. This is
+something that confirmed after testing this model on other unseen data, potentially which is not a part of this competition.
+
+2. **Text Variability**: The model may struggle with slang, misspellings, or domain-specific language, but
+again this is something that cannot be proven right now and would require further testing on more complex test
+datasets which would mean requiring additional fine-tuning or preprocessing for these cases.
+
+4. **Confusion Matrix**: Even with high accuracy, there may be rare misclassifications, especially between similar
+sentiment classes, which requires further investigation.
+-
+
 
 ## Reproducibility
+-
+1. **Use Google Colab**: Google Colab is recommended for running this model as it supports BERT (developed by Google) without requiring extra dependencies. It also comes with pre-installed packages, making setup easier.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+2. **Download the Notebook**:
+   - Download the `.pynb` file (Sentiment_analysis.ipynb) from the repository: [Sentiment Analysis GitHub Repo](https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-joel_course_project).
+
+3. **Upload to Google Colab**:
+   - Go to Google Colab, click on **File → Upload Notebook**, and browse to select the `.pynb` file you downloaded.
+
+4. **Enable GPU for Faster Execution**:
+   - Go to **Runtime → Change runtime type** and select **GPU** (preferably T4 GPU for better performance).
+
+5. **Upload the Datasets**:
+   - Download the `train.csv` and `test_features.csv` datasets from the Kaggle competition link provided or visit the repository for
+   the link is given in step 2 and down these csv files from there.
+   - Upload them to your Colab environment.
+
+6. **Run the Code**:
+   - Run the code by clicking the play button next to each code block or use **CTRL+F9** to run all the cells at once.
+
+7. **Handle API Key Request**:
+   - If prompted for an API key, follow the instructions provided to create an account on [WandB](https://wandb.ai/) and obtain the key. Paste the API key in the output section where it is requested.
+
+8. **Get the Submission File**:
+   - Once all the code blocks are executed, the model will generate a `final_submission.csv` file. This is the file to submit to the competition.
+
+By following these steps, you should be able to reproduce the sentiment analysis model's results which I got and generate your submission file.
+
+-
 
 ## Future improvements
+-
+1. **Use a Larger Dataset**: Expanding the dataset with more diverse training data points will allow the model to
+better generalize and improve its performance across different scenarios.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
+2. **Fine-tune with Domain-Specific Data**: By fine-tuning BERT on domain-specific datasets, we can enhance the model's
+ability to understand and predict based on the particular language and nuances of the domain.
+
+3. **Hyperparameter Tuning**: Experimenting with different learning rates, batch sizes, and optimizers could help
+find the optimal configuration for the model, potentially boosting performance.
+
+4. **Ensemble Learning**: Combining the predictions from multiple models (e.g., using an ensemble of BERT with
+other models) which I had done in the class competition could lead to more accurate results by leveraging the
+strengths of each individual model.
+
+5. **Handling Imbalanced Classes**: Implementing techniques like oversampling or undersampling for imbalanced
+classes, or adjusting class weights, will ensure that the model doesn’t favor the majority class and performs better
+across all categories.
+-
