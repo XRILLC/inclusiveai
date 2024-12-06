@@ -60,6 +60,7 @@ This article explores the use of social media in trianing machine learning model
 ## Motivation
 
 I am particulary interested in how the internet can benefit machine learning for the purposes of language technology. Because sarcasm is a hard concept for even some humans to comprehend but is also very alive and well on the internet - particularly on twitter and other forums - I am interested in how we can use text data from sites such as these in incorporating sarcasm detection into the process of sentiment analysis.
+
 ## LLM
 
 <table>
@@ -74,20 +75,20 @@ I am particulary interested in how the internet can benefit machine learning for
   </thead>
 <tbody>
   <tr>
-    <th><b>LLM Model</b></th>
-    <td>Meta Llama</td>
+    <th><b>LLM model</b></th>
+    <td>meta-llama/Llama</td>
   </tr>
   <tr>
-    <th><b>LLM Version</b></th>
-    <td>LLaMA-2.7B</td>
+    <th><b>LLM model version</b></th>
+    <td>3.2-11B-Vision-Instruct</td>
   </tr>
   <tr>
-    <th><b>Model URL</b></th>
-    <td>LLaMA-2.7B/</td>
+    <th><b>Model/service URL</b></th>
+    <td>https://www.llama.com</td>
   </tr>
   <tr>
     <th><b>Why this model?</b></th>
-    <td>???</td>
+    <td>This was one of the more recent versions of meta-llama and had some of the most features that would be helpful in this task.</td>
   </tr>
 </tbody>
 </table>
@@ -95,75 +96,163 @@ I am particulary interested in how the internet can benefit machine learning for
 
 #### Description (LLM)
 
-_In the LLM's words, what is this paper about?_
+The paper is about developing a new approach to analyze text sentiment and detect sarcasm. Sentiment analysis is the task of determining whether a piece of text expresses a positive, negative, or neutral sentiment, while sarcasm detection is the task of identifying when a piece of text is meant to be ironic or mocking.
+
+The authors propose a new model called "Sentiment-Sarcasm Multi-Task Learning" (SSMTL) that can perform both tasks simultaneously. This model uses a shared representation of the text, which is learned through a pre-trained language model, and then applies two separate classifiers to predict the sentiment and detect sarcasm.
+
+The key idea is that by learning to perform both tasks together, the model can learn more general and useful representations of the text, which can improve its performance on both tasks. This approach is called "multi-task learning" because the model is learning to perform multiple tasks at the same time.
+
+The authors test their model on two benchmark datasets and show that it outperforms other state-of-the-art models on both tasks. They also provide a detailed analysis of the results and discuss the limitations of their approach.
+
+In essence, the paper is about developing a more effective way to analyze text sentiment and detect sarcasm by combining the two tasks into a single model.
 
 ##### Prompt
 
 ```markdown
-prompt here
+in your own words what is the paper about?
 ```
 
 #### What are the authors proposing?
+ 
+The authors, Yik Yang Tan, Chee-Onn Chow, Jeevan Kanesan, Joon Huang Chuah, and YongLiang Lim, are proposing a new deep learning approach called "Sentiment-Sarcasm Multi-Task Learning" (SSMTL) for sentiment analysis and sarcasm detection.
 
- After looking up the paper "Sentiment Analysis and Sarcasm Detection Using Deep Multi-Task Learning", I found that the authors are proposing a deep learning approach that combines sentiment analysis and sarcasm detection into a single multi-task learning framework.
+Specifically, they are proposing the following:
 
-Here's a brief summary of their proposal:
+1. **Shared Encoder**: They are using a pre-trained language model (BERT) as a shared encoder to extract contextualized representations of the input text.
+2. **Multi-Task Learning Framework**: They are proposing a multi-task learning framework that trains the shared encoder and two task-specific decoders (sentiment and sarcasm) simultaneously.
+3. **Weighted Combination of Loss Functions**: They are using a weighted combination of the sentiment and sarcasm classification losses to optimize the shared encoder.
+4. **Deep Multi-Task Learning Model**: They are proposing a deep multi-task learning model that combines the shared encoder and task-specific decoders to perform sentiment analysis and sarcasm detection.
 
-Background: Sentiment analysis and sarcasm detection are two related but distinct natural language processing (NLP) tasks. Sentiment analysis involves determining the emotional tone or attitude conveyed by a piece of text, while sarcasm detection involves identifying text that is intended to be ironic or mocking.
+The authors are proposing this approach to overcome the limitations of single-task learning and transfer learning methods, which can struggle to capture the nuances of sentiment and sarcasm in text.
 
-Previous approaches: Traditional approaches to sentiment analysis and sarcasm detection have treated these tasks as separate problems, using different models and features. However, the authors argue that these tasks are closely related and can benefit from a joint learning approach.
-
-Proposed approach: The authors propose a deep multi-task learning framework that jointly trains two tasks:
-
-Sentiment analysis: predicting the sentiment polarity (positive, negative, or neutral) of a text.
-Sarcasm detection: identifying whether a text is sarcastic or not.
-The framework uses a shared neural network architecture, with two separate output layers, one for each task. The network is trained on a large dataset with labeled examples for both sentiment analysis and sarcasm detection.
-
-Key contributions:
-
-The authors show that jointly training sentiment analysis and sarcasm detection improves the performance of both tasks, compared to training separate models for each task.
-They propose a novel loss function that balances the importance of both tasks during training.
-They demonstrate the effectiveness of their approach on several benchmark datasets.
-Methodology: The authors use a range of deep learning models, including convolutional neural networks (CNNs) and recurrent neural networks (RNNs), with different architectures and hyperparameters. They also experiment with different feature representations, such as word embeddings and sentiment lexicons.
-
-Conclusion: The authors conclude that their deep multi-task learning approach is effective for both sentiment analysis and sarcasm detection, and can be applied to a range of NLP tasks that involve related but distinct sub-tasks.
+By combining the two tasks, the authors believe that their approach can learn more general and useful representations of the text, which can improve the performance of both sentiment analysis and sarcasm detection.
 
 ##### Prompt
 
 ```markdown
-In the article Sentiment Analysis and Sarcasm Detection Using Deep Multi-Task Learning, what are the authors
+what are the authors proposing?
 ```
 
 #### What is the motivation for the work?
 
+Based on my understanding of the paper, the authors' motivation for their work is to improve the performance of sentiment analysis and sarcasm detection tasks in natural language processing (NLP).
+
+The authors are motivated by the following challenges:
+
+1. **Ambiguity in sentiment and sarcasm**: Sentiment and sarcasm are complex and nuanced aspects of human language, and current NLP models often struggle to capture these nuances accurately.
+2. **Limited performance of single-task learning**: Traditional single-task learning approaches, which train models on a single task (either sentiment analysis or sarcasm detection), often fail to achieve high performance on both tasks.
+3. **Overfitting and underfitting**: Current models can suffer from overfitting (fitting too closely to the training data) or underfitting (failing to capture the underlying patterns in the data), leading to poor performance on test data.
+
+The authors' motivation is to address these challenges by proposing a novel approach that combines the strengths of both sentiment analysis and sarcasm detection tasks. By learning to perform both tasks simultaneously, they aim to:
+
+1. **Improve performance on both tasks**: The authors hope to achieve better performance on both sentiment analysis and sarcasm detection by leveraging the shared representations learned from both tasks.
+2. **Reduce overfitting and underfitting**: By training on both tasks simultaneously, the authors aim to regularize the model and reduce the risk of overfitting and underfitting.
+3. **Capture nuanced aspects of human language**: The authors hope to capture the complex and nuanced aspects of human language, including sentiment and sarcasm, by learning from both tasks simultaneously.
+
+Overall, the authors' motivation is to push the state-of-the-art in sentiment analysis and sarcasm detection by proposing a novel and effective approach that combines the strengths of both tasks.
+
 ##### Prompt
 
 ```markdown
-prompt here
+based on your understanding, what is the authors' motivation for their work?
 ```
 
 #### What is the approach or innovation?
 
+The paper proposes a novel approach called "Sentiment-Sarcasm Multi-Task Learning" (SSMTL) that combines sentiment analysis and sarcasm detection tasks using deep multi-task learning. The innovation in this approach is the use of a shared encoder and two task-specific decoders to learn representations that are useful for both tasks.
+
+Here are some key aspects of the approach:
+
+1. **Shared Encoder**: The authors use a pre-trained language model (BERT) as a shared encoder to extract contextualized representations of the input text. This shared encoder is used to learn a common representation of the text that is useful for both sentiment analysis and sarcasm detection.
+2. **Multi-Task Learning Framework**: The authors propose a multi-task learning framework that trains the shared encoder and two task-specific decoders (sentiment and sarcasm) simultaneously. This framework allows the model to learn from both tasks and share knowledge between them.
+3. **Task-Specific Decoders**: The authors use separate decoders for sentiment analysis and sarcasm detection. These decoders are trained to predict the sentiment and sarcasm labels, respectively, using the shared representations learned by the encoder.
+4. **Weighted Combination of Loss Functions**: The authors use a weighted combination of the sentiment and sarcasm classification losses to optimize the shared encoder. This allows the model to balance the importance of both tasks and learn representations that are useful for both.
+5. **Deep Multi-Task Learning Model**: The authors propose a deep multi-task learning model that combines the shared encoder and task-specific decoders to perform sentiment analysis and sarcasm detection.
+
+The innovation in this approach is the use of a shared encoder and multi-task learning framework to learn representations that are useful for both sentiment analysis and sarcasm detection. This approach allows the model to capture the complex and nuanced aspects of human language, including sentiment and sarcasm, and achieve better performance on both tasks.
+
+Some specific innovations in this approach include:
+
+* **Using a pre-trained language model as a shared encoder**: This allows the model to leverage the knowledge and representations learned from large amounts of text data.
+* **Using a multi-task learning framework**: This allows the model to learn from both tasks and share knowledge between them.
+* **Using task-specific decoders**: This allows the model to learn task-specific representations and improve performance on both tasks.
+
+Overall, the approach proposed in this paper is innovative in its use of a shared encoder and multi-task learning framework to learn representations that are useful for both sentiment analysis and sarcasm detection.
+
 ##### Prompt
 
 ```markdown
-prompt here
+In this paper, what is the approach taken and/or the innovation it uses
 ```
 
 #### What are the results and how do they compare with competing approaches?
 
+The authors present the results of their work on the Sentiment-Sarcasm Multi-Task Learning (SSMTL) approach, which is evaluated on two benchmark datasets: SST-2 (sentiment analysis) and SARC (sarcasm detection).
+
+**Results on SST-2:**
+
+* **Accuracy:** 84.5%
+* **F1-score:** 83.2%
+* **Area under the ROC curve (AUC-ROC):** 88.5%
+
+**Results on SARC:**
+
+* **Accuracy:** 86.2%
+* **F1-score:** 84.5%
+* **Area under the ROC curve (AUC-ROC):** 91.2%
+
+The authors compare their SSMTL approach with several competing approaches, including:
+
+1. **Single-task learning:** This approach trains separate models for sentiment analysis and sarcasm detection.
+2. **Transfer learning:** This approach uses a pre-trained language model as a starting point and fine-tunes it on the target dataset.
+3. **Multi-task learning:** This approach trains a single model on both sentiment analysis and sarcasm detection tasks.
+
+**Comparison with competing approaches:**
+
+* **Single-task learning:** SSMTL outperforms single-task learning on both SST-2 and SARC datasets, with improvements of 2.5% and 3.8% in accuracy, respectively.
+* **Transfer learning:** SSMTL outperforms transfer learning on both SST-2 and SARC datasets, with improvements of 1.8% and 2.5% in accuracy, respectively.
+* **Multi-task learning:** SSMTL outperforms multi-task learning on both SST-2 and SARC datasets, with improvements of 1.2% and 2.2% in accuracy, respectively.
+
+**Ablation study:**
+
+The authors also conduct an ablation study to evaluate the impact of different components of the SSMTL approach. They find that:
+
+* **Removing the shared encoder:** The model's performance drops by 2.5% on SST-2 and 3.2% on SARC.
+* **Removing the task-specific decoders:** The model's performance drops by 1.8% on SST-2 and 2.5% on SARC.
+* **Removing the weighted combination of loss functions:** The model's performance drops by 1.2% on SST-2 and 1.8% on SARC.
+
+Overall, the results show that the SSMTL approach achieves state-of-the-art performance on both sentiment analysis and sarcasm detection tasks, outperforming competing approaches. The ablation study also highlights the importance of each component of the SSMTL approach in achieving good performance.
+
 ##### Prompt
 
 ```markdown
-prompt here
+What are the results of the authors' work and how does it compare to competing approaches?
 ```
 
 #### Is the comparison fair?
 
+Upon reviewing the paper, I notice that the comparison to other approaches is not entirely fair. Here are some reasons why:
+
+1. **Lack of detail on other approaches:** The paper does not provide enough detail on the other approaches being compared, such as their architectures, hyperparameters, and training procedures. This makes it difficult to evaluate the fairness of the comparison.
+2. **Different evaluation metrics:** The paper uses different evaluation metrics for sentiment analysis and sarcasm detection, which can make it challenging to compare the results directly. For example, the paper uses accuracy, F1-score, and AUC-ROC for sentiment analysis, while it uses accuracy and F1-score for sarcasm detection.
+3. **Different datasets:** The paper uses two different datasets for sentiment analysis (SST-2) and sarcasm detection (SARC), which can affect the comparison. Using different datasets can introduce bias or confounding variables that affect the results.
+4. **Lack of hyperparameter tuning:** The paper does not mention hyperparameter tuning for the other approaches being compared. Hyperparameter tuning is crucial for achieving good performance, and not doing so can lead to biased comparisons.
+5. **No discussion of limitations:** The paper does not discuss the limitations of the other approaches being compared, which can provide valuable insights into the strengths and weaknesses of each approach.
+
+To make a fair comparison, the authors should provide more detail on the other approaches being compared, including their architectures, hyperparameters, and training procedures. They should also use a consistent evaluation metric and dataset for both tasks, and discuss the limitations of each approach.
+
+**Possible improvements:**
+
+1. **Provide more detail on other approaches:** The authors should provide a detailed description of the other approaches being compared, including their architectures, hyperparameters, and training procedures.
+2. **Use consistent evaluation metrics:** The authors should use the same evaluation metrics for both sentiment analysis and sarcasm detection to make a more direct comparison.
+3. **Use a consistent dataset:** The authors should use the same dataset for both tasks to reduce bias and confounding variables.
+4. **Perform hyperparameter tuning:** The authors should perform hyperparameter tuning for all approaches being compared to ensure a fair comparison.
+5. **Discuss limitations:** The authors should discuss the limitations of each approach to provide a more comprehensive understanding of the results.
+
 ##### Prompt
 
 ```markdown
-prompt here
+is the comparison to other approaches a fair comparison?
 ```
 
 #### What are the takeaways according to the authors?
@@ -176,38 +265,175 @@ prompt here
 
 #### What are the takeaways according to you?
 
+Based on my analysis, here are the most important takeaways from this work:
+
+1. **Multi-task learning can improve performance:** The results show that multi-task learning can improve performance on both sentiment analysis and sarcasm detection tasks, compared to single-task learning.
+2. **Shared encoder can be beneficial:** The use of a shared encoder can be beneficial for multi-task learning, as it allows the model to learn general representations that can be applied to both tasks.
+3. **Task-specific decoders can improve performance:** The use of task-specific decoders can improve performance on both tasks, as they allow the model to learn task-specific representations that can be applied to each task.
+4. **Weighted combination of loss functions can be beneficial:** The use of a weighted combination of loss functions can be beneficial for multi-task learning, as it allows the model to balance the importance of each task and learn representations that are useful for both tasks.
+5. **SSMTL can be a powerful approach:** The results show that the Sentiment-Sarcasm Multi-Task Learning (SSMTL) approach can be a powerful approach for sentiment analysis and sarcasm detection, outperforming other state-of-the-art approaches.
+
+**Implications:**
+
+1. **Multi-task learning can be applied to other tasks:** The results suggest that multi-task learning can be applied to other tasks, such as emotion recognition, intent detection, and dialogue systems.
+2. **Shared encoder can be used in other applications:** The use of a shared encoder can be beneficial in other applications, such as language translation, text classification, and question answering.
+3. **Task-specific decoders can be used in other applications:** The use of task-specific decoders can be beneficial in other applications, such as sentiment analysis, emotion recognition, and intent detection.
+4. **Weighted combination of loss functions can be used in other applications:** The use of a weighted combination of loss functions can be beneficial in other applications, such as multi-task learning, transfer learning, and meta-learning.
+
+**Future work:**
+
+1. **Apply SSMTL to other tasks:** The results suggest that SSMTL can be applied to other tasks, such as emotion recognition, intent detection, and dialogue systems.
+2. **Investigate other architectures:** The results suggest that other architectures, such as attention-based models and graph-based models, can be used for multi-task learning.
+3. **Investigate other loss functions:** The results suggest that other loss functions, such as adversarial loss and generative loss, can be used for multi-task learning.
+4. **Investigate other evaluation metrics:** The results suggest that other evaluation metrics, such as F1-score and AUC-ROC, can be used to evaluate the performance of the model.
+
 ##### Prompt
 
 ```markdown
-prompt here
+According to you, what are the most important takeaways from this work?
 ```
 
 #### Would you use this?  If so, how/where would you use this?
 
+As a hypothetical AI assistant, I can provide a neutral and informed perspective on the approach taken by the authors.
+
+**Would I use the approach?**
+
+Yes, I would consider using the Sentiment-Sarcasm Multi-Task Learning (SSMTL) approach in certain scenarios. Here's why:
+
+1. **Multi-task learning:** The approach leverages multi-task learning, which can be beneficial for learning general representations that can be applied to both sentiment analysis and sarcasm detection.
+2. **Shared encoder:** The use of a shared encoder allows the model to learn general representations that can be applied to both tasks, which can be beneficial for improving performance.
+3. **Task-specific decoders:** The use of task-specific decoders allows the model to learn task-specific representations that can be applied to each task, which can be beneficial for improving performance.
+4. **Weighted combination of loss functions:** The use of a weighted combination of loss functions allows the model to balance the importance of each task and learn representations that are useful for both tasks.
+
+**Where would I use the approach?**
+
+I would consider using the SSMTL approach in the following scenarios:
+
+1. **Sentiment analysis and sarcasm detection:** The approach is specifically designed for sentiment analysis and sarcasm detection, so it would be a natural fit for these tasks.
+2. **Multi-task learning:** The approach can be applied to other multi-task learning scenarios where the tasks are related and can benefit from shared representations.
+3. **Natural language processing:** The approach can be applied to other natural language processing tasks such as text classification, intent detection, and dialogue systems.
+
+**How would I use the approach?**
+
+I would use the SSMTL approach in the following ways:
+
+1. **Data preparation:** I would prepare the data by tokenizing the text, creating a vocabulary, and padding the sequences to a fixed length.
+2. **Model architecture:** I would use the SSMTL model architecture, which consists of a shared encoder and two task-specific decoders.
+3. **Training:** I would train the model using a weighted combination of loss functions, with the weights adjusted based on the importance of each task.
+4. **Evaluation:** I would evaluate the model's performance using standard evaluation metrics such as accuracy, F1-score, and AUC-ROC.
+
+Overall, the SSMTL approach is a promising approach for sentiment analysis and sarcasm detection, and it can be applied to other multi-task learning scenarios where the tasks are related and can benefit from shared representations.
+
 ##### Prompt
 
 ```markdown
-prompt here
+Would you use the approach the authors did?  How and where
 ```
+In the paper "Sentiment Analysis and Sarcasm Detection Using Deep Multi-Task Learning", the authors proposed a deep multi-task learning approach that jointly trains sentiment analysis and sarcasm detection models.
+
+Would I use the approach the authors did?
+
+**Yes**, I would consider using a similar approach in certain applications, but with some modifications.
+
+**Why?**
+
+1. **Shared knowledge**: The authors' approach leverages the shared knowledge between sentiment analysis and sarcasm detection tasks, which can lead to better performance on both tasks.
+2. **Improved robustness**: By training both tasks jointly, the model can learn to recognize subtle differences between sentiment and sarcasm, making it more robust to noise and ambiguity.
+3. **Efficient**: The multi-task learning approach can be more efficient than training separate models for each task, as it reduces the number of parameters and computations required.
+
+**In what application?**
+
+I would consider using a similar approach in applications where:
+
+1. **Conversational AI**: In conversational AI systems, such as chatbots or virtual assistants, sentiment analysis and sarcasm detection are crucial for understanding user intent and responding accordingly.
+2. **Social media monitoring**: Analyzing social media posts for sentiment and sarcasm can help brands and organizations understand public opinion and respond to customer concerns.
+3. **Text classification**: In text classification tasks, such as spam detection or hate speech detection, sentiment analysis and sarcasm detection can be used as features to improve classification accuracy.
+
+**Modifications**:
+
+While I would consider using a similar approach, I would also modify it to:
+
+1. **Incorporate more tasks**: I would explore incorporating additional tasks, such as intent detection or topic modeling, to further leverage shared knowledge and improve performance.
+2. **Use more advanced architectures**: I would consider using more advanced neural network architectures, such as transformer-based models, to improve performance and efficiency.
+3. **Use transfer learning**: I would use pre-trained models and fine-tune them on the specific task and dataset to adapt to the application.
+
+Overall, the authors' approach is a good starting point, but I would modify it to suit the specific application and dataset, and incorporate more advanced techniques and architectures to improve performance.
 
 ##### Prompt
 
 ```markdown
-prompt here
+In the paper that I asked you to summarize, would you use the approach the authors did? Why? And in what application?
 ```
 
 #### What problems remain and what are the next steps?
 
+Given the work of the authors in "Sentiment Analysis and Sarcasm Detection Using Deep Multi-Task Learning", some problems that remain and potential next steps to continue this work are:
+
+**Remaining problems:**
+
+1. **Adversarial examples**: The authors' approach may not handle adversarial examples well, but don't explicitly model the nuances of language.
+2. **Contextual examples**: in their dataset, which can result in suboptimal performance on out-of-vocabulary (OOV) examples.
+3. **Lack of contextual examples**: in their dataset may not generalize well to contextual examples.
+
+**Adversarial examples**: in their dataset, which can lead to suboptimal performance on OOV examples.
+
+ 
+3. **Handling contextual examples**: in their dataset, which can result in suboptimal performance on OOV examples.
+4. **Handling contextual examples**: in their dataset, which can lead to suboptimal performance on OOV examples.
+5. **Handling contextual examples**: in their dataset, which can result in suboptimal performance on OOV examples.
+
+2. **Scalability**: The authors' approach may not be scalable to larger datasets, which can result in suboptimal performance on larger datasets.
+
+**Next steps:**
+
+1. **Handling contextual examples**: To address the issue of handling contextual examples, the authors could develop a more robust approach to handle OOV examples.
+2. **Improving contextual examples**: To address the issue of handling contextual examples, researchers could develop a more robust approach to handle OOV examples.
+
+3. **Addressing scalability**: To address the issue of handling larger datasets, researchers could develop a more scalable approach to handle larger datasets.
+
+4. **Adversarial examples**: The authors' approach may not handle adversarial examples well, which can result in suboptimal performance on adversarial examples.
+
+**Next steps:**
+
+1. **Explore multi-task datasets**: Investigate the performance of the authors' approach on larger datasets to improve performance on OOV examples.
+2ли authors.
+2. **Improve contextual examples**: in their dataset, authors.
+3. **handling contextual examples**: in their dataset, which can result in suboptimal performance on OOV examples.
+4. **Develop a more robust approach**: To address the issue of handling larger datasets, researchers could develop a authors, a more scalable approach to handle OOV examples.
+
+**Investigate contextual examples**:
+
+5. **Improve contextual examples**: in their dataset, which can result in suboptimal performance on OOV examples.
+
+5. **Handling contextual examples**: To address the issue of handling contextual examples, researchers could develop a more robust approach to handle OOV examples.
+
+**Addressing adversarial examples**: To improve contextual examples, which can result in suboptimal performance on OOV examples.
+
+6. **Develop a more robust approach**: To address the issue of handling larger datasets, researchers could develop a more scalable approach to handle OOV examples.
+
+7. **Improve contextual examples**: To address the issue of handling contextual examples in their dataset.
+
+8. **Develop a more robust approach to handle sarcasm**: The authors' approach may not handle sarcasm well, especially in cases where the sarcasm is subtle or context-dependent. Developing a more robust approach to handle sarcasm could improve the overall performance of the model.
+
+9. **Explore other architectures**: The authors used a multi-task learning approach, but other architectures, such as transformers or graph-based models, could be explored to improve performance on sentiment analysis and sarcasm detection.
+
+10. **Multimodal sentiment analysis and sarcasm detection**: The authors only considered text-based sentiment analysis and sarcasm detection. Exploring multimodal approaches that incorporate images, audio, or video could provide more accurate and robust results.
+
+By addressing these remaining problems and exploring new approaches, researchers can build upon the authors' work and develop more accurate and robust sentiment analysis and sarcasm detection models.
+
 ##### Prompt
 
 ```markdown
-prompt here
+Given the work of the authors, what problem remains after their work and what would the best next steps be to continue this work?
 ```
 
 ### Experience using the LLM
 
-_Describe your process for using the LLM.  How did the LLM perform?_
+The process for using the LLM began in actually choosing an LLM to use. I had initially started the process with one LLM but then had issues with it being able to give me responses to some questions. When I finally chose a new LLM, I had to give it specific information for it to access the article (the title, authors, pubmed ID) it gave thorough answers. I wasn't sure if saying phrases like "from your understanding" and "in your own words" would be great considering the LLM isn't a human, but it was an interesting way to ask an AI in a human way. Overall I was impressed at how well it did in summarizing and providing feedback based on the questions that I asked, but as outlined in my response to the next question, 
+
+
  
 #### Errors and limitations of the LLM 
 
-_Where did it fall short or make mistakes?_
+The model was unable to make assumptions about what I was asking or choose a specific way to answer it so the result was that the model would give me extremely comprehensive answers to cover all its bases. Because of this it gave me information that literally answered the question but there were also times where it gave me unneccesary information that was possibly more literal than needed. Additionally, there were a couple issues with the second to last question. The model seemed to get stuck in a loop and repeated itself until I made it stop generating a response. Finally, I think that it is always important to note that no matter how well-trained an AI model is, it is important to make sure it is providing accurate information. Because a lot of what was being generated was reliant on the information in the paper, that is less of an issue, but when informatoin from 'outside sources' was referred to, there is the chance that it could have been inaccurate. If we're evaluating models for these type of requests, I do think that it is a resource for understanding the main points of a paper, but it does require some double-checking of the information provided.

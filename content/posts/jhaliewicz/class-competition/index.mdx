@@ -55,7 +55,14 @@ My approach is to compare the effectiveness of both classical and modern machine
 
 Pretrained BERT Model: I will fine-tune BERT to capture the nuances of natural language, utilizing its capability to handle sentence-level semantics and context. This approach is particularly suited for textual data where the relationships between words and phrases play a critical role - this is integral in understanding the style of a writer. I plan to experiment with layers of BERT and incorporate custom feature extraction such as sentence structure, length and number of sentences, POS counts, etc.
 
-Random Forest Model: Secondly, I will implement a Random Forest classifier using features like Part-of-Speech (POS) counts, sentence length, and syntactic complexity. To enhance feature richness, I may incorporate statistical measures such as TF-IDF and explore the importance of each feature in model performance. Feature importance scores will be analyzed to determine which features contribute most significantly, and I will refine the feature set in order to optimize the model.
+Random Forest Model: Secondly, I will implement a Random Forest classifier using features like Part-of-Speech (POS) counts, sentence length, and syntactic complexity. To enhance feature richness, I incorporated TF-IDF and weighed the importance of each feature for model performance. Feature importance scores will be analyzed to determine which features contribute most significantly, and will choose the best features in a parameter grid using grid search. By tuning the following:
+- n_estimators: number of trees in the forest
+- max_depth: The maximum depth of the tree
+- min_samples_split: the minimum number of samples required to split an internal node
+- min_samples_leaf: the minimum number of samples to be a leaf node
+- max_features: number of features to look at for the best split
+- bootstrap: whether or not bootstrap samples are used in building trees
+- class_weight: the weight associated with each class
 
 Creative Integration and Novelty: To introduce an innovative aspect, I will explore the possibility of combining the two models using an ensemble method, where BERT handles semantic nuances and Random Forest emphasizes syntactic and structural features. This hybrid approach could lead to a more comprehensive model that balances deep learning's strengths with interpretable insights from traditional methods. 
 
@@ -79,4 +86,4 @@ Reproducibility and/or link to readme will go here!
 
 - Different features
 - More complex syntactic structure analysis
-- sentiment analysis
+- sentiment analysis 
