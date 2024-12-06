@@ -1,7 +1,7 @@
 ---
 title: "EXAMPLE: My clever approach to the class-wide shared task"
 slug: "/ashtonlevier/class-competition"
-date: 2024-11-14
+date: 2024-12-01
 author: "Ashton Levier"
 description: "My approach can be summarized as ..."
 tags:
@@ -22,7 +22,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>N/A</td>
+    <td>49%</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -46,15 +46,91 @@ _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/cl
 
 ## Exploratory data analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+The data consists of a `.csv` with the labels `ID`, `TEXT`, and `LABEL`.
 
-## Exploratory data analysis
+>|ID|TEXT|LABEL|
+>|-:|---:|----:|
+>|A number between `0` and `1599`, or `1999` for a total of 1601 rows.|A string containing two pieces of text seperated by `[SNIPPET]`.|A digit, where `0` indicates the texts are written by different authors, and `1` indicates they are authored by the same person.|
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+Searching with regex (`",(0|1)\n?`) yields the following results about the data:
+
+>|Label|Count|Percentage|
+>|-:|-:|-:|
+>|0|1244|77.80%|
+>|1|355|22.20%|
+>||__1599__*|100%|
+
+<sub>*This probably means there's a false negative for each value since there are 1601 rows.</sub>
+
+## Approach
+
+When I approached this task I wanted to make sure that I could invoke training and testing separately. I also wanted the trained model to be accessible repeatedly. I began with my `main.py` handling the training and testing concerns separately. Main contains the `train` function that trains a CNN after preprocessing the data defined in the `file_path` var. The user can train data by invoking a command like:
+
+> `python3 -m src.main train --file_path=data/train.csv`
+
+After training, the user can test the newly trained model by pointing to a test file, like so:
+
+> `python3 -m src.main test --file_path=data/test.csv --model_path=trained_model.h5 --tokenizer_path=tokenizer.pkl --max_len_path=max_len.pkl`
+
+The parser accepts the following args:
+
+>|Arg|Description|Accepted Values/Defaults|
+>|-:|-:|-:|-:|
+>|mode|Mode: 'train' to train the model, 'test' to run predictions.|choices=['train', 'test']|
+>|--file_path|Path to the dataset file (train.csv or test.csv).|required=True|
+>|--model_path|Path to the saved model (for testing).|default='trained_model.h5'|
+>|--tokenizer_path|Path to the saved tokenizer (for testing).|default='tokenizer.pkl'|
+>|--max_len_path|Path to the saved max_len (for testing).|default='max_len.pkl'|
+
+### The Code
+#### Training
+
+In `train_utils` the function [`preprocess_and_split(file_path)`](https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-anlevier/blob/be2ad015cf72f7f0b1d2f876f6cb3891a2ef9ef8/train_utils/split_data.py#L8) accepts a file with the `TEXT` and `LABEL` columns. To process the items in the `TEXT` column, each item is split on the delimiter `[SNIPPET]` and saved as `TEXT1` and `TEXT2`. Each item is then stripped, and the `TEXT` column is dropped and replaced with the `TEXT1` and `TEXT2` columns.
+
+After the data is preprocessed it's tokenized, padded, and limited to a `max_len` of 100. The model is prepped for training on this data with a held back `test_size` of 20% using `sklearn.model_selection`'s `train_test_split`
+
+Finally, the CNN is trained in [`train_cnn`](https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-anlevier/blob/be2ad015cf72f7f0b1d2f876f6cb3891a2ef9ef8/train_utils/split_data.py#L38). I chose to use a CNN for this is a simple binary classification task because it excels at finding local patterns, making it particularly effective at capturing textual similarities. CNNs are also good at detecting patterns regardless of there position in the text which allows them to recognize similar features no matter where they appear. I also wanted to process `TEXT1` and `TEXT2` in parallel convolutional layers. This allows the model to extract meaningful features from both before making a comparison between the two.
+
+<!-- max_len and X1_train.shape relevance -->
+<!-- vocab_size -->
+<!-- embedding_dim -->
+<!-- pickle for deserializing -->
+
+>1. The model takes two inputs `X1_train` (`TEXT1`) and `X2_train` (`TEXT2`), padding them to `max_len`
+>2. Both inputs are converted to dense 128-dimensional vector representations using embedding layers
+>3. Each embedding is passed through a 1D convolutional layer to detect local patterns like word sequences. Max-pooling reduces the size of the convolution by keeping only the most important features. Then the convolution is flattened.
+>4. The processed features of `TEXT1` `TEXT2` are merged for comparison
+>5. The merged are passed through a dense layer with 128 neurons and ReLU activation to learn complex relationships between the two texts
+>6. A final sigmoid activation outputs a probability score indicating the likelihood that the two texts are similar
+>7. The model is compiled with the Adam optimizer and binary cross-entropy as the loss function
+>8. The model trains for 10 epochs with a batch size of 32
+>9. The trained model is saved for future use
+
+#### Testing
+
+When the user calls [`test`](https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-anlevier/blob/be2ad015cf72f7f0b1d2f876f6cb3891a2ef9ef8/src/main.py#L21) from the command line:
+
+1. The serialized tokenizer and `max_len` are loaded
+2. The `TEXT` is split into `TEXT1` and `TEXT2`, tokenized, and padded. This is handled in [`preprocess_test_data`](https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-anlevier/blob/be2ad015cf72f7f0b1d2f876f6cb3891a2ef9ef8/train_utils/split_data.py#L70) which outputs `X1_test_data`(`TEXT1`) and `X2_test_data`(`TEXT2`)
+3. The trained model is loaded and makes predictions on text similarity
+4. Predictions are saved as `PREDICTION` (raw probability score) and `PREDICTION_LABEL`(0 or 1)
+5. Results are saved with just the `ID` and `LABEL`
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
+Here are my test_predictions.
+
+>|Label|Count|Percentage|
+>|-:|-:|-:|
+>|0|804|89.43%|
+>|1|95|10.57%|
+>||__899__|100%|
+
+I currently have 49% accuracy on the [Kaggle Leaderboard](https://www.kaggle.com/competitions/ling-582-fa-2024-course-competition/leaderboard).
+
+Baseline: 0.50901
+My performance: 0.49216
+Delta: 0.01685
 
 ## Error analysis
 
@@ -64,6 +140,7 @@ _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/cl
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
 _If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+View steps to reproduce my results in the [README](https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-anlevier/blob/main/README.md)
 
 
 ## Future Improvements
