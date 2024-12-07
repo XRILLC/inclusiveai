@@ -1,7 +1,7 @@
 ---
 title: "Sniffing Out the Answer: How do LLMs Interpret Smell?"
 slug: "/acooke82/paper-summary"
-date: 2024-11-11
+date: 2024-12-05
 author: Alexandra Cooke
 description: "This post discusses a paper in which research is conducted about how human interpretation of smell is the same, or different, to AI interpretation."
 tags:
@@ -53,7 +53,7 @@ Shu Zhong, Zetao Zhou, Christopher Dawes, Giada Brianz, Marianna Obrist. "Sniff 
 
 ## Description
 
-In this paper, the authors discuss how developing AI with understandings about how humans physically interact with the world is critical for building beneficial AI. If the human and AI assessments of the physical world are considered to be the same, we can say that there is human-AI alignment. This alignment leads to better design and heightens user experiences. While some senses, such as vision and hearing, are already being using in AI applications, smell remains an underdeveloped area of research. The authors focus on analyzing if human-AI alignment is possible for smell through LLMs for their work as LLMs are becoming more common as a human interface and can learn concepts by grouping relationships in an embedding space. While LLMs have proven themselves possible to be aligned for other senses, smell is trickier because it is difficult for humans to conceptualize, suggesting that it may be difficult for LLMs to build the concepts necessary to make human-like judgements. The authors set out to test how similar the AI and human concepts of smell are by creating "Sniff AI", a system that analyzes how LLMs encode human scent descriptions and if that embedding space is capable of human-like judgements. The system works by giving human study participants two separate tasks, a Scent Description and an Interactive Scent Comparison Description. The study found that the AI achieved a success rate for the first task of 27.5% and a success rate of 37.5% for the second task. The authors also used other LLMs, such as OpenAI GPT-4, to describe how scents smell to see if AI descriptions would differ from the human participant ones. By comparing term frequency wordclouds produced from both descriptions, it was additionaly confirmed that alignment was low. The outcome could be due to the lack of standardized descriptions for scent, something participants noted they struggled with in the post-experiment interviews. This discrepancy could be also be explained by LLMs use of expert terminology, such as "nutty undertones" or "subtly spicy", descriptions unlikely to be used by a standard participant. The moderately more successful secondary task could be due to the participants' comfortability or experience gained by completing task one. In the future, I think there are two specific additions that could lead to more insight on the AI's results. One would be to add participants who are experts on scent, such as perfumers or sommeliers, and see if their human-AI alignment is closer. Alternatively, if the AI is to cater to the general public, adding training data that is more casual in nature and less chemical could lead to an increased success rate as well.                     
+In this paper, the authors discuss how developing AI that have a strong understanding about how humans physically interact with the world is critical for building beneficial AI. While some senses, such as vision and hearing, are already being using in AI applications, smell remains an underdeveloped area of research. The authors propose that LLMs, which have proven themselves capable of making human-like judgements for other senses by conceptualizing them within embedding spaces, could have similar success in the area of smell. The authors set out to test their theory by creating "Sniff AI", a system that analyzes how LLMs encode human scent descriptions and if the embedding spaces created by those descriptions will lead to judgements similar to human ones. The system was split into two tasks, one that focused on if their LLM could correctly guess the scent from a human participant's description and one that focused on if the LLM could correctly identify a second scent based on a human participant's description of how the second scent differed from the first one presented. The study found that the AI was not able to correctly identify the target scent often, with the second task having a marginally better success rate than the first. While the authors expected this result due to humans struggling to conceptualize smell themselves, this suggests that there are significant challenges left to overcome if AI applications are looking to include impactful scent-based experiences. 
 
 ## Motivation
 
@@ -78,7 +78,7 @@ I selected this paper while scrolling through the most recent papers available t
   </tr>
   <tr>
     <th><b>LLM model version</b></th>
-    <td>Llama-3.2-3B-Instruct Q8</td>
+    <td>Llama-3.2-1B-Instruct-Q8</td>
   </tr>
   <tr>
     <th><b>Model/service URL</b></th>
@@ -86,7 +86,7 @@ I selected this paper while scrolling through the most recent papers available t
   </tr>
   <tr>
     <th><b>Why this model?</b></th>
-    <td>I noticed that the Jan UI allows you to download a pdf as opposed to typing out the paper which seemed like an interesting feature. Additionally, the desktop UI allows you to select from a number of different models, and it could be interesting to try downloading a few and seeing how they perform against each other. In terms of using Llama, Meta Llama 3.2 released very recently (Sept 25!) with expectations to beat out other open source models. I was curious to give it a try and see how accurate it would be.</td>
+    <td>I noticed that the Jan UI allows you to download a pdf as opposed to typing out the paper which seemed like an interesting feature. Additionally, the desktop UI allows you to select from a number of different models and it could be interesting to try downloading a few to see how they perform against each other. In terms of using Llama, Meta Llama 3.2 released very recently (Sept 25!) with expectations to beat out other open source models. I was curious to give it a try and see how accurate it would be. Unfortunately, the 3B version ran very slowly on my computer so I switched to 1B instead.</td>
   </tr>
 </tbody>
 </table>
@@ -96,94 +96,298 @@ I selected this paper while scrolling through the most recent papers available t
 
 _In the LLM's words, what is this paper about?_
 
+Based on the text you pasted, I believe the paper you provided is about the development and evaluation of a machine learning model (LLM) called Sniff AI, which is designed to recognize and interpret human scent descriptions. The paper appears to investigate the strengths and limitations of the Sniff AI model in recognizing and describing different scents, and how the model performs in comparison to human evaluators.
+
+The paper seems to be focused on the following aspects:
+
+Scent recognition: The paper explores how well the Sniff AI model can recognize and interpret different scents, including familiar and less familiar scents.
+Olfactory alignment: The paper investigates how well the Sniff AI model aligns with human olfactory experiences, including the ability to distinguish between similar scents and the ability to recognize specific scents.
+Bias and limitations: The paper highlights the limitations and biases of the Sniff AI model, including its tendency to prioritize familiar scents and its challenges in recognizing less common scents.
+Future work: The paper discusses potential areas for future research, such as incorporating more diverse scents and emotional expressions, using multimodal data inputs, and developing more effective Human-in-the-Loop strategies.
+Overall, the paper appears to be a technical evaluation of the Sniff AI model, with a focus on improving its performance and understanding of human olfactory experiences.
+Is that a correct interpretation?
+
 ##### Prompt
 
 ```markdown
-Good evening! Could you describe to me what you think this paper is about?
+Could you please describe to me what you think the paper I pasted to you above is about?
 ```
 
 #### What are the authors proposing?
 
+Based on my previous interpretation, I think the authors are proposing the following:
+
+Main Proposal:
+
+The authors are proposing a new approach to scent recognition that combines machine learning (specifically, a large language model like LLM) with human olfactory experiences. They are suggesting that the LLM can be trained to recognize and interpret human scent descriptions, but that the model should be designed to be more nuanced and context-dependent.
+
+Key Takeaways:
+
+The authors are proposing the following key takeaways:
+
+Human scent descriptions are complex and nuanced: The authors recognize that human scent descriptions are not just simple binary classifications (e.g., "minty" vs. "lemony"), but rather involve complex sensory experiences that can be difficult to quantify.
+LLMs need to be designed with human olfactory experiences in mind: The authors argue that LLMs should be designed to be more aware of the context and nuances of human olfactory experiences, rather than just relying on pre-programmed scent recognition algorithms.
+Multimodal approaches are necessary: The authors suggest that multimodal approaches, such as combining LLMs with human descriptions and sensory data (e.g., images, videos), may be necessary to capture the full complexity of human olfactory experiences.
+Future research is needed: The authors acknowledge that there is still much to be learned about human olfactory experiences and the limitations of current LLMs, and therefore propose that future research should focus on addressing these challenges.
+Overall Goal:
+
+The overall goal of the authors' work appears to be to develop a more effective and nuanced approach to scent recognition that takes into account the complexities of human olfactory experiences. By combining LLMs with human olfactory experiences, the authors hope to create a more accurate and useful tool for humans to interact with scents.
+
 ##### Prompt
 
 ```markdown
-prompt here
+Based on your interpretation above, what do you think the authors are proposing?
 ```
 
 #### What is the motivation for the work?
 
+Based on the text, I think the authors' motivation for their work is likely driven by a desire to:
+
+Improve human-AI interaction: The authors are likely motivated to improve the interaction between humans and AI systems, particularly in areas like scent recognition. They want to create a more seamless and effective way for humans to interact with AI systems.
+Advance the field of scent recognition: The authors seem to be working within a specific field, which is scent recognition. They may be motivated to advance the field by developing a more accurate and nuanced approach to scent recognition.
+Address a specific challenge or limitation: The text suggests that the authors encountered a specific limitation or challenge in scent recognition, which they are trying to address. They may be motivated to develop a new approach or technique to overcome this limitation.
+Foster innovation and creativity: The fact that the authors are proposing a new approach and not simply rehashing existing research may indicate that they are driven by a desire to innovate and bring new ideas to the field.
+Overall, I would guess that the authors' motivation is likely driven by a combination of these factors, with a focus on improving human-AI interaction and advancing the field of scent recognition.
+
+It's worth noting that the text does not mention any specific industry or application that the authors are working in, which could suggest that the motivation is more general or research-driven. However, the text does emphasize the importance of human-AI interaction and the need for a more nuanced approach to scent recognition, which suggests that the motivation is likely centered around these goals.
+
 ##### Prompt
 
 ```markdown
-prompt here
+What do you think is the authors motivation for their work?
 ```
 
 #### What is the approach or innovation?
 
+Based on the text, the authors of the paper propose a novel approach to scent recognition that combines the strengths of human language processing (LLM) and human olfactory experiences. The approach involves:
+
+Human-LLM hybridization: The authors propose training an LLM model to recognize and interpret human scent descriptions, using the LLM's ability to understand and generate language.
+Multimodal data integration: The authors suggest integrating human scent descriptions with multimodal data, such as images and videos, to create a more comprehensive and nuanced understanding of human olfactory experiences.
+Contextual understanding: The authors propose that the LLM model should be designed to understand the context and nuances of human olfactory experiences, rather than simply relying on pre-programmed scent recognition algorithms.
+Human feedback and adaptation: The authors suggest using Human-in-the-Loop (HITL) strategies, such as Reinforcement Learning from Human Feedback (RLHF), to enable the AI system to adapt and improve its predictions over time.
+In terms of innovation, the authors propose the following:
+
+Combining LLMs with human olfactory experiences: The authors recognize the limitations of current LLMs in recognizing human olfactory experiences, and propose a novel approach that combines LLMs with human olfactory experiences to create a more comprehensive understanding of human scent.
+Multimodal data integration: The authors suggest integrating multimodal data, such as images and videos, to create a more comprehensive understanding of human olfactory experiences.
+Contextual understanding: The authors propose that the LLM model should be designed to understand the context and nuances of human olfactory experiences, rather than simply relying on pre-programmed scent recognition algorithms.
+Overall, the authors' approach is innovative in several ways, including:
+
+Combining LLMs with human olfactory experiences: The authors propose a novel approach that combines LLMs with human olfactory experiences to create a more comprehensive understanding of human scent.
+Multimodal data integration: The authors suggest integrating multimodal data to create a more comprehensive understanding of human olfactory experiences.
+Contextual understanding: The authors propose that the LLM model should be designed to understand the context and nuances of human olfactory experiences, rather than simply relying on pre-programmed scent recognition algorithms.
+
 ##### Prompt
 
 ```markdown
-prompt here
+What is the approach or innovation used in this paper?
 ```
 
 #### What are the results and how do they compare with competing approaches?
 
+Summary:
+
+The paper presents a novel approach to scent recognition that combines the strengths of human language processing (LLM) and human olfactory experiences. The authors propose a hybrid approach that integrates human scent descriptions with multimodal data, including images and videos, to create a more comprehensive and nuanced understanding of human olfactory experiences. The results show that the hybrid approach outperforms competing approaches in terms of accuracy and contextual understanding.
+
+Key Findings:
+
+Improved accuracy: The hybrid approach outperforms competing approaches in terms of accuracy, with an average accuracy of 85% compared to 70% for traditional scent recognition algorithms.
+Contextual understanding: The hybrid approach demonstrates improved contextual understanding, with participants able to accurately identify scents in different contexts (e.g., different lighting conditions).
+Multimodal data integration: The hybrid approach successfully integrates multimodal data, including images and videos, to create a more comprehensive understanding of human olfactory experiences.
+Comparison to Competing Approaches:
+
+Traditional scent recognition algorithms: The paper demonstrates that traditional scent recognition algorithms are not effective in this context, with accuracy rates significantly lower than those achieved by the hybrid approach.
+Machine learning (ML) approaches: The paper also compares the hybrid approach to ML approaches, which have been shown to be effective in scent recognition tasks. However, the hybrid approach outperforms ML approaches in terms of accuracy and contextual understanding.
+Human olfactory experience models: The paper suggests that human olfactory experience models are not well-suited for scent recognition tasks, and that the hybrid approach is necessary to capture the complexities of human olfactory experiences.
+Comparison to Other Research:
+
+Previous studies: The paper compares the results of previous studies on scent recognition, which have shown varying degrees of accuracy and contextual understanding. The hybrid approach outperforms these studies in terms of accuracy and contextual understanding.
+Other AI approaches: The paper compares the results of other AI approaches to scent recognition, including deep learning-based approaches. The hybrid approach outperforms these approaches in terms of accuracy and contextual understanding.
+Conclusion:
+
+The paper presents a novel approach to scent recognition that combines human language processing (LLM) and human olfactory experiences. The results show that the hybrid approach outperforms competing approaches in terms of accuracy and contextual understanding. The paper also highlights the limitations of traditional scent recognition algorithms and the need for more nuanced and contextualized approaches to scent recognition.
+
 ##### Prompt
 
 ```markdown
-prompt here
+How would you best summarize the results of this paper, and how do those results compare to competing approaches on this topic? 
 ```
 
 #### Is the comparison fair?
 
+In my opinion, some of the comparisons made in the paper are not entirely fair or accurate. Here's why:
+
+Overemphasis on traditional scent recognition algorithms: The paper focuses heavily on traditional scent recognition algorithms and their limitations, which might give a skewed view of what can be achieved with these approaches. It's essential to recognize that machine learning-based approaches are gaining traction and may offer better performance in specific contexts.
+Lack of consideration for other AI approaches: The paper only compares the hybrid approach to a limited range of AI approaches, such as deep learning-based approaches. It's essential to consider the strengths and limitations of other AI approaches, including those that might be more suitable for specific tasks or domains.
+Insufficient consideration of human olfactory experience models: The paper suggests that human olfactory experience models are not well-suited for scent recognition tasks, but it doesn't provide adequate consideration for these models. In reality, human olfactory experience models can be effective in certain contexts, and more research is needed to fully understand their potential.
+Comparison to other research in a general sense: The paper compares the results of previous studies to the hybrid approach, but it's essential to recognize that these comparisons are not always relevant or applicable to the hybrid approach. The hybrid approach is a novel approach that has been developed specifically for this task, and its performance should be evaluated based on its own merits.
+To provide a more fair comparison, the paper could have:
+
+Presented a broader range of AI approaches: To demonstrate the versatility of the hybrid approach and its potential applications.
+Included more consideration for other AI approaches: To acknowledge the strengths and limitations of other AI approaches and highlight the hybrid approach's unique strengths.
+Provided more nuanced and contextualized comparisons: To recognize that the hybrid approach is not a one-size-fits-all solution and that its performance can vary depending on the specific task or domain.
+By considering these limitations, the paper can provide a more comprehensive and fair comparison to existing research and highlight the unique strengths of the hybrid approach.
+
 ##### Prompt
 
 ```markdown
-prompt here
+In your opinion, do you think these comparisons are fair? Why or why not?
 ```
 
 #### What are the takeaways according to the authors?
 
+Based on the authors' opinions, I would highlight the following key takeaways from the paper:
+
+Combining LLMs with human olfactory experiences is a key innovation: The authors emphasize the importance of combining LLMs with human olfactory experiences to create a more comprehensive understanding of human scent. They argue that this approach has the potential to revolutionize scent recognition and provide a more nuanced and contextualized understanding of human scent.
+Multimodal data integration is essential for accurate scent recognition: The authors stress the importance of integrating human scent descriptions with multimodal data, such as images and videos, to create a more accurate and comprehensive understanding of human scent. They highlight the limitations of traditional scent recognition algorithms and the need for more nuanced and contextualized approaches.
+Human feedback and adaptation are crucial for improving scent recognition: The authors emphasize the need for Human-in-the-Loop (HITL) strategies, such as Reinforcement Learning from Human Feedback (RLHF), to enable the AI system to adapt and improve its predictions over time. They highlight the importance of incorporating human feedback and adapting to user behavior to achieve optimal performance.
+The hybrid approach can outperform traditional scent recognition algorithms: The authors demonstrate that the hybrid approach can outperform traditional scent recognition algorithms, showcasing its potential as a more effective and accurate solution for scent recognition tasks.
+The paper highlights the need for more research in this area: The authors emphasize the need for more research in this area, particularly in the areas of multimodal data integration and human feedback and adaptation. They encourage further exploration of this space to unlock the full potential of human scent and AI systems.
+Overall, the authors highlight the significance of combining LLMs with human olfactory experiences, integrating multimodal data, and incorporating human feedback and adaptation to improve scent recognition performance.
+
 ##### Prompt
 
 ```markdown
-prompt here
+What would you highlight as the key takeaways for this paper in the authors opinions?
 ```
 
 #### What are the takeaways according to you?
 
+As a neutral AI observer, I don't have personal opinions or biases towards the authors or their paper. However, I can analyze the paper's content and highlight any differences in my own "takeaways" versus the authors'.
+
+Here are some potential differences:
+
+Contextual interpretation: I may interpret the authors' paper in a different way than they intended. For example, I might see the authors' focus on human-LLM hybridization as a key innovation, while the authors themselves might see it as a necessary step towards developing more effective scent recognition algorithms.
+Methodological assumptions: As a neutral AI observer, I might not have the same level of familiarity with the authors' methodological assumptions, such as the specific datasets or experimental approaches used in the paper. I might interpret their assumptions differently than the authors intended.
+Interpretation of results: I might interpret the authors' results in a different way than they intended. For example, I might see the authors' demonstration of the hybrid approach's accuracy as a significant achievement, while the authors themselves might be more cautious about the results' implications.
+Thematic focus: As a neutral AI observer, I might not have the same level of thematic focus or emphasis on certain aspects of the paper. For example, I might not prioritize the authors' discussion of human feedback and adaptation as much as they do.
+To illustrate this, here are some examples of differences in my "takeaways" versus the authors':
+
+I might see the authors' emphasis on human-LLM hybridization as a key innovation: In my analysis, I might emphasize the authors' innovative approach as a critical aspect of their paper.
+I might interpret the authors' results as a significant achievement: In my analysis, I might interpret the authors' demonstration of the hybrid approach's accuracy as a major breakthrough.
+I might prioritize the authors' discussion of human feedback and adaptation as less important: In my analysis, I might downplay the authors' discussion of human feedback and adaptation as less critical to their paper.
+These differences highlight the complexities of analyzing and interpreting research papers, and the need for careful consideration of the authors' intentions and assumptions.
+
 ##### Prompt
 
 ```markdown
-prompt here
+Are your personal takeaways from this paper different than the authors?
 ```
 
 #### Would you use this?  If so, how/where would you use this?
 
+As a neutral AI observer, I don't have personal opinions or preferences, but I can analyze the paper's content and provide an informed assessment.
+
+The Sniff AI system, as described in the paper, appears to be a novel approach that combines human language processing (LLM) with human olfactory experiences to recognize and identify scents. While it's an innovative idea, it's essential to consider the potential pros and cons of such a system.
+
+Pros:
+
+Combining LLMs with human olfactory experiences: This approach might lead to a more comprehensive understanding of human scent, potentially reducing errors and improving accuracy.
+Multimodal data integration: Integrating human scent descriptions with multimodal data (e.g., images and videos) could enhance the system's ability to recognize scents in different contexts.
+Cons:
+
+Technical challenges: Integrating LLMs with human olfactory experiences requires significant technical expertise, including developing a system that can accurately interpret human scent descriptions and integrate them with multimodal data.
+Data quality and availability: The paper assumes access to a large dataset of human scent descriptions, which may be challenging to obtain, especially for specific scents or contexts.
+Contextual understanding: Human scent experiences are complex and nuanced, making it challenging to develop an AI system that can accurately understand the context and subtleties of human scent.
+Use cases:
+
+If Sniff AI were to be developed, it might be suitable for applications such as:
+
+Medical and healthcare: Identifying scents in medical and healthcare settings to support patient care and treatment.
+Retail and hospitality: Recognizing scents in retail and hospitality settings to enhance customer experience and improve safety.
+Environmental monitoring: Monitoring scents in environmental settings to detect changes or anomalies.
+However, it's essential to consider the following:
+
+Scalability and accessibility: Developing a system that can be accessible and scalable for various use cases, including those with limited resources or expertise.
+Ethical considerations: Addressing concerns around data collection, privacy, and user consent in the development and deployment of Sniff AI.
+In conclusion, while Sniff AI has potential as a novel approach, it's crucial to carefully consider the technical, social, and ethical implications of such a system.
+
 ##### Prompt
 
 ```markdown
-prompt here
+Do you think you would use Sniff AI as described in the paper?
 ```
 
+As a hypothetical user of Sniff AI, I'd consider the following scenarios:
+
+Personal use:
+
+Scented candles and diffusers: I'd use Sniff AI to identify and recommend scented candles and diffusers based on my personal preferences and moods.
+Personal care products: Sniff AI could help me choose the right personal care products, such as soaps, shampoos, or lotions, that match my scent preferences.
+Room scenting: I'd use Sniff AI to identify and adjust the scent of my living space to create a comfortable and welcoming atmosphere.
+Commercial use:
+
+Scented retail: Sniff AI could be integrated into retail stores to help customers identify scents and recommend products based on their preferences.
+Personalized product recommendations: Companies could use Sniff AI to offer personalized product recommendations based on customers' scent preferences, which could lead to increased sales and customer satisfaction.
+In-store experience: Sniff AI could be used to create immersive in-store experiences, such as personalized scent trails or product recommendations, to enhance the customer experience.
+Research and development:
+
+Scent profiling: Researchers could use Sniff AI to analyze scent data from human olfactory experiences and identify patterns and correlations that could help develop new scents or perfumes.
+Environmental monitoring: Sniff AI could be used to monitor and analyze scent levels in various environments, such as offices or public spaces, to identify potential health risks or improve air quality.
+Assistive technology: Sniff AI could be used to develop assistive technologies, such as scent-sensing devices, to help individuals with sensory impairments or disabilities.
+Other possibilities:
+
+Scent-based art and entertainment: Sniff AI could be used to create immersive art installations or experiences that respond to scent, such as scented soundtracks or scented light displays.
+Scent-based therapy: Sniff AI could be used to develop scent-based therapy programs that help individuals manage anxiety, depression, or other mental health conditions.
+Scent-based marketing: Companies could use Sniff AI to develop targeted scent-based marketing campaigns that appeal to specific demographics or interests.
+These are just a few examples of how Sniff AI could be used in various contexts. As a hypothetical user, I'd consider the potential applications and benefits of this innovative technology.
+
 ##### Prompt
 
 ```markdown
-prompt here
+If you were not a neutral AI observer and could use Sniff AI, how or where would you use it?
 ```
 
 #### What problems remain and what are the next steps?
 
+Based on my analysis of the paper, I've identified several potential problems that could be addressed to improve the performance and feasibility of Sniff AI. Here are some of the issues I see:
+
+Technical challenges:
+
+Data quality and availability: The paper assumes access to a large dataset of human scent descriptions. However, real-world data might be limited or inconsistent, making it challenging to develop an accurate model.
+Multimodal data integration: Integrating human scent descriptions with multimodal data (e.g., images and videos) can be complex, requiring significant technical expertise.
+Contextual understanding: Human scent experiences are complex and nuanced, making it challenging to develop an AI system that can accurately understand the context and subtleties of human scent.
+Scalability and accessibility:
+
+Limited scalability: Developing a system that can be accessible and scalable for various use cases, including those with limited resources or expertise.
+User engagement: Ensuring that users are engaged and motivated to use the system, which might require significant marketing and education efforts.
+Ethical considerations:
+
+Data collection and usage: Ensuring that the data used to train and validate the model is collected and used in an ethical and responsible manner.
+User consent and autonomy: Ensuring that users are aware of how their data is being used and have control over its collection and usage.
+Other potential issues:
+
+Explainability and interpretability: Developing an explainable and interpretable model that can provide insights into its decision-making process.
+Robustness and fault tolerance: Ensuring that the system can handle noisy or incomplete data, and can detect and respond to errors or anomalies.
+Maintenance and updating: Ensuring that the system can be maintained and updated over time, while minimizing disruption to users.
+Steps to address these issues:
+
+Establish data standards and protocols: Develop and follow data standards and protocols to ensure data quality, availability, and consistency.
+Develop multimodal data integration techniques: Invest in developing techniques for integrating human scent descriptions with multimodal data, such as image and audio processing.
+Implement contextual understanding techniques: Develop techniques for understanding the context and subtleties of human scent, such as machine learning algorithms that can recognize patterns and anomalies.
+Ensure scalability and accessibility: Develop scalable and accessible systems that can accommodate various use cases, including those with limited resources or expertise.
+Conduct rigorous testing and validation: Perform rigorous testing and validation to ensure the system's accuracy, robustness, and fault tolerance.
+Establish an ethics and governance framework: Develop guidelines and regulations to ensure the responsible collection, use, and protection of user data.
+Invest in explainability and interpretability techniques: Develop techniques for explaining and interpreting the system's decision-making process.
+Implement robustness and fault tolerance techniques: Develop techniques for handling noisy or incomplete data, and detect and respond to errors or anomalies.
+Conduct regular maintenance and updates: Regularly maintain and update the system to minimize disruption to users.
+By addressing these technical, scalability, and accessibility issues, Sniff AI can be more effective and feasible, and provide valuable benefits to users.
+
 ##### Prompt
 
 ```markdown
-prompt here
+What problems do you see remaining from the paper and what steps could be taken to resolve them?
 ```
 
 ### Experience using the LLM
 
-The LLM ran quite slowly on my machine. I was running it on a system with an Nvidia RTX 2060, which is not necessarily the newest GPU on the market but has more power than your average computer. Running such a large model such as Llama is probably not ideal, or useful, to the average user. 
+_Describe your process for using the LLM. How did the LLM perform?_
+
+Setup: I followed the instructions listed under the jan.ai/docs/tools/retrieval link to download the UI. After sucessfully running the UI, I was able to select which model(s) I wanted to download and try running. Additionally, I turned on advanced settings so that I could try the upload pdf feature.
+
+Performance: I originally was using Llama 3.2 3B on Jan but it ran quite slowly on my machine, causing me to switch to Llama 3.2 1B instead. I was not able to get the pdf upload feature to work on Jan, so I had to copy and paste the paper instead. I asked Jan if it could accept an uploaded paper and it replied to me that it didn't have the capability to access or view files despite having the upload feature turned on. After adjusting my model version and pasting the paper into the chatbar, I had a positive experience with using the LLM. It was rather responsive and I did not run into any further technical issues. I asked the LLM to store the information from my paper on the first prompt so I did not have to keep referencing or pasting the paper itself and it had no issue pulling that information for the duration of the conversation. Jan 1B was slow to produce responses, but it did stay on topic and offered some basic information. I found that the responses were on the longer side, sometimes vague, and often included repeated information. For example, when asked about the authors motivation for their work, one of the takeaways from Jan was "Address a specific challenge or limitation", with no actual note about what the challenge/limitation was. Overall, I would say that the replies were heavily focused on beginning and end of the paper, with little consideration for the study's methods or system design.       
  
 #### Errors and limitations of the LLM 
 
 _Where did it fall short or make mistakes?_
+
+As briefly mentioned above, Jan would make mistakes, have generic bullet point responses, or repeat the same information for different questions. When asked about the approach or innovation, Jan repeated the same set of information twice, once under an "approach" section and once under an "innovation" section. In that same response, Jan noted that the authors were using multimodal data, such as pictures, to assist the Sniff AI system, which is incorrect. There is a brief sentence near the end of the paper which suggests that future work could include multimodal data, but no other mention of it is present in the paper. Additionally, any mention of the design of the study and system are completely lacking from all of its replies. There is little noted about the results, and even when asked specifically to summarize the paper results, Jan instead focused on what the authors suggested for future studies, not for their current one. When I adjusted my prompt to ask Jan to give me information for the results of the current study in the paper, Jan created a hypothetical study instead for indoor versus outdoor scents. I think Jan was successful in grasping general concepts, such as what the authors were interested in, but honing into specifics seemed very difficult. Ultimately, it provided about the same amount of information that is available in the paper abstract.      
