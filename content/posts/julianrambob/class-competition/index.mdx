@@ -1,5 +1,6 @@
 ---
-title: "RandomForestClassifier and pretrained sentence-transformers"
+title: "LogisticRegression and pretrained sentence-transformers"
+
 slug: "/julianrambob/class-competition"
 date: 2024-11-13
 author: Julian Rambob
@@ -22,7 +23,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>0.40331</td>
+    <td>0.62122</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -40,34 +41,62 @@ tags:
 </table>
 
 ## Planned Approach
-My plan is to train a model from sklearn (currently working with RandomForestClassifier) on data adjusted to refine feature weights. By using sentence-transformers to determine the similarity of text pairs, I can determine which data have similar texts by different authors and dissimilar texts by the same author. Training a model on these text pairs hopefully eliminates noise and improves performance on general data.
+
+My plan is to train a model from sklearn (I decided to use LogisticRegression) on data adjusted to refine feature weights. By using sentence-transformers to determine the similarity of text pairs, I can determine which data have similar texts by different authors and dissimilar texts by the same author. Training a model on these text pairs hopefully eliminates noise and improves performance on general data.
 
 ## Task summary
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
+The task involves determining whether two text samples were authored by the same person. Text pairs are classified as either belonging to the same author (label = 1) or different authors (label = 0). The dataset includes 1601 text pairs in both training and test datasets, with 1578 pairs retained after filtering less informative pairs. Filtering focuses on text pairs with a cosine similarity range optimized to improve performance, ensuring more challenging cases where authorship distinctions are subtle.
+
+Challenges included handling imbalanced data—1245 different-author pairs versus 355 same-author pairs—and constructing a dataset that excludes misleading cases, such as pairs that seem similar but do not share authorship. For example, a filtered-out pair includes repetitive structural patterns with misleading authorship cues. The methods in this project leveraged sentence embeddings from the pretrained model `sentence-transformers/all-MiniLM-L6-v2`, which aligns with semantic feature extraction practices in modern authorship attribution tasks.
 
 ## Exploratory data analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+Observations revealed an imbalance in the dataset, with a dominance of different-author pairs. To address this, the filtering process incorporated metrics like cosine similarity and dissimilarity thresholds. A notable example includes the rejection of a pair with highly repetitive structural features that could confuse the model such as: 
 
-## Exploratory data analysis
+`CHAPTER I  CHAPTER I  CHAPTER I  CHAPTER I  CHAPTER V [SNIPPET] It was a female. The head crawled to it and made its way to the shoulders where it settled itself. At once the body sprang lightly erect. Another of those who had accompanied them from the fields approached with the harness and collar that had been taken from the dead body that the head had formerly topped. Label = 0`
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+The diversity of text pairs was examined, revealing variations in sentence structure and semantic content. This analysis ensured that retained pairs provided sufficient stylistic, syntactic, and semantic variance to train the model effectively. Same-author pairs often exhibited more nuanced stylistic similarities, whereas different-author pairs displayed diverse linguistic patterns.
+
+## My Approach
+
+The approach employs the pretrained model sentence-transformers/all-MiniLM-L6-v2 to generate semantic embeddings for text pairs. Features like stylistic and syntactic structures were combined with semantic similarity to enhance authorship attribution. A novel aspect of the approach is the selective filtering of text pairs based on cosine similarity thresholds, creating a “challenging” training dataset. This methodology improves the model's ability to generalize across both easy and complex cases.
+
+By excluding overly similar texts by different authors and overly dissimilar texts by the same author, the dataset emphasizes salient features essential for authorship determination. This strategy aligns with insights from SotA authorship attribution methods, which prioritize data quality over quantity for robust performance.
+
+Fine-tuning was achieved by iteratively testing combinations of similarity and dissimilarity thresholds. The filtered dataset enhanced the model's ability to detect subtle stylistic differences, particularly in imbalanced data scenarios. For instance, stricter thresholds for different-author pairs and lenient thresholds for same-author pairs ensured balanced representation.
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
+My score: 0.62122
+
+Weighted random baseline: 0.50901
+
+Delta with baseline: 0.11221
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+The model's performance metrics, calculated on a withheld 20% portion of the data, reflect the model's effectiveness in identifying authorship similarities between text pairs. The overall accuracy is 67.41%, indicating that the model correctly classifies roughly two-thirds of the text pairs. However, the precision is notably low at 24.71%, meaning that when the model predicts a pair to be from the same author, it is often incorrect. This is further confirmed by the recall value of 35%, suggesting that the model misses a significant number of true positive cases or pairs that belong to the same author but were not correctly classified.
+
+The confusion matrix provides further insights into the model's performance. With 192 true negatives and 64 false positives, the model is more likely to predict that two texts are from different authors than the same author. Additionally, the 39 false negatives and 21 true positives suggest that the model struggles to correctly identify pairs from the same author. This performance can be attributed to the class imbalance, as the dataset has more different-author pairs, leading the model to bias its predictions towards these pairs. Additionally, issues such as stylistic similarities in texts by different authors and the variation in writing styles from the same author contribute to these errors.
+
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+Please see [README](https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-julianrambob/blob/main/README.md) file for instructions
 
+## Leaderboard result
+
+Leaderboard: https://www.kaggle.com/competitions/ling-582-fa-2024-course-competition/leaderboard
+
+Team name: Julian Rambob
+
+Best submission score: 0.62122
+
+## Link to code repo
+
+https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-julianrambob/tree/main
 
 ## Future Improvements
 
-_Describe how you might best improve your approach_
+Future considerations may want to explore model performance on more balanced datasets. Even using balanced versions of the current data may help reveal more precise applications of data filtering.
