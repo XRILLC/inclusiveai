@@ -1,7 +1,7 @@
 ---
 title: "The Write Match: A Multi-Method Approach to Authorship Verification"
 slug: "/2090534948/class-competition"
-date: 2024-11-14
+date: 2024-12-06
 author: 2090534948
 description: "A hybrid authorship detection approach using Google Search API, stylometric analysis, and LLM ensemble for robust text span matching."
 tags:
@@ -28,7 +28,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>0.48105</td>
+    <td>0.59065</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -45,45 +45,171 @@ tags:
 </tbody>
 </table>
 
-
 ## Task Summary
 
-Given two spans of text, determine whether the two spans of text were authored by the same individual or not. The two spans are in the same cell separated by the delimiter string '[SNIPPET] '. The model may use any open-source / open-weight method(s) available to make this determination to include assessing the stylistic and linguistic similarities between the passages or searching for the passage on the Internet.
+The **task description** focuses on a binary classification problem in the domain of authorship identification, a subfield of [author profiling](https://en.wikipedia.org/wiki/Author_profiling) and digital stylometry. The objective is to train a model to predict whether two given spans of text share the same author. The task involves pairwise comparison of text spans from a labeled training dataset and applying the model to unseen data in an unlabeled test dataset (`test.csv`).
 
-This is a binary classification task rooted in authorship identification, a subfield of [author profiling](https://en.wikipedia.org/wiki/Author_profiling) and digital stylometry. The task requires classifying the passages as follows:
+The **task design** is structured to evaluate a model's ability to capture stylistic features and infer authorship similarity from the text spans. This formulation emphasizes the challenge of pairwise comparison and highlights the role of textual stylistic features in solving the problem. The evaluation metric for this task is the macro F1 score, designed to assess the model's accuracy and recall performance across both classes.
 
-- `0`: The two spans were not authored by the same individual.
-- `1`: The two spans were authored by the same individual.
+The **label space** consists of two distinct categorical classes: `0` and `1`, with no missing values. These classes are defined as follows:
 
-Stylistic consistency in word choice, syntax, and overall language usage may serve as an indicator in this task. Leveraging these features, the model should infer the probability of shared authorship.
+- `0`: The pair of text spans were authored by different individuals.
+- `1`: The pair of text spans were authored by the same individual.
+
+The **dataset size** and class distributions are summarized in the table below. The training data exhibits class imbalance, with approximately 78% of examples labeled as `0`. Estimates for the test set and total dataset assume a similar class imbalance, with an expected overall distribution near 75% for class `0` and 25% for class `1`.
+
+Table 1. _Dataset Size and Class Distribution_
+
+|  Dataset  | Rows | Counts (0, 1) | Distributions (0, 1) |
+|-----------|------|:-------------:|:--------------------:|
+| train.csv | 1601 |   1245, 356   |    0.7776, 0.2224    |
+| test.csv  |  899 |  _631_, _269_ |  _0.7008_, _0.2992_  |
+| Total     | 2500 | _1875_, _625_ |  _0.7500_, _0.2500_  |
+
+### Related Tasks
+Authorship identification shares similarities with several related tasks in natural language processing (NLP), including:
+
+- Authorship Verification: Determining if a text was authored by a specific individual, often using one reference text.
+- Plagiarism Detection: Identifying similarities between documents to infer potential copying or paraphrasing.
+- Textual Style Transfer: Modifying text to emulate the writing style of another author, which involves capturing stylistic features similar to those required for authorship identification.
+
+### Challenges of the Task
+Some of the challenges of this task include:
+
+- Class Imbalance: The dataset's skewed distribution, with significantly more examples labeled as 0, poses a challenge for balanced model performance.
+- Stylistic Variability: Text spans vary greatly in length and linguistic complexity, making it difficult to extract consistent stylistic features.
+- Domain Diversity: Text sources, primarily from Project Gutenberg, may introduce noise or non-representative patterns due to variations in era, genre, and content.
+- Ambiguity in Authorship: Some texts may exhibit overlapping stylistic features, leading to potential confusion for both models and human annotators.
+
+### State of the Art (SotA) Approaches
+Three SotA approaches relevant to this task include:
+
+1. Stylometric Analysis: Using handcrafted linguistic features (e.g., word frequencies, sentence structure) to represent authorial style. Tools like Principal Component Analysis (PCA) can be applied for feature reduction.
+2. Neural Approaches: Transformer-based models like BERT fine-tuned for pairwise text classification. These models capture deep contextual relationships between text spans.
+3. Ensemble Models: Combining classical machine learning (e.g., SVMs trained on stylistic features) with neural methods to leverage both handcrafted and learned representations for robust performance.
 
 ## Exploratory Data Analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+The **dataset design** is tailored for the task. It is sourced from works in the public domain. There works are primarily from [Project Gutenberg](https://www.gutenberg.org/) eBooks and enriched by additional aggregated text sources, processed for task relevance. The **dataset size** for this task consists of 5,000 English-language text spans in 2,500 pairs. **Per class*, approximately 75% (~1,875) of the text pairs were not written by the same person (`LABEL` = 0) and the other 25% (~625) were (`LABEL = 1`).
 
-### Dataset Description
+The text spans vary significantly in length, from brief excerpts of a few dozen characters to lengthy passages of a few thousand. Text spans are separated by a delimiter token, `[SNIPPET]`, marking transitions between the first and second span in each `TEXT` cell. See the descriptions of individual dataset files for more details.
 
-This dataset, designed for a binary classification task, consists of English text samples with labels indicating one of two classes. The dataset is primarily sourced from [Project Gutenberg](https://www.gutenberg.org/), enriched by additional aggregated text sources, processed for task relevance. Each data row in train.csv and test.csv consists of an `ID`, `TEXT`, and in the case of the training data, a `LABEL`. The text spans vary significantly in length, from brief excerpts to lengthy passages, providing diversity for model evaluation. Text spans are separated by a delimiter '[SNIPPET] '', marking transitions between text sections.
+### Dataset Files
 
-### Data Files
-- `train.csv` (1.71 MB): Shape: 16011 rows by 3 columns. `ID` (int64, 0 - 1599 & 1999), `TEXT` (object, unstructured NL text encoded with UTF-8, average 1,066 characters (206-5156)), `LABEL` (int64, 0 (69.8%) or 1 (30.2%)).
-- `test.csv` (2.92 MB): The public test set. Shape: 899 rows by 2 columns. `ID` (int64, 1600 to 2499 excluding 199), `TEXT` (object, unstructured NL text, average 999 characters (40-5819)).
-- `sample_submission.csv` (6.3 kB): Sample submission file. Shape: 899 rows by 2 columns. `ID` (int64, 1600 to 2499 excluding 1999), `LABEL` (int64, 0 (TBD %) or 1 (TBD %)).
+#### `train.csv`
+- **Size**: 1.71 MB
+- **Shape**: 1601 rows × 3 columns
+- **Columns**:
+  - `ID` (int64): Unique identifiers, ranging from 0 to 1599, with one outlier (1999). No duplicates or missing values.
+  - `TEXT` (object): Contains two spans of text separated by `[SNIPPET]`.
+  - `LABEL` (int64): Binary (0, 1), indicating whether the two spans share the same author. Imbalanced: 77.8% labeled `0` and 22.2% labeled `1`.
+
+#### `test.csv`
+- **Size**: 917.21 kB
+- **Shape**: 899 rows × 2 columns
+- **Columns**:
+  - `ID` (int64): Unique identifiers, ranging from 1600 to 2499 (excluding 1999). No duplicates or missing values.
+  - `TEXT` (object): Contains two spans of text separated by `[SNIPPET]`. Average text length: 999 characters (range: 40–5819).
+
+#### `sample_submission.csv`
+- **Size**: 6.3 kB
+- **Shape**: 899 rows × 2 columns
+- **Columns**:
+  - `ID` (int64): Matches `test.csv` identifiers.
+  - `LABEL` (int64): Placeholder values (all `0`).
+
+### Observations
+
+#### Text Length Variability
+The length of text spans varies significantly, even within the same pair. This poses challenges for models, as longer spans offer more stylistic features, while shorter spans often lack distinctive tokens, reducing their utility for authorship detection.
+- **Extreme Example**:
+  - **ID 1802**: Span 1 contains only the letter `E`, while Span 2 has 677 characters with no `E` or relevant entities.
+- **Other Examples**:
+  - **ID 624**: Includes a 34-character snippet ("When Lilacs Last in the Dooryard B") easily identifiable as Walt Whitman.
+  - **ID 971**: Contains a 59-character generic snippet ("he asked. 'Of course.' And I did, too...") with limited stylistic markers.
+
+#### Incomplete Text Capture
+Issues with text preprocessing impact the dataset’s usability:
+- Missing sentence beginnings or endings reduce context (e.g., ToDo, ToDo).
+- Incomplete quotation marks hinder interpretation of dialogue (e.g., ToDo, ToDo).
+- Line-feed removal merges paragraphs, erasing natural breaks (e.g., ToDo, ToDo).
+
+#### Named Entity Overlap
+Approximately 8-9 percent of span pairs (e.g., IDs 22, 44, 2489, 2499) contain overlapping named entities, which is a moderately strong indicator (~0.65) of shared authorship. However, common entities like "one" or "first" can introduce bias, leading to false positives.
+
+### Additional Analyses
+
+#### Measures of Diversity
+- **Token Diversity (Vocabulary)**:
+  Vocabulary diversity, calculated as the ratio of unique tokens to total tokens, is higher in longer spans but limited in shorter spans, further contributing to imbalance in stylistic richness across pairs.
+- **Named Entity Diversity**:
+  Diversity in named entities varies across spans, with longer spans typically containing more entities. Short spans often rely on generic entities, limiting their utility for authorship prediction.
+
+#### Jaccard Similarity
+- **Named Entity Similarity**: Jaccard similarity between spans’ named entities highlights overlap in ~8% of pairs, serving as a useful feature for predicting shared authorship.
+- **Vocabulary Overlap**: Jaccard similarity of vocabulary across spans is higher for pairs with `LABEL=1`, suggesting shared authorship is more likely when linguistic overlap exists.
+
+#### TF-IDF Analysis
+Token-level analysis using Term Frequency-Inverse Document Frequency (TF-IDF) reveals distinctive features across spans. High-weight tokens often correspond to unique named entities, proper nouns, or distinctive lexical choices. For example:
+- ID 624 emphasizes "Lilacs" and "Dooryard" as key tokens linked to Walt Whitman.
+- ID 971 lacks strong TF-IDF tokens, reflecting its generic composition.
+
+### Summary of Problem Spans
+The following spans exhibit significant issues requiring special handling or exclusion:
+- **ID 970-1**: Repetitive "Chapter V Chapter I..." text. Exclude from training/validation.
+- **ID 1330-1**: Repetitive "CHAPTER I..." text. Exclude from training/validation.
+- **ID 1855-1**: Contains text from a multi-author preface. Exclude from training/validation.
+
+### Summary Statistics
+
+Table 2. _Text Pair Length (Train and Test Combined)_
+
+| Statistic       | Minimum | Mean   | Median | Maximum | Std Dev |
+|-----------------|---------|--------|--------|---------|---------|
+| Total Length    | 192.00  | 1036.79| 900.00 | 5517.00 | 549.84  |
+| Span Length     | 1.00    | 512.89 | 428.00 | 4562.00 | 350.08  |
+
+These analyses highlight key challenges and features in the dataset, guiding preprocessing and modeling efforts.
+
+## Approach
+
+Based on my initial understanding of the competition rules, I planned to purse three different approaches to the authorship detection task. I aimed to explore a variety of methods to maximize my chances of success and to learn more about the dataset and the task. My three planned approaches were:
+
+  1. **Google Search API**: Use the Google Search API to search for the text spans and extract the author's Project Gutenberg (PG) book ID number (BID) and Creator ID number (CID). I would then use these IDs to determine if the text spans were written by the same author.
+
+  2. **Stylometric Analysis**: Use stylometric analysis to extract stylistic features from the text spans, such as word frequencies, sentence structure, and named entities. I would then use these features to train a machine learning model to predict authorship similarity.
+
+  3. **Deep Learning**: Implement a deep learning model, such as a neural network network or a Transformer model, to learn the stylistic features of the text spans and predict authorship similarity.
+
+In the end, the first approach produced near perfect results, but was outside the competition rules. For the third approach, I was unable to develop a model that exceeded the weighted-random baseline. Only, the second approach using just named-entity overlap as a stylometric feature produced legal results that exceeded the weighted-random baseline.
+
+### Approach 2 - Named-Entity Overlap
+My final approach was simply to set all labels to `0`, since the super-majority of text pairs were written by different authors. Then, I looked for features that would support a change of label to `1`. The first feature I engineered was named-entity overlap, since the vast majority of texts were excerpts from novels and short-stories. I used spaCy to produce a document object for each span and extracted the overlapping set of named entity tokens between the text pairs into a new dataframe column, `df['neo']`. I then calculated the Jaccard similarity in a new `df['neo_sim']` column to quantify the degree of overlap. Several, common overlapping entities introduced false positives compared to the training data, so I manually created a list of common entities, `excluded_neos`, to remove from the overlap sets and similarity calculations. The code then set the label to `1` if `df['neo']` was not an empty set and `df['neo_sim']` was greater than a certain value.
+
+My motivation for selecting this approach was frustration with my poor performance from deep learning methods and a looming deadline. I decided to try a simple approach that would be easy to implement and could potentially yield results better than weighted-random baseline. The named-entity overlap approach was quick to implement and provided a reasonable baseline for comparison with more complex models. While it did not achieve the highest F1 score, it was a valuable learning experience and helped me better understand the dataset and the task at hand.
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
+Results from the 'NEO' approach moderately exceeded the weighted-random baseline. The second and final submission (`submission_ner02.csv`) scored **0.59065**--4th place on the leaderboard. This final score is a 16.0% **delta** over the weighted-random baseline of 0.50901. In addition, it is only 7.6% below the top score of 0.63940.
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+Based on **detailed error analysis** of 20% **held-out data**, the **characterization of errors** included both false positives and false negatives.
+
+  - **False Positives** were primarily in rows with token overlap on common entities (e.g., 'one', 'first'). For example, the two text spans in ID 315 share the entity 'the United States'. The spans in ID 1461 share the name 'George'. Neither pairs of text were authored by the same individual.
+  - **False Negatives**
+    - Short-spans. These rows lacked sufficient token overlap on which to infer authorship similarity (e.g., ID 1194-1).
+    - Non-fiction works also caused false negatives (e.g., ID 421, 576). Since the vast majority of the dataset was from works of fiction, the model was biased towards predicting shared authorship for these pairs.
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
-_If you'vd covered this in your code repository's README, you can simply link to that document with a note._
-
+See the code repository [README.md](https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-ciioprof0/blob/89dfffbb8c66a1570e30e9a72e9866e7b7fce35c/README.md) file for how to reproduce these results.
 
 ## Future Improvements
 
-_Describe how you might best improve your approach_
+1. **Transformers**: Incorporate pre-trained models like BERT to better capture semantic and contextual relationships between spans, particularly for short text pairs.
+2. **Data Augmentation**: Address class imbalance by generating additional examples from Project Gutenberg.
+3. ***Feature Engineering Enhancements***: Expand feature sets to include stylistic metrics (e.g., sentence complexity, lexical richness) and fine-grained entity relationships to improve discriminatory power.
+4. **Ensemble Methods**: Combine multiple models, including deep learning and traditional machine learning, to leverage diverse feature representations and enhance model robustness.
+
+These improvements could enhance model performance by leveraging richer text representations and addressing dataset limitations.

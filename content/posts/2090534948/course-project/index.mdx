@@ -1,7 +1,7 @@
 ---
-title: "Contradictions & Connections: A Kaggle NLP Adventure" 
+title: "Contradictions & Connections: A Kaggle NLP Adventure"
 slug: "/2090534948/course-project"
-date: 2024-11-14
+date: 2024-12-07
 author: 2090534948
 description: "An educational Kaggle Notebook template and environment for university students, guiding them through a NLP classification competition with practical insights into data preprocessing, model development, and error analysis."
 tags:
@@ -40,72 +40,65 @@ tags:
 </tbody>
 </table>
 
-## Project Description
+## Project description
 
-This project centers on creating a Kaggle Notebook template and a supporting development environment that will guide new users through solving a trinary classification problem in NLP, based on the Kaggle competition [Contradictory, My Dear Watson](https://www.kaggle.com/competitions/contradictory-my-dear-watson). The competition tasks participants with predicting relationships between pairs of sentences across various languages, requiring a model to identify whether sentence pairs are contradictory, neutral, or entail each other. By leveraging a custom setup that mirrors the Kaggle environment, this project aims to provide a scaffolded learning experience for university-level students beginning in competitive machine learning.
+### Overview of project
 
-### Project Motivation
-Many students entering Kaggle competitions face challenges adapting to the competition environment and pipeline requirements. This project addresses these challenges by providing a structured, reproducible notebook template that guides users through each stage of model development for an NLP task. With a focus on trinary classification, the project showcases the process of loading and preprocessing multilingual data, feature extraction, model training, and evaluation—all essential steps for NLP competitions.
+This project centers on supporting students in developing solutions to natural language processing (NLP) competitions on [Kaggle.com](https://www.kaggle.com/competitions?tagIds=13204&participationFilter=open). It uses the ongoing Kaggle competition [Contradictory, My Dear Watson](https://www.kaggle.com/competitions/contradictory-my-dear-watson) as an example. This competition involves classifying pairs of sentences into three categories: **contradiction**, **neutral**, or **entailment**. The competition spans 15 languages, challenging participants to build models that can understand relationships between sentences across diverse linguistic contexts. The competition also requires submissions to come directly from a Kaggle Notebook, making it an ideal case study for this project.
 
-### Problem Overview
-In the "Contradictory, My Dear Watson" competition, the objective is to classify pairs of sentences into three categories: **contradiction**, **neutral**, or **entailment**. This trinary classification task requires robust language understanding across 15 languages, including English, Swahili, and Russian. The training dataset is inherently challenging due to language diversity and potential ambiguities in sentence meaning, making it an ideal case study for demonstrating NLP model training and evaluation for multilingual classification tasks.
+For this competition, the project provides:
 
-### Novelty and Educational Focus
-This project is novel in that it provides a beginner-friendly introduction to Kaggle NLP competitions, emphasizing trinary classification and multilingual challenges. By using a notebook setup that includes Docker configurations replicating Kaggle’s runtime environment, it ensures reproducibility and minimizes setup issues for students working locally. Additionally, the template simplifies the trinary classification process, making it accessible for those new to natural language processing and competition-style machine learning.
+- a competition-specific [starter notebook](https://www.kaggle.com/code/mikeb3665/mdw-starter-notebook)
+- a competition-specific "[virtual teammate](https://chatgpt.com/g/g-675426b991e48191be1ec7f9abf4873c-contradictory-my-dear-watson)"
+- a competition-agnostic [Kaggle Docker container](https://github.com/ciioprof0/kaggle)
 
-### Challenges and State-of-the-Art Approaches
-Multilingual NLP tasks bring unique challenges, including cross-linguistic variability and the risk of overfitting to high-resource languages like English. Current state-of-the-art approaches often involve transformer-based models, such as BERT or XLM-RoBERTa, which excel at understanding sentence relationships across languages. However, fine-tuning these models requires careful balancing of computational resources and training strategies to avoid performance drops in low-resource languages. This notebook template will guide students in implementing and tuning models like XLM-RoBERTa, using domain-appropriate techniques to address cross-linguistic challenges.
+### Description of its novelty
 
-### Solution Approach
-The notebook template provides a modular pipeline, with sections covering:
-- **Data Loading and Preprocessing**: Loading data from multiple languages and performing necessary tokenization and cleaning.
-- **Feature Extraction and Embeddings**: Utilizing pre-trained transformer embeddings for multilingual data.
-- **Model Development**: Fine-tuning transformer-based architectures such as XLM-RoBERTa for trinary classification.
-- **Evaluation**: Analyzing model performance across languages and class categories using metrics like F1-score and accuracy.
-- **Error Analysis**: Highlighting common classification errors, with visualizations to aid students in understanding model behavior on multilingual data.
+This project stands out by combining multiple innovative components to enhance the learning experience for students tackling Kaggle NLP competitions. While many '[Getting Started](https://www.kaggle.com/competitions?hostSegmentIdFilter=5)' competitions provide basic starter notebooks to familiarize participants with tasks and data, this project goes further by integrating a [virtual teammate](https://chatgpt.com/g/g-675426b991e48191be1ec7f9abf4873c-contradictory-my-dear-watson): an AI-powered chatbot that provides real-time guidance, answers questions, and suggests code improvements. The virtual teammate transforms passive learning into an interactive process, helping students overcome challenges and gain a deeper understanding of competition tasks.
 
-This structured approach serves as a learning resource for students, emphasizing model interpretation and cross-linguistic error analysis.
+Additionally, the project introduces a customized version of [Kaggle's Docker container](https://github.com/ciioprof0/kaggle), enabling students to replicate Kaggle's runtime environment locally. This ensures seamless code compatibility between local development setups and Kaggle.com, reducing friction and enhancing productivity. By integrating these components, the project creates a more holistic and supportive ecosystem for students, combining interactivity, accessibility, and technical reliability.
 
-### Expected Results
-The notebook aims to achieve competitive accuracy on the Kaggle leaderboard by employing cross-validation strategies and hyperparameter tuning. It provides students with tangible results to compare and improve upon, while the inclusion of baseline models allows students to quantify the improvements gained through advanced methods like transformer-based fine-tuning.
+### Motivation for project
 
-## Project Timeline
+My motivations for this project stem from personal experiences as an online programming student where I encountered recurring challenges: lack of repeatable structure in applying tools, difficulty engaging with instructors and peers, and issues with code portability.
 
-**Start Date**: November 11, 2024
-**Due Date**: December 9, 2024
+First, computer science-related courses often introduce new tools and concepts that are used briefly before moving on. Without a structured approach to applying these tools, it is easy to forget how to use them when needed later. I wanted to address this by creating resources that reinforce consistent workflows.
 
-### Week 1 (Nov 11 - Nov 17)
-- **Project Setup and Environment Configuration**
-  - [ ] Set up the project repository using the provided course-project-code assignment template.
-  - [ ] Create a Docker configuration to mirror Kaggle’s runtime environment locally, ensuring compatibility with Kaggle’s Python packages and library versions.
-  - [ ] Begin initial exploration of the "Contradictory, My Dear Watson" dataset, familiarizing yourself with data structure and key features.
-  - [ ] Outline the notebook template structure, identifying sections for data loading, preprocessing, model development, and evaluation.
+Second, as an online learner, the absence of synchronous interaction with instructors and classmates can be frustrating, especially when struggling with complex problems. This lack of immediate feedback inspired me to explore ways to provide on-demand support for students tackling similar challenges.
 
-### Week 2 (Nov 18 - Nov 24)
-- **Data Preprocessing and Exploration**
-  - [ ] Develop code for loading and preprocessing the multilingual dataset, including tokenization and language handling.
-  - [ ] Conduct exploratory data analysis (EDA) on the dataset, highlighting language distributions, sentence-pair characteristics, and any imbalances across classification labels.
-  - [ ] Implement data visualization for multilingual distribution and sentence pair statistics to support understanding of model requirements and challenges.
-  - [ ] Begin drafting the project description and initial goals in the course blog-style summary document.
+Finally, I have experienced frustration in moving code between local development environments and platforms like Kaggle.com. Compatibility issues disrupt workflows and make it harder to focus on learning and problem-solving. This frustration motivated me to find a way to bridge the gap between these environments.
 
-### Week 3 (Nov 25 - Dec 1)
-- **Model Development and Baseline Testing**
-  - [ ] Implement baseline models, such as logistic regression or a simple neural network, for comparison with transformer-based models.
-  - [ ] Develop and fine-tune an XLM-RoBERTa or similar transformer-based model suited for trinary classification across multiple languages.
-  - [ ] Experiment with different hyperparameters and batch sizes to optimize the model for trinary classification on multilingual data.
-  - [ ] Begin documenting results and observations, focusing on model performance and any challenges encountered.
+These motivations directly shaped the project's focus on structure, accessibility, and interoperability.
 
-### Week 4 (Dec 2 - Dec 8)
-- **Final Evaluation and Error Analysis**
-  - [ ] Conduct detailed evaluation of the trained model, using metrics such as accuracy, F1-score, and confusion matrices, focusing on language-specific performance.
-  - [ ] Perform error analysis on held-out data, identifying common misclassifications and examining the model’s handling of low-resource languages.
-  - [ ] Finalize and polish the notebook template, ensuring clear instructions and comments throughout for ease of use by new Kaggle competitors.
-  - [ ] Refine the course blog-style summary to include project goals, results, error analysis, and future improvements.
+### Challenges of Task (with Examples)
 
-### Final Submission (Dec 9, 2024)
-- **Submission of Code and Report**
-  - [ ] Submit the completed project code and notebook template, with all components verified for reproducibility.
-  - [ ] Submit the final blog-style summary to the course blog repository, ensuring it meets all project requirements, including a detailed project description, error analysis, reproducibility instructions, and proposal for future improvements.
+This project addresses several key challenges that arise in NLP competitions, particularly in multilingual and online learning contexts:
+
+1. **Handling Linguistic Diversity**
+   The "Contradictory, My Dear Watson" competition spans 15 languages, requiring models to capture semantic relationships across vastly different linguistic structures and vocabularies. For example, sentence pair classification in agglutinative languages like Turkish poses unique challenges compared to isolating languages like Chinese. Traditional NLP models often struggle to generalize effectively across such varied languages.
+
+2. **Limited Training Data for Low-Resource Languages**
+   While high-resource languages like English are well-represented in datasets, low-resource languages often have fewer examples, leading to imbalanced model performance. For instance, the dataset may include only a handful of sentence pairs in languages like Swahili, making it harder for the model to achieve reliable predictions in these cases.
+
+3. **Integrating Local Development with Kaggle's Platform**
+   Students often prefer developing models in local IDEs equipped with debugging tools and linters. However, transferring this work to Kaggle.com for final submissions can result in compatibility issues, such as mismatched library versions or runtime differences. For example, a student's local code might use a specific Python package that is unavailable or outdated in Kaggle's runtime environment.
+
+These challenges highlight the need for robust, innovative solutions, such as multilingual pre-trained models, strategies for low-resource learning, and development environments that ensure seamless compatibility.
+
+### Discussion of state-of-the-art approaches
+
+Several state-of-the-art techniques can enhance the outcomes of this project, particularly in improving the classification task and overall usability:
+
+1. **Transformer-Based Models for Multilingual NLP**
+   Leveraging pre-trained models like **mBERT (Multilingual BERT)** or **XLM-R (Cross-lingual RoBERTa)** can significantly improve the classification accuracy for the multilingual dataset in the "Contradictory, My Dear Watson" competition. These models excel in understanding semantic relationships across diverse languages, addressing the challenge of linguistic variability inherent in the task.
+
+2. **Zero-Shot Learning with Large Language Models (LLMs)**
+   Employing advanced LLMs, such as **OpenAI's GPT-4** or **LLama3**, can facilitate zero-shot or few-shot learning to handle low-resource languages in the competition. These models can generalize well across unseen data, making them ideal for sentence pair classification in languages with limited training examples.
+
+3. **Interactive Learning Environments**
+   Integrating an **AI-powered tutoring system** based on reinforcement learning (e.g., fine-tuned conversational agents) can improve the "virtual teammate" feature. Such systems can adapt dynamically to a student's progress, offering personalized suggestions, explanations, and alternative solutions as they navigate the competition.
+
+These approaches align with the project's goals of providing robust technical solutions while fostering an engaging and supportive learning environment for students.
 
 ## Summary of individual contributions
 <table>
@@ -117,33 +110,61 @@ The notebook aims to achieve competitive accuracy on the Kaggle leaderboard by e
   </thead>
 <tbody>
   <tr>
-    <th><b>This is a solo effort.</b></th>
-    <td>???</td>
-  </tr>
-  <tr>
-    <th><b>???</b></th>
-    <td>???</td>
-  </tr>
-  <tr>
-    <th><b>???</b></th>
-    <td>???</td>
+    <th><b>Mike Benson</b></th>
+    <td>Sole member / everything </td>
   </tr>
 </tbody>
 </table>
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
+A competition [notebook](https://www.kaggle.com/code/mariabistro/contradictory-my-dear-watson-roberta-xlm) running RoBERTa XLM produced very good accuracy score of 0.86140 compared to the baseline [starter-notebook](https://www.kaggle.com/code/alexia/kerasnlp-starter-notebook-contradictory-dearwatson?scriptVersionId=138602134) of 0.62136 and the mean leaderboard accuracy score of 0.69658. The deltas were 0.24004 (38.6%) and 0.16482 (23.7%) respectively.
+
+| Class            | Precision | Recall | F1-Score | Support |
+|------------------|-----------|--------|----------|---------|
+| Contradiction    | 0.88      | 0.79   | 0.83     | 813     |
+| Entailment       | 0.87      | 0.75   | 0.81     | 835     |
+| Neutral          | 0.68      | 0.85   | 0.76     | 776     |
+| **Accuracy**     |           |        | 0.80     | 2424    |
+| **Macro Avg**    | 0.81      | 0.80   | 0.80     | 2424    |
+| **Weighted Avg** | 0.81      | 0.80   | 0.80     | 2424    |
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+Error analysis of the above results reveals insights into the model's performance across different languages. The analysis focuses on identifying patterns in misclassifications and highlighting areas for improvement.
+
+1. **General Trends**:
+   - The matrices show that **entailment** and **contradiction** are classified more accurately than **neutral** across both iterations.
+   - Misclassifications are more frequent between **entailment** and **neutral** than between **contradiction** and the other classes.
+
+2. **Performance Changes**:
+   - The second confusion matrix reveals a slight decrease in accuracy for **entailment** (from 88% to 86%) and **neutral** (from 84% to 82%), while **contradiction** remains constant (87%).
+   - This suggests a minor trade-off in the performance of certain categories, influenced by hyperparameter adjustments or feature selection.
+
+3. **Consistent High Accuracy in Certain Languages**:
+   - Languages like **Bulgarian**, **Russian**, **Vietnamese**, and **Thai** maintain high accuracies (96%-99%), demonstrating robust model performance in these linguistic contexts.
+   - High-resource languages, such as **French** and **German**, also exhibit consistent performance, likely benefiting from well-represented training data.
+
+4. **Lower Accuracy in Specific Languages**:
+   - **English** consistently underperforms (76%-79%), despite being a high-resource language. This anomaly could indicate:
+     - More complex sentence pair relationships in the English dataset.
+     - Higher diversity in sentence structure or semantics compared to other languages.
+   - Similarly, **Swahili** and **Urdu** have occasional dips in accuracy (94%-95%), potentially due to limited representation in the training dataset.
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
-_If you'vd covered this in your code repository's README, you can simply link to that document with a note._
+See the code repository [README.md](https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-2090534948) file.
 
 ## Future improvements
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
+### Discussion of Limitations
+
+While this project provides support for students participating in NLP competitions, it has several limitations. First, the "virtual teammate" relies on predefined responses and code suggestions based on the context of the competition. This approach, while helpful, cannot fully adapt to complex, nuanced problems or offer deeper insights beyond its training. For instance, if a student deviates from the starter notebook's workflow or experiments with unconventional approaches, the virtual teammate may not provide relevant guidance.
+
+Additionally, the customized Kaggle Docker container addresses compatibility issues but is limited to replicating Kaggle's runtime environment at a specific point in time. Changes in Kaggle's platform or the introduction of new features may require frequent updates to the container. Without ongoing maintenance, the environment could fall out of sync with Kaggle.com, creating friction for users.
+
+### Avenues for improvements
+
+Two enhancements could significantly increase the utility and accessibility of this project. First, expanding the capabilities of the virtual teammate by integrating a fine-tuned large language model (LLM) could improve its adaptability and contextual understanding. By leveraging more advanced models, the virtual teammate could provide more robust explanations, personalized feedback, and suggestions tailored to a wider range of workflows.
+
+To address the limitations of the Docker container, implementing a continuous integration (CI) pipeline to monitor and update the container based on changes to Kaggle's runtime environment could ensure consistency. Additionally, allowing users to customize the container to suit their specific projects while maintaining a base template would enhance its flexibility.
