@@ -19,7 +19,7 @@ tags:
   </tr>
   <tr>
     <th>Demo URL (optional)</th>
-    <td>TBA</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-skitcon/blob/main/models/model_demo.py</td>
   </tr>
   <tr>
     <th>Team name</th>
@@ -30,17 +30,17 @@ tags:
 
 ## Project description
 
-This project has the goal of augmenting existing Grammatical Error Correction (GEC) systems for Spanish by providing a very large corpus of synthetically-generated errors. This project is to be used as training data for a Spanish-adaptation of *GECToR – Grammatical Error Correction: Tag, Not Rewrite* (2020) which performs GEC as a token-level sequence classification task, rather than as a seq2seq task as in Neural Machine Translation (NMT) inspired approaches. The token-level classification approach has the advantage of 1) training faster, 2) requiring less data to train, and 3) offering a framework for generating explanations of error corrections. NMT systems simply offer a corrected sentence with no framework for explaining the corrections, which is not as helpful for computer-assisted second language acquisition implementations. However, the disadvantage is that token-level label transformations must be designed and applied to existing datasets in expensive minimization algorithms, which I aim to solve for Spanish with this project.
+This project has the goal of augmenting existing Grammatical Error Correction (GEC) systems for Spanish by providing a very large corpus of synthetically-generated errors. This project is to be used as training data for a Spanish-adaptation of *GECToR – Grammatical Error Correction: Tag, Not Rewrite* (2020) which performs GEC as a token-level sequence classification task, rather than as a seq2seq task as in Neural Machine Translation (NMT) inspired approaches. The token-level classification approach has the advantage of (in theory) 1) training faster, 2) requiring less data to train, and 3) offering a framework for generating explanations of error corrections. NMT systems simply offer a corrected sentence with no framework for explaining the corrections, which is not as helpful for computer-assisted second language acquisition implementations. However, the disadvantage is that token-level label transformations must be designed and applied to existing datasets in expensive minimization algorithms, which I aim to solve for Spanish with this project. As far as I know, there is no other common schema for grammatical transformations for this type of task for Spanish.
 
-Token-level labels are in the form of transformations. Therefore, each token in the input sentence is assigned at least one label which determines how it is reflected in the corrected sentence. Basic transformations are familiar: KEEP, DELETE, and REPLACE. However, *GECToR – Grammatical Error Correction: Tag, Not Rewrite* (2020) introduces *g-transformations* which are transformations which mutate tokens based on specific morphological categories, such as changing case, tense, or number. While all errors can theoretically be corrected with just KEEP, DELETE, and REPLACE, a model can more easily generalize to new words with something like a mutation than with a REPLACE. For an example in English, imagine the model needs to correct the word *is* to *are* in the sentence "\*The scientists is doing an experiment." In an implementation, REPLACE would be an integer within the output vector of the classification layer which has the range of 0 to the size of the vocabulary. In this example, using only REPLACE would mean the respective integer parameter for the REPLACE transformation would just be index of the *are* token in the vocab. While the model learns this fine, there is no connection to the fact that all that is happening here is we are changing the number of the lemma *be* to be plural instead of singular. Which means if we gave it a similar example like replacing *experiments* with *experiment* in the sentence "\*The scientists experiments every day," the model would be unlikely to recognize the similarity between these two corrections. However, if we use a transformation which changes the number of a verb and set the parameter to plural, the mutation from the model's perspective would be the same in both of these cases, allowing the model to generalize much easier. Therefore, I incorporate a label schema adapted for Spanish grammar (incorporating categories like mood, augmented tenses, and gender) defined in the README of the [project Github](https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-skitcon).
+Token-level labels are in the form of transformations. Therefore, each token in the input sentence is assigned at least one label which determines how it is reflected in the corrected sentence. Basic transformations are familiar: KEEP, DELETE, and REPLACE. However, *GECToR – Grammatical Error Correction: Tag, Not Rewrite* (2020) introduces *g-transformations* which are transformations which mutate tokens based on specific morphological categories, such as changing case, tense, or number. While all errors can theoretically be corrected with just KEEP, DELETE, and REPLACE, a model can more easily generalize to new words with something like a mutation than with a REPLACE. For an example in English, imagine the model needs to correct the word *is* to *are* in the sentence "\*The scientists is doing an experiment." In an implementation, REPLACE would be an integer within the output vector of the classification layer which has the range of 0 to the size of the vocabulary. In this example, using only REPLACE would mean the respective integer parameter for the REPLACE transformation would just be index of the *are* token in the vocab of the model. While the model learns this fine, there is no connection to the fact that all that is happening here is we are changing the number of the lemma *be* to be plural instead of singular. Which means if we gave it a similar example like replacing *experiments* with *experiment* in the sentence "\*The scientists experiments every day," the model would be unlikely to recognize the similarity between these two corrections. However, if we use a transformation which changes the number of a verb and set the parameter to plural, the mutation from the model's perspective would be the same in both of these cases, allowing the model to generalize much easier. Therefore, I incorporate a label schema adapted for Spanish grammar (incorporating categories like mood, augmented tenses, and gender) defined in the README of the [project Github](https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-skitcon).
 
-These token-level transformations can be applied to existing Spanish GEC datasets (such as COWS-L2H) with correct + errorful sentence pairs by creating a set of transformations that connect both sentences and minimizes the Levenshtein distance (with morphological transformations having a very low cost). However, for generating our own synthetic errors, the goal of this project, I will define common errors such as subject-verb disagreement, mood-incompatibility, gender mismatch, common L2 learner mix-ups (*por* vs. *para*, *ser* vs. *estar*, etc.), and incorrect word order, and introduce them individually through an iterative process on the correct sentence from a corpus (such as a portion of Google Books in Spanish), recording the transformations required to undo these corrections to easily generate the gold token labels.
+These token-level transformations can be applied to existing Spanish GEC datasets (such as COWS-L2H) with correct + errorful sentence pairs by creating a set of transformations that connect both sentences and minimizes the Levenshtein distance (with morphological transformations having a very low cost). However, for generating our own synthetic errors, the goal of this project, I define common errors in a custom JSON format, including subject-verb disagreement, mood-incompatibility, gender mismatch, common L2 learner mix-ups (*por* vs. *para*, *ser* vs. *estar*, etc.), and incorrect word order. I introduce these errors individually through an iterative process on correct sentences from a corpus (such as a portion of Google Books in Spanish) and generate gold token labels for each generated errorful sentence. I perform this process on a selection of Spanish sentences from Wikipedia.
 
-Once the corpus has been generated, I will evaluate the efficacy of this corpus for improving GEC by comparing 4 different GEC models:
+I evaluate the efficacy of this corpus for improving GEC by comparing 4 different GEC models:
+* Seq2seq classification (as in NMT-inspired models) using BARTO (Spanish BART) with the existing COWS-L2H corpus as training data (**BASELINE**)
+* Seq2seq classification (as in NMT-inspired models) using BARTO with COWS-L2H and my synthetically-generated corpus as training data
 * Token-level classification using BETO (Spanish BERT) for sequence classification with only the existing COWS-L2H corpus as training data
 * Token-level classification using BETO with COWS-L2H and my synthetically-generated corpus as training data
-* Seq2seq classification (as in NMT-inspired models) using BARTO (Spanish BART) with the existing COWS-L2H corpus as training data
-* Seq2seq classification (as in NMT-inspired models) using BARTO with COWS-L2H and my synthetically-generated corpus as training data
 
 Therefore, this is a 2x2 experimental design:
 
@@ -49,7 +49,27 @@ Therefore, this is a 2x2 experimental design:
 | BETO (Token classification) | X | X|
 | BARTO (Seq2seq) | X | X |
 
-As of the submission of this proposal, this project is still a work-in-progress. I currently have the decoding logic and morphological mapping system completed and working, so the token label schema is complete, but I need to finish the algorithm for generating labels for correct + errorful sentence pairs (a modified version of minimum edit distance) and for introducing synthetic errors. Once these two tasks are complete, I will be able to begin training on the experimental models.
+As an aside, the part of the project that took the most time was actually creating the system for realizing morphology of a Spanish word (e.g. "bailamos" + NUMBER-SING + MOOD-SUB = "baile"). There is one existing system I have found which uses a finite-state transducer to implement learned morphology rules. However, I only figured out how to use this system later in the project, so I had to stick wth my own version which used a morphology dictionary which maps lemmas + morphological categories to surface forms. Notably, this system is quite brittle. It was generated from a database for common Spanish verbs, scraping from Wikitionary, manually-inputted entries, and learned entries based on input data. Therefore, if a word is unseen, it will fail, which is handled by my code to replace the mutation with a replace. This works in the vast majority of cases, but I really wish I had more time to improve this system or replace it with an existing one.
+
+For the token-level classification task, the output vector for each label is two integers where the first integer designates the type of mutation (KEEP, REPLACE, etc.) and the second is the parameter (e.g. MOOD-SUB). However, because many tokens have multiple transformations, the output vector for each token has the size of 2 * max_labels where max_labels is a hyperparameter designating how many transformations can be applied to one token. I set max_labels at 12.
+
+For example, let's define the following transformation:
+
+Token: `estás`
+
+Token-labels: `<MUTATE param="PERSON-3"/> <MUTATE param="MOOD-SUB"/> <MUTATE param="TIME-PRET"/>`
+
+For convenience, the numerical representations of each of property in these labels are:
+* MUTATE = 5
+* PERSON-3 = 24
+* MOOD-SUB = 26
+* TIME-PRET = 31
+
+With max_labels = 5, the vector representation of these labels is:
+
+`[5, 24, 5, 26, 5, 31, 0, 0, 0, 0]`
+
+and this results in the transformed token: `estuviera`
 
 ## Summary of individual contributions
 <table>
@@ -67,18 +87,182 @@ As of the submission of this proposal, this project is still a work-in-progress.
 </tbody>
 </table>
 
+## Corpus Analysis
+
+The non-synthetic corpus used for this project is the COWS-L2H corpus created from corrections of essays written by learners of Spanish. After processing into sentences, this corpus has 52,652 sentences, of which 18,421 have no corrections. This results in a slight bias toward sentences with grammatical errors.
+
+Once labeled, the number of labels for each possible transformation in the COWS-L2H corpus was:
+
+* "KEEP": 711130
+* "DELETE": 40054
+* "REPLACE": 42012
+* "ADD": 15674
+* "MUTATE": 28735
+* "COPY-ADD": 6766
+* "COPY-REPLACE": 8079
+
+Total labels: 852,450
+
+Therefore, the vast majority of labels were KEEP (83.4\%). This aligns with the expectation of any GEC labeling task, but is important to keep in mind. The next most common were DELETE and REPLACE. The advantage of this system is that MUTATE labels replace what would be a REPLACE label, but unfortunately REPLACE labels outnumber MUTATE labels. I believe this is because there are cases where a MUTATE could be a REPLACE, but because my morphological realization dictionary is so brittle, the mutation could not be resolved. This is something to improve in the future.
+
+For my synthetically-generated corpus from Wikipedia, I labeled 81,124 sentences total of which 6,546 had no errors. This has a much higher bias toward sentences with grammatical errors than the COWS-L2H corpus, but my script can be easily adjusted to change the proportion of sentences with no errors based on performance results.
+
+Labeled, the number of labels for each possble transformation in my synthetic corpus was:
+
+* "KEEP": 2,061,664
+* "DELETE": 27,183
+* "REPLACE": 41,001
+* "ADD": 29,132
+* "MUTATE": 29,910
+* "COPY-ADD": 11,873
+* "COPY-REPLACE": 53,878
+
+Total labels: 2,254,641
+
+In comparison, there is a larger bias toward KEEP labels (91.4\%). There are also far more ADD and COPY-REPLACE labels proportionally.
+
 ## Results
 
-Results are pending.
+Note that these results are without any hyperparameter tuning for the specific task. All of these use the same basic training strategy: mini-batch gradient descent, Adam optimizer, batch size 16, 8 epochs. Everything else is default for the respective base models.
+
+### BLEU Score
+
+I use BLEU score between the predicted sentence and target sentence for my main measurement of performance between models. I use this because the seq2seq models do not have token labels to score accuracy or F1 on, so a comparison with those metrics would be unfair.
+
+On held-out test data (n=2,000 sentences) from COWS-L2H:
+* **BASELINE** Seq2Seq (COWS-L2H only): 0.846 BLEU
+* Seq2Seq (COWS-L2H + Synthetic): 0.851 BLEU (+0.005 compared to baseline)
+* Token Classification (COWS-L2H only): 0.735 BLEU (-0.111 compared to baseline)
+* Token Classification (COWS-L2H + Synthetic): 0.745 BLEU (-0.101 compared to baseline)
+
+In both the seq2seq models and token classification models, my synthetic data improves performance on the test data. I believe with targeted additions of certain errors to the generation code the synthetic data could improve performance even more. However, the token-classification models (which I thought would perform better) actually perform much worse than the baseline. Only the seq2seq model with synthetic data performs better than the baseline. I believe the reason for this is that the model fails to converge correctly on the transformation parameters (e.g. vocab index of the token to replace, mutation type, etc.). Despite my hypothesis, the token classification model using my current design takes *more* data to train, not less.
+
+### Targeted Tests
+
+As a tangible comparison between models, I have constructed a series of basic sentence corrections which the models *should* be able to do if they were to be used in practice. The sentences are:
+
+(1) \*yo va al tienda. -> (Yo) voy a la tienda. or Va a la tienda. (Incorrect capitalization, basic subject-verb disagreement, and gender disagreement)
+
+(2) \*Gracias para invitarme. -> Gracias por invitarme (Very simple mixup of *por* and *para*)
+
+(3) \*Espero que tú ganas el juego. -> Espero que (tú) ganes el juego. (Redundant pronoun (ok if not deleted) and incorrect mood (subjunctive is required here))
+
+(4) \*Soy una mujer y soy bello. -> Soy una mujer y soy bella. (Contextual gender mismatch)
+
+(5) \*Le dije que estaba avergonzada, pero me llamó emotivo. -> Le dije que estaba avergonzada, pero me llamó emotiva. (More complicated gender mismatch)
+
+I also included these sentences to see if the model has internalized gender bias.
+
+(6) Mi novia me dijo que me parecía bella esta noche. (There should be no correction here, but I wonder if the model will assume the speaker is a man because they have a girlfriend and correct *apuesta* to *apuesto*)
+
+(7) Trabajo como albañil así que siempre me siento cansada. (There should be no correction here, but I wonder if the model will assume the speaker is a man because they work as a bricklayer and correct *cansada* to *cansado*)
+
+The results of sentences 1-7:
+* **BASELINE** Seq2Seq (COWS-L2H only): 5/7 pass
+* Seq2Seq (COWS-L2H + Synthetic): 5/7 pass
+* Token Classification (COWS-L2H only): 3/7 pass
+* Token Classification (COWS-L2H + Synthetic): 4/7 pass
+
+Detailed descriptions of the failures for these sentences are in the [error analysis section](#error-analysis).
 
 ## Error analysis
 
-Error analysis is pending for after completed dataset and model results are complete.
+The most obvious common issue is with the token models. While the model is good at correcting simple errors, the model fails to converge on determining the correct replacement token for a REPLACE transformation. This results in most REPLACE transformations having the parameter 0 (the index of \[MASK\]). For example, the erroneous sentence *\*Él es en el parque.* has a grammatical error where the word *es* is used instead of *está*. The model correctly detects that *es* should be replaced, but instead of choosing *está* as the replacement, it chooses \[MASK\]. I believe this could be solved with a supplemental pre-training procedure (maybe pre-train the model to choose a replacement?) or using a different model (maybe use BARTO for the token model too to improve decoder performance).
+
+For further analysis beyond BLEU score, I analyzed the ability of the models to correctly detect if an error is or is not present based on the output. Therefore, each sentence is put into one of five categories:
+
+* TP: True positive, model correctly identifies the sentence as having an error AND output sentence matches the gold sentence
+* FP: False positive, model incorrectly identifies the sentence as having an error when there is no error present
+* TN: True negative, model correctly identifies the sentence as having no error and makes no changes to the sentence
+* FN: False negative, model incorrectly identifies the sentence as having no error when there are actually errors in the sentence
+* Incomplete correction: The model correctly identifies the sentence as having an error, but the output does not match the gold sentence.
+
+| | s2s (COWS-L2H only) | s2s (COWS-L2H + Synthetic) | token (COWS-L2H only) | token (COWS-L2H + Synthetic) |
+| ---- | ---- | --- | --- | --- |
+| TP | 517 | 532 | 179 | 194 |
+| FP | 76 | 66 | 102 | 99 |
+| TN | 599 | 609 | 558 | 561 |
+| FN | 239 | 241 | 261 | 287 |
+| Incomplete correction | 569 | 552 | 900 | 859 |
+
+Some key takeways are:
+* All models have very few false positives. The models do very well at not correcting a sentence that is grammatically fine.
+* The categories with the most divergence between model architectures are true positives and incomplete corrections. The token models do *much* worse at correctly correcting sentences, even if they detect errors at around the same rate.
+
+With the sentences split based on whether there are errors or not, we can get the BLEU score for each type of sentence:
+
+| | s2s (COWS-L2H only) | s2s (COWS-L2H + Synthetic) | token (COWS-L2H only) | token (COWS-L2H + Synthetic) |
+| ---- | ---- | --- | --- | --- |
+| BLEU ONLY on sentences with no errors | 0.964 | 0.978 | 0.954 | 0.955 |
+| BLEU ONLY on sentences with errors | 0.794 | 0.799 | 0.645 | 0.660 |
+
+This analysis supports the same conclusion as the category counts. The token models do much worse at correctly changing a sentence. We can see this in detail by looking at the results of the selected sentences test set (different tokens bolded):
+
+* Seq2seq (COWS-L2H only)
+  * Sentence 3 fails:
+    * Predicted sentence: Espero que tú **ganas** el juego.
+    * Target: Espero que tú **ganes** el juego.
+    * Explanation: Model fails to detect that *ganas* should be in the subjunctive mood.
+  * Sentence 5 fails:
+    * Predicted sentence: Le dije que estaba avergonzada, pero me llamó **emotivo**.
+    * Target: Le dije que estaba avergonzada, pero me llamó **emotiva**.
+    * Explanation: Model fails to infer that *emotivo* refers to the speaker who is already identified as female by the use of *avergonzada*, so *emotivo* should be *emotiva* (feminine version).
+* Seq2seq (COWS-L2H + Synthetic)
+  * Sentence 3 fails:
+    * Predicted sentence: Espero que tú **ganas** el juego.
+    * Target: Espero que tú **ganes** el juego.
+    * Explanation: Model fails to detect that *ganas* should be in the subjunctive mood.
+  * Sentence 5 fails:
+    * Predicted sentence: Le dije que estaba avergonzada, pero me llamó **emotivo**.
+    * Target: Le dije que estaba avergonzada, pero me llamó **emotiva**.
+    * Explanation: Model fails to infer that *emotivo* refers to the speaker who is already identified as female by the use of *avergonzada*, so *emotivo* should be *emotiva* (feminine version).
+* Token (COWS-L2H only)
+  * Sentence 1 fails:
+    * Predicted sentence: Va **\[MASK\]** tienda.
+    * Target: Va **a la** tienda.
+    * Explanation: Model correctly deletes pronoun *yo* to correct subject-verb disagreement and correctly identifies that *al* is the incorrect preposition + article for *tienda*, but it fails to identify the correct replacement (*a la*) and defaults to the first word in the dictionary, \[MASK\].
+  * Sentence 2 fails:
+    * Predicted sentence: Gracias **para** invitarme.
+    * Target: Gracias **por** invitarme.
+    * Explanation: Model makes no change to the sentence. It fails to identify that *para* is the correct preposition and *por* should be used.
+  * Sentence 3 fails:
+    * Predicted sentence: Espero que **Ganas** el juego.
+    * Target: Espero que **ganes** el juego.
+    * Explanation: Model correctly deletes redundant pronoun *tú* (this is more of a stylistic improvement) and correctly identifies that *ganas* should be changed, but does not correctly identify that *ganas* should be in the subjunctive mood. Instead, the model capitalizes the word. It is worth noting that the parameter for mutate that signifies capitalizing the word is 0 in scalar form, so the capitalization is simply a case of choosing the mutation type with the index 0 (same type of error as choosing \[MASK\] for replace).
+  * Sentence 5 fails:
+    * Predicted sentence: Le dije que estaba avergonzada, pero me llamó emo \[MASK\].
+    * Target: Le dije que estaba avergonzada, pero me llamó **emotiva**.
+    * Explanation: Model actually correctly identifies that *emotivo* should change (though in this case the subword *##tivo* due to how it was tokenized), but does not correctly update gender. Instead, \[MASK\] is chosen again.
+* Token (COWS-L2H + Synthetic)
+  * Sentence 1 fails:
+    * Predicted sentence: voy a **yo** tienda.
+    * Target: Voy a **la** tienda.
+    * Explanation: Model correctly deletes redundant *yo* pronoun and corrects *va* to the first person (*voy*). The model also correctly tries to fix *al* by changing it to *a* + something, but erroneously copies the first word *yo* instead of replacing it with *la*. The model also fails to capitalize the first word.
+  * Sentence 3 fails:
+    * Predicted sentence: Espero que **Ganas** el juego.
+    * Target: Espero que **ganes** el juego.
+    * Explanation: Model correctly deletes redundant pronoun *tú* (this is more of a stylistic improvement) and correctly identifies that *ganas* should be changed, but does not correctly identify that *ganas* should be in the subjunctive mood. Instead, the model capitalizes the word. It is worth noting that the parameter for mutate that signifies capitalizing the word is 0 in scalar form, so the capitalization is simply a case of choosing the mutation type with the index 0 (same type of error as choosing \[MASK\] for replace).
+  * Sentence 5 fails:
+    * Predicted sentence: Le dije que estaba avergonzada, pero me llamó emo \[MASK\].
+    * Target: Le dije que estaba avergonzada, pero me llamó **emotiva**.
+    * Explanation: Model actually correctly identifies that *emotivo* should change (though in this case the subword *##tivo* due to how it was tokenized), but does not correctly update gender. Instead, \[MASK\] is chosen again.
+
+Notably, no model correctly fixes sentences 3 and 5. Additionally, the token model without the synthetic data is the only model to fail sentence 2. My takeaway from this is that none of the models are necessarily ready for real world use without supervision. Sentence 5 is a difficult correction (requires inferred gender), so I think it is ok if a model doesn't catch that error. However, I am surprised sentence 3 fails for all models. This is a textbook example of where subjunctive mood is required, so something similar to this is almost guaranteed to be in the training data. This kind of error *should* be easy for the models.
+
+Additionally, none of the sentences fail the test for gender bias, but this may be because the models are biased toward *not* correcting a sentence.
 
 ## Reproducibility
 
 Reproducibility instructions and code are available in the Github for this project at: https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-skitcon
 
+The source for the text I used to generate errors from is: https://huggingface.co/datasets/josecannete/large_spanish_corpus
+
 ## Future improvements
 
-For the future, this project could be improved by experimentation with different token label schemes. For example, my theory is that having PRE-ADD and POST-ADD will improve correction performance, but I do not have empirical testing on this, this is purely based on intuition.
+For synthetic error generation, the most important thing is to improve the performance of the **decode** algorithm. Right now it is bottle-necked by its reliance on the spaCy es_deb_news_trf model. Any time there is a change to the sentence, that word needs to have the model re-ran on it for consistency (in case morphology analysis is needed again). Instead, the model should ONLY be ran if future labels require it. Additionally, mutations should be able to be ran at the same time. Right now, mutations happen one at a time, but if there are multiple mutations at once, they should be chained together in one bulk edit to improve efficiency (no need to run NLP analysis for every mutation if we already know the current categories). However, this requires a major re-write of how labels are applied to tokens (right now it is implemented as a stack), so I did not have time to implement these changes.
+
+For the future, this project could also be improved by experimentation with different token label schemas.
+
+Additionally, I think it can be improved with a better morphological realization dictionary/transducer. At the moment, it fails in quite a few cases, which means it needs to use a REPLACE label where theoretically a MUTATE label is possible. In some cases this is because of an erroneous linking where the mutation is not actually possible, but many cases *should* work. In the cases I've seen in the error messages, the primary cause is part-of-speech mismatch and errors in the dictionary entries. In some cases, it seems the entry erroneously has a superlative suffix (e.g. "corto" is entered as "cortísimo"), which causes an incorrect mutation (e.g. "cortas" + NUMBER-SING + GENDER-MASC = \*cortísimo instead of corto). I solved this by just removing superlatives from the morphological dictionary. This is only fine because something like "cortísimo" is actually tokenized as "cort" + "##ísimo" in BETO. In other cases, the entry does not exist for the part-of-speech that spaCy has assigned the word. For example, "los" in the sentence *\*los baile es maravilloso.* is marked as having the incorrect number, therefore it is assigned the label "MUTATE NUMBER-SING" to make it "el". However, spaCy may erroneously tag "los" as a NOUN, for which "los" may not have an entry, causing a KeyError and the decoding to fail. I fixed this by allowing the decode algorithm to be more flexible and to try other parts of speech that have compatible categories (e.g. the noun form and adjective form are often identical, especially if there is no entry for the noun), but it may still happen in edge cases, especially with rarer words. Because the morphological dictionary is so brittle, there is a lot of code for working around it, including a way for the code to add entries if they are completely missing. I think the design needs a revisit, especially for cases where entries are missing, but morphology should be able to be inferred (e.g. the nonsense word *grego* + GENDER-FEM is intuitively *grega*, even if you have never heard that word).
+
+The biggest thing that can improve the model itself is to pre-train BERT with a very large corpus of errorful sentences. This is what the authors did in the GECToR paper. I did not have time for pre-training due to the short timeframe of this class as that would have taken up to a week on its own. I believe this would massively improve results on the token-based models and fix the \[MASK\] problem.

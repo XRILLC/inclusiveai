@@ -8,8 +8,6 @@ tags:
   - class competition
 ---
 
-Note: As it stands, I am very unsatisfied with the performance of this model. I believe the design of my model will change significantly by the final version, but right now this is what I have results for.
-
 <table>
   <caption>
     Class Competition Info
@@ -23,7 +21,7 @@ Note: As it stands, I am very unsatisfied with the performance of this model. I 
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>0.484</td>
+    <td>0.487</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -43,13 +41,15 @@ Note: As it stands, I am very unsatisfied with the performance of this model. I 
 
 ## Task summary
 
-The task is to create a binary classifier which takes two sentences separated by a \[SNIPPET\] and classifies them as either 0 (not from the same author) or 1 (from the same author).
+The task is to create a binary classifier which takes two sentences separated by a \[SNIPPET\] and classifies them as either 0 (not from the same author) or 1 (from the same author). The training set size given is 1,601 examples, of which 1,245 examples are label 0 and 356 examples are label 1
+
+To combat a failure to generalize to the test set in my rough draft, I augmented the training set by scraping snippets from the Gutenberg corpus. The basic pipeline was to scrape books from the corpus, record the author and text, clean the text, and select a defined number of adjacent sentences from the text and add it to an author's "library" of sample texts. Then, for each author's text, it was either paired with a random text from another author and given the label 0, or paired with a random text from the same author and given the label 1. With 15 snippets per author, I augmented the training corpus by 201,685 samples. This was far more than I was able to train with, so I created smaller versions that with a random selection from the full augmented dataset 1\%, 10\%, 25\%, and 50\% the size of the original. I ended up using 10\% for my best model (though I think more data is better, I needed to prioritize time).
 
 My approach to this task was to create a dual encoder[^1] architecture where each sentence is passed through the same DistilBERT network separately (not in the same run with the \[SEP\] token) and the sentence embedding is extracted (the embeddings of the \[CLS\] token). These two embeddings are measured for cosine similarity which is used to calculate the loss.
 
 For this dual encoder architecture, I use contrastive loss as defined below:
 
-$\mathcal{L}_{\operatorname{contrastive}}(D, y) = (1 - y) \cdot (D + 1)^{2} + y \cdot \operatorname{max}(D - 1)^{2}$
+$\mathcal{L}_{\operatorname{contrastive}}(D, y) = (1 - y) \cdot (D)^{2} + y \cdot \operatorname{max}(1 - D)^{2}$
 
 where:
 * $D$ is the cosine similarity of $\vec{E}_1$ and $\vec{E}_2$ from DeBERTa
@@ -59,7 +59,7 @@ This loss function is similar to cross-entropy loss, but has the objective of pu
 
 This network is adapted from simple facial recognition systems which use dual encoders to train a system to classify two images as having the same face or not (though in that case Euclidean distance would generally be used).
 
-Once the dual encoder is fine-tuned, the distance fine-tuned model is frozen and added to the pipeline of the final model. In the final model, sentences are fed through both the frozen dual encoder architecture and another DistilBERT model to generate semantic sentence embeddings for a final linear layer which takes the distance embeddings and semantic embeddings as input and 6 engineered features (discussed below) as input. This model is trained with binary cross-entropy loss, but the distance embeddings are frozen to retain the style embedding space. The architecture diagram is shown below:
+Once the dual encoder is fine-tuned, the distance fine-tuned model is given a reduced learning rate and added to the pipeline of the final model. In the final model, sentences are fed through both the dual encoder architecture and another DistilBERT model to generate semantic sentence embeddings for a final linear layer which takes the distance embeddings and semantic embeddings as input and 6 engineered features (discussed below) as input. This model is trained with binary cross-entropy loss, but the distance embeddings have a reduced learning retate to partially retain the style embedding space. The architecture diagram is shown below:
 
 <img src="architecture_diagram.png" alt="An architecture diagram showing my approach to the class competition" width="400" style="display: block; margin-left: auto; margin-right: auto; width: 50%;"/>
 
@@ -84,8 +84,7 @@ From rarity:
 
 ## Exploratory data analysis
 
-For my initial exploratory data analysis, I analyzed the difference of 6 candidate features between sentence 1 and sentence 2. For example, I extracted the proportion of words in each sentence that are nouns and calculated the difference between sentence 1 and sentence 2. I treated each label as a separate experimental condition and performed a 2-sample t-test on the differences for each feature between label 0 (different author) and label 1 (same author).
-
+For my initial exploratory data analysis of the 1,601 examples in train.csv, I analyzed the difference of 6 candidate features between sentence 1 and sentence 2. For example, I extracted the proportion of words in each sentence that are nouns and calculated the difference between sentence 1 and sentence 2. I treated each label as a separate experimental condition and performed a 2-sample t-test on the differences for each feature between label 0 (different author) and label 1 (same author). There were 1,245 examples of label 0 and 356 examples of label 1. Therefore, there is major class imbalance with only 22% of the given examples being of class 1.
 "Rarity" is a metric meant to measure the vocabulary richness of the sentence. It is defined as the proportion of words in the sentence that are not in the 5,000 most common words of English.
 
 | Label	| Mean Noun Prop Diff |	Mean Verb Prop Diff | Mean Adj Prop Diff | Mean Adv Prop Diff	| Mean Unique Lemma Prop Diff |	Mean Rarity Diff |
@@ -97,31 +96,38 @@ p-value from 2-sample t\-test reported as: \* - p \< 0.1, \*\* p \< 0.05, \*\*\*
 
 From this, I decided to include the proportion of words in the sentence that are nouns and rarity score as manually-engineered features for the model.
 
+As an example of these data points, these sentences from the training corpus have very high rarity (rarity > 0.5):
+
+* Scarlet Letter, Hawthorne's, 207-210, 212. Schiller, Friedrich, 51, 65. Schubart, 120. Scot, Reginald, 14, 147. Scott, Sir Walter, 11, 14, 20, 21 note, 22, 38 note, 55, 57, 69, 72, 73, 74, 75, 77, 80, 81, 82, 86, 109, 135, 145-156, 190, 194, 200, 201, 224. Secret History of the Good Devil of Woodstock, 154.
+* He didn't drink.  "Growing?" echoed Silby stupidly.  "Yes.
+
+Therefore, rarity, while also capturing subtle differences in vocabulary richness, captures anomalous sentences which are not expected, such as lists of numbers (citations). This is a useful feature for capturing the divergence of these strange sentences, which should be easy for the model to classify.
+
 ## Results
 
-As of right now, the performance of this network is much lower than expected. While it of course performs extremely well on training data because these are seen examples, the embedding space does not generalize well to unseen authors and styles.
-
-To be honest, I am very disappointed with these results as my first draft, but I have run out of time before the draft is due. I unfortunately wasted time trying to fine-tune DeBERTa v3 XL only to find that its performance is worse.
+As of right now, the performance of this network is much lower than expected. I'm honestly really confused why this model performs so poorly. I really must be doing something wrong here. This was my first attempt at a more complex PyTorch module, so it is possible I messed up somewhere. While it of course performs extremely well on training data because these are seen examples, the embedding space does not generalize well to unseen authors and styles. I thought this would be improved by supplemental data, but the supplemental data is too different from the test data to be useful. If the supplemental data outnumbers the base training data, the model collapses into only picking the positive label. I believe if I knew exactly the cleaning procedure from raw text -> snippet I could fix this, but this is what I have.
 
 On the test set:
 
-* Accuracy: 0.469
-* Precision: 0.252
-* Recall: 0.492
-* F1: 0.333
+Accuracy: 0.573
+Precision: 0.284
+Recall: 0.385
+F1: 0.328
+
+The F1 on the Kaggle submission is higher at 0.487, but the delta from the random baseline is still negative at -0.13.
 
 ## Error analysis
 
-The key evidence that the embeddings space does not generalize well to new authors is that in the training data, the mean cosine similarity of two distance embeddings from the same author is almost 1 and the mean cosine similarity of two distance embeddings from two different authors is a little less than 0. However, in the development set I found that the mean cosine similarities are very close, -0.02 for two different authors and 0.27 for the same author. Therefore, this design is currently overfitting. While I think this design makes sense, I think it requires much more data and more examples of different styles to reach a generalizable embedding space and overall model.
+The key evidence that the embeddings space does not generalize well to new authors is that in the training data, the mean cosine similarity of two distance embeddings from the same author is almost 1 and the mean cosine similarity of two distance embeddings from two different authors is a little less than 0. However, in the development set I found that the mean cosine similarities are very close, 0.37 for two different authors and 0.56 for the same author. Therefore, this design is still currently overfitting.
 
 For the overall model, here is the confusion matrix on the test set:
 
 | | Gold 1 | Gold 0 |
 | ---- | ---- | ---- |
-| Pred 1 | 32 | 95 |
-| Pred 0 | 81 | 33 |
+| Pred 1 | 25 | 63 |
+| Pred 0 | 40 | 113 |
 
-The model has very poor scores on all metrics. I plan to do a manual analysis of the sentence pairs which are FP and FN, because they seem to be the exact same sentences. Whenever I adjust hyperparameters, it generally just moves a few specific sentences around with little effect on the model (unless I change them to something unreasonable, then the model gets much much worse).
+While true negatives outnumber false negatives, there are a large number of false positives which severely affects precision.
 
 ## Reproducibility
 
@@ -129,6 +135,4 @@ Dependencies and reproduction code are available on the Github repo for this pro
 
 ## Future Improvements
 
-The first thing I need to do is augment the dataset through data mining of more books and articles. Secondly, If this strategy work, I believe I will need to completely rethink this architecture. I think perhaps there are too many features which is causing the overfitting, but I am not sure the right approach to finding the sweet spot as this is still a complex task.
-
-I think perhaps the right approach is possibly to reduce the size of the model and focus more on other engineered features like overlap of high scoring terms on TF-IDF.
+The biggest improvement that could be done is the addition of high-quality supplemental or synthetic data. At the moment, my supplemental data is too different from the given data to be useful for performance on the test data. To be honest, this task has really stumped me. I did not expect this to be so difficult, but no matter what I did my model is always basically random (or worse!). Perhaps this task would be more suited to a modern LLM like Llama that was fine-tuned for this task with more features to detect very fine differences in wording. I think what stumped me was that I honestly don't know if I could do this task at better than 0.5 F1. Reading through some of the snippets in the training data I was basically guessing at the label except in some obvious cases. I'm curious to see what other students did who were able to get decent performance (at least 0.6 F1). I think I will revisit this in the future.
