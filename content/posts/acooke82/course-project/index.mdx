@@ -1,9 +1,9 @@
 ---
 title: "Predicting Human Judgement Preferences"
 slug: "/acooke82/course-project"
-date: 2024-11-13
+date: 2024-12-08
 author: Alexandra Cooke
-description: "My submission for the ..."
+description: "My submission experience during the LLM Classification Finetuning Kaggle Competition."
 tags:
   - course project
 ---
@@ -31,13 +31,13 @@ tags:
 
 ## Project description
 
-This project aims to explore how different LLMs react to user inputs and to see if an LLM is able to predict the preferred responses of users. To build the dataset, users chatted with two anonymous LLMs and selected which answer they preferred from the two, creating a dataset of user prompts, LLM responses, and user judgements. The project is intended to demonstrate how human feedback can assist with creating better models, leading to a better human experience. The goal of the competition is to build a model that can accurately predict the preferences of the judges, determining the likelihood that a test prompt/response pair is the ideal choice. The accuracy of submissions is based on the log loss between the predicted probabilites and the ground truth values. 
+### Overview & Novelty
 
-### Project Timeline
+This project, titled "LLM Classification Finetuning", is a Kaggle competition which aims to explore how different LLMs react to user inputs and to see if an LLM is able to predict the preferred responses of users. The goal of the competition is to build a model that can accurately predict the preferences of the human judges, determining the likelihood that a test prompt is the ideal choice to present in the future. The project is intended to demonstrate how human feedback can assist with creating better models, leading to a better human experience. There are three sets of data provided to competition participants to assist them with this goal: a training set, a test set, and a sample submission. To build the training dataset, users chatted with two anonymous LLMs and selected which answer they preferred from the two, creating a dataset of user prompts, LLM responses, and user judgements. The test dataset is provided to participants as an example of prompt/response pairs their model can expect and is replaced with alarger, hidden test data set to score the actual submissions. The sample submission serves as an example of how the participant should organize their final csv for it to be accepted on the leaderboard. The accuracy of submissions is based on the log loss between the predicted probabilites and the ground truth values. This project is unique since it is a "Getting Started" Kaggle competition, which are geared towards participants with little machine learning experience who want to get comfortable on the Kaggle platform and data science. The project also provides users with a "Starter Notebook" to give them an idea of what to look for and how to do exploratory data analysis. The project also runs locally in a Kaggle-hosted notebook service and submissions are graded by running a hidden version of the participant's local notebook.  
 
-I started working on my project on November 11, 2024 and it is due on December 9, 2024. This leaves me with just about four weeks to succesfully complete my submissions and blog post. For week one (Nov 11 - Nov 15), I focused on setting up my environment, finding a project to work on, and successfully completing my draft and pull request. For week two (Nov 18 - Nov 22), I will complete my exploratory data analysis, looking for outliers and doing pre-processing. For week three (Nov 25 - Nov 29), I will work on building the model by testing different types of models, conducting error analysis, and fine-tuning performance. On week four (Dec 2 - 6), I will work on completing my blog post details and reviewing my final submissions. By Dec 9, I will ensure that everything has been submitted in a timely and complete manner.      
+### Motivation
 
-
+I was interested in working on this project because it appeared to be a slightly more complex version of the classifiers we built in LING539. At that time, the task was to build a classifier which looked at a csv containing three different columns and then made predictions on a new dataset based off of the features it had been trained on. This new project also involved a classifier, but there were more factors to consider due to shape of the csvs and the content of the task itself. I saw this as an excellent opportunity to test that I had retained my knowledge from the previous class as well as learn some new features of the scikit-learn library. I was additionally hopeful that I would be able to work on more model performance testing, such as building a confusion matrix, which was something I did not try earlier this year.      
 
 ## Summary of individual contributions
 <table>
@@ -50,7 +50,7 @@ I started working on my project on November 11, 2024 and it is due on December 9
 <tbody>
   <tr>
     <th><b>Alexandra Cooke</b></th>
-    <td>Principal Investigator</td>
+    <td>Completed all project work, sole contributor.</td>
   </tr>
 </tbody>
 </table>
@@ -58,17 +58,23 @@ I started working on my project on November 11, 2024 and it is due on December 9
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
+My final submission scored XXXXX, which is above the expected baseline of 1.09861. My delta was XXX.
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+To complete error analysis, I created a classification report. Because I did not have access to the actual testing data set, it was difficult to complete much error analysis.  
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+An overview of the project requirements can be found on the README file at the following link: https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-acooke82 
+Additionally, there are detailed notes on the source code in the repository for reproducing the final project results.    
 
 ## Future improvements
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
+### Limitations
+
+Although this project was geared towards individuals who are new to data science and provided good resources for learning, there were still limitations present. I think that one limitation for this project was not being able to view more of the test data. There is a possibility that data present in the testing set contained anomalies that were not present in the training set. Identifying and accounting for these could be beneficial to the model's accuracy. Additionally, having to use and submit through the Kaggle notebook environment could be another limitation. Though the notebook system is potentially more user-friendly to new participants, users risk losing their work by hosting it through the website and may be uncomfortable with having their code publically viewable to all users. Users might also be tempted to view other participant's submissions, limiting their own creativity and abilities.      
+
+### Avenues for Improvement 
+
+I think there are two main improvement ideas that immediately jumped out at me when considering how to improve the model. The first improvements would be to create my feature vectors based on smaller tokens in the future. This could allow for more identifiable patterns and relationships, potentially improving model performance. The second idea for improvement would be to adjust which sklearn model I used for training. I found that LogisticRegression ran very slowly and maxed out my CPU capabilities multiple times. I attempted adjusted a few model parameters, such as the solver and the max_iter, but did not see an overall improvement. It is likely that LogisticRegression was simply not the ideal classifier type to use in this scenario another and another classifier such as RandomForest would have performed much better.    
