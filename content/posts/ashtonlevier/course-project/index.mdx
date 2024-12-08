@@ -1,9 +1,9 @@
 ---
-title: "Something Clever"
+title: "Group Insights on Sentiment Analysis"
 slug: "/ashtonlevier/course-project"
-date: 2024-11-14
+date: 2024-12-07
 author: "ashtonlevier"
-description: "My submission for the course project"
+description: "Our group's analysis of the data we synthesized from sentiment analysis"
 tags:
   - course project
 ---
@@ -30,7 +30,15 @@ tags:
 
 
 ## Project description
-- The goal of this project is to evaluate how different decoder-only transformer models interpret and reflect a user's desired emotional tone in response to a prompt on a specific topic, focusing particularly on the intensity of anger. This involves the combined tasks of sentiment analysis and emotion intensity quantification within the context of statistical natural language processing (NLP). Sentiment analysis is a foundational task in NLP, and our project extends this by examining the degree of emotion a model can express, helping us assess nuanced emotional tones, especially anger. Using the monologg/bert-base-cased-goemotions-original model from Hugging Face, we aim to score and categorize anger intensity in text responses. Our approach involves generating responses to the same prompt with varying intensities and assessing how well the model captures these desired emotional nuances.
+The goal of this project is to evaluate how different decoder-only transformer models interpret and reflect a user's desired emotional tone in response to a prompt on a specific topic, focusing particularly on the intensity of anger. This involves the combined tasks of sentiment analysis and emotion intensity quantification within the context of statistical natural language processing (NLP). Sentiment analysis is a foundational task in NLP, and our project extends this by examining the degree of emotion a model can express, helping us assess nuanced emotional tones, especially anger. Using the `monologg/bert-base-cased-goemotions-original` model from Hugging Face, we aim to score and categorize anger intensity in text responses. Our approach involves generating responses to the same prompt with varying intensities and assessing how well the model captures these desired emotional nuances.
+
+The task of sentiment analysis and emotion intensity quantification has been extensively explored in NLP. While traditional sentiment analysis models focus on categorizing text as positive, negative, or neutral, recent advancements have expanded this to include the recognition of nuanced emotions and their intensities. Models like `monologg/bert-base-cased-goemotions-original` focus on multi-label emotion classification but are not specifically designed to quantify emotion intensity. Previous work, such as the GoEmotions dataset and the EmoReact dataset, highlights the challenges of extending beyond simple classification to emotional nuance. Our project aims to evaluate the ability of large language models (LLMs) to interpret and convey specific emotional intensities based on user prompts.
+
+One of the primary challenges is distinguishing between identifying an emotion and quantifying its intensity. While many LLMs are great at detecting the presence of an emotion with high certainty, they struggle to discern varying levels of intensity. For example, models may easily identify "anger" in a sentence but fail to distinguish between mild annoyance and intense rage. This limitation is compounded by the fact that datasets for training and evaluation often lack explicit intensity annotations, leading to a gap in model training for this nuanced task. There is a notable bias in LLMs towards positive emotions, as observed in our results. This bias indicates a difficulty in capturing and expressing negative emotions accurately, especially at higher intensities. Also, the overlap between closely related emotions, such as disappointment and disapproval or amusement and joy, presents another  challenge, as even human reader struggle with these distinctions.
+
+While several State-of-the-art models, including fine-tuned BERT variants and GPT-based architectures, excel at general emotion recognition, few explicitly target emotion intensity quantification. Tools like the `monologg/bert-base-cased-goemotions-original` model leverage large-scale emotion datasets for multi-label classification, but they fall short of providing detailed intensity scores. Other State-of-the-art approaches, such as fine-tuned versions of OpenAI's GPT or Meta's LLaMA models, are general-purpose and not optimized for this task, though they show potential for adaptation through task-specific fine-tuning.
+
+Our project aims to compare the performance of LLaMA, OpenELM, and Groq Mixtral models, each employing different architectures and training. The results highlight the gap between current state-of-the-art capabilities and the nuanced requirements of emotion intensity quantification.
 
 # Project
 - Nov 18 - identify models for comparison
@@ -53,7 +61,7 @@ tags:
     </tr>
     <tr>
         <th><b>Ashton Levier</b></th>
-        <td>Prompt creation, Project Summary Drafting</td>
+        <td>Prompt creation, Project Summary Drafting</td>
     </tr>
     <tr>
         <th><b>Vanessa Nguyen</b></th>
@@ -65,17 +73,68 @@ tags:
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
+See our data [here](https://docs.google.com/spreadsheets/d/1bswibcQkGplXk_GA7OG2JVcK6e5SsQXEIVaLJHdf8To/edit?gid=1992257727#gid=1992257727)!
+
+In each case that we attempted to use a human baseline to produce a particular, mild sentiment, the sentiment was never captured correctly. However, in every case that we attempted to use a human baseline to produce an intense sentiment, the sentiment was correctly captured! For instance, uur data shows our attempt to produce a mild, amusing sentiment actually produced an intense approval sentiment. We were successful in invoking intense amusement (and all other intense sentiments!).
+
+An interesting aspect of the data is the difference in intensity in the IEI. Our attempt at mild amusement only produced a result of 0.003, but our attempt at intense amusement produced a result of 9.9996, a delta of 9.9957. Below is a table of how each models intensity deltas compared to the baseline deltas:
+
+IEII: Intended Emotion Intensity - Intense
+
+IEIM: Intended Emotion Intensity - Mild
+
+IEID: Intended Emotion Intensity - Delta
+
+>|Amusement||
+>|-:|-:|-:|-:|-:|-:|-:|-:|
+>|Baseline IEII|9.996|Llama IEII|0.2647|OpenELM IEII|0.0222|Groq IEII|0.1607|
+>|Baseline IEIM|0.0003|Llama IEIM|0.0128|OpenELM IEIM|0.0222|Groq IEIM|0.1486|
+>|Baseline IEID|**9.9957**|Llama IEID|**0.2519**|OpenELM IEID|**0**|Groq IEID|**0.0121**|
+
+>|Anger||
+>|-:|-:|-:|-:|-:|-:|-:|-:|
+>|Baseline IEII|9.9869|Llama IEII|0.0015|OpenELM IEII|0.0033|Groq IEII|0.0033|
+>|Baseline IEIM|0.0003|Llama IEIM|0|OpenELM IEIM|1.1346|Groq IEIM|0.0132|
+>|Baseline IEID|**9.9866**|Llama IEID|**0.0015**|OpenELM IEID|**-1.1313**|Groq IEID|**0.0198**|
+
+>|Disappointment||
+>|-:|-:|-:|-:|-:|-:|-:|-:|
+>|Baseline IEII|9.8614|Llama IEII|1.1671|OpenELM IEII|0.0003|Groq IEII|0.0001|
+>|Baseline IEIM|0|Llama IEIM|0.0002|OpenELM IEIM|0.0007|Groq IEIM|0.0018|
+>|Baseline IEID|**9.8614**|Llama IEID|**1.1699**|OpenELM IEID|**-0.0004**|Groq IEID|**-0.0008**|
+
+>|Disapproval||
+>|-:|-:|-:|-:|-:|-:|-:|-:|
+>|Baseline IEII|9.8968|Llama IEII|9.8968|OpenELM IEII|0.9002|Groq IEII|0.0012|
+>|Baseline IEIM|0.0741|Llama IEIM|0.0022|OpenELM IEIM|0.0044|Groq IEIM|0.0007|
+>|Baseline IEID|**9.8227**|Llama IEID|**9.8946**|OpenELM IEID|**0.8958**|Groq IEID|**0.0005**|
+
+>|Joy||
+>|-:|-:|-:|-:|-:|-:|-:|-:|
+>|Baseline IEII|9.87|Llama IEII|0.5693|OpenELM IEII|0.0032|Groq IEII|1.7226|
+>|Baseline IEIM|0.0346|Llama IEIM|0.0462|OpenELM IEIM|0.0017|Groq IEIM|0.0077|
+>|Baseline IEID|**9.8354**|Llama IEID|**0.5231**|OpenELM IEID|**0.0015**|Groq IEID|**1.7149**|
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+In every category, none of the 3 models were able to produce a result that the sentiment analysis could identify as the intended emotion at a mild intensity. Similarly, none of the models produced an answer identified with the correct emotion at high intensity except for Llama 3.2 3B Instruct Q8 in the category of Disapproval. This might suggest poor results overall, but considering the human baseline, for which the sentiment analysis also could not correctly identify the emotion at mild intensity, the results for the LLMs regarding the mild level prompts are not out of the ordinary.
+
+However, all of the human baseline prompts were identified as the correct emotion at the high intensity level, while only one case out of fifteen using LLMs was able to be correctly identified at high intensity. This does suggest some faultiness among the LLMs.
+
+It is also interesting to note when sentiment analysis identified an incorrect but similar emotion as the dominant emotion because it provides information about LLMs' ability to capture and convey emotional nuance. To see if a model could properly identify and convey the difference between two similar emotions, we provided two prompts on the same topic, "a text to a relative giving a gift to my child," but requested different, closely-associated emotions: disappointment and disapproval. Even with the human baseline, the mild level for disapproval was identified as disappointment, so sentiment analysis identifying OpenELM's intense disapproval response as disappointment is not unusual. It is also interesting to note that the determined emotional intensity for OpenELM's intense disapproval response was only 5.8259, in contrast to many other responses for high intensity level emotions having a high DEI of 7-9 despite incorrect emotion identification, suggesting less confidence in this specific identification. However, the intended emotion's intensity for OpenELM's intense disapproval response was only 0.9002, so it is not necessarily the case that the sentiment analysis was having difficulty choosing between disappointment and disapproval.
+
+An interesting outlier among the intense disapproval responses is Groq Mixtral 8x7B Instruct's, which was identified as gratitude by the sentiment analysis. Unlike the other two models, the Groq model's response was identified with a positive emotion. Similarly, the intense disappointment responses for all three models were labeled with positive emotions, with Groq's response being identified as "gratitude" for both disapproval and disappointment. In another negative emotion category, Anger, it is OpenELM whose intense level response is identified as a positive emotion (optimism) rather than a negative emotion (annoyance for Llama and nervousness for Groq). On the other hand, all of the predicted emotion identifications for the positive categories, Amusement and Joy, were positive emotions, even if incorrect. Sentiment analysis consistently labeled the responses of all three LLMs for the mild level of joy to be admiration. It also identified Groq's intense joy as admiration, though OpenELM's intense joy was labeled love and Llama's labeled amusement. Though incorrect, Llama's intense joy being labeled as amusement is still significant because we specifically chose amusement and joy as two emotions to examine due to their overlap. This "close miss," along with the correct identification for the intense disapproval response, suggests that Llama is the most accurate model of the three regarding conveying a requested emotion at high intensity.
+
+There seemed to be a general bias towards positive emotions among LLMs, since all LLM responses for positive emotions were identified as positive emotions by sentiment analysis, but many responses for negative emotions were also identified as positive. In contrast, all of the negative emotions from the human baseline were identified as negative emotions except for mild disappointment, which was labeled neutral.
+
+Other than the one match from Llama's intense disapproval response, all of the LLMs' responses had little confidence in the intended emotion, with the highest IEI being a mere 1.7226 for Groq's intense joy. However, the IEI for the intense level of each emotion was at least higher than the IEI for the mild level of each emotion for both Llama and Groq. OpenELM's mild and intense amusement were labeled the same level of intensity for amusement, and its intense anger and intense disappointment had lower intensities than its mild anger and mild disappointment. Though the differences were small, the LLMs were able to increase the intensity of the requested emotion for most cases.
+
+The baseline differences all indicated a large gap except for Llama's intense disapproval, which was correctly identified and had a difference of 0.0719 compared to the typical -8 to -12 range.
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+Check out how to reproduce our results in the code repo's [README](https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-desert-moi).
 
 ## Future improvements
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
+Tiny data is tiny! This data would definitely benefit from more logarithmic transformations to get more insights into the data. The data that we focused on this time left out some metrics that could also be useful. Normalizing the values between 0 and 1 would help compare each model's performance against the baseline delta. Because our baseline did not get the correct sentiment I would suggest using another prompt that did have the correct sentiment to create the baseline.

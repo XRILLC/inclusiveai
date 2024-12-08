@@ -1,9 +1,9 @@
 ---
-title: "EXAMPLE: My clever approach to the class-wide shared task"
+title: "Crunching Numbers to Classify Copy"
 slug: "/ashtonlevier/class-competition"
-date: 2024-12-01
+date: 2024-12-07
 author: "Ashton Levier"
-description: "My approach can be summarized as ..."
+description: "My description and code used to complete the class competition"
 tags:
   - class competition
 ---
@@ -42,7 +42,10 @@ tags:
 
 ## Task summary
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
+This task included:
+- Processing a `.csv` file with the labels `ID`, `TEXT`, and `LABEL`.
+- Each `TEXT` item is two strings of text delimited by `[SNIPPET]`
+- The goal is to split the `TEXT` items and determine if the string on either side of the delimiter was authored by the same author by training a model to determine that
 
 ## Exploratory data analysis
 
@@ -134,15 +137,33 @@ Delta: 0.01685
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+To analyze my results I followed this method:
+- I wrote a function to hold out 20% of the training data
+- I made predictions on that data
+- I combined those into a file with `ID`, `LABEL_ACTUAL`, and `LABEL_PREDICTED`
+- I wrote a function to compute the amount of correct predictions
+- I ran this process 3 times to the following results:
+>|Run|Percent Correct|
+>|-:|-:|
+>|1|93.12%|
+>|2|94.69%|
+>|3|92.19%|
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
 View steps to reproduce my results in the [README](https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-anlevier/blob/main/README.md)
 
 
 ## Future Improvements
 
-_Describe how you might best improve your approach_
+Things I would improve in the future:
+
+#### Code Clarity
+
+Although I started this process really concerned about separating concerns I ended up with functions that are handling too many concerns, like [preprocess_and_split]() and [train_cnn](). In fact, I'd probably move `train_cnn` into its own file. I would also move all the functionality for testing and analyzing data into their own silos.
+
+[Preprocess_and_split]() and [preprocess_test_data]() have a lot of repeat code, so for DRYer code I'd split out that common functionality.
+
+#### Code Functionality
+
+Tests. Tests are good. 😅
