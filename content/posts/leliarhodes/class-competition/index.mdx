@@ -1,7 +1,7 @@
 ---
 title: "Normalization and Vectorization of Text"
 slug: "/leliarhodes/class-competition"
-date: 2024-11-10
+date: 2024-12-05
 author: Lelia Rhodes
 description: "For the class competition, I focused on developing a text classification model that processes text data using advanced natural language processing (NLP) techniques."
 tags:
@@ -22,7 +22,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>4.8777</td>
+    <td>0.57992</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -42,30 +42,39 @@ tags:
 
 ## Task summary
 
-My approach involved preprocessing the training data by tokenizing, removing stopwords, and lemmatizing the text. I then employed an improved TF-IDF vectorizer, which includes unigrams and bigrams, adjusts for document frequency, and limits the number of features to enhance model performance. The model was trained using logistic regression with class balancing to handle any class imbalance. I validated the model’s performance using the competition's test data and made predictions, which were submitted to the leaderboard for evaluation. Throughout the process, I ensured that the code was well-organized and ready for integration into a version-controlled GitHub repository for collaboration and reproducibility.
+My approach involved preprocessing the training data by tokenizing, removing stopwords, and lemmatizing the text. I then employed an improved TF-IDF vectorizer, which includes unigrams and bigrams, adjusts for document frequency, and limits the number of features to enhance model performance. The model was trained using logistic regression with class balancing to address any class imbalance. To assess the model’s effectiveness, I validated its performance using the competition's test data and made predictions. These predictions were submitted to the leaderboard for evaluation. Throughout the process, I ensured that the code was well-organized and ready for integration into a version-controlled GitHub repository, ensuring reproducibility. Additionally, I analyzed the label distribution in the submission file to confirm the consistency of model performance.
 
 ## Exploratory data analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+The dataset consists of a series of text snippets labeled with a binary target variable. After preprocessing, I split the text into two spans, "SPAN1" and "SPAN2", which represent separate parts of each entry. I observed that both spans in most cases had a similar distribution of words and lengths. For example, the snippet with ID 1601 includes the following spans: "it mounted now above that line of metal stages in the distance. And as Grantline gestured, I saw from Venus the same sword-like beam streaming off almost to cross our own." and "Grantline and I, with a mutual thought, ran around the balcony and gazed to where Mars had set. A narrow radiance was streaming up among the stars off there." These texts were tokenized, lemmatized, and filtered to prepare them for model input.
 
-## Exploratory data analysis
+The dataset contains 899 samples, with a distribution of labels as follows:
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+  Label 0 (Negative class): 826 samples
+  Label 1 (Positive class): 73 samples
+
+## Approach
+
+I utilized a pipeline that combined TF-IDF vectorization and cosine similarity features to represent text spans effectively. Logistic Regression was used initially as a baseline model due to its efficiency and interpretability. I then incorporated a Gradient Boosting Classifier (GBC) to capture complex, non-linear relationships in the data. The pipeline preprocesses text by tokenizing, removing stopwords, and lemmatizing, ensuring clean and meaningful inputs. Cosine similarity between text spans was calculated as an additional feature, augmenting TF-IDF-based representations. These features were combined and fed into the GBC for classification. This approach balances simplicity with performance, achieving a noticeable improvement over the baseline.
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
+The model achieved a 0.57992 on the leaderboard, showing an improvement of 7.09% compared to the baseline. This demonstrates that incorporating cosine similarity and gradient boosting contributed to a measurable increase in performance.
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+The model performed reasonably well but struggled with some common issues. Misclassifications often occurred when spans were semantically similar but had subtle differences, like negations or contrasts, or when they included out-of-vocabulary terms. While cosine similarity helped, it sometimes misled the model by emphasizing irrelevant term overlaps. Class imbalance also affected predictions, with the model underperforming on less frequent labels. Improvements could include better contextual embeddings, addressing rare class representation, or fine-tuning with more domain-specific data to enhance accuracy.
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+The following dependencies are required to run the script: pandas, nltk, scikit-learn, scipy, numpy
+Each can be installed with pip or your preferred installer. 
 
+Ensure the required NLTK resources are downloaded with the following Python commands: 
+`import nltk
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')`
 
-## Future Improvements
-
-_Describe how you might best improve your approach_
+Run the script: 
+`python3 classcomp.py`

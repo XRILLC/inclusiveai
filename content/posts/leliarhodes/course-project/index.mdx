@@ -18,10 +18,6 @@ tags:
     <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-elle</td>
   </tr>
   <tr>
-    <th>Demo URL (optional)</th>
-    <td></td>
-  </tr>
-  <tr>
     <th>Team name</th>
     <td>Elle</td>
   </tr>
@@ -31,15 +27,7 @@ tags:
 
 ## Project description
 
-In this project, the goal is to utilize training data to create a machine that can accurately label testing data based on sentiment analysis using a model called BERT, created by Google. The goal is to return a csv file with the labels and turn it in for evaluation. 
-
-Step 1: Choose a project and evaluate the data (COMPLETE)
-Step 1.5: Familiarize myself with BERT (Due 11/17)
-Step 2: Begin writing code for the project, disregarding proper labelling (Due 11/22)
-Step 3: Incorporate the machine learning aspect/labelling (Due 11/29)
-Step 4: Fine tune until the score is as high as it can go (Due 12/04)
-Step 5: Submit score and fill out index file with relevant information (Due 12/07)
-
+This project implements a sentiment analysis system using the BERT model to classify text into four sentiment categories, showcasing the power of transfer learning with state-of-the-art NLP techniques. By fine-tuning BERT for sequence classification, the project leverages its bidirectional context understanding to achieve nuanced sentiment predictions. The motivation lies in addressing real-world needs for sentiment analysis in fields like marketing and social media, while exploring the practical application of advanced transformer models. Challenges included resolving label mismatches, handling tokenized input sequence lengths, and ensuring training stability on a smaller dataset. These were addressed through label adjustment, sequence truncation, and careful parameter tuning. The system demonstrates the practical effectiveness of BERT for downstream tasks, with outputs providing valuable insights into text sentiment.
 
 ## Summary of individual contributions
 <table>
@@ -54,36 +42,27 @@ Step 5: Submit score and fill out index file with relevant information (Due 12/0
     <th><b>Lelia Rhodes</b></th>
     <td>All of it (I'm working alone)</td>
   </tr>
-  <tr>
-    <th><b>???</b></th>
-    <td>???</td>
-  </tr>
-  <tr>
-    <th><b>???</b></th>
-    <td>???</td>
-  </tr>
 </tbody>
 </table>
 
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
+The project achieved a remarkable performance with a sentiment classification accuracy of 0.98500, significantly surpassing the baseline performance of standard classifiers like logistic regression or naïve Bayes on similar datasets, through which I have only achieved scores below 0.700. This improvement demonstrates the effectiveness of leveraging BERT's pre-trained contextual embeddings for capturing complex linguistic nuances in text. The high accuracy underscores the model's ability to generalize well on the provided data, emphasizing the impact of fine-tuning a powerful transformer-based model on a specific downstream task. There was no designated baseline for the project, however quite a few other participants received the same score, thus I will consider it such. This makes delta 0.0. 
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+Despite achieving a high accuracy of 0.985, the model struggles with ambiguous sentiment expressions, such as sarcasm and mixed emotions. Misclassifications often occur in sentences where multiple sentiments coexist or where the sentiment is context-dependent. For example, sarcasm in phrases like "I'm so glad I missed the concert" led to incorrect predictions of negative sentiment, while sentences like "The movie was a complete disaster, but the popcorn was great!" were misclassified as positive due to the model focusing on the positive aspect of popcorn. These errors highlight the model’s difficulty with nuanced sentiment, particularly in short or complex expressions. Future improvements could involve integrating sentiment lexicons or training on more diverse datasets to better handle these challenges.
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+The following dependencies are required to run the script: pandas, torch, scikit-learn, transformers, tqdm
+Each can be installed with pip or your preferred installer. 
+
+Run the script: 
+`python3 sentiment.py`
 
 ## Future improvements
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+While the project demonstrates the effectiveness of BERT for sentiment analysis, several limitations highlight opportunities for improvement. The model's reliance on a relatively small training dataset may limit its generalizability to diverse text domains, and fine-tuning on additional, domain-specific data could enhance performance. Furthermore, the handling of out-of-vocabulary words and edge cases, such as highly nuanced or context-dependent text, remains a challenge. Future improvements could include experimenting with larger models like RoBERTa or fine-tuning pre-trained models on more extensive, sentiment-rich datasets. Incorporating techniques like data augmentation or ensemble methods could improve robustness, while optimizing hyperparameters and learning rates may further refine performance. Lastly, extending the model to include explainability mechanisms, such as attention visualization, could increase transparency and usability in real-world applications.
 
-## Future improvements
-
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_

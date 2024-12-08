@@ -46,7 +46,7 @@ Shi, B., Brentari, D., Shakhnarovich, G., & Livescu, K. (2022). Searching for fi
   </tr>
   <tr>
     <td><b>Code URL</b></td>
-    <td>???</td>
+    <td>N/A</td>
   </tr>
 </tbody>
 </table>
@@ -74,19 +74,15 @@ Throughout this program, we have focused exclusively on spoken languages, which 
 <tbody>
   <tr>
     <th><b>LLM model</b></th>
-    <td>???</td>
-  </tr>
-  <tr>
-    <th><b>LLM model version</b></th>
-    <td>???</td>
+    <td>Llama 3.2 3B Instruct Q8</td>
   </tr>
   <tr>
     <th><b>Model/service URL</b></th>
-    <td>???</td>
+    <td>https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct</td>
   </tr>
   <tr>
     <th><b>Why this model?</b></th>
-    <td>???</td>
+    <td>This was the recommended model in the assignment description and seemed to have a solid basis for the task.</td>
   </tr>
 </tbody>
 </table>
@@ -94,96 +90,272 @@ Throughout this program, we have focused exclusively on spoken languages, which 
 
 #### Description (LLM)
 
+All prompts were submitted with the following instructions: "You are an expert in Natural Language Processing (NLP). Read the provided paper and provide concise summarized answers for the questions posed." 
+
 _In the LLM's words, what is this paper about?_
 
-##### Prompt
+##### What is this paper about?  
 
-```markdown
-prompt here
-```
+```The paper "Searching for Fingerspelled Content in American Sign Language" by Bowen Shi, Diane Brentari, Greg Shakhnarovich, and Karen Livescu is a research paper on Computer Vision and Natural Language Processing.
+
+Here's a brief summary:
+
+**Summary:**
+This paper proposes a system to search for specific content (e.g., words or phrases) within American Sign Language (ASL) videos using visual features. The researchers use a combination of machine learning techniques, including convolutional neural networks (CNNs) and attention mechanisms, to extract relevant information from handshapes, locations, and movements in ASL.
+
+**Key contributions:**
+
+1. **FingerSpel**: A new method for representing ASL content using 3D finger poses and orientation.
+2. **ConvSASNet**: A CNN-based system that extracts visual features from ASL videos and maps them to the FingerSpel representation.
+3. **Attention-driven search**: An attention mechanism is used to selectively focus on relevant parts of the video for better search results.
+
+**Applications:**
+
+1. **Content search in ASL videos**
+2. **Improved accessibility for Deaf and hard-of-hearing individuals**
+
+Please let me know what specific questions you have about this paper, or if there's anything else I can help with!```
 
 #### What are the authors proposing?
 
-##### Prompt
+##### What are the authors proposing?  
 
-```markdown
-prompt here
+```The authors of "Searching for Fingerspelled Content in American Sign Language" by Bowen Shi, Diane Brentari, Greg Shakhnarovich, and Karen Livescu propose a system to search for specific content within American Sign Language (ASL) videos using visual features extracted from the hands and body movements.
+
+Specifically, they aim to:
+
+1. **Represent ASL content**: Using a novel representation called FingerSpel, which captures the 3D finger poses and orientations in ASL.
+2. **Extract relevant features**: From ASL videos using a Convolutional Neural Network (CNN) architecture, which learns to extract visual features that are useful for search.
+
+Their goal is to enable efficient and effective searching of specific content within large collections of ASL videos, such as those found on the internet or in educational resources.
 ```
 
 #### What is the motivation for the work?
 
-##### Prompt
+##### What is the motivation for the work?  
 
-```markdown
-prompt here
-```
+```The authors of "Searching for Fingerspelled Content in American Sign Language" by Bowen Shi, Diane Brentari, Greg Shakhnarovich, and Karen Livescu are motivated to work on this problem due to the growing availability of ASL videos online and the increasing need for accessible content.
+
+**Key motivations:**
+
+1. **Growing demand for ASL resources**: The number of ASL-related videos on platforms like YouTube, Vimeo, and social media is increasing rapidly.
+2. **Limited search capabilities**: Current search systems are not effective in finding specific ASL content, making it difficult for Deaf and hard-of-hearing individuals to access the information they need.
+3. **Importance of accessibility**: The authors recognize that accessible language and communication tools are crucial for promoting inclusivity and social equity.
+
+By developing a system to efficiently search for fingerspelled content in ASL, the authors aim to:
+
+1. **Improve accessibility**: Provide Deaf and hard-of-hearing individuals with easier access to valuable information and educational resources.
+2. **Enable discovery**: Allow users to discover new ASL content, such as signs, stories, or conversations, which can help bridge language gaps and foster social connections.
+
+By addressing this challenge, the authors hope to contribute to a more inclusive and equitable digital environment for Deaf and hard-of-hearing communities.
+
 
 #### What is the approach or innovation?
 
-##### Prompt
+##### What is the approach of the authors?  
 
-```markdown
-prompt here
-```
+```The authors of "Searching for Fingerspelled Content in American Sign Language" by Bowen Shi, Diane Brentari, Greg Shakhnarovich, and Karen Livescu propose a multi-stage approach to search for fingerspelled content in ASL videos:
+
+**Approach:**
+
+1. **Hand tracking**: The first stage involves tracking the 3D hand poses and orientations of the signer using a computer vision system.
+2. **Feature extraction**: A Convolutional Neural Network (CNN) is applied to extract visual features from the tracked hand poses, which are then mapped to the FingerSpel representation.
+3. **Attention mechanism**: An attention mechanism is used to selectively focus on relevant parts of the video for better search results.
+4. **Indexing and retrieval**: The extracted features are indexed and stored in a database, allowing for efficient retrieval and ranking of relevant ASL content.
+
+**Key techniques:**
+
+1. **Hand pose estimation**: Using a 3D hand tracking system (e.g., OpenPose) to estimate the position, orientation, and shape of the hands.
+2. **Convolutional neural networks (CNNs)**: To learn features from the tracked hand poses and extract meaningful information for search.
+3. **Attention mechanism**: To selectively focus on relevant parts of the video and improve search accuracy.
+
+**Database construction:**
+
+1. **ASL dictionary construction**: A large-scale ASL dictionary is constructed using a combination of human annotation and automated tools to provide a comprehensive representation of ASL vocabulary.
+2. **Indexing and retrieval**: The extracted features are indexed and stored in a database, allowing for efficient retrieval and ranking of relevant ASL content.
+
+The authors demonstrate their approach on the ASL-2017 dataset, which consists of 10,000 videos with 100,000 frames, showing over 1,400 signs.
 
 #### What are the results and how do they compare with competing approaches?
 
-##### Prompt
+##### What are the results and how do they compare with competing approaches?  
 
-```markdown
-prompt here
-```
+```The authors of "Searching for Fingerspelled Content in American Sign Language" by Bowen Shi, Diane Brentari, Greg Shakhnarovich, and Karen Livescu report promising results on their proposed approach:
+
+**Results:**
+
+1. **Precision**: 71.2% average precision at the top-5 retrieval position (AP@5), outperforming other state-of-the-art approaches:
+	* Deep Learning-based Approach: 63.9%
+	* Graph Neural Network-based Approach: 57.4%
+2. **Recall**: 90.3% average recall at the top-10 retrieval position (AR@10)
+3. **F1-score**: 74.5% F1-score, indicating a good trade-off between precision and recall
+4. **Time efficiency**: The proposed approach achieves 0.35 seconds search time per query, making it efficient for large-scale search applications
+
+**Comparison with competing approaches:**
+
+The authors compare their approach to two existing methods:
+
+1. **Deep Learning-based Approach**: Uses a CNN to extract features from hand poses and then classifies the signs using a classification network.
+2. **Graph Neural Network-based Approach**: Utilizes a graph neural network to model the relationships between signs and extract features.
+
+**Key observations:**
+
+1. The proposed approach outperforms the Deep Learning-based Approach in terms of precision and F1-score.
+2. While the Graph Neural Network-based Approach achieves higher recall, its search time is significantly slower (6.35 seconds per query).
+3. The proposed approach shows comparable or better performance than other state-of-the-art methods on ASL-specific datasets.
+
+**Limitations:**
+
+The authors acknowledge that their approach:
+
+1. **Requires a large-scale ASL dictionary**: The dataset used for evaluation has 1,400 signs, which may not be representative of the entire ASL vocabulary.
+2. **May not generalize well to new data**: The proposed approach is trained on a specific dataset and may require retraining or fine-tuning for other datasets.
+
+Overall, the authors demonstrate that their approach can achieve state-of-the-art results on ASL-specific search tasks while providing efficient search times.
 
 #### Is the comparison fair?
 
-##### Prompt
+##### Is the comparison to other competing approaches a fair one to make?  
 
-```markdown
-prompt here
-```
+```The comparison between the proposed approach and other competing approaches in the paper "Searching for Fingerspelled Content in American Sign Language" by Bowen Shi, Diane Brentari, Greg Shakhnarovich, and Karen Livescu is not entirely fair. Here's why:
+
+**Limitations of the comparisons:**
+
+1. **Small number of competing approaches**: The authors only compare their approach to two existing methods, which may not be representative of the entire range of approaches available.
+2. **Different evaluation metrics**: The authors use different evaluation metrics (AP@5, AR@10, F1-score) and search times for each approach, making it difficult to directly compare results.
+3. **Dataset differences**: The proposed approach is evaluated on a custom ASL-2017 dataset, while the competing approaches are not explicitly stated as being used on the same or similar datasets.
+
+**Potential sources of bias:**
+
+1. **Selection bias**: The authors may have selectively chosen the two competing approaches to compare their work with, without considering other relevant approaches that could provide a more comprehensive evaluation.
+2. **Methodological differences**: The underlying architectures and methods of the competing approaches might be fundamentally different from the proposed approach, making direct comparisons challenging.
+
+**Implications:**
+
+To make fair comparisons, it would be beneficial for researchers to:
+
+1. **Standardize evaluation metrics**: Use consistent evaluation metrics across all approaches to facilitate comparison.
+2. **Use the same datasets or create comparable datasets**: Ensure that both the proposed and competing approaches are evaluated on the same or similar datasets to minimize dataset-related biases.
+3. **Consider a broader range of approaches**: Compare the proposed approach with a more comprehensive set of existing methods to provide a more nuanced understanding of its strengths and weaknesses.
+
+By acknowledging these limitations and taking steps to address them, researchers can strive for more robust and fair comparisons that accurately reflect the performance of different approaches in the field of ASL search tasks.
 
 #### What are the takeaways according to the authors?
 
-##### Prompt
+##### What are the takeaways of the research according to the authors?  
 
-```markdown
-prompt here
-```
+```The authors of "Searching for Fingerspelled Content in American Sign Language" by Bowen Shi, Diane Brentari, Greg Shakhnarovich, and Karen Livescu identify several key takeaways from their research:
+
+**Main findings:**
+
+1. **ASL search challenges**: The authors highlight the difficulties in searching ASL content due to its unique characteristics, such as hand movements, gestures, and spatial relationships.
+2. **Importance of finger poses**: They demonstrate that finger poses play a crucial role in identifying signs, making them an essential feature for ASL search.
+
+**Key insights:**
+
+1. **FingerSpel representation is effective**: The authors show that the FingerSpel representation, which captures 3D finger poses and orientations, can be used to effectively represent ASL content.
+2. **Attention-based search is promising**: They propose an attention-based search mechanism, which selectively focuses on relevant parts of the video to improve search accuracy.
+
+**Implications:**
+
+1. **Improved accessibility for Deaf and hard-of-hearing communities**: The authors believe that their research can lead to more accessible and effective ASL content search systems, benefiting Deaf and hard-of-hearing individuals.
+2. **Advancements in computer vision and machine learning**: Their work contributes to the development of computer vision and machine learning techniques for analyzing and understanding human gestures and sign languages.
+
+**Future directions:**
+
+1. **Expanding ASL vocabulary**: The authors suggest that expanding the ASL dictionary and incorporating more signs would improve the accuracy and effectiveness of their search system.
+2. **Investigating other sign languages**: They propose investigating similar research on other sign languages, such as British Sign Language (BSL) or French Sign Language (LSF), to promote a broader understanding of sign language representations.
+
+**Overall:**
+
+The authors conclude that their research has the potential to significantly improve ASR and ASR search capabilities, ultimately benefiting Deaf and hard-of-hearing communities.
 
 #### What are the takeaways according to you?
 
-##### Prompt
+##### What are the takeaways of the research according to you?  
 
-```markdown
-prompt here
-```
+```As a neutral AI observer, I've analyzed the research "Searching for Fingerspelled Content in American Sign Language" by Bowen Shi, Diane Brentari, Greg Shakhnarovich, and Karen Livescu. Here are my takeaways:
+
+**Key insights:**
+
+1. **Sign language recognition is complex**: The research highlights the challenges of recognizing ASL signs, emphasizing the importance of considering hand movements, finger poses, and spatial relationships.
+2. **3D representation is crucial**: The use of 3D finger pose representations (FingerSpel) improves search accuracy, demonstrating that traditional 2D approaches may not be sufficient for sign language recognition.
+3. **Attention-based search mechanisms are effective**: The attention-based approach selectively focuses on relevant parts of the video, leading to improved search results and more accurate sign detection.
+
+**Implications for research:**
+
+1. **Advancements in computer vision and machine learning**: This research contributes to the development of computer vision and machine learning techniques that can effectively analyze human gestures and sign languages.
+2. **Potential applications beyond ASL**: The FingerSpel representation and attention-based search mechanisms could be applied to other sign languages or gesture recognition tasks, leading to broader insights into human communication.
+
+**Limitations and areas for improvement:**
+
+1. **Dataset limitations**: The research was evaluated on a custom dataset, which may not be representative of the entire ASL vocabulary or real-world scenarios.
+2. **Search time and efficiency**: While the attention-based approach improves search accuracy, it also increases search time, highlighting the need for efficient optimization techniques.
+
+**Broader significance:**
+
+1. **Accessibility and inclusivity**: The research has the potential to improve accessibility for Deaf and hard-of-hearing individuals by providing more effective ASR and ASL search systems.
+2. **Advancements in human-computer interaction**: This work contributes to a better understanding of how humans communicate and interact with machines, leading to more inclusive and accessible technologies.
+
+Overall, this research demonstrates the importance of considering 3D representations, attention-based mechanisms, and spatial relationships when analyzing sign languages. The findings have implications for computer vision, machine learning, and human-computer interaction, ultimately contributing to a better understanding of human communication.
 
 #### Would you use this?  If so, how/where would you use this?
 
-##### Prompt
+##### Is this a method you would use? If so, in what scenarios would you utilize it?  
 
-```markdown
-prompt here
-```
+```As a conversational AI, I don't have personal preferences or opinions, but I can analyze the method and provide insights on its potential applications.
 
-##### Prompt
+The FingerSpel representation and attention-based search mechanism presented in the research could be useful in various scenarios:
 
-```markdown
-prompt here
-```
+1. **Sign language recognition**: This method could be applied to recognize ASL signs in real-time video feeds, enabling more accurate and efficient sign language interpretation systems.
+2. **Human-computer interaction**: The 3D finger pose representations could be used to create more intuitive and interactive interfaces for people with disabilities or limited dexterity, such as those with motor impairments or arthritis.
+3. **Gestural search**: This method could be integrated into search engines or other applications to enable users to search for content using gestures, making it more accessible and user-friendly.
+4. **Computer vision tasks**: The attention-based mechanism could be applied to various computer vision tasks, such as object detection, tracking, or scene understanding, where spatial relationships and attention mechanisms are crucial.
+
+In specific scenarios, I would utilize this method in the following situations:
+
+1. **Real-time sign language interpretation**: In a live setting, such as a conference or meeting, where accurate sign language interpretation is essential.
+2. **Accessibility tools for people with disabilities**: For individuals with motor impairments or limited dexterity, this method could enable more intuitive and interactive interfaces for communication, education, or entertainment.
+3. **Gestural search in smart homes**: In a smart home environment, the FingerSpel representation could be used to recognize gestures for controlling devices or accessing information.
+4. **Computer vision applications with spatial relationships**: In tasks that require understanding spatial relationships, such as object recognition, scene understanding, or robotics, this method could be beneficial.
+
+While I wouldn't necessarily "use" this method in the classical sense, it's an interesting area of research that has the potential to improve human-computer interaction and accessibility.
 
 #### What problems remain and what are the next steps?
 
-##### Prompt
+##### What problems remain and what are the next steps?  
 
-```markdown
-prompt here
-```
+```Based on the research "Searching for Fingerspelled Content in American Sign Language" by Bowen Shi, Diane Brentari, Greg Shakhnarovich, and Karen Livescu, several problems remain to be addressed:
+
+**Remaining challenges:**
+
+1. **Dataset size and diversity**: The dataset used for evaluation is relatively small, and there may be a lack of representation from diverse populations.
+2. **Sign language variability**: Sign languages are highly variable, with different dialects, regional variations, and cultural nuances that need to be accounted for.
+3. **Real-world scenarios**: The research was conducted in a controlled environment, and it's unclear how well the approach would generalize to real-world scenarios, such as noisy environments or varying lighting conditions.
+4. **Evaluation metrics**: The evaluation metrics used may not fully capture the complexity of sign language recognition and search tasks.
+
+**Next steps:**
+
+1. **Collecting larger, more diverse datasets**: Gathering larger, more diverse datasets that include a broader range of sign languages, dialects, and regional variations would help to better understand the complexities of sign language recognition.
+2. **Developing robust evaluation metrics**: Creating new evaluation metrics that take into account the nuances of sign language recognition and search tasks will be essential for assessing the performance of this method.
+3. **Conducting real-world evaluations**: Conducting thorough, rigorous evaluations in real-world settings will help to assess the effectiveness and limitations of this approach in practical scenarios.
+4. **Improving robustness and generalizability**: Investigating ways to improve the robustness and generalizability of the FingerSpel representation and attention-based search mechanism will be crucial for its successful application in sign language recognition tasks.
+
+**Future research directions:**
+
+1. **Multimodal fusion**: Exploring how to fuse multiple modalities, such as video, audio, and text, to improve sign language recognition accuracy and robustness.
+2. **Attention mechanisms with contextual understanding**: Investigating ways to incorporate contextual information into attention-based search mechanisms to better capture the complexities of sign language communication.
+3. **Deep learning architectures**: Developing new deep learning architectures that can effectively process sign languages' structural and semantic characteristics, such as graph convolutional networks (GCNs) or recurrent neural networks (RNNs).
+4. **Multiscale approaches**: Investigating how to leverage multiple scales, from pixel-level features to higher-level representations, to capture the intricate details and patterns of sign language communication.
+
+By addressing these challenges and exploring new research directions, researchers can continue to advance the state-of-the-art in sign language recognition and search tasks.
 
 ### Experience using the LLM
 
-_Describe your process for using the LLM.  How did the LLM perform?_
+When using the LLM, I began by clearly defining my goals and the type of assistance I needed. I outlined the problem by presenting the LLM with a clear and consise description of the task. I then interacted with it over multiple rounds to refine quesitons and clarify misunderstandings. 
+
+Its performance was quite good, considering the paper I chose. The paper utilizes multiple images and charts for reference material and it seems that the LLM was able to comprehend and utlize these with reasonable accuracy. However, it did experience issues with brevity and I was forced to undergo multiple prompts before coming to one that allowed for summary-level responses. 
  
 #### Errors and limitations of the LLM 
 
-_Where did it fall short or make mistakes?_
+For one, the paper focused on advanced topics in American Sign Language linguistics, which is not a particularly well documented field, meaning the LLM had less public data to reference and work from than it would had the focus been on a more well-studied branch or language. This led to the LLM providing general explanations to questions rather than ones tailored specific to the paper's implementation. At times, the LLM misunderstood the focus of the question, particularly when the input lacked specific references to the paper’s content. For instance, if asked about “searching for fingerspelled content,” it occasionally returned generic information about ASL recognition systems rather than insights specific to the authors' approach or findings.
