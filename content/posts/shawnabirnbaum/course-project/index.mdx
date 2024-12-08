@@ -1,9 +1,9 @@
 ---
-title: "Cross-Lingual Word Embedding Matching with Low-Resource Languages (TBD)"
+title: "Cross-Lingual Word Embedding Matching with Yoruba and English"
 slug: "/shawnabirnbaum/course-project"
-date: 2024-11-11
+date: 2024-08-12
 author: Shawna Birnbaum
-description: "Exploring cross-lingual word embedding matching to augment data for low-resource NLP tasks"
+description: "Exploring cross-lingual word embedding for low-resource NLP tasks"
 tags:
   - course project
 ---
@@ -19,7 +19,7 @@ tags:
   </tr>
   <tr>
     <th>Demo URL (optional)</th>
-    <td>TBD</td>
+    <td>N/A</td>
   </tr>
   <tr>
     <th>Team name</th>
@@ -31,7 +31,15 @@ tags:
 
 ## Project description
 
-This project aims to explore cross-lingual word embedding matching to create synthetic pairs of phrases between a low-resource language and English. By mapping words and simple phrases from a low-resource language onto English using pre-trained embeddings, the goal is to augment data in cross-lingual NLP tasks. The possible language is Twi or Yoruba, and the main task in mind is a cross-lingual sentence similarity classification. The project will likely start with FastText embeddings and will probably enlist the assistance of the mBERT model. 
+This project explores cross-lingual word embedding matching between Yoruba, a low-resource language, and English. Using FastText and mBERT embeddings, it evaluates cosine similarity to benchmark their effectiveness. 
+
+Yoruba is a tonal language, where the meaning of words changes based on pitch. This makes embedding-based methods like FastText (which rely on static embeddings) less effective since they do not account for tone. Contextual models like mBERT may better capture tonal variations by analyzing the sentence context.
+
+**Key Features:** 
+
+- Use of FastText as a static embedding baseline. 
+- Comparison with mBERT, a state-of-the-art multilingual transformer. 
+- Focus on Yoruba's unique linguistic properties as a tonal language.
 
 ## Projected Timeline
 
@@ -45,38 +53,39 @@ This project aims to explore cross-lingual word embedding matching to create syn
   <tbody>
     <tr>
       <td><strong>Nov 15</strong></td>
-      <td><strong>Complete dataset exploration</strong>: Review pre-trained embeddings for both languages and set up initial data structures.</td>
+      <td><strong>Complete dataset exploration</strong>: Reviewed pre-trained embeddings (FastText and mBERT) and set up data structures for Yoruba-English sentence pairs.</td>
     </tr>
     <tr>
       <td><strong>Nov 20</strong></td>
-      <td><strong>Develop word-matching script</strong>: Implement and test code for finding closest English matches for low-resource language words using embeddings.</td>
+      <td><strong>Develop word-matching script</strong>: Implemented initial script to match Yoruba words to English using FastText embeddings.</td>
     </tr>
     <tr>
       <td><strong>Nov 24</strong></td>
-      <td><strong>Create paired phrases</strong>: Use matched word pairs to generate simple, labeled phrase pairs for training.</td>
+      <td><strong>Expand sentence matching</strong>: Adapted the script to compare full Yoruba and English sentences using FastText and mBERT embeddings.</td>
     </tr>
     <tr>
       <td><strong>Dec 1</strong></td>
-      <td><strong>Initial model training and testing</strong>: Train baseline model on paired phrases and evaluate initial performance.</td>
+      <td><strong>Initial evaluation</strong>: Ran cosine similarity evaluations for FastText and mBERT on a subset of Yoruba-English sentence pairs.</td>
     </tr>
     <tr>
       <td><strong>Dec 4</strong></td>
-      <td><strong>Error analysis</strong>: Conduct preliminary error analysis on held-out data to identify common misclassifications or limitations.</td>
+      <td><strong>Visualization and error analysis</strong>: Generated bar graphs comparing FastText and mBERT results and conducted PCA visualization of embeddings.</td>
+    </tr>
+    <tr>
+      <td><strong>Dec 5</strong></td>
+      <td><strong>Statistical analysis and robustness check</strong>: Performed t-tests and evaluated model performance on multiple random subsets of data.</td>
     </tr>
     <tr>
       <td><strong>Dec 7</strong></td>
-      <td><strong>Implement reproducibility steps</strong>: Finalize and document all steps for data preparation, training, and testing.</td>
+      <td><strong>Finalize documentation</strong>: Documented steps in the Jupyter Notebook, created reproducibility instructions, and saved all outputs (CSV and visualizations).</td>
     </tr>
     <tr>
-      <td><strong>Dec 9</strong></td>
-      <td><strong>Polish final project report</strong>: Write up results, add documentation, and prepare submission materials.</td>
-    </tr>
-    <tr>
-      <td><strong>Dec 11</strong></td>
-      <td><strong>Project submission</strong>: Submit all materials including supplemental materials by the end of the semester.</td>
+      <td><strong>Dec 8</strong></td>
+      <td><strong>Submit project</strong>: Submitted the Jupyter Notebook, requirements file, and final report with supplemental materials.</td>
     </tr>
   </tbody>
 </table>
+
 
 
 ## Summary of individual contributions
@@ -90,7 +99,7 @@ This project aims to explore cross-lingual word embedding matching to create syn
 <tbody>
   <tr>
     <th><b>Shawna Birnbaum</b></th>
-    <td>Sole team member</td>
+    <td>Sole team member: Conducted all tasks including data preprocessing, embedding evaluation, and error analysis.</td>
   </tr>
   <tr>
     <th><b>N/A</b></th>
@@ -106,16 +115,80 @@ This project aims to explore cross-lingual word embedding matching to create syn
 
 ## Results
 
-TBD
+### Comparison of FastText and mBERT 
+
+The cosine similarity scores for Yoruba-English sentence pairs using FastText and mBERT embeddings: 
+
+![Comparison of FastText and mBERT Similarities for Sentences](image1.png)
+
+- **FastText:** Scores indicate poor sentence-level alignment. 
+- **mBERT:** Scores demonstrate better contextual understanding. 
+
+### Statistical Analysis 
+
+A **t-test** was conducted to determine the disparities between FastText and mBERT scores: 
+- **T-Statistic:** `-50.16` 
+- **P-Value:** `1.09e-71` 
+
+**Conclusion:** mBERT significantly outperforms FastText.
 
 ## Error analysis
 
-TBD
+### PCA Visualization of mBERT Embeddings 
+
+Below is a PCA plot showing how mBERT embeddings separate Yoruba and English sentences: 
+
+![PCA Visualization of mBERT Embeddings](image2.png) 
+
+**Key Insights:**
+
+- Yoruba and English embeddings form distinct clusters, reflecting mBERT’s effectiveness in contextual understanding. 
+- Minimal overlap highlights strong differentiation in embedding space.
+- Many repetitive or incorrect matches in FastText and mBERT may stem from the inability to fully encode tonal nuances of Yoruba. For example, words with identical spellings but different tones could have been incorrectly treated as synonyms by the embedding models.
 
 ## Reproducibility
 
-TBD
+### Steps to Reproduce: 
+1. Clone the repository: 
+```bash
+git clone https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-onigiri-sandwich 
+cd ling-582-fall-2024-course-project-code-onigiri-sandwich
+```
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+3. Open the Jupyter Notebook:
+```bash
+jupyter notebook yoruba_project.ipynb
+```
+
+OR
+
+CLI:
+```bash
+python yoruba_project.py
+```
+
+4. Run the notebook cells sequentially:
+
+-   The notebook is structured into sections for **data preprocessing**, **evaluation**, **statistical analysis**, and **visualization**.
+   
+5.  View the outputs:
+    
+-   Similarity results will be saved as `.csv` files.
+-   Visualizations, including bar graphs and PCA plots, will be displayed in the notebook.
 
 ## Future improvements
 
-TBD
+### Limitations:
+
+-   Small dataset size may not fully capture linguistic diversity.
+-   Static FastText embeddings struggle with sentence-level meaning.
+
+### Proposed Improvements:
+
+-   Fine-tune mBERT on Yoruba-English sentence pairs for better alignment.
+-   Explore more advanced multilingual models like XLM-R.
+-   Use full dataset with additional Yoruba-English translations.
+- Acquire more computational resources.
