@@ -58,16 +58,15 @@ I was interested in working on this project because it appeared to be a slightly
 
 ## Results
 
-My final submission scored XXXXX, which is above the expected baseline of 1.09861. My delta was XXX.
+The expected baseline for the competition is 1.09861, and despite my notebook succesfully outputting a .csv in the correct format as given by the sample_submission.csv, Kaggle continued to give my submission score errors. It was very difficult to troubleshoot what exactly the issue for the submission format might have been given that the test dataset was hidden and the error messages were very vague, only noting that the .csv format was incorrect.   
 
 ## Error analysis
 
-To complete error analysis, I created a classification report. Because I did not have access to the actual testing data set, it was difficult to complete much error analysis.  
+Because I did not have access to the actual testing data set, it was difficult to complete error analysis. The testing data given is only 3 rows long, which does not provide much opportunity to reflect on the model performance. Even the final .csv submission does not present much opportunity for analysis as it does not contain the response/prompt information, only the ID column and the prediction value. That being said, viewing the first three rows of data and comparing it to my outputted .csv, my model appeared to prefer model_a 3/3 times, which does not seem correct to me upon reading the responses themselves. For example, in row 1, the prompt reads "I have three oranges today, I ate an orange yesterday, how many oranges do I have?" and model_a replies with "You have two oranges" and model_b replies with "You have 3 oranges today still".  
 
 ## Reproducibility
 
-An overview of the project requirements can be found on the README file at the following link: https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-acooke82 
-Additionally, there are detailed notes on the source code in the repository for reproducing the final project results.    
+An overview of the project requirements can be found on the README file at the following link: https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-acooke82, and additionally there are detailed notes on the source code in the repository for reproducing the final project results.    
 
 ## Future improvements
 

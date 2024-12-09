@@ -1,9 +1,9 @@
 ---
-title: "Course Competition Draft Post"
+title: "Course Competition Author Detection"
 slug: "/acooke82/class-competition"
-date: 2024-11-13
+date: 2024-12-08
 author: Alexandra Cooke
-description: "My approach can be summarized as ..."
+description: "My approach can be summarized as fine-tuning classical ML models."
 tags:
   - class competition
 ---
@@ -22,7 +22,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>0.40331</td>
+    <td>0.50231</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -42,30 +42,46 @@ tags:
 
 ## Task summary
 
-The task that we have been given is to take two sets of text and use a classification model to determine which sets were produced by the same author. I plan to make a first pass using a similar approach to one in LING539, which was to use pandas to view and find data outliers on the .csvs given and then use CountVectorizer to creature features, LogisticRegression to train the model on those features, and then create predictions for the test.csv and output the results. I'd like to see how the model performs when building its own features with scikit-learn, and then move on to a new approach such as working with a BERT classifier, as I haven't tried that before.  
+### Overview
+The type of task that we have been given is a binary classification problem in which we are looking to identify which authors wrote which pieces of text. The goal of this task is to build and train a classification model based on the given training dataset and have it successfully predict whether two pieces of text are shared by the same author. This type of task falls under authorship identification, author profiling, and digital stylometry. In order to do this, the model built will have to identify features of each author, such a stylistic choices and vocabulary. Model performance will be evaluated based on macro F1 scores, which are a commonly used metric for performance as it assesses both accuracy and recall equally. Ideally, the model will perform moderately well on both accuracy and recall, as opposed to performing very well at one of them.
+
+### Design & Data
+
+For this task, we were given 2 different datasets and one sample submission file. The training set, labeled "train.csv", contains 1601 rows of data and 1 header row. The data is split into three different columns: "ID", "TEXT", and "LABEL". ID refers to the serialID for the interaction, "TEXT" refers to the two spans of author material, and "LABEL" refers to the class given for if the two spans are from the same author or from different authors. The label classes are "0" and "1", for "Not the same author" and "same author", respectively. The testing set, labelled "test.csv", contains 899 rows of data and 1 header row. The test data does not contain the "LABEL" column as that will be what the model is predicting. In total, we were given 2500 rows of data. Further data analysis is provided below in the "Exploratory data analysis" section. The sample submission is provided so that participants can tailor their final submission into the correct format, a single .csv with two columns, "ID" and "LABEL".
+
+### State of the Art Approaches
+
+Given that machine learning approaches are constantly evolving and improving in accuracy, there are many approaches that could be classified as state of the art. The approach that I believe would be most relevant to this task would be using a transformer-based model, such as BERT. BERT is an open-source model that makes use of transformers to analyze and train models quickly with a high level of accuracy. Because it is transformer-based, BERT uses neural networks to track relationships and build concepts, leading to a model with a more robust architecture than a traditional method such as Logistic Regression.      
+### Challenges
+
+There are a few challenges that arose from this task based on the dataset we were given. The first concern was the distribution between the 0 and 1 class sizes, as the 0 class was represented significantly more than the 1 class, representing 1245/1601 labels. This low percentage of 1 labels may skew the model to prefer the 0 label. A secondary concern arises with regards to normalizing the data, as the spans of text vary in length, style, and position. By position, I am referring to where the span picks up in the text, such as the middle of conversation or a new paragraph. I noted at least one training span began partway through a sentence, ID 264: "gasped Pat...", which may alter how the model analyzes the sentence. It may be difficult to get a style understanding even after normalization based off of the irregularity of the data.   
 
 ## Exploratory data analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+### Process 
 
-## Exploratory data analysis
+As discussed previously, there were two datasets provided for this task, "train.csv" and "test.csv". The datasets were mostly curated from Project Gutenberg texts with some supplemental data from other sources and contained only English data. In order to run analysis on the datasets, I made use of Google Sheets. In order to check the distribution of the label classes, I created a quick formula, "=COUNTIF(C2:C1602,1)" and "=COUNTIF(C2:C1602,0)".
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+### Observations 
+
+With the above tools, I was able to determine that the training set contained 1601 rows of data and 3 columns ("ID", "TEXT", "LABEL"), of which 1245 rows of data were labeled 0 and 356 were labeled 1. While the testing data did not contain any labels, I determined that there were 899 rows of data and 2 columns ("ID", "TEXT"). I also noted that the text spans contained a variety of data types, such as partial sentences and varying lengths. For example, in the training dataset, ID 328 begins as "asked Uglik darkly", suggesting that we are missing the beginning of the sentence or context. Other spans appear to be missing some of their punctuation, such as ID 356 which begins as "I'm not a rich man...put 'em?'", implying there is a beginning quote left off. In ID 399, the beginning span is significantly smaller than the second one, at 34 words versus 101, which could make identifying stylistic features for the first span difficult. 
+  
+## Approach
+
+Upon finishing my data analysis and beginning this competition, I planned to work with classical ML approaches such as Logistic Regression. Despite noting earlier that a more state of the art approach, such as a transformer-based model, would provide more interesting results, my previous classifier work was based on classical approaches so it felt like a good starting point. I planned to try different scikitlearn feature extractors and models to see the differences between their performances for this task, such as Tfidf versus CountVectorizer. I first tried a scikitlearn vectorizer I hadn't used before but had seen perform well in similar tasks, TfidfVectorizer, before switching to work with CountVectorizer instead.      
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
+My final submission scored a 0.50231, which is 1.31% decrease from the weighted baseline. Adjusting model parameters to normalize the data, most of which is intuitively performed by CountVectorizer but can be adjusted, and splitting the analyzer to work on a character level as opposed to word level boosted performance nearly 7% higher than my original submission.   
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+The model performed decently, but struggled with some areas. I did some error analysis by exploring the data myself, and it appears that the model struggled overall with deciding that the author of two spans was the same, preferring to assume they were different authors instead. From my class_submission file, out of 899 responses only 89 were marked as 1. I noted that most of the responses it marked as same appeared to have similar puncuation styles, and it appeared to dislike pairs where one span was significantly shorter or longer than the other one. I have noted some ways to improve this performance below.
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
-
+There are detailed notes on the source code of the repository as well as an overview of the task itself on the README file at the following link: https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-acooke82 
 
 ## Future Improvements
 
-_Describe how you might best improve your approach_
+For the future, I have identified three different changes I could make to improve my model performance. The first change involves changing my approach from a classical one to a state of the art one. As mentioned earlier in my post, using a transformer-based model such as BERT would build deeper contextual embeddings and potentially be able to identify author styles better. I suspect it would have more success on identifying author information from the shorter spans as opposed to the classical approach. My second change involves running more in-depth analysis, such as a confusion matrix, to better identify in live time how my F1 score is being impacted by the model adjustments I'm making. The final suggestion for improvement would be to add additional data labelled as "1" to the training dataset to alleviate the discrepancy between the 1 and 0 labelled data sizes. 
