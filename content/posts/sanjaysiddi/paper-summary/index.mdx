@@ -1,7 +1,7 @@
 ---
 title: "Automated Mapping of Course Outcomes to Program Outcomes using Natural Language Processing and Machine Learning"
 slug: "/sanjaysiddi/paper-summary"
-date: 2023-11-13
+date: 2024-12-08
 author: Sanjay Bhargav Siddi
 description: "Paper Summary"
 tags:
@@ -74,19 +74,19 @@ I chose this paper because it aligns with my current internship work at the Span
 <tbody>
   <tr>
     <th><b>LLM model</b></th>
-    <td>???</td>
+    <td>tensorblock/SummLlama3.2-3B-GGUF</td>
   </tr>
   <tr>
     <th><b>LLM model version</b></th>
-    <td>???</td>
+    <td>SummLlama3.2-3B-Q6_K.gguf</td>
   </tr>
   <tr>
     <th><b>Model/service URL</b></th>
-    <td>???</td>
+    <td>https://huggingface.co/tensorblock/SummLlama3.2-3B-GGUF</td>
   </tr>
   <tr>
     <th><b>Why this model?</b></th>
-    <td>???</td>
+    <td>I chose the SummLlama3.2-3B-Q6_K.gguf model because it strikes a balance between computational efficiency and performance. With a 3B parameter size, it has enough capacity to understand context, generate accurate and coherent summaries, and handle complex language patterns, while still being lightweight compared to larger models. The Llama architecture is well-optimized for summarization and various NLP tasks, making it a versatile choice. Additionally, the quantization format (Q6_K) allows for faster inference and reduced memory usage, which makes it practical for real-time use and resource-constrained environments.</td>
   </tr>
 </tbody>
 </table>
@@ -99,91 +99,301 @@ _In the LLM's words, what is this paper about?_
 ##### Prompt
 
 ```markdown
-prompt here
+Analyze the uploaded research paper titled 'Automated Mapping of Course Outcomes to Program Outcomes using Natural Language Processing and Machine Learning.' What is this paper about?
 ```
+
+I've analyzed the research paper titled "Automated Mapping of Course Outcomes to Program Outcomes using Natural Language Processing and Machine Learning". Here's the summary of the paper:
+
+**Problem and Proposed Solution**
+
+The authors aim to automate the process of mapping course outcomes to program outcomes, which is a crucial step in curriculum mapping. Curriculum mapping involves aligning learning objectives (course outcomes) with broader program learning goals (program outcomes), but this can be a time-consuming and labor-intensive task. The proposed solution uses Natural Language Processing (NLP) and Machine Learning (ML) techniques to analyze course descriptions and automatically map relevant learning objectives.
+
+**Motivation and Significance**
+
+The authors highlight the importance of curriculum mapping in ensuring that programs are aligned with industry needs, fostering student success, and promoting academic quality. However, manual mapping is often time-consuming and prone to errors. By developing an automated system, the authors aim to improve the efficiency and accuracy of curriculum mapping, ultimately contributing to better program design and assessment.
+
+**Methodology**
+
+* **Dataset**: The authors used a dataset comprising course descriptions from various programs at a university.
+* **Techniques**: NLP (text analysis) and ML (supervised learning) were employed to analyze course descriptions and identify relevant learning objectives. Specifically, they used:
+	+ Text preprocessing techniques (tokenization, stemming, etc.)
+	+ Part-of-speech tagging
+	+ Named entity recognition
+	+ Semantic role labeling
+	+ Supervised learning algorithms (e.g., logistic regression, random forests)
+* **Evaluation Metrics**: The authors evaluated the performance of their system using metrics such as precision, recall, F1-score, and accuracy.
+
+**Key Findings, Results, and Performance Comparisons**
+
+The results show that the proposed system can accurately map course outcomes to program outcomes, with a high precision (F1-score: 0.85) and recall (0.82). The authors compared their system to a baseline approach using manual mapping, which had lower performance metrics (precision: 0.65, recall: 0.60).
+
+**Challenges, Limitations, and Future Directions**
+
+The authors identified several challenges, including:
+
+* **Data quality issues**: Variability in course descriptions and learning objectives
+* **Limited domain knowledge**: NLP models may not fully capture the nuances of specific domains or programs
+* **Evaluation metrics limitations**: Metrics alone may not provide a complete picture of system performance
+
+Future directions include exploring ways to improve data quality, incorporating additional sources of information (e.g., student feedback), and developing more sophisticated NLP models.
+
+Now, I'm ready to answer your questions about the proposal, motivation, innovation, results, fairness of comparisons, takeaways, potential applications, and remaining problems!
 
 #### What are the authors proposing?
 
 ##### Prompt
 
 ```markdown
-prompt here
+What are the authors proposing in the above paper?
 ```
+The authors are proposing an Automated Mapping of Course Outcomes to Program Outcomes system using Natural Language Processing (NLP) and Machine Learning (ML). The main goal is to develop a systematic approach that can analyze course descriptions and automatically identify relevant learning objectives, thereby mapping them to broader program learning goals.
 
+In more detail, the authors aim to:
+
+1. **Analyze course descriptions**: Use NLP techniques to extract information from course texts, such as learning objectives, key skills, or knowledge areas.
+2. **Map learning objectives**: Use ML algorithms to match extracted learning objectives with existing program outcomes or learning objectives in a database or ontology.
+3. **Automate curriculum mapping**: Generate an automated map of course outcomes to program outcomes based on the matched learning objectives.
+
+The proposed system has the potential to:
+
+* Reduce the manual effort and time required for curriculum mapping
+* Improve the accuracy of mappings compared to human manual approaches
+* Enhance the efficiency of program design, assessment, and evaluation
+
+By developing this system, the authors aim to contribute to better curriculum design, student success, and academic quality by ensuring that programs are aligned with industry needs and learning objectives.
 #### What is the motivation for the work?
 
 ##### Prompt
 
 ```markdown
-prompt here
+Explain the motivation behind the research in the uploaded paper.
 ```
+The motivation behind the research presented in the paper is likely rooted in several challenges and concerns related to curriculum design, assessment, and evaluation in higher education institutions.
+
+Here are some possible motivations that can be inferred from the context:
+
+1. **Curriculum alignment**: The authors may want to ensure that programs are aligned with industry needs, professional standards, and learning objectives, which is essential for providing students with relevant and employable skills.
+2. **Standardization and consistency**: By developing an automated system for mapping course outcomes to program outcomes, the authors aim to standardize and ensure consistency in curriculum design across institutions, making it easier for students to transfer credits and programs.
+3. **Improved assessment and evaluation**: The proposed system can help institutions develop more accurate and reliable assessments of student learning outcomes, which is crucial for evaluating program quality and making informed decisions about student success.
+4. **Increasing efficiency and reducing manual labor**: Manual mapping of course outcomes to program outcomes can be time-consuming and prone to errors, which may lead to delays in curriculum design, faculty workload, and institutional decision-making processes.
+5. **Enhancing academic quality and accountability**: By providing a systematic and automated approach to mapping course outcomes to program outcomes, the authors aim to enhance academic quality, accountability, and transparency in higher education institutions.
+
+Overall, the research motivation seems to be focused on addressing the complexities of curriculum design, assessment, and evaluation in higher education, with an emphasis on improving standards, consistency, and efficiency.
 
 #### What is the approach or innovation?
 
 ##### Prompt
 
 ```markdown
-prompt here
+Describe the approach or innovation presented in the paper.
 ```
+The paper presents an innovative approach for mapping course outcomes to program outcomes using a combination of Natural Language Processing (NLP) and Machine Learning (ML) techniques. The approach is based on the following components:
+
+1. **Course Description Analysis**: The authors use NLP to analyze the language used in course descriptions to extract learning objectives, such as knowledge, skills, and attitudes.
+2. **Ontology Construction**: A database or ontology of existing program outcomes or learning objectives is constructed, which serves as a reference for matching extracted learning objectives from course descriptions.
+3. **Learning Objective Matching**: The authors use ML algorithms (e.g., similarity-based or clustering) to match the extracted learning objectives with existing program outcomes or learning objectives in the ontology.
+4. **Automated Mapping**: Based on the matches obtained, the system automatically generates a mapping between courses and programs, providing a clear representation of how course learning objectives contribute to program learning outcomes.
+
+The innovation presented in the paper lies in:
+
+1. **Using NLP for course description analysis**: This approach enables the extraction of learning objectives from unstructured or semi-structured course descriptions.
+2. **Developing an ontology-based matching framework**: The use of an ontology facilitates the creation of a standardized and structured reference database, which improves the accuracy and consistency of matching learning objectives.
+3. **Applying ML for automated mapping**: This approach enables the system to efficiently match learning objectives across large datasets, making it scalable and practical for real-world applications.
+
+The authors aim to improve the efficiency, accuracy, and scalability of curriculum mapping by developing an automated system that can handle large volumes of course descriptions and program outcomes data.
 
 #### What are the results and how do they compare with competing approaches?
 
 ##### Prompt
 
 ```markdown
-prompt here
+Summarize the results of the research as presented in the paper. Compare these results to competing methods and highlight whether this approach outperforms others.
 ```
+The paper presents the results of a study evaluating the proposed approach for mapping course outcomes to program outcomes using Natural Language Processing (NLP) and Machine Learning (ML). The findings are based on:
+
+1. **Dataset**: A large dataset of course descriptions, program learning objectives, and institutional ontologies.
+2. **Experimental Setup**: Two main experiments were conducted:
+	* Experiment 1: Evaluating the proposed approach on a subset of the dataset.
+	* Proposing method: NLP + ML for learning objective extraction and matching.
+	* Baseline methods: manual annotation, keyword-based approaches, and simple string matching.
+	* Results: Proposed approach outperformed baseline methods in terms of precision, recall, and F1-score (average score 73.4% vs 55.2% for precision, 64.5% vs 43.8% for recall, and 71.1% vs 59.3% for F1-score).
+	* Experiment 2: Evaluating the proposed approach on a larger subset of the dataset.
+	* Results: Proposed approach maintained its advantage over baseline methods (average score 75.6% vs 58.2% for precision, 66.2% vs 45.5% for recall, and 72.9% vs 60.8% for F1-score).
+3. **Comparison to competing methods**: The proposed approach was compared to several existing methods:
+	* Manual annotation: human-annotated learning objectives were used as the reference standard.
+	* Keyword-based approaches: simple keyword extraction from course descriptions was compared to more sophisticated methods using NLP techniques.
+	* String matching: direct string comparison between courses and programs was evaluated against the proposed ML-based approach.
+
+Results:
+
+The proposed approach achieved higher precision, recall, and F1-score scores than competing methods, demonstrating its effectiveness in mapping learning objectives with program learning outcomes. Specifically:
+
+* **Precision**: Proposed approach outperperform baseline (55.2% vs 73.4%), keyword-based (56.3% vs 68.5%), and string matching (50.6% vs 76.1%) approaches.
+* **Recall**: Proposed approach surpassed manual annotation (43.8% vs 64.5%), keyword-based (51.9% vs 65.2%), and string matching (48.5% vs 66.4%) methods.
+* **F1-score**: Proposed approach outperformed baseline (59.3% vs 71.1%), keyword-based (61.2% vs 69.5%), and string matching (58.4% vs 70.9%) approaches.
+
+This evaluation suggests that the proposed NLP + ML based approach for learning objective extraction and matching provides a more accurate, precise, and scalable method for mapping courses to programs compared to existing methods.
 
 #### Is the comparison fair?
 
 ##### Prompt
 
 ```markdown
-prompt here
+Let me know if the comparisons made in the paper are fair or not.
 ```
+Based on the text you provided, I'll evaluate the fairness of some comparisons made by the proposed approach with baseline methods.
+
+**Manual annotation**: The paper compares the proposed approach's performance to manual annotation (human-annotated learning objectives). While manual annotation is a gold standard reference for objective extraction and matching, it's reasonable to assume that:
+
+* Manual annotation requires significant expertise, time, and resources.
+* Human annotators may have varying levels of expertise and consistency in labeling learning objectives.
+* This comparison might not provide a direct apples-to-apples evaluation of the proposed approach's performance.
+
+Fairness level: **Limited**
+
+**Keyword-based approaches**: The paper compares the proposed approach to simple keyword extraction methods using NLP techniques, such as keyword-based approaches. These methods are relatively straightforward and lack the nuance of more sophisticated NLP methods like the proposed approach. It's reasonable to expect that:
+
+* Simple keyword extraction methods will perform worse than more advanced NLP methods.
+
+Fairness level: **Moderate**
+
+**String matching**: The paper compares the proposed approach to direct string comparison between courses and programs. This comparison is somewhat unfair, as string matching is a very simple and limited method for comparing learning objectives with program learning outcomes. It's reasonable to expect that:
+
+* A more sophisticated method like the proposed NLP + ML approach will outperform such a basic comparison.
+
+Fairness level: **Unfair**
+
+**Baselines (55.2% vs 73.4%, etc.)**: The paper compares the proposed approach to baseline methods, which are not specified in detail. Without knowing what specific baselines were used and how they perform on this task, it's difficult to evaluate the fairness of these comparisons.
+
+Fairness level: **Unclear**
+
+In summary, some comparisons (e.g., manual annotation) have limitations due to the complexity or variability of human annotation, while others (e.g., string matching) may be unfair due to their simplicity. The comparison with baseline methods is unclear without more context about what specific baselines were used and how they perform on this task.
 
 #### What are the takeaways according to the authors?
 
 ##### Prompt
 
 ```markdown
-prompt here
+What are the takeaways according to the authors?
 ```
+Based on the text you provided, here are some potential takeaways from the paper according to the authors:
+
+1. **The proposed approach outperforms baseline methods**: The authors report that their NLP + ML based approach for learning objective extraction and matching achieves higher precision (73.4% vs 55.2%), recall, and F1 score compared to a set of baseline methods.
+2. **The proposed method is more effective than simple keyword-based approaches**: By comparing the proposed approach to simple keyword-based methods using NLP techniques, the authors demonstrate that their approach outperforms these straightforward methods.
+3. **String matching is a weak benchmark**: The comparison between the proposed approach and string matching reveals that the former significantly outperforms the latter, implying that a more sophisticated method is needed for this task.
+
+While not explicitly stated as "takeaways" in the text, we can infer some potential benefits of the authors' work:
+
+* **Improved learning objective extraction and matching**: The proposed NLP + ML approach offers enhanced performance compared to existing methods, which may lead to better supporting or integrating learning objectives in educational systems.
+* **Enhanced evaluation for course design and instruction**: By extracting and evaluating learning objectives more accurately, instructors and educators can potentially create more effective curricula and instructional materials.
+* **Potential applications in e-learning platforms and related domains**: The proposed approach could be integrated into online courses, e-learning platforms, or even be used to optimize educational content in general.
+
+Keep in mind that this text only provides a snippet from the paper, so there might be additional takeaways or benefits of the authors' work not explicitly mentioned here.
 
 #### What are the takeaways according to you?
 
 ##### Prompt
 
 ```markdown
-prompt here
+Based on your understanding of the paper what are the takeaways according to you?
 ```
+Based on my analysis of the paper you provided, I can infer some potential takeaways from the authors' work:
+
+1. **Improved performance in learning objective extraction and matching**: The proposed NLP + ML approach demonstrates enhanced precision, recall, and F1 score compared to baseline methods, such as manual annotation, simple keyword-based approaches, or string matching.
+2. **Advantages of using natural language processing techniques for learning objective analysis**: By leveraging NLP methods, the authors' approach can potentially capture nuances in learning objectives that might be missed by simpler comparison methods (e.g., string matching).
+3. **Potential applications in educational contexts**: The proposed method could lead to improved course design, instructional materials, and evaluation of learning objectives, which may benefit educators, instructors, and students.
+4. **Value of using machine learning algorithms for learning objective analysis**: By combining NLP with ML, the authors' approach can leverage computational power and advanced statistical models to extract and evaluate learning objectives more accurately.
+
+Some potential implications or applications of this research include:
+
+* Developing more effective educational curricula
+* Enhancing instructor and educator training on course design
+* Improving online learning platforms and resources
+* Fostering better assessment and evaluation of student learning outcomes
+
+Keep in mind that these takeaways are based solely on the text you provided, which might not capture all aspects or details of the original research paper.
 
 #### Would you use this?  If so, how/where would you use this?
 
 ##### Prompt
 
 ```markdown
-prompt here
+Considering the system proposed in the paper, explain whether you would use it and in what scenarios.
 ```
+Based on my analysis of the text, I can provide some insights on whether I'd use the system proposed in the paper and in what scenarios:
 
-##### Prompt
+**Usefulness:** The system's ability to extract and evaluate learning objectives using natural language processing (NLP) and machine learning (ML) techniques makes it a potentially useful tool for educational contexts. Its effectiveness in precision, recall, and F1 score suggests that it can provide accurate results, which is essential for making informed decisions about course design, instructional materials, and assessment.
 
-```markdown
-prompt here
-```
+**Scenarios where I'd use the system:**
+
+1. **Curriculum design:** Educators or curriculum designers could use the system to extract and evaluate learning objectives from existing educational resources (e.g., textbooks, online courses, or lecture notes). This information can help inform decisions about course structure, assessments, and instructional materials.
+2. **Course evaluation and assessment:** The system's ability to evaluate learning objectives can aid in assessing student performance and understanding of course material. Instructors could use the system to identify areas where students need additional support or review.
+3. **Instructional design for online courses:** As online learning becomes more prevalent, instructors designing online courses could benefit from using the system to extract and evaluate learning objectives. This information can help ensure that online courses align with educational standards and goals.
+4. **E-learning platform development:** Companies developing e-learning platforms or educational software could integrate this system to provide educators and students with better support for course design, evaluation, and assessment.
+
+**Limitations:**
+
+1. **Domain knowledge:** The system's effectiveness relies on the quality of training data and domain-specific knowledge. If the training data is limited or biased, the system may not generalize well to new domains or contexts.
+2. **Contextual understanding:** While the system can extract learning objectives, it might struggle with contextualizing these objectives within a broader educational framework or taking into account additional factors like learning outcomes, assessment criteria, or instructional strategies.
+3. **Evaluation of subjective aspects:** Learning objectives often involve subjective aspects, such as student engagement, motivation, or emotional involvement. The system may not effectively capture these complexities.
+
+**Future extensions:**
+
+To make the system more robust and versatile, potential future extensions could include:
+
+1. **Multimodal input support:** Allowing input from various sources (e.g., text, images, videos) to enable extraction of learning objectives from diverse educational materials.
+2. **Integration with existing assessment systems:** Seamlessly integrating the system with existing assessment tools to provide a more comprehensive evaluation of student performance and understanding.
+3. **Enhanced contextualization:** Developing algorithms or techniques that can better capture the complexities of learning objectives, such as considering multiple aspects like cognitive, social, and emotional processes.
+
+In summary, I think the proposed system would be useful in scenarios where educators, instructors, or educational designers need to extract and evaluate learning objectives from various sources. However, it's essential to consider potential limitations and extensions that could improve its robustness and contextual understanding of learning objectives.
+
 
 #### What problems remain and what are the next steps?
 
 ##### Prompt
 
 ```markdown
-prompt here
+What problems remain and what are the next steps?
 ```
+Based on my analysis of the text, some remaining problems or challenges that I'd identify include:
+
+**Remaining problems:**
+
+1. **Training data quality:** The system's performance may be limited by the quality and diversity of the training data. Ensuring that the dataset is representative, comprehensive, and accurate can help improve the system's generalizability.
+2. **Domain specificity:** The system may not generalize well to new domains or educational contexts without additional training data or fine-tuning.
+3. **Handling nuances in language:** Learning objectives often involve subtle nuances in language, such as implied goals, expectations, or assumptions. The system might struggle to capture these complexities accurately.
+4. **Scalability and efficiency:** As the size of educational resources grows (e.g., textbooks, online courses), the system may need to scale up while maintaining its performance and efficiency.
+
+**Next steps:**
+
+1. **Data augmentation and curation:** Collecting more diverse and high-quality training data can help improve the system's accuracy, precision, and recall.
+2. **Fine-tuning for specific domains or contexts:** Developing domain-specific models or fine-tuning existing ones on specialized datasets can enhance the system's performance in specific educational contexts.
+3. **Multimodal input and processing:** Investigating how to incorporate multiple input sources (e.g., text, images, videos) and developing more sophisticated processing techniques to extract learning objectives from diverse materials.
+4. **Hybrid approaches and fusion methods:** Exploring combinations of rule-based, machine-learning, or graph-based approaches to leverage the strengths of each method and create a hybrid system that can better capture learning objectives in complex educational contexts.
+5. **Evaluation metrics and validation strategies:** Developing more comprehensive evaluation metrics (e.g., F1-score, precision-recall curve) and validation strategies (e.g., cross-validation, bootstrapping) to assess the system's performance in real-world scenarios.
+6. **Human-in-the-loop design:** Incorporating human feedback and expertise into the development process to improve the system's accuracy, relevance, and contextual understanding of learning objectives.
+
+**Research questions and open issues:**
+
+1. How can we effectively incorporate multimodal input sources (e.g., text, images, videos) to extract learning goals from diverse educational materials?
+2. What strategies can be employed to balance precision, recall, and efficiency when handling large datasets or dealing with varying quality levels?
+3. Can machine learning techniques leverage implicit or contextual information (e.g., tone, syntax, emphasis) in language expressions to enhance the system's ability to extract meaningful learning objectives?
+4. How do we validate the effectiveness of our proposed method in real-world educational contexts and assess its impact on teaching practice, learning outcomes, and student engagement?
+
+**Future directions:**
+
+1. **Integrating with existing assessment systems:** Developing a seamless integration between the system for extracting learning goals and existing assessment platforms to create a more holistic evaluation framework.
+2. **Enabling human-augmented decision-making:** Integrating human expertise into decision support processes to enhance or complement automated recommendations on teaching strategies, curriculum design, or student guidance.
+3. **Exploring real-world applications in diverse educational contexts:** Investigating how the system can effectively adapt and benefit various educational settings (e.g., K-12, higher education) to inform both policy-making and instructional practices.
+
+Addressing these challenges will be crucial to advancing the proposed method, ensuring its practical relevance and effectiveness for educators, researchers, and policymakers seeking insights into learning goals and objectives.
 
 ### Experience using the LLM
 
-_Describe your process for using the LLM.  How did the LLM perform?_
- 
+I used JAN UI as the interface for interacting with the large language model (LLM). First, I provided a GGUF link to import the desired model, which I then downloaded successfully. After the download, I initiated a new chat and uploaded the document for analysis. My goal was to have the model understand the key concepts in the paper and provide detailed answers based on my prompts.
+
+Initially, the LLM performed well, providing comprehensive and insightful responses that demonstrated an understanding of the document's content. However, as the interaction progressed, the model's responses became increasingly repetitive and started including fabricated or inaccurate data. This shift diminished the overall effectiveness and reliability of the LLM for my intended purpose.
+
 #### Errors and limitations of the LLM 
 
-_Where did it fall short or make mistakes?_
+The LLM, while helpful in analyzing and summarizing the research paper, exhibited several errors and limitations. One major issue was assumption-based reasoning, where the LLM inferred data or numerical results like the baseline scores that were not explicitly stated in the paper, leading to inaccuracies. Additionally, the model demonstrated overgeneralization, especially when comparing methods or extracting insights, which occasionally diluted precision. It struggled with contextual nuances, such as distinguishing comparisons' fairness without strong reasoning. Furthermore, the LLM occasionally repeated information unnecessarily and lacked critical analysis or personal interpretation beyond surface-level summaries. Lastly, the quality of the LLM's responses was highly dependent on the specificity of prompts, requiring iterative refinement to ensure alignment with the paper's actual findings.
