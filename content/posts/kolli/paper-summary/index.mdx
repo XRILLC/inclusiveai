@@ -81,7 +81,7 @@ _Gao, J., Andrew, G., Johnson, M., & Toutanova, K. (2007). A comparative study o
   </tr>
   <tr>
     <th><b>Why this model?</b></th>
-    <td>_This model uses files to be uploaded and also i have some experience with huggingface so i wanted to use this_</td>
+    <td>The 3B parameter size strikes a balance between computational efficiency and capability. I don't need the excessive overhead of larger models like 13B or 65B, but I still want a model powerful enough to handle complex tasks with good accuracy. I'm interested in testing new capabilities, learning how they can be applied in real-world scenarios.Its instruction-following ability ensures I can adapt it to many tasks with minimal fine-tuning.</td>
   </tr>
 </tbody>
 </table>
@@ -239,12 +239,32 @@ Select comparable tasks: Choose tasks that require both sequence modeling and se
 Consider model characteristics: Take into account the differences in model architecture, training objectives, and pre-training data.
 Based on these considerations, it's challenging to make a direct comparison between the pre-trained transformer models and the LSTM model with glove embedding using the evaluation metrics and tasks presented in this paper.
 
+#### Prompt
+```
+What problems remain and what are the next steps?
+
+```
+In this context:
+
+Problems Remaining:
+
+Challenges in comparing parameter estimation methods directly due to variations in experimental setups.
+Computational complexity for certain tasks, especially with methods like BLasso and Boosting.
+Balancing model sparsity and performance while addressing redundancy in features.
+Next Steps:
+
+Expanding comparative analyses to include more diverse NLP tasks or real-world applications.
+Investigating more efficient algorithms that maintain high performance without significant computational overhead.
+Improving regularization techniques to handle high-dimensional data more effectively.
+Let me know if you need detailed elaboration
+
 ### Experience using LLM 
 Overall the interaction was good, Jan UI have provided answers to almost every question in a structred manner. Although i aksed very direct questions to the LLM it did give me a very long answers which is complex to read and repeated few sentences by just paraphrasing where i think chatgpt is more efficient in it when prompted same questions
 
 #### Errors and limitations of the LLM 
 
-One of the main limitations i found was the model overgenralized and makes broad statements without nuanced understanding like assuming the study proposes new techniques, when it focus on applying existing methods. The model also takes time to respond to the prompts and gives reponse in a general format structured like headings in bold the few points and at last the summary of the prompt given. 
+The main limitations i personally obseved  was the model overgenralized and makes broad statements without nuanced understanding like assuming the study proposes new techniques, when it focus on applying existing methods. The model also takes time to respond to the prompts and gives reponse in a general format structured like headings in bold the few points and at last the summary of the prompt given. 
+To the questions like "would you use this? If so, how/where would you use this?. the model gave very good breifing with some good examples but in the first part it took it way too personally saying that the LLm is wokring on its own sentimental analysis which is hilarious and scary at the same time.
 
 
 
