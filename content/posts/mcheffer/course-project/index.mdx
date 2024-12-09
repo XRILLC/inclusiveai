@@ -85,17 +85,46 @@ November 30 - December 4
 ## Results
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
+I was able to get a dataset with song lyrics and thier cooresponding genres from [kaggle](https://www.kaggle.com/datasets/carlosgdcj/genius-song-lyrics-with-language-information). The dataset contained 5,134,856 songs. After removing songs that were not in English as well as songs that were labeled as "misc", I was left with 3,233,212 songs. There are five genres in this dataset: 'country','pop', 'rock','rap', and 'rb'.
+
+To manage the large dataset efficiently, several techniques were employed. The SparseDataset class was implemented to dynamically handle sparse data by converting it into dense tensors in smaller chunks or mini-batches during training. This approach allowed the model to process data without exceeding memory limits.
+
+Cross-Entropy Loss was chosen as the objective function to quantify the error between the predicted genre probabilities and the true genres, as it is well-suited for multi-class classification tasks.
+
+The Adam optimizer was utilized to adjust learning rates dynamically for each parameter. This optimization algorithm was selected because it handles sparse gradients effectively and converges faster than Stochastic Gradient Descent (SGD), making it suitable for large datasets and deep learning models. AN early stopping feature was added to stop optimization when it appeared it was becoming overfit. 
+
+Even with these methods, processing 3.2 million rows took a very long time. I ended up reducing the dataset to just 1% by genre to increase processing time. 
+
+The model was able to produce an F1 score of 0.62%
+
 
 ## Error analysis
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+
+To better understand the model's performance, I created a normalized confusion matrix that shows the rates at which genres are being misclassified. Initially, the model was run with only two training iterations and two epochs, resulting in poor classification performance. After updating the model to use 20 training iterations and 10 epochs, several improvements were seen:
+  
+  Country: Classification accuracy for "Country" improved from 0.08 to 0.18, indicating the model is learning better representations for this genre.
+
+  Rock: Correct classification of "Rock" improved from 0.29 to 0.39, a notable improvement. However, "Rock" continues to be misclassified as "Pop" and "R&B," suggesting that these genres share overlapping features.
+
+  R&B: Correct classification for "R&B" increased from 0.17 to 0.25, though it remains the weakest category with significant overlap with "Pop." This indicates a need for further model tuning or additional data for this genre.
+
+  Rap: The model continues to perform strongly for "Rap," with a diagonal value of 0.84, showing it effectively captures the distinctive features of this genre.
+
+Anecdotally, "Pop" is not a highly distinctive genre from a lyrical perspective. Its generality and overlap with other genres make it a common source of misclassification. This aligns with the confusion matrix, where most genres show significant overlap with "Pop."
 
 ## Reproducibility
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
 _If you'ved covered this in your code repository's README, you can simply link to that document with a note._
 
+Dependencies and instructions are in the repository [README](https://github.com/mcheffer/genrernn/blob/main/README.md)
+
 ## Future improvements
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
 
+Introducing word embeddings like GloVe or BERT would likly improve the models performance. Word embeddings would help be capturing semantic meaning and contextual relationships in lyrics. They would also improve performance by reducing sparsity and generalizing better across genres.
+
+This would help the model differentiate between overlapping genres and improve overall classification accuracy. 

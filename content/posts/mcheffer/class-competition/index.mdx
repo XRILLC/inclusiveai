@@ -22,7 +22,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>0.40792</td>
+    <td>0.59906</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -55,7 +55,11 @@ _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/cl
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
 
-## Results
+The function calculate_word_frequencies calculates the frequency of each word in texts corresponding to a specific label. This creates new features that idnetify the most common words in the dataset for each class to capture patterns or stylistic differences between the author's and non-author's writing.
+
+extract_text_features removes additional features from each text snippet. The column author_word_count is a count of words from the most common words associated with the author's texts.  non_author_word_count is the count of words from the most common words associated with non-author's texts. The total number of words in the text is also added as text_length. This function converts raw text into numerical features to provide extra context about word usage and text length, which are added to the input for the model.
+
+The model produced an F1 score of 0.59906
 
 ## Error analysis
 
@@ -65,8 +69,10 @@ _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/cl
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
 _If you'ved covered this in your code repository's README, you can simply link to that document with a note._
-
+Dependencies and instructions for running the model can be found in the [README](https://github.com/mcheffer/class_comp_fall24/blob/main/README.md)
 
 ## Future Improvements
 
 _Describe how you might best improve your approach_
+
+Similar to my approach on the course project, I would implement additional training and hyperparameter optimization to enhance performance. Using tools like Optuna, I could efficiently tune key parameters such as learning rate, batch size, and dropout rate, which will improve model generalization and convergence.
