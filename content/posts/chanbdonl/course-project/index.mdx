@@ -69,17 +69,38 @@ The Kaggle competition I have chosen to complete is "LLM - Detect AI Generated T
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
+Below is a sample of the results produced in the predictions.csv file:
+
+| id | generated |
+|----|-----------|
+|17jadumkg | 0.0007815452|
+|1s3wysauf | 0.832054|  
+
+The model was able to accurately predict when text was written by a student versus when it was written by an LLM, but these results may be the result of overfitting, as the training data and the test data contain very little sampling of of AI generated text.  
+
+While the dataset could benefit from further development, many steps were taken in developing this task.  
+
+During data handling and preprocessing delimiters were adjusted so that special characters could be handled during training, asserts were used to maintain alignment between input data and metadata, and validation steps were taken to ensure data integrity before proceeding. During tokenization, the Hugging Face's BERT tokenizer was used to ensure compatibility with the pretrained BERT model, and edge cases were handed through padding and truncation to fit the models inpurt size contraints.  
+
+Initial ideas was to approach this in a classical method using logistic regression, but during production of the model selection and training, as this was a binary classification task, the use of the BERTForSequenceClassification saved time and resources while simultaneously training a model from scratch. The transformer was written to be able on various devices, either cuda or cpu, which results in efficient resource utilization which enables scalability across many different hardware configurations. Additional, by batching data optimized memory usage was ensured. By creating and reusing intermediate files such as the tokenized data, this model attempts to reduce redundant computation.  
+
+In the last stage of validation and predictions additional batching of data prevented memory overflows and improved efficiency of the model. When computing probability softmax was used to produce more informative predictions. The inclusion of validation during training helped monitor loss and accuracy on unseen data, which added in reducing the likelihood of overfitting.  
+
+The results of this work are a scalable and flexible model, which can be adapted to different datasets and task with minimal modifications.
+
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+Due to time constructs, a robust error analysis has not been completed.
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+Please reference the [README.md](https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-channing/blob/main/README.md) file for notes on reproducibility.
 
 ## Future improvements
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
+This model could benefit from many improvements. Below are is a list of main areas of growth.  
+- Ingest more training data; currently this model has been trained on predominantly student data. It would benefit from being introduced to more synethic data.
+- Explore other models; there are many newer versions of transformers as well as many emsemble approaches that could be better suited to this task.
+- Explore different configurations of the BERT transformer; little varitation was attempting during the intital building of this prediction model, so there is quite a bit of configurations that could be tweaked to see if they produce better results.
+- Containerizing this model into a docker or an equivalent would help with reproducibility. 
