@@ -1,9 +1,9 @@
 ---
-title: "My clever approach to the class-wide shared task"
+title: "Authorship Identification Approach"
 slug: "/kolli/class-competition"
 date: 2024-11-14
 author: Maheedhar Kolli
-description: "My binary classifier uses word vectors as features and logistic regression to assign labels."
+description: "I created a binary classifier using randomforest algorithm to find the differences in spans and created additional training data sets to fullfill the class imbalance in the dataset"
 tags:
   - class competition
 ---
@@ -41,7 +41,10 @@ tags:
 
 
 ## Task summary
-The task involves examining the linguistic features of two texts to determine if they were written by the same author. For our binary classification model, we utilized a dataset where text pairs are separated by a [SNIPPET] delimiter. While most of the data comes from Project Gutenberg, we supplemented it with additional collected and preprocessed sources. The dataset comprises approximately 1,601 entries, with 481 samples marked as "1" (same author) and 1,120 samples marked as "0" (different authors).
+The task involves examining the linguistic features of two texts to determine if they were written by the same author. For our binary classification model, I utilized a dataset where text pairs are separated by a [SNIPPET] delimiter. While most of the data comes from Project Gutenberg, I supplemented it with additional collected and preprocessed sources. The dataset comprises approximately 1,601 entries, with 356 samples marked as "1" (same author) and 1,245 samples marked as "0" (different authors).Deep Learning Models: Transformer-based models like BERT or RoBERTa are often applied in authorship attribution tasks due to their ability to capture contextual semantics. However, their computational requirements and sensitivity to class imbalance make them less ideal for smaller datasets.
+Class Imbalance: The training dataset had a significant imbalance, with "different author" samples outnumbering "same author" samples by over threefold, leading to bias in model predictions. For instance, this imbalance caused baseline models like Logistic Regression to predict the majority class inaccurately.
+Text Variability: Variability in text length, style, and punctuation made feature extraction challenging. For example, dialogues in one text span but not the other introduced misleading stylistic signals.
+Data Augmentation Techniques: Methods such as back translation and paraphrasing can generate additional training samples, addressing imbalance issues effectively and improving model robustness without significant computational overhead.
 
 
 
@@ -55,31 +58,49 @@ Class "1" (Same Author): 481 text pairs
 Test Set:
 Total number of text pairs: 899 (with unlabeled authorship)
 b- Key Observations and Challenges:
-The training data shows a clear class imbalance, with 1,120 pairs labeled as "0" (different authors) compared to just 481 labeled as "1" (same author).
-We analyzed simple syntactic features, such as punctuation and conjunction usage, across text spans in both classes. However, relying solely on punctuation counts can be misleading.
+The training data shows a clear class imbalance, with 1,245 pairs labeled as "0" (different authors) compared to just 356 labeled as "1" (same author).
+I analyzed simple syntactic features, such as punctuation and conjunction usage, across text spans in both classes. However, relying solely on punctuation counts can be misleading.
 There is considerable variability in the length of text spans, both across different datasets and within individual pairs in the same dataset, making it challenging to use absolute length features as reliable indicators.
 Dialogues frequently appear in one text span but not in the other, complicating the use of straightforward word count metrics for classification.
+Looking thoroughly on the dataset provided it is therefore concluded that i need to prep the data to atmost such that machinelearning algorithms liek Randomforect can be applied upon finding the best estimates once it is passed throught the grip search which is why it was required to use addiional data so that there shouldn't be any missed prediction.
+
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
 
-## Exploratory data analysis
-
-Approach
+## Approach
 
 Upon conducting exploratory analysis, it became clear that the training dataset was not only relatively small but also highly imbalanced, which presented a challenge for accurate model performance.
 The initial step involved building a baseline model using LogisticRegression, acknowledging that the class imbalance could hinder its effectiveness. As expected, this model achieved only 42% accuracy on the imbalanced test set, largely due to the over representation of class "0" in both training and testing datasets. This highlighted the need for a new strategy to better handle the imbalance.
--In my second attempt to address the imbalance, I hypothesized that reducing the over represented class "0" samples would help equalize the class distribution. I applied undersampling to reduce the number of "0" samples to match the count of "1" samples. However, this approach resulted in a dataset that was too small to effectively train the model. As a result, a RandomForest model trained on this undersampled data achieved only 46% accuracy, which was still below the initial baseline.
--Realizing that more samples labeled as "1" were required, I employed web scraping to collect over 100 English books, extracting more than 1,000 additional text pairs with the "1" label. This enriched dataset was then combined with the complete set of original "1" samples and a subset of undersampled "0" samples, resulting in a more balanced and larger training dataset. Training a RandomForest model on this enriched data led to a validation accuracy of 46.5%, demonstrating the value of augmenting data to improve class representation.
+-In my secondattempt i Implemented the techniques i learned in my neural network class i.e use embeddings for the preprocessed text and then i have applied Bidirectional GRU with globalMax pooling and added extra dense layers. Each epoch didn't consume lot of computation but it has overfitted the data consistently. I again though that this approach would be extremely time consuming using up more GPU space
+-In my third attempt to address the imbalance, I hypothesized that reducing the over represented class "0" samples would help equalize the class distribution. I applied undersampling to reduce the number of "0" samples to match the count of "1" samples. However, this approach resulted in a dataset that was too small to effectively train the model. As a result, a RandomForest model trained on this undersampled data achieved only 46% accuracy, which was still below the initial baseline.
+-Realizing that more samples labeled as "1" were required, I employed web scraping to collect over 100 English books, extracting more than 1,000 additional text pairs with the "1" label. This enriched dataset was then combined with the complete set of original "1" samples and a subset of undersampled "0" samples, resulting in a more balanced and larger training dataset for that i have downloaded more books from the gutenberg library and i have compared 7 pairs(number 7 is selected upon trial and error to increase the accuracy) of paragraphs from the book and compared it accross the data . Training a RandomForest model on this enriched data led to a validation accuracy of 53.65%, demonstrating the value of augmenting data to improve class representation.
 
--To further enhance the model’s performance, I performed hyperparameter tuning on the RandomForest model using GridSearch. After testing different combinations of hyperparameters, the optimized model achieved a test accuracy of 48%, marking the best performance obtained during the entire process. An i plan to tune the parameters  to further enhance the score
+-In my last attempt to further enhance the model’s performance, I performed hyperparameter tuning on the RandomForest model using GridSearch. After testing different combinations of hyperparameters, the optimized model achieved a test accuracy of 71%, marking the best performance obtained during the entire process.
+**Data Splitting**
+The training data was partitioned into training and test sets using a 75/25 split to ensure effective model evaluation.
+
+Feature Engineering
+To represent features, I applied the TfidfVectorizer on preprocessed training texts. The preprocessing steps included converting text to lowercase, removing non-alphanumeric characters, and eliminating stopwords prior to vectorization.
+
+ML Model Training and Evaluation Metrics
+I trained a Random Forest Classifier with hyperparameters optimized through RandomizedSearchCV. The model was trained on the training set and evaluated on the test set, achieving a final accuracy of 53.65%. The classification report, detailed in the results section, provides metrics such as precision, recall, and F1-score for each class.
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
 
 ## Results
 
-The RandomForest model demonstrated its effectiveness by achieving an accuracy of 68% on the held-out test set. To further evaluate the model's robustness, I employed 5-fold stratified cross-validation on the entire training dataset, optimizing for F1-score. The cross-validation yielded an average accuracy of 63% with a low standard deviation of ±2%, indicating that the model consistently performs well across various data splits. 
+The RandomForest model demonstrated its effectiveness by achieving an accuracy of 70% on the held-out test set. To further evaluate the model's robustness, I employed 5-fold stratified cross-validation on the entire training dataset, optimizing for F1-score. The cross-validation yielded an average accuracy of 70% for label 0 and 72% for label 1 with a low standard deviation of ±2%, indicating that the model consistently performs well across various data splits. 
 
 These training outcomes, detailed below, highlight the model's capability to identify patterns within the training data and maintain stable performance:
+  precision    recall  f1-score   support
+
+           0       0.70      0.75      0.72       321
+           1       0.72      0.67      0.70       312
+
+    accuracy                           0.71       633
+   macro avg       0.71      0.71      0.71       633
+weighted avg       0.71      0.71      0.71       633
+
 
 
 
@@ -87,19 +108,28 @@ _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/cl
 
 ## Error analysis
 
+The model achieves a respectable overall accuracy of 71%, but a closer examination of precision and recall metrics for each class reveals critical insights into performance gaps and areas for improvement. The model struggles particularly with the minority positive class (class 1) compared to the negative class (class 0).Initially for class 1, precision is 69% and recall is 82%, whereas class 0 shows 69% precision but only 52% recall. The low recall for class 0 indicates that the model fails to correctly identify over half of the actual negative samples, often misclassifying them as false positives. Many of these false positives arise from challenges such as confusing dialogues or unique character names that appear only in specific text spans, which skew the stylistic similarity signals used for authorship attribution.
+
+Additionally, the model's difficulty in accurately classifying the underrepresented positive class highlights an imbalance issue. It tends to default to predicting different authorship, leading to the observed low recall for class 0. Addressing this imbalance could involve targeted augmentation of same-author examples to create a more evenly distributed training dataset.
+
+Key issues identified from error analysis:
+
+Misleading stylistic signals due to dialogues or unique character names, necessitating more robust feature extraction methods.
+Training data imbalance, which biases the model toward predicting different authorship, requiring balanced augmentation strategies.
+
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
 
 ## Reproducibility
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
+https://github.com/MaheedharK/ling-582-fall-2024-class-competition-code-MaheedharK/blob/main/README.md
+
 _If you'ved covered this in your code repository's README, you can simply link to that document with a note._
  
 ## Kaggle submission
 https://www.kaggle.com/competitions/ling-582-fa-2024-course-competition/leaderboard
 
 Leaderboard submission name: simbagudda 
-Leaderboard submission Entries: 3
+Leaderboard submission Entries: 5
+Leaderboard submission score: 0.53650
 
-## Future Improvements
-
-_The future plan to increase the f1 score is to try different estimates and find better insights in EDA throught the data files_
