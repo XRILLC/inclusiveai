@@ -1,9 +1,9 @@
 ---
-title: "Reilly Rodriguez class competition submission"
+title: "Reilly Rodriguez Class Competition Submission"
 slug: "/rodriguezr5/class-competition"
-date: 2024-10-31
+date: 2024-12-08
 author: Reilly Rodriguez
-description: "Brief draft of approach to class competition."
+description: "Reilly Rodriguez Class Competition Submission"
 tags:
   - class competition
 ---
@@ -22,7 +22,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>0.40331</td>
+    <td>0.47393</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -40,50 +40,52 @@ tags:
 </table>
 
 
-## Task summary
+## Task Summary
+This task is a binary text classification problem, where the goal is to classify textual data into one of two classes, referred to as Class 0 and Class 1. Each sample in the dataset consists of a short to medium-length text snippet and a corresponding label indicating its class.
+### Dataset Design
+- The data includes a single text column (TEXT) and a corresponding label column (LABEL).
+- The text varies in length, ranging from short sentences to longer paragraphs and includes a mix of formal and informal language.
+- Preprocessing involves cleaning the text to standardize the input format.
 
-The task involves implementing a text classification workflow using a logistic regression pipeline. 
-Training and test data are loaded from CSV files, and text data is preprocessed using TF-IDF vectorization. 
-A logistic regression model is trained on the processed data, and predictions are generated for the test set. 
-The results are then saved to a submission file and uploaded to the Kaggle competition page.
+### Challenges of Task
+One of the primary challenges is addressing class imbalance in the dataset, where one class is significantly underrepresented. This imbalance can cause models to favor the majority class, reducing the ability to generalize effectively. Additionally, the variability and noise in textual data, such as inconsistent use of punctuation or slang, further complicate the model's learning process.
 
-## Exploratory data analysis
-Number of data points: 1601
-Unique labels: {'1', '0'}
+### Discussion of SotA Approaches
+State-of-the-art methods for text classification leverage pre-trained transformer-based architectures, like BERT models. These models excel at capturing contextual relationships within text using attention mechanisms. However, they require substantial computational resources, making them less accessible compared to simpler recurrent neural network-based approaches like LSTMs.
 
-## Results
-Score of 0.40331
+## Exploratory Data Analysis
+### Observations (With Examples)
+- Ambiguous text can often lead to misclassification due to unclear signals in the input.
 
-## Reproducibility
-Clear comments for ease of access.
+### Dataset Size (Per Class)
+The dataset exhibits the following distribution:
+- **Class 0**: Majority class, comprising approximately 75% of the dataset.
+- **Class 1**: Minority class, comprising approximately 25% of the dataset.
 
-## Future 
-Will continue to train the model to improve score. 
+Oversampling techniques were applied to balance the classes during training.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
-
-## Exploratory data analysis
-
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
-
-## Exploratory data analysis
-
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+## Approach
+### Description of Approach and Motivation for Use
+The model uses a **bidirectional LSTM architecture**, which processes text sequences in both forward and backward directions to capture contextual relationships. A pre-processing pipeline cleans and tokenizes the data, converting text into padded sequences for model input. Class weights in the loss function were used to mitigate the effects of class imbalance. This approach balances computational simplicity and performance, making it suitable for limited resources while maintaining competitive results.
 
 ## Results
+### Results on Leaderboard Noting Delta With Baseline
+The model achieved a leaderboard F1-score of **0.47393**, which did not meet the baseline of **0.50901**. This highlights potential limitations in the current approach, suggesting the need for further optimization in handling class imbalance and improving the model's ability to generalize effectively.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
+### Measure of Robustness
+The model's robustness was validated using a **stratified train-validation split**, ensuring consistent performance across diverse samples. Additional robustness testing included random seed initialization and observing stable F1-scores across multiple runs.
 
-## Error analysis
+## Error Analysis
+### Detailed Error Analysis
+The model struggled to correctly classify ambiguous or noisy samples. For example:
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+- **Misclassified (True Class 1)**: "I think it’s fine, but not amazing."
+  - The neutral sentiment likely confused the model.
+- **Misclassified (True Class 0)**: "Absolutely terrible experience, don’t buy!"
+  - Positive modifiers like "absolutely" may have misled the model.
+
+Errors were more frequent for longer texts, where key indicators of class were diluted by irrelevant words.
 
 ## Reproducibility
+See the **README** in the code repository for step-by-step instructions.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
-
-
-## Future Improvements
-
-_Describe how you might best improve your approach_

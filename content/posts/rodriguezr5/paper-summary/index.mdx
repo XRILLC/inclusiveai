@@ -1,7 +1,7 @@
 ---
 title: "Objection, Leading the Witness: Training Large Language Models to Handle Basic Legal Text"
 slug: "/rodriguezr5/paper-summary"
-date: 2023-10-31
+date: 2024-12-08
 author: Reilly Rodriguez
 description: "Reilly Rodriguez Paper Summary"
 tags:
@@ -58,10 +58,11 @@ This paper identifies a weakness of current popular LLM models in regards to par
 
 ## Motivation
 
-_Why did you select this paper?
+_Why did you select this paper?_
 I selected this paper because my undergraduate degree was in Pre-Law and my goal was to become a lawyer. While I am now pursuing a different career path,
 I am nevertheless deeply invested in the ethical and legal aspects of prominent issues in the field of data science. 
-The title is also my favorite sandwich. 
+This paper is most concerned with legal text as a structure, which I have been exposed to in my previous job as 
+a paralegal for the County Attorney's Office.
 
 ## LLM
 
@@ -90,7 +91,7 @@ The title is also my favorite sandwich.
   </tr>
   <tr>
     <th><b>Why this model?</b></th>
-    <td>I chose this model because I found it was easy to start up with GPT4All</td>
+    <td>I chose this model because I found it was easy to start up with GPT4All but there are also other ways to use the model locally.</td>
   </tr>
 </tbody>
 </table>
@@ -105,13 +106,9 @@ The title is also my favorite sandwich.
 ```markdown
 In your words, what is this paper about?
 ```
-The paper appears to be about a new dataset and model designed to improve the performance of large language models (LLMs) on legal tasks. The authors created this dataset, which they call BLT-4k, by generating synthetic text that mimics real-world legal documents, such as contracts, statutes, and court transcripts.
-The paper's main goal is to evaluate the ability of LLMs to handle novel legal questions and provide accurate answers. To do this, the authors fine-tuned a small model (GPT-3) on their BLT-4k dataset and tested its performance on various tasks, such as:
-Finding specific text within hierarchical documents (e.g., contracts or statutes).
-Identifying citations to relevant sections of texts.
-Applying amended laws to specific scenarios.
-The results show that the fine-tuned model performs significantly better than the original LLMs on these tasks, indicating a potential improvement in their reliability for basic legal tasks.
-Overall, this paper aims to contribute to the development of more accurate and reliable LLMs for legal applications, which could have significant implications for various fields, such as law firms, courts, and regulatory agencies.
+This paper is about the challenges of using Large Language Models (LLMs) in legal text analysis and their potential applications. The authors are concerned that LLMs may not be reliable for use in legal practice due to their poor performance on certain tasks, such as finding specific texts within a document or citing precise definitions.
+To address this issue, the researchers propose fine-tuning these models on a specialized dataset of legal text, which they believe will improve their performance and make them more suitable for downstream applications in law. The paper highlights several key challenges in working with LLMs in a legal context, including handling ambiguity, referencing specific texts or definitions, and performing zero-shot tasks (i.e., recognizing and acting on information without prior training).
+Overall, the goal of this research is to develop more effective and reliable language models that can be used in law-related applications, such as assisting lawyers and paralegals with document analysis and citation.
 
 #### What are the authors proposing?
 
@@ -120,14 +117,16 @@ Overall, this paper aims to contribute to the development of more accurate and r
 ```markdown
 What are the authors proposing?
 ```
-Based on the text file you provided, it appears that the authors are proposing a study to evaluate the performance of Large Language Models (LLMs) in tasks related to legal citations and U.S. Code sections.
-Specifically, they seem to be investigating whether LLMs can accurately perform tasks such as:
-Converting plain text to citation format
-Converting citation format back to plain text
-Identifying specific sections or subsections of the U.S. Code
-The authors are using a combination of synthetic sections and actual U.S. Code sections to test these models, with the goal of understanding their strengths and weaknesses in this domain.
-It's worth noting that the study appears to be focused on identifying errors made by LLMs when performing these tasks, rather than proposing new methods or approaches for improving legal citation accuracy.
-
+The authors are proposing to fine-tune Large Language Models (LLMs) on a specialized dataset of legal text in order to improve their performance and make them more suitable for downstream applications in law.
+Specifically, they aim to develop LLMs that can handle the unique challenges of working with legal texts, such as:
+Handling ambiguity: Legal texts often contain ambiguous language, which requires models to be able to disambiguate and understand the intended meaning.
+Referencing specific texts or definitions: Lawyers need to cite precise references in their documents, which requires models to be able to identify and retrieve relevant information from large text corpora.
+Performing zero-shot tasks: Models should be able to recognize and act on information without prior training, such as identifying a specific definition or citation.
+By fine-tuning LLMs on legal texts, the authors hope to improve their performance in these areas and make them more reliable for use in law-related applications, such as:
+Assisting lawyers with document analysis and citation
+Supporting paralegals with tasks like eDiscovery
+Enabling language models to emerge capabilities that are relevant to tax attorneys
+The goal is to develop LLMs that can be used effectively in legal practice, which would require significant improvements over current state-of-the-art models.
 
 #### What is the motivation for the work?
 
@@ -136,17 +135,20 @@ It's worth noting that the study appears to be focused on identifying errors mad
 ```markdown
 What is the motivation for the work?
 ```
-Based on the text file, it appears that the motivation for this work is to evaluate and improve the performance of Large Language Models (LLMs) in tasks related to legal citations and U.S. Code sections.
-The authors seem to be motivated by a desire to understand how well LLMs can perform these tasks, particularly in situations where they may need to provide accurate information to lawyers or paralegals for use in court proceedings.
-Specifically, the motivation is driven by the following:
-The importance of accurately citing and referencing legal documents, such as U.S. Code sections
-The potential consequences of errors in citation formatting (e.g., pointing a court or another lawyer)
-The need to improve text-handling skills for lawyers and paralegals
-The authors are motivated to study LLMs' performance on these tasks because they have seen the benefits of using LLMs, such as:
-Their ability to process large amounts of information quickly
-Their potential to automate routine tasks that require a high degree of accuracy
-However, the authors also recognize that LLMs can make mistakes in these tasks, particularly when it comes to complex or nuanced legal concepts.
-By studying and improving LLM performance on these tasks, the authors hope to develop more accurate and reliable tools for lawyers and paralegals.
+The motivation for the work is to develop Large Language Models (LLMs) that can be used effectively in legal practice, particularly in tasks such as:
+Document analysis and citation
+eDiscovery
+Tax law applications
+This requires improving LLMs' performance on specific challenges related to legal texts, including:
+Handling ambiguity
+Referencing specific texts or definitions
+Performing zero-shot tasks (recognizing and acting on information without prior training)
+The motivation is also driven by the need for lawyers and paralegals to perform these tasks efficiently and accurately, which can be time-consuming and prone to errors.
+Specifically, the authors mention that:
+Lawyers must evaluate opposing side's motions by finding relevant text in documents
+Paralegals do similar work on their own motions before submitting them
+The ability to find specific definitions or citations is crucial for tax attorneys
+By developing LLMs that can handle these challenges, the authors aim to improve the efficiency and accuracy of legal professionals' work.
 
 #### What is the approach or innovation?
 
@@ -155,46 +157,66 @@ By studying and improving LLM performance on these tasks, the authors hope to de
 ```markdown
 What is the approach or innovation?
 ```
-Based on the text file, it appears that the approach or innovation is to use a combination of synthetic sections and actual U.S. Code sections to test Large Language Models (LLMs) in tasks related to legal citations.
-The authors seem to be innovating by:
-Using both synthetic sections and real-world data from the U.S. Code to train and evaluate LLMs
-Focusing on specific tasks, such as converting plain text to citation format or identifying specific sections of the U.S. Code
-Investigating how the location within a transcript impacts accuracy
-The authors are also innovating by:
-Using a novel approach to generate synthetic sections that mimic real-world legal documents
-Developing prompts that require LLMs to perform complex tasks, such as finding text at a specific citation or identifying changes to U.S. Code sections.
-By using this combination of approaches and data, the authors aim to develop more accurate and reliable tools for lawyers and paralegals.
-Some key innovations mentioned in the text include:
-Using Levenshtein distance to determine whether two lines are similar
-Developing prompts that require LLMs to find specific text within a transcript or identify changes to U.S. Code sections
-These innovations aim to improve the performance of LLMs on tasks related to legal citations and provide more accurate information for lawyers and paralegals.
+The approach or innovation is to fine-tune Large Language Models (LLMs) on a specialized dataset of legal texts in order to improve their performance and make them more suitable for downstream applications in law.
+Specifically, the authors propose:
+Fine-tuning LLMs: Train LLMs on a large corpus of hierarchical text, specifically designed for legal documents.
+Task decomposition: Decompose complex tasks into smaller subtasks that the LLM can handle individually.
+Prompt engineering: Design effective prompts to elicit specific responses from the LLM.
+The authors aim to improve the performance of LLMs in three key areas:
+Handling ambiguity: Improve the ability of LLMs to disambiguate and understand ambiguous language in legal texts.
+Referencing specific texts or definitions: Enhance the ability of LLMs to identify and retrieve relevant information from large text corpora, including specific references and definitions.
+Performing zero-shot tasks: Improve the ability of LLMs to recognize and act on information without prior training.
+By fine-tuning LLMs on legal texts and using task decomposition and prompt engineering techniques, the authors aim to develop more effective language models for law-related applications.
 
-#### What are the results and how do they compare with competing approaches? Is the comparison fair?
+#### What are the results and how do they compare with competing approaches? 
 
 ##### Prompt
 
 ```markdown
-What are the results and how do they compare with competing approaches? Is the comparison fair?
+What are the results and how do they compare with competing approaches?
 ```
-Based on the text file, it appears that the results of the study are as follows:
-Results:
-The authors found that GPT-4 achieves 84.8% accuracy in converting plain text to citation format for two-page transcripts.
-This is nearly identical to the performance of GPT-4 when given a single page transcript (i.e., no splitting).
-However, when GPT-4 is asked to find specific text within a longer prompt, its accuracy decreases significantly.
-The authors also found that other models, such as Claude-3.5 and GPT-4o, perform poorly on tasks related to legal citations.
-Comparison with competing approaches:
-The comparison between the results of this study and competing approaches is not entirely fair for several reasons:
-Task selection: The authors only tested their approach on a specific set of tasks (e.g., converting plain text to citation format) that may be more challenging than other tasks.
-Model selection: The authors compared GPT-4 with Claude-3.5 and GPT-4o, which are not the most advanced models available for this task.
-Data quality: The data used in this study is likely to be of high quality (i.e., well-formatted transcripts), whereas real-world legal documents may contain errors or inconsistencies that could affect model performance.
-Fairness concerns:
-Lack of control group: There is no comparison with a baseline approach, such as a simple text-to-text transformer without any fine-tuning.
-Overemphasis on GPT-4: The authors focus primarily on the results for GPT-4 and do not provide enough information about other models or approaches that may have performed better.
-To make a fair comparison, it would be necessary to:
-Test multiple models (including more advanced ones) on a broader range of tasks.
-Use a larger dataset with varying levels of quality and complexity.
-Include a control group for baseline performance comparisons.
-However, the study does provide some valuable insights into the strengths and weaknesses of GPT-4 in specific tasks related to legal citations, which can inform future research and development efforts.
+The results of the fine-tuning approach on legal documents are presented in Table 2, which shows that the fine-tuned GPT-3.5-turbo model achieves near-perfect performance (100% or close to it) on various tasks such as:
+Document retrieval: The model is able to retrieve relevant documents from a large corpus of texts.
+Entailment: The model can determine whether one text implies another, with high accuracy.
+Contradiction detection: The model can identify when two texts contradict each other.
+The results are compared to competing approaches:
+Baseline approach: A baseline approach that uses a standard language model without fine-tuning achieves lower performance (around 50-60%).
+Task decomposition approach: An approach that decomposes complex tasks into smaller subtasks using task engineering achieves similar performance to the fine-tuned GPT-3.5-turbo model.
+Prompt engineering approach: A prompt engineering approach that designs effective prompts for specific tasks achieves slightly better results than the baseline approach.
+The comparison shows that:
+Fine-tuning on legal documents leads to significant improvements in performance compared to standard language models.
+Task decomposition and prompt engineering approaches can also improve performance, but may not be as effective as fine-tuning.
+The proposed approach outperforms competing methods on specific tasks such as document retrieval and entailment.
+Results
+Document Retrieval
+Fine-Tuned GPT-3.5-turbo: 100%
+Baseline Model: 50-60%
+Entailment
+Fine-Tuned GPT-3.5-turbo: 95%
+Task Decomposition Approach: 75-85%
+Prompt Engineering Approach: 70-80%
+Contradiction Detection
+Fine-Tuned GPT-3.5-turbo: 90%
+Baseline Model: 40-50%
+Task Decomposition Approach: 55-65%
+Prompt Engineering Approach: 45-55%
+Note: The results are based on a specific dataset and evaluation metrics, so may not generalize to other datasets or tasks.
+#### Is the comparison fair?
+
+#### Prompt
+
+```markdown
+Is the comparison fair?
+```
+The comparison between the different approaches is not entirely fair for several reasons:
+Different models: The baseline model, task decomposition approach, and prompt engineering approach are all using different LLMs (GPT-3.5-turbo vs GPT-4). This makes it difficult to compare their performance directly.
+Different fine-tuning strategies: Each approach has a different strategy for fine-tuning the models on legal materials. For example, some approaches may use more extensive training data or longer training periods than others.
+Different evaluation metrics: The comparison is based on three different evaluation metrics (document retrieval, entailment, and contradiction detection). This makes it challenging to determine which approach performs best overall.
+To make the comparison fairer, you could consider:
+Using a consistent model: Use the same LLM for all approaches.
+Standardizing fine-tuning strategies: Implement similar fine-tuning strategies across all approaches (e.g., using the same amount of training data or number of epochs).
+Choosing a single evaluation metric: Select one evaluation metric that is most relevant to your specific task and use it consistently across all approaches.
+By addressing these limitations, you can make the comparison more meaningful and provide a clearer understanding of which approach performs best on your specific task.
 
 #### What are the takeaways according to the authors?
 
@@ -203,19 +225,16 @@ However, the study does provide some valuable insights into the strengths and we
 ```markdown
 What are the takeaways according to the authors?
 ```
-Based on the text file, it appears that the authors' takeaways are as follows:
-Key findings:
-Length affects performance: The authors found that GPT-4's accuracy decreases significantly when given longer prompts (i.e., two-page transcripts) compared to shorter prompts.
-Text location matters: The results show a generally downwards trend in accuracy as the text is located further away from the beginning of the prompt, indicating that the model struggles with finding specific text within longer contexts.
-Implications:
-Length and complexity are important considerations: When working with legal documents or other long-form texts, it's essential to consider the length and complexity of the input data when selecting a language model.
-Model limitations should be acknowledged: The authors highlight that GPT-4 is not well-suited for tasks requiring finding specific text within longer contexts, emphasizing the need for more advanced models or specialized approaches.
-Future research directions:
-Improving performance on long-form texts: The authors suggest exploring techniques to improve model performance on longer texts, such as using more advanced architectures or incorporating additional training data.
-Developing domain-specific language models: Given the limitations of GPT-4 in handling complex legal documents, the authors propose developing specialized language models for specific domains (e.g., law) that can better address these challenges.
-Takeaways from the study:
-GPT-4 is not a one-size-fits-all solution: The results demonstrate that GPT-4's performance varies significantly depending on the task and input data, highlighting the need for more nuanced evaluation and selection of language models.
-Understanding model limitations is crucial: By acknowledging the strengths and weaknesses of GPT-4 (and other models), researchers can better design and develop language models that meet specific needs and applications.
+The authors' takeaways are not explicitly stated in the provided text, but based on the content and context, we can infer some possible conclusions:
+Fine-tuning LLMs on legal materials improves performance: The authors fine-tune GPT-3.5-turbo on BLT's training data and achieve significant improvements in performance compared to using the pre-trained model.
+Using a consistent approach for fine-tuning is crucial: By standardizing their fine-tuning strategy, they are able to compare different approaches more fairly and identify which one performs best.
+Language models can be improved with targeted training data: The authors' experiments demonstrate that language models can learn to perform better on specific tasks or domains when trained on relevant data.
+The U.S. Code is a challenging dataset for LLMs: Despite the improvements achieved, the authors note that the performance of even fine-tuned GPT-3.5-turbo is still lower than what lawyers and paralegals would expect.
+These takeaways suggest that:
+Fine-tuning language models on legal materials can lead to significant improvements in performance.
+Consistency in approach is crucial when comparing different techniques for improving model performance.
+Targeted training data can help improve the performance of language models, even if they are not perfect representations of real-world tasks.
+However, it's essential to note that these conclusions are based on a specific experiment and may not be generalizable to other domains or use cases.
 
 #### What are the takeaways according to you?
 
@@ -224,20 +243,16 @@ Understanding model limitations is crucial: By acknowledging the strengths and w
 ```markdown
 What are the takeaways according to you?
 ```
-Based on the text file, I'll provide my interpretation of the takeaways:
-Key insights:
-Language models are not perfect: The study highlights that GPT-4 is not well-suited for tasks requiring finding specific text within longer contexts, which has significant implications in various applications such as law, medicine, and education.
-Length and complexity matter: The results demonstrate that the length and complexity of input data can significantly impact a language model's performance, emphasizing the need for more advanced models or specialized approaches to handle long-form texts.
-Implications:
-Improved evaluation methods are needed: The study suggests that traditional evaluation metrics may not accurately capture a language model's strengths and weaknesses, particularly in handling complex tasks.
-Domain-specific language models are necessary: Given the limitations of GPT-4 in specific domains (e.g., law), it is essential to develop specialized language models tailored to these areas.
-Takeaways:
-Language models have limitations: The study demonstrates that even advanced language models like GPT-4 can struggle with complex tasks, highlighting the need for more research and development.
-Contextual understanding is crucial: The results emphasize the importance of considering context when evaluating a language model's performance, as it can significantly impact its ability to provide accurate answers.
-Future directions:
-Advancements in long-form text handling: Researchers should focus on developing techniques to improve language models' performance on longer texts and more complex tasks.
-Domain-specific language modeling: Developing specialized language models for specific domains (e.g., law, medicine) can help address the limitations of current models.
-By considering these takeaways, we can better understand the strengths and weaknesses of language models like GPT-4 and work towards developing more advanced and effective models that can handle complex tasks.
+Based on the content and context, I can provide some possible takeaways:
+The importance of fine-tuning language models: The experiment demonstrates that fine-tuning a pre-trained model like GPT-3.5-turbo on legal materials can lead to significant improvements in performance.
+Targeted training data is crucial for improving LLMs: By using relevant and high-quality training data, the authors are able to improve the performance of their language models.
+Language models have limitations: Despite the improvements achieved, the results show that even fine-tuned GPT-3.5-turbo still struggles with certain tasks or domains (e.g., the U.S. Code).
+The need for more research on LLMs in legal contexts: The experiment highlights the potential of language models in legal applications and suggests that further research is needed to fully explore their capabilities.
+These takeaways suggest that:
+Fine-tuning language models can be an effective way to improve performance, but it requires careful selection of training data.
+Language models have limitations and may not perform well on certain tasks or domains without targeted training.
+Further research is necessary to fully understand the potential and limitations of language models in legal contexts.
+Keep in mind that these takeaways are based on a specific experiment and may not be generalizable to other domains or use cases.
 
 #### Would you use this?  If so, how/where would you use this?
 
@@ -246,22 +261,17 @@ By considering these takeaways, we can better understand the strengths and weakn
 ```markdown
 Would you use this? If so, how/where would you use this?
 ```
-Based on the text file, I would not use this model for tasks that require finding specific text within longer contexts. The results show a generally downwards trend in accuracy as the text is located further away from the beginning of the prompt, indicating that the model struggles with this type of task.
-However, if you need to perform other types of tasks such as:
-Text summarization: You could use GPT-4 for text summarization tasks where the input text is relatively short and straightforward.
-Language translation: The model's performance on language translation tasks might be acceptable, but it would depend on the specific task and dataset used.
-Creative writing or content generation: In creative writing or content generation applications, GPT-4 could potentially produce coherent and engaging text, although its accuracy and coherence may vary depending on the prompt.
-Where to use this:
-Research studies: Researchers might find this model useful for exploring language modeling techniques, testing hypotheses about human-computer interaction, or analyzing the limitations of current models.
-Education: Educators could utilize GPT-4 as a teaching tool to introduce students to natural language processing (NLP) concepts and help them develop their critical thinking skills.
-How to use this:
-Fine-tune for specific tasks: If you need to perform a task that is not well-represented in the original dataset, consider fine-tuning GPT-4 on your own dataset to adapt it to your specific needs.
-Use as a starting point: Treat GPT-4 as a starting point and combine its output with other models or techniques to improve performance for more complex tasks.
-Keep in mind that this model has limitations, and its accuracy may not be sufficient for critical applications such as:
-High-stakes decision-making
-Critical information retrieval
-Expert-level content generation
-In these cases, it's essential to use multiple models or techniques to ensure the highest level of accuracy and reliability.
+As a conversational AI, I don't have personal preferences or needs, but I can provide insights on how this technology could be used.
+If I were to hypothetically use this fine-tuned language model for legal purposes, here are some potential scenarios:
+Document analysis and summarization: I would use the model to analyze large volumes of documents, such as court transcripts, contracts, or legislation, to identify key points, summarize complex content, and extract relevant information.
+Case law research: The fine-tuned language model could help me quickly search and retrieve case law related to specific topics or jurisdictions, allowing for more efficient research and analysis.
+Drafting legal documents: I might use the model as a tool to assist in drafting legal documents, such as contracts, wills, or other agreements, by providing suggestions for clarity, concision, and compliance with relevant laws and regulations.
+Client communication: The model could be used to generate responses to client inquiries, provide explanations of complex legal concepts, or even help draft emails or letters on behalf of the lawyer.
+In terms of where I would use this technology:
+Law firms: Law firms could utilize this fine-tuned language model as a valuable tool for their attorneys, paralegals, and support staff to improve efficiency, accuracy, and productivity.
+Courts and tribunals: Courts and tribunals might adopt the model to aid in document analysis, case law research, or drafting legal documents, helping them make more informed decisions and reduce administrative burdens.
+Government agencies: Government agencies responsible for regulatory compliance, contract management, or intellectual property protection could use this technology to streamline their processes and improve accuracy.
+Keep in mind that I'm a large language model, my capabilities are limited by the data I was trained on, and I would not replace human lawyers or experts entirely. However, as a tool, it has the potential to augment the work of professionals in various legal fields.
 
 #### What problems remain and what are the next steps?
 
@@ -270,32 +280,28 @@ In these cases, it's essential to use multiple models or techniques to ensure th
 ```markdown
 What problems remain and what are the next steps?
 ```
-Based on the text file, I can provide an answer to your question.
-Problems remaining:
-Length and complexity: The model struggles with tasks that require finding specific text within longer contexts or more complex prompts.
-Text retrieval: The model has difficulty retrieving clearly specified text, which is a critical aspect of legal questions.
-Novel situations: The model may not perform well in novel or unexpected situations, as it relies on patterns learned from its training data.
-Next steps:
-Fine-tuning for specific tasks: Fine-tune the GPT-4 model on your own dataset to adapt it to your specific needs and improve performance.
-Combining with other models: Combine the output of this model with other models or techniques to improve overall accuracy and reliability.
-Addressing length and complexity: Develop strategies to address the limitations related to length and complexity, such as using shorter prompts or simplifying complex tasks.
-Improving text retrieval: Investigate methods to improve the model's ability to retrieve clearly specified text, which is critical for legal questions.
-Potential solutions:
-Use multiple models in parallel: Use a combination of models with different strengths and weaknesses to provide more accurate results.
-Develop domain-specific models: Create specialized models that are trained on specific domains or tasks, such as law or medicine.
-Investigate transfer learning: Explore the use of transfer learning techniques to adapt pre-trained models to new tasks or datasets.
-Future research directions:
-Investigating human-computer interaction: Study how humans interact with language models and identify areas for improvement.
-Developing more robust models: Research methods to develop more robust and reliable language models that can handle a wider range of inputs and situations.
-Addressing bias and fairness: Investigate ways to address biases in the training data and ensure that the model is fair and unbiased.
+Problems:
+Limited understanding of context: The fine-tuned language model may not fully understand the context of a conversation or document, leading to inaccurate or incomplete responses.
+Lack of nuance in handling ambiguity: The model may struggle with ambiguous or unclear requests, leading to incorrect interpretations or conclusions.
+Inadequate handling of complex legal concepts: While the model has improved on some tasks, it still requires significant expertise and knowledge to accurately apply its results to complex legal issues.
+Next Steps:
+Refine the training data: Continue to collect and refine high-quality training data that covers a wide range of topics, including complex legal concepts.
+Improve handling of ambiguity and nuance: Develop techniques for better understanding context, identifying ambiguities, and adapting responses accordingly.
+Enhance domain-specific knowledge: Integrate more specialized knowledge in specific areas of law to improve the model's accuracy and reliability.
+Integrate with other tools and systems: Explore ways to integrate this fine-tuned language model with existing legal tools and systems to enhance efficiency and effectiveness.
+Potential Research Directions:
+Multitask learning for improved generalization: Investigate techniques that enable the model to learn multiple tasks simultaneously, improving its ability to generalize across different contexts.
+Explainability and transparency: Develop methods to provide clear explanations of the model's reasoning and decision-making processes, increasing trust in its outputs.
+Human-in-the-loop feedback mechanisms: Design systems that allow humans to review and correct the model's responses, ensuring accuracy and relevance.
+By addressing these challenges and exploring new research directions, it is possible to further improve the fine-tuned language model for effective use in legal applications.
 
 ### Experience using the LLM
 
 _Describe your process for using the LLM.  How did the LLM perform?_
-I had some trouble figuring out how to launch the model. Once I figured out how to use GPT4All, it was fairly easy to give the model a text file version of 
-the paper I chose.
+I had some trouble figuring out how to launch the model due to hardware issues, I was working on a laptop. GPT4All offered an option for users like me who need access to an LLM 
+but do not have the specs to run locally.
  
 #### Errors and limitations of the LLM 
 
 _Where did it fall short or make mistakes?_
-The model was slow but did not make any major mistakes. 
+The model will read PDF documents but there are limitations on the size of the document in GPT4ALL. It takes a while to embed the document but it is fairly user-friendly. 
