@@ -1,7 +1,7 @@
 ---
 title: "Utilizing LLM's to Perform Adverse Events Analysis"
 slug: "/edelgadillo/course-project"
-date: 2024-11-13
+date: 2024-12-08
 author: Emily Delgadillo
 description: "My submission for the course project will be a potential solution for identifying user inputs with adverse events and then determine if they were mapped to appropriate units."
 tags:
@@ -31,18 +31,27 @@ tags:
 
 ## Project description
 
+Overview of Project:
 For this course project, I decided to automate a simple but time consuming task. As a part of my current role, each month user data is compiled from a pharmaceutical company's online virtual assistant in the form of CSV files. Those files include the user input and the unit to which it was mapped by the language model. The task is to determine from those inputs, which ones contain potential adverse events (AEs) for their medication and for inputs that do contain AEs, did the language model map them to the appropriate units? 
-There are two different approaches that I could take- I could have one task where an LLM both identifies AE's and determines the validity of the unit mapping at the same time, or I could split it out into two tasks so the LLM only has to perform one task at a time. I have opted for the second option, splitting out the tasks as I have noticed through personal use and testing that LLM's appear to perform better when only having to focus on one task at a time.
-I am currently undecided on which LLM I will use - it will either be huggingface or anvilGPT, I am waiting for the post to come out about compute infrastructure to determine which one will be the better choice.
-First, I will need to compile three data sets; one with unit names and their descriptions; a set of training data which will include inputs, mapped units, and labels for AE/non-AE; another set of training data with inputs, units, and labels for correct unit/incorrect unit; and a set of testing data with just inputs and units. This should be complete by 11/17.
-I will be using python to feed the set of training data containing the AE labels, the test set of data, and a prompt into an LLM via an API. The output of this first task should be another CSV file with 3 columns, input, unit, and AE label. 
-The output of the first task, will then be trimmed down to only inputs which contain AEs and their mapped units. The trimmed down file will then be passed again into the LLM along with the files containing the units and their descriptions, the training data with the correct/incorrect labels, and another prompt. I am hoping to have the python portion completed by 11/24.
-Once I have a working script, I will then manually analyze the outputs to determine if I need to change any LLM settings or make any prompt updates. The analysis and subsequent changes shall be completed from the 24th - 30th. I will be working on finalizing my blog post from 12/1-12/6.
-In theory, these tasks could be accomplished using the concepts and principles that we have learned about statistical NLP by creating a classifier similar to what we are working on for the class competition. I have two tasks which I could make binary classifiers by utilizing the AEs as potential features for example, but instead I will be leveraging an LLM as it will have more context for what could be considered an adverse event and it will be able to take into consideration the document of unit names and descriptions for more context. 
+I split this into two tasks so the LLM only had to perform one task at a time, I tried both keeping it as one prompt and splitting it into two, but after performing various result analyses, it was evident that having the tasks split out provided more accurate results. Having the two tasks together resulted in very long computation time and the results were very inconsistent.
+Using a fake medication name, Zentrilex which I described to the LLM as a GLP-1 diabetes medication - I compiled three data sets; one with unit names and their descriptions; a set of training data which including inputs, mapped units, labels for AE/non-AE, and labels for correct unit/incorrect unit; and a set of testing data with just inputs and units. I made sure that the inputs included natural misspellings, slang, etc. to be as close to real user data as possible. I chose to create 10 units, and for both data sets - each unit had 5 inputs. In the test data, I also made sure to include some incorrect mappings to see if the LLM classified it properly.
+I used python to perform various tasks involving the different CSV files, including 3 different functions to read the files and create data dictionaries that could be easily consumed by the LLM and another 2 functions to save the results from both tasks as a CSV file. I also used it to communicate with anvilGPT to complete the two classification tasks via an API call.
+The first classification function is called ae_query. Using the training data set and the test data set- the prompt asks the LLM to review the training data and use any pre-existing knowledge that it has to determine if the input in the test data contains any adverse events. The results get saved as a CSV file with three columns; the input, the mapped unit and the AE results. 
+The second classification function, named unit_query, takes in the output CSV file from query_GPT_first (after it has been read and transformed by the appropriate read function) as well as the unit data and the training data. Before being prompted - there is some code which checks the adverse events results column and only the the inputs containing adverse events are passed to the LLM for processing. The prompt for this function asks the LLM to consider both the training and unit data to help determine if the inputs were mapped to the correct unit in the output file from the previous query. 
+
+Description of Novelty:
+I wouldn't necessarily say that this is new concepts being created by any means. In theory, these tasks could be accomplished using the concepts and principles that we have learned about statistical NLP by creating a classifier similar to what we are working on for the class competition. I have two tasks which could be accomplished with binary classifiers by utilizing the AEs as potential features for example, but instead I utilized an LLM as it has more context and pre-existing training. This made it easier to determine which inputs contained adverse events and it was able to take into consideration other documents to use as context for determining proper unit mappings. LLMs have become a very popular tool within the last couple years, so one could argue that it would be the novelty involved in this particular project since it is being used instead of creating a regular binary classifier.
+
+Motivation:
+As previously mentioned, this is a task that I currently manually perform every month. Eventually, the shift to using an available LLM to run the initial analysis of thousands of user inputs would greatly reduce the amount of hours that are used every month on this tedious task that is only performed to satisfy FDA regulations. The time that is saved here would enable me to perform other analysis looking for more meaningful improvements to the pharmaceutical companies' virtual assistants.
+
+Challenges of Task:
+Unfortunately, these tasks have a lot of areas for ambiguity. It was challenging for the LLM to determine what was or wasn't an adverse event despite many changes to the prompt with additional information provided. Similarly with the unit mapping, changes to the unit descriptions and prompting wasn't enough to get the results to 100%. With adverse events, there are many different definitions of what falls into the category and it changes from medication to medication. An example of this challenge was when the LLM determined that the input "Does Zentrilex interact with Tylenol" contained an adverse event.
+The LLM explained that since it had potential for a future negative reaction, it decided to classify it as containing an adverse event even though it should be considered a contraindication. For the unit mapping, inputs can contain concepts which fall under multiple units, which caused a lot of error for the LLM. The input "I had a kidny removed am I stil ok to use zentrilex?" was correctly mapped to 'Interactions Between Zentrilex and Symptoms' based on the description of what the unit covers, but the LLM said it should have instead been mapped to 'Prescription Requirements for Zentrilex'. It believed kidney removal to be part of their medical history instead of a symptom which had been defined as a change in bodily function. The model explained that previous kidney removal wasn't an active change in bodily function and therefore was not a symptom. 
+Another pain point was with co-referring determiners. The words 'it' and 'this' in the input, "I feel shaky after takin it can this b zentilex?" refer to the idea of 'feeling shaky' and 'Zentrilex' respectively. The LLM had a hard time distinguishing what the determiners referred back to which lead to the misconception that it should have been mapped to a unit other than 'Is Side Effect Caused by Zentrilex'.
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility).  Use subsections to organize components of the description._
 
-Do I need this table if I have no other teammates?
 
 ## Summary of individual contributions
 <table>
@@ -63,17 +72,44 @@ Do I need this table if I have no other teammates?
 
 ## Results
 
+The following accuracy percentages were manually calculated by running the script 10 times and counting how many of the labels were correct and dividing it by the total number of inputs. 
+For each task, I was hoping to achieve at least a 75% accuracy given that the data set was so small. With the adverse events task, the LLM is achieving 80-90% accuracy. While I was adjusting the prompt for this task, I turned on LLM explanations for its decisions. I have already previously discussed some of the reasons for the discrepancies, but to reiterate; it boils down to there is a lot of ambiguity for what is considered an adverse event. Since the LLM has previous training data, I will never be able to achieve 100% accuracy, but as long as the LLM isn't missing adverse events that is the important part for this task. I will elaborate more in the error analysis section, but the errors were mostly inputs that didn't contain adverse events were classified as having adverse events.
+Unfortunately; the unit mapping was only achieving 60-70% accuracy. I decided to leave the explanations turned on for this task as it will be helpful when reviewing the data in the future, but aside from that - the LLM struggled with only considering the available units. It often presented a new unit that it considered more appropriate. I decided not to change the prompt to attempt to fix this problem as some of the incorrect hits that I included in my test data would have been appropriately mapped to units that did not exist in the set that I used. This was an oversite on my part that I will be able to avoid when using this code in the future. 
+
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
 
 ## Error analysis
+
+The errors that came up in the results included false positives, false negatives, and coreference ambiguity. For the adverse events task, the input "How much does zentilrex cost a month w/ insurance?" resulted in a false positive. The LLM explained that it the input 'did not involve any undesirable or harmful symptoms directly' but then said that the correct classification was yes. This doesn't inherently feel like a problem that one can easily solve for as the reasoning behind the final decision did not align with the actual result. This logical mismatch on the LLM's part occurred a few different times throughout the refining process of the prompting, but I tried many different prompts and still had this kind of inconsistancy pop up. 
+Taking a look at a false negative, "Can I still take zentrelex if my sugar levels r rlly high?" was mapped to 'Interactions Between Zentrilex and Symptoms' which was appropriate, but the model determined it to be a bad mapping as it felt that blood sugar as an existing symptom would be a contraindication rather than an interaction. Previous training information that the language model had was most likely the reasoning for this decision and thought process, hopefully, more robust training data in the future  (which I discuss in the future improvements section) will help provide the additional context needed to avoid such errors. 
+As for coreference ambiguity, I have already mentioned the one example that had more than one of these determiners that caused issues. Here it is again: "I feel shaky after takin it can this b zentilex?". This input not only was a false negative, but explanations given most often were related to the two determiners 'it' and 'this'. One time the issue was that it thought both referred to Zentrilex and therefore it focused on only the last half of the sentence "can this b zentilex". It then provided a new unit of "Zentrilex Information" as a better unit instead. Throughout the process of reading through the explanations of the classification decisions, I did my best to update the prompts to address these issues. I also tried to update a few of the unit descriptions in an attempt to stop some of the false positives from happening such as including the line "This should not include any interactions between zentrilex and other medications.This should not include any interactions between zentrilex and other medications." in the 'Interactions Between Zentrilex and Symptoms' unit description.
+I tried not to get super specific as I didn't want to tailor my prompts too strongly to my small set of data, so this will be another issue that I will need to address in future improvements.   
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
 
 ## Reproducibility
 
+First make sure that all the files are downloaded and available in the same file. For example, create a folder called AE_Unit_Classifier and put the train.csv, unit.csv, test.csv, and course_project.ipynb in that folder.
+
+In order to run this code you will need to install python (if you don't already have it), pip, jupyter notebook, and requests. 
+
+To install python, open your terminal and type in 'sudo apt install python3' and hit enter.
+To install pip, in your terminal and type in 'sudo apt install python3-pip' and hit enter.
+To install jupyter notebook, in your terminal type in 'sudo pip3 install jupyter' and hit enter.
+To install requests, in your terminal, type 'pip install requests' and hit enter (if this doesn't work try 'sudo pip3 install requests'). 
+Then in your terminal type 'jupyter notebook' and hit enter. Then navigate to the course project ipynb file and you can open it. 
+All you need to do from there is run each cell in order. 
+
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+_If you've covered this in your code repository's README, you can simply link to that document with a note._
 
 ## Future improvements
+
+Limitations:
+The biggest limitation for this project was that I wasn't able to use the real data that I work with. I wanted to make sure that I didn't spend an absurd amount of time compiling extremely large and fleshed out data sets so that I had time to actually build the python script out. Unfortunately, this meant that my training data was fairly small and limited in diverse content. I only created ten units and their descriptions were shorter and not as detailed as I would have liked, each unit only had ten inputs each split between a test group and the training group. Having data sets this small left the door open for the prompts I have in my script to fall short for future sets of real user inputs that will be processed as it will perform poorly on real data.  
+
+Ways to Improve:
+Since I plan on utilizing this project at my workplace, the first thing I plan on doing is compiling a data set of approximately 1000 inputs using data that has already been analyzed. For each unit I would ideally have at least 25 inputs with a variety of different (but unit appropriate) concepts.
+For the unit data, I will be pulling a record of all the active units and their descriptions. Currently, the descriptions are fairly vague since one unit can encompass many possible ideas. I want to test different prompting to see if the LLM is able to work with the shorter descriptions if I include verbiage similar to, "The only available units for this virtual assistant are included in the unit data set. When determining if the unit mapping is appropriate, make sure that it is appropriate for only this set of units, do not make up new ones." 
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_

@@ -1,9 +1,9 @@
 ---
-title: "EXAMPLE: My clever approach to the class-wide shared task"
+title: "Using Logistic Regression with BERT Embeddings"
 slug: "/edelgadillo/class-competition"
-date: 2024-11-12
+date: 2024-12-08
 author: Emily Delgadillo
-description: "My binary classifier uses word vectors as features and logistic regression to assign labels."
+description: "My binary classifier uses embeddings from a BERT model as features and logistic regression to assign labels."
 tags:
   - class competition
 ---
@@ -22,7 +22,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>.49149</td>
+    <td>.55791</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -42,36 +42,76 @@ tags:
 
 ## Task summary
 
-I am going to utilize words as vectors to classify the documents. My motivation/general thought process is that authors often use similar groupings of words
-which is apart of their writing style. Ideally these vectors partnered with logistic regression will accurately calculate the probability between authors.
-I will be reviewing the first set of results and modifying some of the settings for the logistic regression model I'm using to determine if this is a feasible
-route to continue on. If not, I will be exploring if there is either a different probability model that would be better suited instead of logistic regression or changing what I use as the features.
+Full disclosure, I just realized the day that the assignment is due that I completely misunderstood what this assignment was asking. I thought that each cell of the data was one document and we were trying to compare them to see if that match the author which would get the label 1 and the other docs would receive 0 denoting it was not the same author. 
+I did not do any data analysis until today which made me realize my mistake. Fully understand if I fail this assignment but wanted to submit at least something. The tast summary written below was before I realized my mistake.
+
+I was originally going to use word2vec in my implementation for this project. Unfortunately, I was never able to get the score above .49 so I ended up using a BERT model as it already has pre-training to help boost my accuracy.
+I hoped that using the BERT to provide the logit scores would be more accurate as there are so many factors to consider when trying to differentiate text between authors. 
+The way my model works, the dataset is run through tokenization before any processing happens. The BERT model receives training from the training data to help tailor it to this specific task. Then I the test data is passed through the BERT model to receive logit scores as embeddings.
+After the test data is processed and the embeddings are ready, the logistic regression model takes the logit stores and provides the final label assignments. I also have training loss, validation loss, and accuracy set up so that I could monitor loss as I changed various settings. A portion of the training data was held aside to be used for the loss tracking during training.
+A big challenge I ran into with this was processing time, it takes about an hour an half for this to complete. When first trying to use the BERT model, it actually wouldn't run due to my computer having not enough processing power, so I had to limit the settings to a small learning rate and with only 3 training epochs.
+The long processing time lead to a small issue as last week, I got the model to a point where my score was .55, but I forgot to save what settings I had for that run, and since then have tried to get a better score. 
+As you can imagine, my model is now performing poorly, and I am unsure why and I don't have the settings from my highest leaderboard post to revert back to. 
+Revisiting the discussion of my orginal idea of using word2vec, I was hoping that it would be enough to capture enough of the similarities and differences in writing styles between authors. One of the challenges of this task is that recognizing writing styles boils down to more than just what words are used. There are sentiments, points of view, content choices, etc..
+Unfortunately, not matter how robust I tried to make my word2vec embeddings, I was never able to break the .5 score barrier.
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
 
 
 ## Exploratory data analysis
 
+One thing I noticed that could potentially cause some confusion for a model would be conversations. In document 1065, the first snippet contained a conversation between two characters while the second snippet was describing a situation and contained only a little conversation.
+If one of the snippets only contained a scene with dialogue while the other contained a description or though process of a scene or character, but it was indeed the same author, the LLM could misinterpret the inclusion or absence of dialogue as a feature indicative of a certain author. 
+To shift to how this data could make classification easier would be document id 959. It is clear that the first snippet is set in a different time period and most likely a fictional universe due to this excerpt, "sandcar caravans out in Syrtis." The second snippot mentions flights and autopilots which contrasts heavily with the first snippet.
+Although upon further consideration, I suppose this could technically be the same author (it isn't) if the author had branched out and written different stories. This is part of what makes this task difficult. Writers can have the same writing style, but it can be difficult to differentiate if they change genres and topics completely. 
+The easiest ones that could be considered would be if writing from someone like Shakespeare is compared to a modern author.
+In documents such as id 583, its easier to tell that it's the same author as it is very dialogue heavy and one could change out the character names to be matching between the two and it would sound like the same book at different points. 
+
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
 
-## Exploratory data analysis
+## Approach
+
+My approach was to make a standard binary classifier. Due to my misunderstanding of this assignment, my approach was to just create re-use a classifier that I had built for a previous class. In order to have as much context for recognizing different writing styles as possible, I ended up using a BERT model for my embeddings. 
+I used the logistic regression model because honestly, it was a model I had already set up before and I wanted to complete the assignment as efficiently as possible. I knew it would be able to handle the embeddings to at least get me over the threshold of .5, so that is why I chose it. 
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
 
 ## Results
 
+With my current settings, I have realized that the reason my model is performing so poorly is that my model is assigning only 0's. I don't fully understand how last week, my model was performing decently, and my changing of the setting somehow degraded it to only assign 0's. My validation loss for the 3 epochs went from .54 to .58 back to .54, so I know that the training isn't performing very well. 
+Given that the documents can have multiple authors per document I'm not surprised that this model is performing so poorly as it can have conflicting writing styles within one document throwing everything off. My most recent submission had a score of only .40 which is .1 lower than the baseline delta that is set on the leaderboard. 
+
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
 
 ## Error analysis
 
+For error analysis, as I have mentioned, I held out 20% of the training data in order to track training loss, validation loss, and accuracy. I used those number as my gauge for how my changes in setting were effecting the performance of my model. At first, if my validation loss increased from the first epoch, I would shift the settings again and re-run the cell. 
+I quickly realized that this model continuously had an increase in validation loss every time so I ended up just letting the model finish, and I had to upload the results as a prediction to truly gauge how the model was doing. I realize now that this is likely due again to the fact that some of the documents had more than one author. 
+Having the different writing styles being considered as one most likely caused my model to struggle throughout the label assignment task.
+
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
 
 ## Reproducibility
+
+To use my code, you will need to make sure you have a few things installed. 
+If you don't have python, open your terminal and type in 'sudo apt install python3' and hit enter.
+If you don't have pip, in your terminal and type in 'sudo apt install python3-pip' and hit enter.
+If you don't have jupyter notebook, in your terminal type in 'sudo pip3 install jupyter' and hit enter.
+If you dont have transformers, open the terminal and type 'pip install transformers' and hit enter.
+If you dont have scikit-learn, open the terminal and type 'pip install scikit learn' and hit enter.
+If you dont have numpy, open the terminal and type 'pip install numpy' and hit enter.
+If you dont have evaluate, open the terminal and type 'pip install evaluate' and hit enter.
+Then in your terminal type 'jupyter notebook' and hit enter. Then navigate to the course project ipynb file and you can open it. 
+All you need to do from there is run the cell.
+
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
 _If you'ved covered this in your code repository's README, you can simply link to that document with a note._
 
 
 ## Future Improvements
+
+Now that I fully understand what this assignment is asking, I would take a completely different approach to what I created for this assignment. The first thing I would do is update my read functions to break apart the documents into two documents. Then I would utilize anvil gpt to perform the task, similar to what I did for the course project.
+I would ask the LLM to first read throught the training data for the context of this specific task, then ask it to keep that data in mind while deciding if the first document and the second document were written by the same author. I think I would probably still split the training data in the same 80/20 portions so that I could see how well the model performs. 
 
 _Describe how you might best improve your approach_
