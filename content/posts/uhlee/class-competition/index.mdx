@@ -1,9 +1,9 @@
 ---
-title: "Using PyTorch and feature engineering to detect authorship"
+title: "My BERT-based classifier for detecting authorship"
 slug: "/uhlee/class-competition"
-date: 2024-11-15
+date: 2024-12-08
 author: Liz Uhle
-description: "My approach is to use PyTorch and feature engineering to detect authorship in the given snippets."
+description: "BERT-based model used to detect authorship given two spans of text"
 tags:
   - class competition
 ---
@@ -22,7 +22,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>0.40331</td>
+    <td>0.48349</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -42,30 +42,33 @@ tags:
 
 ## Task summary
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
+The task was to detect authorship, given two spans of text. If both spans were authored by the same person, they received the label 1, and if they were by different authors, a 0. The training dataset was provided as a csv file, with 1601 rows, and columns labeled as ID, TEXT, LABEL. The test dataset was given as a csv file, with 900 rows, and the headers ID, TEXT. The task was to train a model on the training dataset, test it on the test dataset and output a corresponding csv file with the IDs and predicted labels for the test dataset. 
 
 ## Exploratory data analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+The data used in this competition varied significantly. Each text consisted of the first span of text, the delimiter [SNIPPET] and the second span of text. 
+There was at least one non-English text, for example the following line: 
 
-## Exploratory data analysis
+```markdown
+1070,"i-šim-šú dEnlil] 138dGiš pi-šú i-pu [šá-am-ma] 139iz-za-kàr-am a-na [dEn-ki-dũ] 140ma-an-nu ib-ri e-lu-ú šá-[ru-ba(?)] 141i-ṭib-ma it-ti dŠamaš da-ri-iš ú-[me-šú] 
+```
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+The texts also varied greatly in length, with the longest being 5,491 characters in length, and the shortest being just a few characters long. Additionally, the training dataset had an disproportionate number of texts authored by different people (label 0), compared to those written by the same person (label 1), at approximately 75% and 25% respectively.  
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
+The results of my submission to the class competition were 0.48349, with the random weighted baseline at 0.50901, a delta of 0.02552. My model underperformed and still has plenty of room for improvement.
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+My model likely learned to predict 0 more often than 1 due to the imbalance in the training data, showing a bias for the class that was the majority. The model also likely struggled with the varying length of the texts, with less content in a text being more difficult to train on due to a smaller number of identifying or unique tokens. Possible ways to avoid these erros in the future may be finding texts that are more consistent in size, and having a smaller portion of the training data be of class 0.
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
-
+Reproducibility is outlined in my code repository's README.md.
 
 ## Future Improvements
 
-_Describe how you might best improve your approach_
+Possible future improvements to this project could include supplementing additional data, giving the model more data to train on. Additionally, there was a much larger number of texts labeled 0 compared to the texts labeled 1, so the model already had a potential bias for labeling texts as 0. 
+Other improvements like using a larger variant of BERT, like RoBERTa, could improve performance. 
+

@@ -1,7 +1,8 @@
 ---
-title: "My course project"
+
+title: "Beatles' Lyrics Summarization Comparison Between LLMs and a Human"
 slug: "/uhlee/course-project"
-date: 2024-11-15
+date: 2024-12-08
 author: Liz Uhle
 description: "Beatles' song lyric summarization comparisons between open-source generative models"
 tags:
@@ -18,10 +19,6 @@ tags:
     <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-lizuhle</td>
   </tr>
   <tr>
-    <th>Demo URL (optional)</th>
-    <td></td>
-  </tr>
-  <tr>
     <th>Team name</th>
     <td>lizuhle</td>
   </tr>
@@ -31,13 +28,11 @@ tags:
 
 ## Project description
 
-This project aims to compare several open-source generative models' capabilities in text-summarization, using song lyrics from The Beatles. From there, the summaries would be evaluated against human-written summaries. The metrics for evaluation include accuracy on the theme, coherence, and relevance.
+This project aims to compare several open-source generative models' capabilities in text-summarization, using song lyrics from The Beatles. From there, the summaries would be evaluated against human-written summaries. The metrics for evaluation include accuracy on the theme, coherence, and relevance. The human-written summaries were written by a third-party, Frank Uhle. Frank is a published author, film and music historian, established Beatles fan, and my father. 
 
-Timeline for the project:
-Nov 18, have dataset ready, access to multiple open-source gen-ai models
-Nov 25, have the models' summaries ready and begin evaluation
-Dec 2, analyze results and write the report on the findings
-Dec 9, finish and turn in the blog with the findings
+My motivation for this project was the curiosity about the differences between the capabilities between LLMs. I am also a lifelong Beatles fan, having been introduced to them as a young child by my dad. Therefore this project was an exciting opportunity to combine these two interests.
+
+A total of five songs were initially selected for this project, chosen for their lyrical complexity, story-telling, and differing themes. 
 
 
 ## Summary of individual contributions
@@ -59,17 +54,215 @@ Dec 9, finish and turn in the blog with the findings
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
+Each model was given the same instructions for each prompt: "Please summarize the following song in 3 sentences," followed by the name and artist of the song. I included the results in their entirety for each model's response. I ranked each response in the following categories: truthfulness (was the summary accurate about the song?), conciseness (was the summary too verbose?), instruction-following (was the summary 3 sentences long?), and style (were there any spelling or grammatical errors?). Each category was ranked from 1 to 10, with 10 being the best and the final results are the average of scores for each song.
+
+
+Final Results:
+| Model          | Truthfulness | Conciseness | Instruction Following | Style  |
+|----------------|--------------|-------------|------------------------|--------|
+| Human          |     10         |     10        |       10                 |   10     |
+| llama3.2:latest|      8.4        |       9.2      |       10                 |   10     |
+| gemma:latest   |       8.6       |        9.4     |         9.2               |    10    |
+| tinyllama:latest|       5.8      |      7       |           4             |    8    |
+
+
+## Song Summaries and Individual Response Results
+<table>
+  <thead>
+  <tr>
+    <th>Song</th>
+    <th>When I'm Sixty-Four</th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <th><b>Human-generated summary</b></th>
+    <td>A person asks a friend if they will still like them when they are 64 years old. Anticipating remaining friends for a long period of time they make offers of assistance and activities to look forward to. They request a response by mail with an answer.</td>
+  </tr>
+  <tr>
+    <th><b>llama3.2:latest</b></th>
+    <td>The song's narrator reflects on his future life at age 64, imagining what he'll be like and whether his partner will still need or want him. He envisions an ideal future with his partner, where they can relax, enjoy simple pleasures together, and potentially have children of their own. Ultimately, the song is a romantic and introspective exploration of love's enduring nature across time and life stages.</td>
+  </tr>
+  <tr>
+    <th><b>gemma:latest</b></th>
+    <td>"When I'm 64" by The Beatles contemplates the passage of time and the changing dynamics of a relationship as the couple ages. The singer playfully inquires if his partner still finds him desirable and useful in their twilight years. Despite their physical changes and potential health issues, the couple expresses their desire to remain close and continue sharing life experiences together.</td>
+  </tr>
+  <tr>
+    <th><b>tinyllama:latest</b></th>
+    <td>In summary, "When I'm 64" by The Beatles is a nostalgic song about growing older and wishing for simpler times. It suggests that although they might be getting older, their love for each other will still persist. The lyrics emphasize the importance of having meaningful connections with loved ones and not feeling like time is running out.</td>
+  </tr>
+</tbody>
+</table>
+
+| Model          | Truthfulness | Conciseness | Instruction Following | Style  |
+|----------------|--------------|-------------|------------------------|--------|
+| Human          |     10       |    10       |         10             |    10  |
+| llama3.2:latest|      10      |      10     |         10             |    10  |
+| gemma:latest   |       8      |     10      |        10              |    10  |
+| tinyllama:latest|      9     |        10   |      10                |   10   |
+
+#### Justification: 
+The truthfulness of the last two models had minor issues: "the couple expresses their desire to remain close" is not entirely accurate considering we are only getting the point of view from the singer, not the other half of the couple. Additionally, tinyllama's response, "the lyrics emphasize the importance of having meaningful connections with loved ones" does not accurately reflect the song's lyrics.
+
+
+
+<table>
+  <thead>
+  <tr>
+    <th>Song</th>
+    <th>Rocky Raccoon</th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <th><b>Human-generated summary</b></th>
+    <td>This is a story of a man named Rocky who learns that his girl, Lil, has left him for someone named Dan. Rocky obtains a gun and when he finds the couple together at a dance, declares that he wants to shoot Dan. But Dan is also armed, and shoots Rocky first, leaving him in the care of an inebriated physician.</td>
+  </tr>
+  <tr>
+    <th><b>llama3.2:latest</b></th>
+    <td>The song tells the story of Rocky Raccoon, a young man who gets revenge on his rival, Dan, after he cheats on his wife, Nancy. In a shootout, Dan kills Rocky, but not before Rocky says he'll be better as soon as he can recover from his injuries. Ultimately, Rocky recovers and returns home, where he finds Gideon's Bible in his room, suggesting that he has had a change of heart and is preparing for redemption.</td>
+  </tr>
+  <tr>
+    <th><b>gemma:latest</b></th>
+    <td>Rocky Raccoon found his woman had left him for another man, prompting him to seek revenge. He armed himself and confronted his rival in a saloon showdown, but was shot and collapsed. Despite medical attention, Rocky claimed his wound was minor and dismissed the doctor, expressing confidence in his recovery, with a hint of mocking laughter at the end.</td>
+  </tr>
+  <tr>
+    <th><b>tinyllama:latest</b></th>
+    <td>Now somewhere in the black miniing hills of Dakota, there lived a young boy named Rocky Raccoon. He had a rival, who stole his girlfriend's love. Rocky was about to give up when he realized his gun would shoot off his rival's legs instead of hers. In despair, he shot off his rival's face and collapsed into the corner, but the doctor came in, saying that Rocky's condition was only a scratch. Rocky himself started mocking at the time.</td>
+  </tr>
+</tbody>
+</table>
+
+| Model          | Truthfulness | Conciseness | Instruction Following | Style  |
+|----------------|--------------|-------------|------------------------|--------|
+| Human          |      10        |     10        |       10                 |   10     |
+| llama3.2:latest|      7        |      9       |          10              |    10    |
+| gemma:latest   |       9       |       10      |         10               |   10     |
+| tinyllama:latest|     7        |      8       |            3            |    4    |
+
+#### Justification
+Llama3.2's response lacked in truthfulness, where it mentions that "Dan cheats on his wife, Nancy," since Nancy is Rocky's girlfriend, and she cheats on Rocky. This response was also a bit too verbose, receiving a 9 in conciseness. Gemma's response received a 9 in truthfulness due to the "mocking laughter at the end," which is not in the lyrics. The response from tinyllama had major issues with instruction following, giving the summary in 5 sentences. The truthfulness also suffered with the lines "Rocky ...  realized his gun would shoot off his rival's legs instead of [Nancy's]," and "he shot off his rival's face." This response also had very poor style, with spelling errors and the final sentence which was not grammatically correct.
+
+<table>
+  <thead>
+  <tr>
+    <th>Song</th>
+    <th>The Ballad of John and Yoko</th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <th><b>Human-generated summary</b></th>
+    <td>The singer describes frustrating experiences traveling around Europe, which also include getting married and making public appearances from a bedroom. He talks about efforts to influence public opinion against war, and giving his possessions away. He complains of how difficult it is, and expresses his belief that things will end badly.</td>
+  </tr>
+  <tr>
+    <th><b>llama3.2:latest</b></th>
+    <td>The song tells the story of John Lennon, who returns to England from exile after his marriage to Yoko Ono was threatened with being declared invalid due to their mixed-faith union. The lyrics capture the difficulties they faced as a couple, including harassment from the press and public scrutiny, but also convey the couple's determination to stay together despite the odds. In the end, Lennon and Ono successfully navigate these challenges and are able to return home, symbolized by John's triumphant return to England on an early plane back to London.</td>
+  </tr>
+  <tr>
+    <th><b>gemma:latest</b></th>
+    <td>"The Ballad of John and Yoko" depicts the tumultuous relationship between John Lennon and Yoko Ono during their controversial period in the public eye. Despite facing immense pressure and scrutiny, the couple remains determined to live their lives on their own terms, even if it means sacrificing material possessions and societal expectations. The song highlights their unwavering love for each other and their refusal to conform to societal norms</td>
+  </tr>
+  <tr>
+    <th><b>tinyllama:latest</b></th>
+    <td>In summary, "The Ballad of John and Yoko" by the Beatles is a song that chronicles their experiences after leaving The Beatles in 1970. It highlights their struggles with being separated from each other and how it affects them emotionally and mentally.</td>
+  </tr>
+</tbody>
+</table>
+
+| Model          | Truthfulness | Conciseness | Instruction Following | Style  |
+|----------------|--------------|-------------|------------------------|--------|
+| Human          |      10        |    10         |         10               |  10      |
+| llama3.2:latest|      9        |      8       |           10             |    10    |
+| gemma:latest   |       10       |      10       |             10           |    10    |
+| tinyllama:latest|      2       |     10        |             5           |    10    |
+
+#### Justification
+Llama3.2's response was a bit too verbose and made claims that were not found in the lryics, such as that John and Yoko's marriage was under threat due to the mixed-faith union. Tinyllama's response was only 2 sentences long, and appears to not be a summary of the song at all. It also mentions that the song chronicles their experiences after 1970, while the song was only released in 1969. 
+
+<table>
+  <thead>
+  <tr>
+    <th>Song</th>
+    <th>Maxwell's Silver Hammer</th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <th><b>Human-generated summary</b></th>
+    <td>This song is about a serial killer named Maxwell. First he kills a woman named Joan who he went on a date with, then a teacher who punishes him in school. When he is tried and the judge says he must be incarcerated, he murders him as well.</td>
+  </tr>
+  <tr>
+    <th><b>llama3.2:latest</b></th>
+    <td>The song tells the story of Maxwell Edison, a student who murders his girlfriend, Joan, with his silver hammer. Maxwell gets away with the crime, but it ultimately catches up to him when he attempts to escape punishment and strikes himself in the head with his own hammer. The song is a darkly comedic commentary on the absurdity of the justice system, as Maxwell's plan for freedom backfires, and he meets a similar fate to his victim.</td>
+  </tr>
+  <tr>
+    <th><b>gemma:latest</b></th>
+    <td>"Maxwell's Silver Hammer" tells the chilling tale of Maxwell Edison, a troubled medical student who violently murders two women in pursuit of his academic pursuits. Despite his eventual execution, Maxwell remains unrepentant, painting portraits of his victims as his final act. The song explores themes of obsession, violence, and the pursuit of perfection at all costs</td>
+  </tr>
+  <tr>
+    <th><b>tinyllama:latest</b></th>
+    <td>"Maxwell's Silver Hammers" by the Beatles tells the story of Maxwell Edison, a young medical student who goes on a killing spree while trying to prove his intelligence. The song is full of paradoxes and contradictions, depicting Edison as both a brilliant but troubled genius and a socially unacceptable outcast in society. In the first verse, Edison stands alone in a lab, working on silver hammer experiments that he hopes will solve all his problems. But soon after, he commits multiple crimes in the city streets, killing people and leaving no trace of his crime. In the second verse, Maxwell's Silver Hammer Man is described as a "dirty one" who is "scrrabbling from the gallery." The judge in the third verse tells Edison that his actions are criminal, but that he must go free. In the fourth verse, a knock comes from behind, and Edison turns to find Rose and Valerie waiting for him. The song ends with Rose and Valerie saying "Whoa, whoa, whoa-oa" while Maxwell's Silver Hammer Man stands alone in the street. Overall, the song portrays Edison as a complex character who is torn between his scientific interests and personal life, and who struggles with the societal expectations placed upon him.</td>
+  </tr>
+</tbody>
+</table>
+
+| Model          | Truthfulness | Conciseness | Instruction Following | Style  |
+|----------------|--------------|-------------|------------------------|--------|
+| Human          |      10        |     10        |        10                |  10      |
+| llama3.2:latest|      6        |      10       |          10              |    10    |
+| gemma:latest   |       8       |       10      |           10             |    10    |
+| tinyllama:latest|      3       |       0      |           0             |   7     |
+
+#### Justification
+Llama3.2's response erroneously summarizes the song by saying that Maxwell killed himself (accidentally) when trying to escape punishment. In gemma's response, "painting portraits of his victims as his final act," doesn't follow the lyrics of the song accurately. Finally, tinyllama's response is 9 sentences long, with multiple spelling errors, and many inaccurate claims.
+
+<table>
+  <thead>
+  <tr>
+    <th>Song</th>
+    <th>Penny Lane</th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <th><b>Human-generated summary</b></th>
+    <td>A singer shares fond memories of a place called Penny Lane. He describes places and people there that include a barbershop, a fireman, a nurse, and a banker. The weather changes from sunny to rainy.</td>
+  </tr>
+  <tr>
+    <th><b>llama3.2:latest</b></th>
+    <td>"Penny Lane" by the Beatles is a nostalgic and imaginative song that describes the everyday sights and sounds of life on Penny Lane, a quiet suburban street. The song's vivid imagery depicts a variety of characters, including a barber showing photographs of his clients, a banker who never wears a mac in the rain, and a fireman with an hourglass pocket watch, each one showcasing the unique personalities and quirks of the people living on Penny Lane. Through its dreamlike quality and emphasis on the ordinary details of life, "Penny Lane" captures the beauty and charm of everyday existence.</td>
+  </tr>
+  <tr>
+    <th><b>gemma:latest</b></th>
+    <td>"Penny Lane" is a whimsical and nostalgic song that paints a vivid picture of a fictional street in Liverpool, England. The lyrics capture the ordinary lives of the people who live there, focusing on their simple joys and routines. The song features a variety of characters, including a barber, a banker, a fireman, and a nurse, who all interact in their own unique ways. The overall tone of the song is lighthearted and playful, with frequent references to food, weather, and everyday activities. The song's catchy melody and memorable lyrics make it a classic Beatles tune that captures the essence of childhood memories and the beauty of ordinary life</td>
+  </tr>
+  <tr>
+    <th><b>tinyllama:latest</b></th>
+    <td>"Pennies Lane" by the Beatles tells the story of a bustling street filled with various shops, food stalls, and people moving around. The song is full of vivid descriptions, showcasing different characters and their surroundings. In Penny Lane, there's a barber showing photographs to an old gentleman sitting on a bench in the corner, while a fireman with an hourglass keeps his vehicle clean. In summer, a pretty nurse sells poppie from a street corner. Despite feeling like a play, they are also seen as part of a real life environment. The song depicts several characters and their surroundings, creating a rich tapestry of emotions and experiences, much like Penny Lane in the Beatles' album. Overall, the song portrays a picturesque bustling street, full of activity and humanity, as seen from the vantage point of a passing observer.</td>
+  </tr>
+</tbody>
+</table>
+
+| Model          | Truthfulness | Conciseness | Instruction Following | Style  |
+|----------------|--------------|-------------|------------------------|--------|
+| Human          |     10         |      10       |        10                |   10     |
+| llama3.2:latest|     10         |      9       |         10               |   10     |
+| gemma:latest   |      8        |       7      |           6             |    10    |
+| tinyllama:latest|     8        |       7      |           2             |    9    |
+
+#### Justification
+I gave a 9 to llama3.2 on conciseness for a slightly verbose response. Gemma had some instruction following issues, with 5 total sentences. I gave an 8 for truthfulness given that Penny Lane is a real place in Liverpool, not fictional. Lastly, tinyllama received a 2 for instruction following with 7 sentences, an 8 in truthfulness for an unsubstantiated claim about a man on a bench, and a 9 for style given that the model titled the song "Pennies Lane."
+
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+Potential errors in this project could be due to finding lyrics online that may have a few incorrect words, or misspellings that lead to ambiguity in the meaning. I also used a feature in AnvilGPT that allows you to simultaneously see the response from each model side by side. The order was llama3.2:latest, gemma:latest, and tinyllama:latest. Tinyllama consistently scored worst of the 3 models. It may be possible that if I interacted with each model individually that the results could have been different.
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+Reproducibility of this project is difficult due to the varied outputs of LLMs. Putting the same prompt into the same model multiple times in a row will almost always yield a different response. However, if one was to try to recreate this experiment on their own, the following would need to be done. The song lyrics were all sourced from publicly available information on the internet, and the models used were open-source LLMs that are free to use.
 
 ## Future improvements
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
+Future improvements to this project could include providing a more specific and detailed prompt to the LLM, such as "Please summarize this song in 3 sentences, _specifying the theme, and main characters in the song._" for example (i.e. giving futher explicit instructions for the model to follow). Other improvements could be selecting several other human summaries, perhaps from people that are unfamiliar with the Beatles song, who may have never heard the song and must review only the lyrics (without music) much the same way that the model sees the song. I selected my dad as the human-summarizer due to his familiarity with the Beatles, and his history as a writer. He is also college-educated, with a Master's in Library Science and adept at following instructions. This probably skewed the results in favor of the human summary as well. Additionally, the rankings were done only by myself, therefore the project would benefit from multiple evaluators. 
