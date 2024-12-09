@@ -35,6 +35,10 @@ tags:
 High-quality labeled text data is vital for advancing machine learning applications, particularly in healthcare, where domain-specific nuances must be captured. Crowdsourcing has emerged as a popular method to leverage human intelligence for generating and annotating such data. However, it remains costly and often limited in scale, especially in domains like healthcare where specialized expertise is required. Additionally, maintaining data quality during crowdsourced efforts is challenging, as traditional quality control methods may miss subtle domain-specific errors.
 
 ### Motivation
+
+The healthcare domain demands large-scale, reliable text datasets for developing accurate machine learning models. Current crowdsourcing approaches face the dual challenges of ensuring domain relevance and balancing cost-effectiveness. Addressing these gaps is critical for creating scalable, domain-adaptive solutions that enhance the utility of human-labeled data without sacrificing quality. By integrating human intelligence with AI, we aim to augment existing crowdsourced datasets while reducing resource dependency and improving scalability. Solutions for addressing machine learning challenges in low-resource domains can be broadly categorized into algorithmic and crowdsourcing approaches. Algorithmic solutions include transfer learning (TL), which leverages pretrained models from resource-rich domains to improve downstream tasks. While TL has been effective, challenges such as domain mismatch, catastrophic forgetting, and the computational demands of fine-tuning large models persist. Resampling techniques, another approach, aim to balance datasets by oversampling minority classes or under sampling majority classes. However, this method can lead to information loss and is highly dependent on the classification type. Data augmentation, particularly synthetic data augmentation (SDA), enhances datasets through transformations or generative models. While beneficial, this method faces challenges like inadequate target domain representation and risks of overfitting to synthetic data.
+Crowdsourcing offers an alternative by recruiting laypersons to generate data, providing advantages like domain relevance and adaptability for iterative data collection based on model performance. For example, it can address label-specific deficiencies in predictive healthcare models. However, ensuring data quality is a significant challenge. Poorly defined evaluation criteria and inadequate workflows can result in subpar data, emphasizing the critical importance of quality control. This has led to a growing focus on methodical data engineering, highlighting its role as a foundational step in creating reliable AI systems. Both approaches underscore the need to address data quality and domain alignment to develop robust machine learning solutions for resource-constrained environments.
+
 The healthcare domain demands large-scale, reliable text datasets for developing accurate machine learning models. Current crowdsourcing approaches face the dual challenges of ensuring domain relevance and balancing cost-effectiveness. Addressing these gaps is critical for creating scalable, domain-adaptive solutions that enhance the utility of human-labeled data without sacrificing quality. By integrating human intelligence with AI, we aim to augment existing crowdsourced datasets while reducing resource dependency and improving scalability.
 
 ### Goals
@@ -65,6 +69,11 @@ This project proposes a Human-AI Collaborative Data Augmentation Model tailored 
 <tbody>
   <tr>
     <th><b>Prosanta Barai</b></th>
+    <td>Core idea; data analysis; writing up the paper; writing, modifying, debugging model code</td>
+  </tr>
+  <tr>
+    <th><b>Arif Ahmed</b></th>
+    <td> Literature review; data collection and data preprocessing; writing up the paper; Ceating, organizing, hosting github repository</td>
     <td>Core idea, data analysis, writing up the paper</td>
   </tr>
   <tr>
@@ -78,20 +87,59 @@ This project proposes a Human-AI Collaborative Data Augmentation Model tailored 
 </tbody>
 </table>
 
+## Methodology
+### Classification Task
+The data collected is centered on diagnosing ASD based on the Diagnostic and Statistical Manual (DSM-5) criteria. These criteria, outlined by the American Psychiatric Association, are divided into domains A through E, with Domain A addressing persistent deficits in social communication and interaction (A1-A3) and Domain B focusing on restricted, repetitive patterns of behavior (B1-B4). The questions used in our study were tailored to gather qualitative text responses indicative of these diagnostic criteria. This dataset serves as an augmentation of clinician reports curated by the Centers for Disease Control (CDC) as part of the Autism Developmental Disabilities Monitoring (ADDM) surveillance. Our task was to use finetune a Bio-Bert classification model to automatically assign one or more of the seven criteria (A1, A2, A3, B1, B2, B3, B4) to text, which helps diagnose ASD criteria.
+
+### Data Collection
+We collected our data through the Amazon Mechanical Turk (AMT) platform, utilizing a combination of qualification tasks and experimental conditions to ensure the quality and relevance of responses. Initially, a qualification task was posted to gather demographic information about the respondents and their personal or indirect connections to individuals diagnosed with or exhibiting symptoms of autism spectrum disorder (ASD). This qualification task was designed to establish the suitability of respondents for subsequent tasks. Once qualified, participants could proceed to answer one of 29 questions related to autism symptoms, such as "Describe an interaction with you or others where this person uses sounds that you don’t expect in a typical interaction," focusing on criteria like A1 symptoms as outlined by pediatric experts. 
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
+### Preprocessing and EDA
+The preprocessing pipeline involved multiple steps to clean and standardize the text data, including removing HTML tags and scripts, eliminating accented characters, expanding contractions, converting text to lowercase, and stripping special characters and extra whitespaces. These steps ensured the data was normalized for subsequent analysis. Exploratory Data Analysis (EDA) revealed a total of 1,400 labeled and 1,400 unlabeled rows, with a slightly imbalanced label distribution across seven classes, ranging from 233 to 263 samples per class. The availability of equal numbers of labeled and unlabeled data provides a balanced opportunity for supervised and semi-supervised modeling approaches.
+### Model architecture and training
+The model for this task is a BioBERT-based neural network designed for multi-label classification. It utilizes BioBERT's pre-trained embeddings to encode input text, which is then processed through a global average pooling layer and a dense output layer with a sigmoid activation function to predict probabilities for seven classes. The training process involves 10-fold cross-validation to assess the model's generalizability. Key hyperparameters include a batch size of 16, a learning rate of 1e-5 using the Adam optimizer, and a training duration of 3 epochs per fold. The model's performance is monitored using validation F1 scores, and the best-performing model across all folds is saved for further use.
+
+### Performance on test data
+
+The model's performance on the unseen test data demonstrates varying levels of precision and recall across the target labels, indicating an uneven ability to classify different categories accurately. Precision values range from 0.636 (B3) to 0.878 (B1), while recall values are lower overall, with the highest recall at 0.533 (B2). The overall F1 score of 0.550 highlights moderate performance, suggesting room for improvement in balancing precision and recall, particularly for labels with lower recall scores.
+
+| Target Label | Precision | Recall   |   
+|--------------|-----------|----------|
+| A1           | 0.681818  | 0.245902 |   
+| A2           | 0.863636  | 0.469136 |   
+| A3           | 0.696970  | 0.323944 |   
+| B1           | 0.877551  | 0.494253 |   
+| B2           | 0.714286  | 0.533333 |   
+| B3           | 0.636364  | 0.522388 |   
+| B4           | 0.739130  | 0.459459 |   
+
+
+F1 Score: 0.5501787360639412
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+The held-out data analysis shows precision and recall performance across folds for each label, reflecting the model's consistency during validation. Precision generally trends higher than recall, indicating a greater accuracy in correctly identified labels compared to the model's ability to capture all relevant instances. For instance, labels like A1 and A3 often exhibit high precision but lower recall, similar to trends observed in the unseen test data.
+
+Compared to the test data, the held-out data results indicate variability across folds, which may highlight differences in label-specific challenges during training and testing. For example, label B3 achieves higher recall in certain validation folds than on the test data (e.g., fold 5 with recall 0.778 vs. test data recall 0.522), suggesting fluctuations in how well the model generalizes. The consistency of trends, such as precision exceeding recall for most labels, aligns between both datasets, but the held-out data provides more granular insights into the variability of model performance across individual folds.
+| label | val_precision_1 | val_recall_1 | val_precision_2 | val_recall_2 | val_precision_3 | val_recall_3 | val_precision_4 | val_recall_4 | val_precision_5 | val_recall_5 | val_precision_6 | val_recall_6 | val_precision_7 | val_recall_7 | val_precision_8 | val_recall_8 | val_precision_9 | val_recall_9 | val_precision_10 | val_recall_10 |
+|-------|-----------------|--------------|-----------------|--------------|-----------------|--------------|-----------------|--------------|-----------------|--------------|-----------------|--------------|-----------------|--------------|-----------------|--------------|-----------------|--------------|------------------|---------------|
+| A1    | 0.6666666667    | 0.2666666667 | 0.75           | 0.3          | 1               | 0.2962962963 | 0.6             | 0.3529411765 | 0.5555555556    | 0.2173913043 | 0               | 0            | 0.6666666667    | 0.375        | 0.4             | 0.125        | 0.8888888889    | 0.32         | 0.5454545455     | 0.3529411765  |
+| A2    | 0.8181818182    | 0.6923076923 | 1              | 0.5333333333 | 1               | 0.4210526316 | 0.6666666667    | 0.5714285714 | 0.9090909091    | 0.5263157895 | 0.9             | 0.4285714286 | 0.875           | 0.6363636364 | 0.9090909091    | 0.7142857143 | 0.7777777778    | 0.5384615385 | 1                | 0.8461538462  |
+| A3    | 1               | 0.2352941176 | 0.8333333333   | 0.4166666667 | 0.8             | 0.1818181818 | 1               | 0.3043478261 | 0.8571428571    | 0.3333333333 | 1               | 0.2941176471 | 1               | 0.36         | 0.6666666667    | 0.2857142857 | 0.6666666667    | 0.125        | 0.5833333333     | 0.35          |
+| B1    | 1               | 0.6521739130 | 0.7777777778   | 0.5384615385 | 0.7             | 0.4375       | 0.7692307692    | 0.625        | 0.75            | 0.4285714286 | 0.75            | 0.3913043480 | 0.75            | 0.4          | 0.7857142857    | 0.6875       | 0.6875          | 0.5          | 0.9166666667     | 0.6111111111  |
+| B2    | 0.6923076923    | 0.6428571429 | 0.6153846154   | 0.6153846154 | 0.5454545455    | 0.2857142857 | 0.8             | 0.25         | 0.7857142857    | 0.5          | 0.8             | 0.4444444444 | 0.7             | 0.3043478261 | 0.7692307692    | 0.625        | 1               | 0.5384615385 | 0.4285714286     | 0.3333333333  |
+| B3    | 0.4666666667    | 0.3333333333 | 0.5882352941   | 0.625        | 0.8             | 0.4210526316 | 0.7777777778    | 0.6666666667 | 0.5384615385    | 0.7777777778 | 0.6842105263    | 0.6190476190 | 0.6666666667    | 0.6          | 0.6666666667    | 0.6666666667 | 0.6             | 0.4          | 0.9230769231     | 0.5714285714  |
+| B4    | 0.8571428571    | 0.2857142857 | 0.7142857143   | 0.2777777778 | 0.5454545455    | 0.3157894737 | 0.5384615385    | 0.6363636364 | 0.75            | 0.5625       | 0.6153846154    | 0.4705882353 | 0.6             | 0.5          | 0.5555555556    | 0.3125       | 1               | 0.5625       | 0.6363636364     | 0.3888888889  |
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+Please see this README file(https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-fantastic) for details instruction.
 
 ## Future improvements
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
+The main limitation of this project is the small dataset size of 2,800 examples, which restricts the model's ability to detect nuanced behaviors, such as those linked to autism. The absence of larger-scale automated data augmentation methods like Llama also limits the model's robustness. These factors may hinder generalizability and the model's effectiveness with complex tasks.
+
+Future work could include using larger, more comprehensive datasets for better pattern detection. Incorporating advanced LLM-based data augmentation techniques like Llama could also generate synthetic data, enhancing training and model resilience. These improvements would enable more nuanced classifications and better overall performance.
+
