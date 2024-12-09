@@ -1,7 +1,7 @@
 ---
 title: "Creativity and Intuition of LLM Story Completion"
 slug: "/fmend/course-project"
-date: 2024-11-5
+date: 2024-11-05
 author: Freddy Mendoza
 description: "My submission for the course project will be to evaluate multiple LLMs on a specific task, in this case, story completion."
 tags:
@@ -68,15 +68,84 @@ I will also be judging each LLM on creativity, but that will be a subjective jud
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
 
+My results are based on a random sample of 1000 stories from a total dataset of 52,665 stories (I truncated thee dataset for the purposes of speed).
+
+Model Performance:
+Evaluating distilgpt2: 100%|██████████| 1000/1000 [03:54<00:00,  4.27it/s]
+Evaluating gpt2: 100%|██████████| 1000/1000 [06:54<00:00,  2.41it/s]
+Evaluating facebook/bart-base: 100%|██████████| 1000/1000 [06:31<00:00,  2.55it/s]
+
+Model          ROUGE-1             BLEU                Perplexity
+GPT2          0.1339 ±0.004      0.0110 ±0.0003      112.48 ±3.40
+DistilGPT2    0.1255 ±0.004      0.0113 ±0.0003      36541.50 ±1103.95
+BART          0.0025 ±0.0001     0.0002 ±0.0001      1.003 ±0.0001
+
+Notes:
+DistilGPT2 was the fastest at 4.27 stories/second.
+In terms of ROUGE Scores, GPT2 performed the best with 0.1339, though DistilGPT2 was close behind (0.1255)
+In terms of BLEU Scores, All models performed poorly, but BART was far away the worst.
+In terms of perplexity, BART had the lowest, and DistilGPT2 had the highest.
+
 ## Error analysis
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+
+Taking a look at some of GPT2s errors, which did pretty good in terms of scores:
+
+Semantic Mismatch:
+
+Context: John had always wanted to learn piano. He saved up for months to buy one. When he finally got it home, he was ecstatic. He practiced every day for hours.
+Ground Truth: After a year, he could play his favorite song perfectly.
+Model Output: The piano gathered dust in the corner of his room.
+
+Logical Inconsistency:
+
+Context: Sarah was preparing for her big presentation. She spent weeks gathering data. The slides were perfect. Her practice runs went smoothly.
+Ground Truth: The presentation was a huge success.
+Model Output: She decided to cancel the presentation and go swimming instead.
+
+Character Confusion:
+
+Context: Tom and Mike were competing for first place. Tom was ahead by a few points. Mike needed to ace the final test. He studied all night.
+Ground Truth: Mike's hard work paid off and he won first place.
+Model Output: Tom's studying helped him maintain his lead.
+
+
+I intentionally shyed away from using the most powerful models for this task for multiple reasons, one being ease and speed (and storage), but also because I knew that some of the errors would be quite funny. For instance, look at some of DistilGPT2s errors:
+
+Context: Kyle traveled to the beach. He took his surfboard from the truck. He surfed for a couple of minutes until a wave hit him. Kyle fell and his foot landed in a rock.
+Ground Truth: A life guard had to dive in the water to save him from drowning.
+Model Output: He fell, got a broken foot and went to a hospital. Kyle was rushed to Harborview Hospital with a broken foot. Kyle died at Harborview
+
+Context: Franny was always cold. She bought a big, fluffy blanket to keep her warm. She snuggled under it while she watched a movie. It was so soft!
+Ground Truth: Fran was finally warm and comfortable.
+Model Output: She put her arms around it and gave it a little bit of gravity. She was actually quite a big girl. She didn't even know it was
+
+And perhaps the funniest:
+
+Context: Carrie's man was cheating on her and she was very mad. She took a heavy aluminum bat and bashed in his car's headlights. She continued on to the windshield and body. As she finished up, the cops arrived.
+Ground Truth:Carrie was genuinely surprised when they arrested her.
+Model Output: The cops arrived.
+              All cops arrived.
+              The cops arrived.
+              The cops arrived.
+              The cops arrived.
+              They
+
+Meanwhile, BART just didn't provide anything. This could have been down to the code, however, as BART likely could've done relatively well.
+
+In any case, by my own subjective rating of creativity, it's gotta go to DistilGPT2 which made me laugh on many different lines. 
+
 
 ## Reproducibility
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
 _If you'ved covered this in your code repository's README, you can simply link to that document with a note._
 
+In the github repo, linked above, you can find both the code necessary to reproduce these results, as well as the environment needed to run it on the HPC. I used a Jupyter Notebook to run the code, which will spit out a results file. Also, in the repo is the data I used. Ensure that these are on the HPC as well.
+
 ## Future improvements
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
+
+Obviously, improvements can be made so that BART would actually produce results. Other than that, some adjustments could be made to ensure that DistilGPT2 only produced a final sentence, rather than several. I wouldn't change its humor though.

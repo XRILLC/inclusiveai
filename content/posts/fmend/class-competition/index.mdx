@@ -3,7 +3,7 @@ title: "APPROACH AT YOUR OWN CAUTION"
 slug: "/fmend/class-competition"
 date: 2024-11-15
 author: Freddy Mendoza
-description: "Unsophisticated as of yet. Will attempt to use BERT or DistilBERT or something in the future. As of now, simple TFIDF Vectorizing, LogReg."
+description: "Uses RoBERTa for verification and AdamW optimizer over a maximum of 10 epochs with early stopping, patience of 3, to avoid overfitting."
 tags:
   - class competition
 ---
@@ -22,7 +22,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>.40331</td>
+    <td>0.60946</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -44,28 +44,47 @@ tags:
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
 
+The task was to train a model on a dataset of text pairs, separated by the [SNIPPET] delimiter, which were labeled as written by the same author (1) or not (0). We then had to test the model's ability to discern the difference on a testset without labels. One of the challenges with this task is the dataset size. The dataset is not large enough for a model to get a truly good idea of discernment. We were given the option of beefing up the data as we saw fit to improve the model's performance, but I did not go this route. At a length of only about 1600 text pairs (of which I split 90-10 for validation purposes, so really my model was only trained on less than 1500 text pairs), any model would struggle with confident validation on the testset. Some other challenges include dealing with varying text lengths and styles and capturing stylistic markers distinguishing authors. For my approach, I would say that I did use a SotA approach, though I think I would have done better with DeBERTa. Research has shown that transformer-based models can effectively capture nuance between authors, though I think that the dataset size limitation is the BBEG in this assignment.
+
 ## Exploratory data analysis
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
 
-## Exploratory data analysis
+The dataset uses the [SNIPPET] delimiter to separate text pairs with binary labels to indicate whether the separated texts were written by the same author (1) or not (0). The dataset size per class were as follows: Training samples: 1440; Validation samples: 161; Total samples for training: 1601. 
+
+## Approach
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+
+My approach uses a transformer-based model (RoBERTa) for authorship verification. The texts are processed in pairs, tokenized, and fed through the model which learns to identify writing style similarities. I split the training data into training and validation sets (90-10 split) and set up training for 10 epochs using the AdamW optimizer, with early stopping (patience of 3) to prevent overfitting. In my run, the model achieved about 82% accuracy on the validation set on the first epoch and improved to 84% by the fifth, but stopped at 8 epochs due to plateauing, suggesting that it would certainly benefit from further optimization or a larger dataset. The struggles with this is the length of the dataset. Obviously, this is quite small and results would certainly have been better with a beefed up dataset, but in all honesty, I kinda wanted to see how well I could do with just the data provided. I'm quite happy with my score given those constraints, but I also know I could have done better, even inside of those constraints had I given myself enough time.
 
 ## Results
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
 
+The results of the validation showed varying levels of improvement with the best validation accuracy at epoch 5, shown below. Epoch 1 started off strong with a validation accuracy of 80.75%, which dropped in epoch 2, only to grow again in epoch 3: 83.85%. After epoch 5, we did not see improvements, and because of our patience level of 3, we stopped early after epoch 8. Despite this, epoch 5 showed a really good validation of 84.47%, which is much more than our leaderboard score at 60.95%. This most likely indicates that we are overfitting slightly to the training set compared to the testset. Our model is doing better than random chance.
+
+Epoch 5/10: 100%|██████████| 90/90 [01:31<00:00,  1.01s/it, loss=0.00378] 
+Epoch 5:
+Average training loss: 0.0244
+Validation accuracy: 0.8447
+Validation loss: 0.9363
+--------------------------------------------------
+New best validation accuracy: 0.8447
+
 ## Error analysis
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+
+My model achieved ~84% validation accuracy, but only ~61% test accuracy. This suggests that our model struggled with new author pairs and that certain patterns in the test set were not well represented in the training set, meaning that our model was overfitting.
 
 ## Reproducibility
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
 _If you'ved covered this in your code repository's README, you can simply link to that document with a note._
 
+Inside of the code repository linked above there are two code files. One is the actual code for the competition, saved in a .py file, the other is a .sh file called "my-env4.sh". In order to reproduce the results achieved here, you must create the environment necessary in the HPC by running that script. I used a Jupyter notebook to run the class_comp.py file after opening a new Jupyter notebook using the created environment. Make sure the data is available in the HPC for training and testing--also available in the github repo--and hit run.
 
 ## Future Improvements
 
-I intend to use more sophisticated models to produce (any) better results. I'm thinking of going down the road of BERT or maybe DistilBERT, but I'm undecided as of yet.
+Honestly, I think I could have gotten better results using a different model, BUT I am happy with my current results. I would have liked to use DeBERTa-v3-large, but I needed to download more dependencies to do so, and given how many times I had to create new environments on the HPC to achieve what I did, I was a little burnt out, and also running out of storage there. I might try again, just for my own happiness, but probably not today.
