@@ -1,9 +1,9 @@
 ---
-title: "My course project"
+title: "small corpus sarcasm detection"
 slug: "/julianrambob/course-project"
 date: 2024-11-14
 author: Julian Rambob
-description: "Description of our course project"
+description: "examining sarcasm detection with small specialized training sets"
 tags:
   - course project
 ---
@@ -24,7 +24,7 @@ tags:
   <tr>
     <th>Team Name</th>
 
-    <td>team sarcasm</td>
+    <td>Team Sarcasm</td>
 
   </tr>
 </tbody>
@@ -35,7 +35,9 @@ tags:
 ### Overview
 We decided to create a dataset to fill in gaps in sentiment analysis when detecting sarcasm. 
 Sarcasm is a particularly hard tone for humans to detect sometimes, and is a harder task for a machine.
-In order to create a dataset for this, we referred to multiple existing English corpora, focusing on those that were comprised of text & transcripts from the internet. 
+
+In order to create a dataset for this, we referred to multiple existing English corpora, and used a corpus specifically labaled for sarcasm.
+
 Once a dataset has been compiled, we will compare the ability of logistic regression to predict sarcasm with and without this dataset.
 
 ### Novelty of the Project
@@ -77,26 +79,43 @@ The motivation for the project is to look for ways to improve the process of sen
   </tr>
   <tr>
     <th><b>Julian Rambob</b></th>
-    <td>Research current sarcasm detection models, research previously identified salient features (if any) </td>
+    <td>Research current sarcasm detection models, research previously identified salient features (if any), error analysis.</td>
   </tr>
 </tbody>
 </table>
 
-
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
+
+| **Model**                      | **Accuracy** | **Precision** | **Recall** | **F1 Score** |
+|---------------------------------|--------------|---------------|------------|--------------|
+| **LogisticRegression**      | 63.16%       | 61.06%        | 65.80%     | 63.34%       |
+| **LogisticRegression with BERTVectorizer**         | 62.41%       | 61.38%        | 60.10%     | 60.73%       |
+| **Pretrained BERT**             | 56.64%       | 62.72%        | 32.87%     | 43.13%       |
+
+When the model was trained without the BERTVectorizer, it achieved an accuracy of 63.16%, precision of 61.06%, recall of 65.80%, and an F1 score of 63.34%. Introducing the BERTVectorizer into the feature union caused a slight reduction in all performance metrics, yielding an accuracy of 62.41%, precision of 61.38%, recall of 60.10%, and an F1 score of 60.73%. This decline suggests that while BERT embeddings are powerful in capturing semantic nuances, their integration into the pipeline may have resulted in redundancy or feature conflicts with other vectorizers, such as TF-IDF and POS-based features.
+
+Interestingly, when a pretrained BERT model was evaluated on this dataset, its performance was significantly worse. Despite BERT's success in large-scale sarcasm detection tasks, it struggled on this smaller, balanced dataset. The accuracy was 56.64%, precision was 62.72%, recall dropped to 32.87%, and the F1 score was 43.13%. This result highlights the challenges of applying pretrained models without fine-tuning, particularly in specialized tasks like sarcasm detection, where contextual cues are likely crucial. The low recall indicates that the model had trouble detecting the sarcastic class, a problem that is exacerbated by the dataset's smaller size, which may not provide sufficient context for pretrained models.
+
+The dataset used for these evaluations was perfectly balanced, meaning that the baseline accuracy was 50%. This balance helps make the evaluation metrics more robust, but it also reveals the complexity of sarcasm detection, which involves nuances beyond just semantic understanding. Pretrained models, such as BERT, are trained for broader language tasks and may not generalize well to niche tasks like sarcasm detection, especially when not fine-tuned on the specific data. This performance gap underscores the need for dataset-specific adaptations to improve the model's accuracy in such specialized tasks or greater examination of features which may be informative for sarcasm detection in small datasets.
+
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+Error analysis on the held-out test data provides deeper insights into the performance disparities observed. For the pretrained BERT sarcasm detector, false negatives (failing to detect sarcasm) were particularly common, as reflected in the low recall of 32.87% for the sarcastic class. These errors might involved sentences in contexts where sarcasm depends on external knowledge or tone, neither of which the model can fully capture from text alone. False positives, on the other hand, occurred when exaggerated language or hyperbole led the model to misclassify non-sarcastic statements as sarcastic.
+
+Similarly, for the feature union-based model, the integration of the BERTVectorizer did not significantly address these challenges and even performed worse overall. False positives often stemmed from lexical patterns misinterpreted by the TF-IDF and POS-based features, while false negatives persisted for subtle sarcasm likely reliant on conversational or situational cues. The redundancy between BERT embeddings and other feature types may have diluted the model's ability to leverage the unique strengths of each feature set, leading to the observed performance decline when BERTVectorizer was included.
+
+To address these challenges, fine-tuning the pretrained BERT model on this specific dataset could significantly improve its ability to capture the nuances of sarcasm in this domain. Expanding the dataset to include more diverse and representative sarcastic examples could also enhance generalization. There is a good chance the dataset purposefully contains very specific types of textual sarcasm whith corresponding non-sarcastic applications. For example, 24 sarcastic sentences in the dataset begin with "Actually" which intuitevely may be a good indicator of sarcasm accross general datasets but this set also contains 27 nonsarcastic examples which begin the same way. Incorporating external knowledge sources or context could help overcome these limitations and improve the model even with a small training set since it would broaden the considered features which could potentially be sarcasm-specific.
+
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+Please see project repo [README](https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-team-sarcasm/blob/main/README.md)
 
 ## Future improvements
+- Identify ways to incorporate context into the identification of sarcasm.
+- Introduce more features that are manually selected for the model.
+- Use a larger data set from multiple sources with a larger amount of context for training to improve sarcasm detection.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
 
