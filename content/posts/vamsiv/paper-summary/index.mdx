@@ -1,7 +1,7 @@
 ---
-title: "Paper Summary"
+title: "Paper Summary: Non-Linear Approach for Text Regression"
 slug: "/vamsiv/paper-summary"
-date: 2023-12-14
+date: 2023-12-08
 author: Vamsi Vadala
 description: "Basic Paper Summary"
 tags:
@@ -60,10 +60,9 @@ This paper also compares the results of a traditional linear regression results 
 
 ## Motivation
 
-_Why did you select this paper?_
 According to the universal approximation theorem, any distribution can be approximated given enough parameters and sample data. 
 When train a Neural Network, the time to train and accuracy mainly depend on hyperparameters and training data. 
-This method uses a non linear approach, resulting in better performance whith lesser training data. 
+This method uses a non linear approach, resulting in better performance with lesser training data. 
 The linear model requires huge data where as in the proposed model there is a 40% improvement with the same size of training data. 
 
 ## LLM
@@ -81,19 +80,19 @@ The linear model requires huge data where as in the proposed model there is a 40
 <tbody>
   <tr>
     <th><b>LLM model</b></th>
-    <td>???</td>
+    <td>Qwen</td>
   </tr>
   <tr>
     <th><b>LLM model version</b></th>
-    <td>???</td>
+    <td>2.5-72B-Instruct </td>
   </tr>
   <tr>
     <th><b>Model/service URL</b></th>
-    <td>???</td>
+    <td><a href="https://huggingface.co/Qwen/Qwen2.5-72B-Instruct">https://huggingface.co/Qwen/Qwen2.5-72B-Instruct</a></td>
   </tr>
   <tr>
     <th><b>Why this model?</b></th>
-    <td>???</td>
+    <td>This model outperforms most of the open source models and results are comparable to proprietary software in metrics like MMLU 85+, HumanEval 85+, MATH 80+. These metrics make </td>
   </tr>
 </tbody>
 </table>
@@ -106,91 +105,231 @@ _In the LLM's words, what is this paper about?_
 ##### Prompt
 
 ```markdown
-prompt here
+Description:
+In your words, what is this paper about?
 ```
+This paper is about developing and evaluating a deep convolutional neural network (CNN) for text regression tasks, specifically to predict movie box-office takings from movie reviews and attributes. The authors propose a non-linear model that can capture complex relationships in text data, which is a significant improvement over traditional linear models. They demonstrate that their model, despite having millions of parameters, can be effectively trained on a relatively small dataset of only a thousand documents. The model also incorporates side information, such as document metadata, to enhance its predictive power. Additionally, the paper introduces a novel technique for interpreting the model's predictions, providing insights into which parts of the text are most influential. The results show a 40% relative improvement in mean absolute error (MAE) compared to sparse linear models, highlighting the model's effectiveness and practical utility in text regression tasks.
+
 
 #### What are the authors proposing?
 
 ##### Prompt
 
 ```markdown
-prompt here
+what are the authors proposing?
 ```
+The authors are proposing a non-linear method for text regression using a deep convolutional neural network (CNN). Specifically, they aim to predict future box-office takings of movies based on reviews by movie critics and movie attributes. They show that their model, despite having millions of parameters, can be trained on only a thousand documents and outperforms sparse linear models, achieving a 40% relative improvement in mean absolute error (MAE). The model is flexible and can incorporate side information such as document metadata. Additionally, they introduce a novel technique for interpreting the effect of different text inputs on the model.
+
 
 #### What is the motivation for the work?
 
 ##### Prompt
 
 ```markdown
-prompt here
+what is the motivation for the work?
 ```
+The motivation for the work is to address the limitations of existing linear models in text regression tasks, particularly in predicting movie box-office takings from movie reviews and attributes. The authors aim to develop a more powerful and flexible model that can capture non-linear relationships in the data, leading to improved predictive performance. They highlight the need for a model that can effectively handle the complexity and variability of textual data, especially when the amount of training data is limited.
+
 
 #### What is the approach or innovation?
 
 ##### Prompt
 
 ```markdown
-prompt here
+what is the approach or innovation?
 ```
+The approach or innovation in the paper is the development of a deep convolutional neural network (CNN) for text regression. This model is designed to predict future box-office takings of movies based on movie reviews and attributes. The key innovations include:
+
+1. **Non-linear Text Regression**: The use of a deep CNN to capture non-linear relationships in the text data, which is a significant improvement over traditional linear models.
+2. **Efficiency with Limited Data**: Despite having millions of parameters, the model can be effectively trained on a relatively small dataset of only a thousand documents.
+3. **Incorporation of Side Information**: The model can integrate additional metadata and attributes of the documents, enhancing its predictive power.
+4. **Interpretability**: The introduction of a novel technique to interpret the effect of different text inputs on the model's predictions, providing insights into which parts of the text are most influential.
+
+These innovations collectively contribute to a more accurate and interpretable text regression model.
 
 #### What are the results and how do they compare with competing approaches?
 
 ##### Prompt
 
 ```markdown
-prompt here
+what are the results and how do they compare with competing approaches?
 ```
+The results of the proposed deep convolutional neural network (CNN) for text regression are significant. The model achieves a 40% relative improvement in mean absolute error (MAE) compared to sparse linear models. Specifically:
+
+- **Performance on Small Datasets**: The model demonstrates that it can be effectively trained on a small dataset of only a thousand documents, despite having millions of parameters.
+- **Comparison with Linear Models**: The deep CNN outperforms sparse linear models, which are commonly used in text regression tasks, by a substantial margin.
+- **Incorporation of Side Information**: The model's ability to incorporate side information, such as document metadata, further enhances its predictive performance.
+
+These results highlight the effectiveness of the proposed non-linear approach in capturing complex relationships in the text data, leading to more accurate predictions of movie box-office takings.
+
 
 #### Is the comparison fair?
 
 ##### Prompt
 
 ```markdown
-prompt here
+is the comparison fair?
 ```
+The comparison appears to be fair based on the information provided in the paper. The authors compare their deep convolutional neural network (CNN) model to sparse linear models, which are commonly used in text regression tasks. They ensure that both models are evaluated on the same dataset and using the same performance metric (mean absolute error, MAE). The significant improvement (40% relative reduction in MAE) suggests that the deep CNN model is indeed more effective in this context.
+
+However, to fully assess the fairness of the comparison, it would be helpful to know:
+
+1. **Dataset Size and Quality**: Whether the dataset used for training and testing is representative and sufficiently large to support the comparison.
+2. **Model Tuning**: Whether both models were thoroughly tuned and optimized for the task.
+3. **Baseline Implementation**: Whether the linear models used for comparison are well-established and well-implemented.
+
+Based on the paper, the authors seem to have taken reasonable steps to ensure a fair comparison, but these additional details would provide further confidence in the results.
 
 #### What are the takeaways according to the authors?
 
 ##### Prompt
 
 ```markdown
-prompt here
+what are the takeaways according to the authors?
 ```
+According to the authors, the key takeaways from their work are:
+
+1. **Effectiveness of Deep CNNs**: The deep convolutional neural network (CNN) model is highly effective for text regression tasks, particularly in predicting movie box-office takings from movie reviews and attributes.
+2. **Non-linear Relationships**: The model's ability to capture non-linear relationships in the text data leads to significant improvements in predictive performance compared to linear models.
+3. **Efficiency with Limited Data**: Despite having millions of parameters, the model can be trained on a relatively small dataset of only a thousand documents, making it practical for scenarios with limited training data.
+4. **Incorporation of Side Information**: The model can effectively incorporate additional metadata and attributes, enhancing its predictive power.
+5. **Interpretability**: The introduction of a novel technique for interpreting the model's predictions provides insights into the influence of different text inputs, making the model more transparent and useful for practical applications.
+
+These takeaways highlight the model's strengths in terms of performance, efficiency, and interpretability, positioning it as a valuable tool for text regression tasks.
 
 #### What are the takeaways according to you?
 
 ##### Prompt
 
 ```markdown
-prompt here
+what are the takeaways according to you?
 ```
+Based on the information provided in the paper, the key takeaways are:
+
+1. **Superior Performance**: The deep convolutional neural network (CNN) model significantly outperforms sparse linear models in predicting movie box-office takings, achieving a 40% relative improvement in mean absolute error (MAE).
+
+2. **Non-linear Modeling**: The ability of the deep CNN to capture non-linear relationships in text data is a major strength, which is crucial for complex text regression tasks.
+
+3. **Efficiency with Small Datasets**: Despite its complexity and the large number of parameters, the model can be effectively trained on a relatively small dataset of only a thousand documents, which is a practical advantage.
+
+4. **Flexibility with Side Information**: The model's capability to incorporate additional metadata and attributes enhances its predictive power, making it more versatile for real-world applications.
+
+5. **Interpretability**: The introduction of a novel technique for interpreting the model's predictions adds value by providing insights into which parts of the text are most influential, enhancing the model's transparency and usability.
+
+6. **Practical Implications**: The model has significant practical implications for industries that rely on text data for predictions, such as the film industry, where accurate box-office predictions can inform marketing and production decisions.
+
+These takeaways underscore the model's effectiveness, efficiency, and practical utility in text regression tasks.
 
 #### Would you use this?  If so, how/where would you use this?
 
 ##### Prompt
 
 ```markdown
-prompt here
+Would you use this? If so, how/where would you use this?
 ```
+Yes, I would consider using this deep convolutional neural network (CNN) model for text regression tasks, particularly in scenarios where accurate predictions from text data are crucial. Here are some specific use cases and applications:
 
-##### Prompt
 
-```markdown
-prompt here
-```
+1. **Film Industry**:
+   - **Box-Office Predictions**: Use the model to predict the box-office performance of upcoming movies based on early reviews and other metadata. This can help studios and distributors make informed decisions about marketing strategies and release dates.
+   - **Audience Sentiment Analysis**: Analyze audience reviews to gauge sentiment and predict future trends in movie popularity.
+
+2. **E-commerce**:
+   - **Product Sales Forecasting**: Predict future sales of products based on customer reviews and product attributes. This can help in inventory management and marketing strategies.
+   - **Customer Satisfaction**: Use the model to predict customer satisfaction levels from review texts, which can inform product improvements and customer service strategies.
+
+3. **Financial Services**:
+   - **Stock Price Prediction**: Predict stock price movements based on news articles, financial reports, and social media sentiment.
+   - **Risk Assessment**: Analyze financial reports and news to predict the financial health of companies and assess investment risks.
+
+4. **Healthcare**:
+   - **Patient Outcomes**: Predict patient outcomes based on medical reports and patient reviews, which can help in personalized treatment plans and resource allocation.
+   - **Disease Outbreak Prediction**: Use public health data and news reports to predict the spread of diseases and inform public health interventions.
+
+5. **Marketing and Advertising**:
+   - **Campaign Effectiveness**: Predict the success of marketing campaigns based on customer feedback and social media reactions.
+   - **Brand Sentiment**: Monitor and predict brand sentiment from online reviews and social media to guide marketing strategies.
+
+6. **Academic Research**:
+   - **Trend Analysis**: Use the model to predict trends in academic research based on publication abstracts and citations.
+   - **Impact Prediction**: Predict the impact of research papers based on early reviews and metadata.
+
+In each of these applications, the model's ability to handle non-linear relationships, incorporate side information, and provide interpretable results would be particularly valuable. The efficiency of the model with small datasets also makes it practical for scenarios where large amounts of training data are not readily available.
 
 #### What problems remain and what are the next steps?
 
 ##### Prompt
 
 ```markdown
-prompt here
+what problems remain and what are the next steps?
 ```
+The paper highlights several problems that remain and suggests potential next steps for future research. Here are the key issues and directions:
+
+### Problems that Remain:
+
+1. **Scalability**:
+   - While the model performs well on small datasets, its scalability to larger datasets with more complex text data needs further investigation. The computational resources required to train deep CNNs on very large datasets can be significant.
+
+2. **Generalization**:
+   - The model's performance on different types of text regression tasks and datasets needs to be evaluated. Ensuring that the model generalizes well across various domains and text types is crucial.
+
+3. **Interpretability**:
+   - Although the paper introduces a novel technique for interpreting the model's predictions, further work is needed to make the interpretations more robust and user-friendly. Enhanced interpretability can increase trust and adoption in practical applications.
+
+4. **Handling Noisy Data**:
+   - Real-world text data often contains noise and irrelevant information. Improving the model's robustness to noisy data and irrelevant features is an important area for future research.
+
+5. **Model Complexity**:
+   - The model's complexity, with millions of parameters, can be a double-edged sword. While it allows for capturing intricate patterns, it also increases the risk of overfitting. Techniques to reduce model complexity while maintaining performance are worth exploring.
+
+### Next Steps:
+
+1. **Evaluate on Larger and Diverse Datasets**:
+   - Conduct experiments on larger and more diverse datasets to assess the model's scalability and generalization capabilities. This will help in understanding the model's performance across different domains and text types.
+
+2. **Improve Interpretability**:
+   - Develop more advanced techniques for interpreting the model's predictions. This could include visualizations, natural language explanations, and other methods to make the model's decision-making process more transparent.
+
+3. **Robustness to Noisy Data**:
+   - Implement and evaluate techniques to handle noisy and irrelevant data, such as data cleaning, feature selection, and robust training methods. This will improve the model's reliability in real-world applications.
+
+4. **Model Simplification**:
+   - Explore methods to reduce the model's complexity, such as pruning, quantization, and knowledge distillation, while maintaining or even improving performance. This can make the model more efficient and easier to deploy.
+
+5. **Cross-Domain Adaptation**:
+   - Investigate the model's ability to adapt to new domains with limited labeled data. Transfer learning and domain adaptation techniques can be useful in this context.
+
+6. **Real-Time Applications**:
+   - Develop and optimize the model for real-time applications where predictions need to be made quickly and efficiently. This includes optimizing inference times and resource usage.
+
+7. **Ethical and Social Considerations**:
+   - Address ethical and social considerations, such as bias and fairness, to ensure that the model's predictions are reliable and unbiased. This is particularly important in applications that impact decision-making and public opinion.
+
+By addressing these problems and pursuing these next steps, the model can be further refined and made more suitable for a wider range of practical applications.
 
 ### Experience using the LLM
 
-_Describe your process for using the LLM.  How did the LLM perform?_
+I've used the following system prompts to restrict the models output to be coherent
+
+#### System Prompt:
+```
+You are an expert in Natural Language Processing and assist providing answers. 
+You answers should be based on uploaded paper alone. Make sure your answers are concise and consistent. 
+If the questions are opinion based, provide an unbiased opinion. If the questions are factual based, use the paper to answer the questions. 
+If you cannot find answers in the uploaded paper respond to it with - " I cannot help you with that at the moment".
+
+```
+As a user I've given the above answered questions as user prompts and it was able to answer most of the questions coherently. 
  
 #### Errors and limitations of the LLM 
 
-_Where did it fall short or make mistakes?_
+ - The LLM model wasn't able to interpret the images from the paper. 
+ - Some of the answers were generic they do not capture the uniqueness of the paper proposal.
+    - Example: When asked about fairness of comparison LLM's response is common and can be said true for any Machine learning model.
+ - The LLM wasn't able to explain the mathematical equations from the model section.
+    - Example: When asked about innovation the model should've retrieved text and provided summary from the model section. But the response is an overall paper summary.
+- Some times the responses were repetitive irrelevant to the questions.
+
+#### Conversation Link
+This is the full conversation using LLM model - _Qwen 2.5-72B-Instruct_
+- <a href='https://hf.co/chat/r/IqwnVX3?leafId=72a21879-6936-4240-9b60-f21e186f81e6'><b>Huggingchat Conversation Link</b></a>

@@ -1,7 +1,7 @@
 ---
 title: "Comparative Study of Open-Source GPT Models for Story Generationt"
 slug: "/vamsiv/course-project"
-date: 2024-10-31
+date: 2024-12-08
 author: Vamsi Vadala
 description: "A comparative study of open-source GPT models for generating code from natural language descriptions in real-time."
 tags:
@@ -19,7 +19,7 @@ tags:
   </tr>
   <tr>
     <th>Demo URL (optional)</th>
-    <td></td>
+    <td> N/A </td>
   </tr>
   <tr>
     <th>Team name</th>
@@ -32,32 +32,30 @@ tags:
 ## Project description
 
 ### Introduction
-Our project aims to evaluate open-source GPT-style models—specifically GPT-2, GPT-Neo, and GPT-J—for the task of generating code snippets from natural language descriptions in real-time. This endeavor seeks to aid developers by providing immediate code suggestions, enhancing productivity and efficiency in programming tasks.
+Our project evaluates open-source coder models—Starcoder, Qwencoder, and Gemma—for generating real-time code snippets from natural language descriptions. These models have significant potential in aiding developers, particularly by integrating into development environments to streamline coding tasks. The study explores both the practical and theoretical aspects of these models, including their effectiveness and limitations in real-world scenarios.
 
-### Goals
-- Determine the most efficient and accurate model for real-time code generation.
-- Understand the trade-offs between model complexity and performance.
-- Provide insights into the practicality of using open-source models in development tools.
+### Related Work
+The use of large language models (LLMs) for code generation has been an active research area. OpenAI’s Codex, which powers GitHub Copilot, demonstrates the efficacy of proprietary models for code generation. However, open-source alternatives like GPT-NeoX and Starcoder have gained traction due to their accessibility and community-driven development. While these models show promise, their application in real-time settings remains underexplored. Our project builds on these efforts by evaluating how such models perform under real-time constraints and comparing their capabilities.
 
-### Statistical NLP Aspect
-We will examine how the statistical properties of language models affect their ability to generate syntactically correct and functional code in real-time applications. This includes analyzing factors like model architecture, training data distribution, and decoding strategies.
+### Challenges of the Task
+1. Variability in Code Generation Capabilities 
+- Gemma consistently generated functional code with minimal input specifications. For example, a simple function definition prompt resulted in complete, usable implementations, `factorial` and `palindrome` functions in `generated_functions_gemma.py`.
+- Starcoder and Qwen, on the other hand, required detailed and explicit instructions. Without specifying additional constraints, their outputs were often incomplete or ambiguous, as seen in the `sort_by_key` implementations in `generated_functions_starcoder.py`.
+2. Model Selection
+- Not all open-source LLMs were straightforward to work with. Some models, such as Llama, required special authorization before usage, complicating the setup process.
+- Many popular models exceeded the practical limits of our system. For instance, certain models were over 10GB in size and could not be loaded directly due to insufficient local hardware resources. Even after utilizing Hugging Face-hosted models on the cloud, the performance did not improve significantly, as memory and resource constraints persisted, making these models impractical for our use case.
+- A few models failed to initialize entirely, likely due to dependency mismatches or unsupported configurations. These challenges underscored the importance of infrastructure compatibility and readiness when working with large-scale LLMs.
+3. Error Propagation in Generated Code
+- Errors in generated code were a recurring challenge. Models sometimes produced code with logical flaws, such as incorrect conditions or missing validation checks. For instance, Qwen's implementation of BankAccount lacked proper exception handling during withdrawals.
+4. The generated code often included unwanted texts or extraneous words interspersed within the output. For example, comments or unrelated phrases were occasionally embedded in the code, requiring manual editing to clean up and ensure functionality. This added an additional layer of complexity and reduced the overall efficiency of the code generation process.
 
-### Project Scope
-The project is appropriately scoped for the course, focusing on fine-tuning existing models and evaluating their performance within a manageable timeframe and resource availability.
+### State-of-the-Art Approaches
+Transformer-based models excel in code generation by leveraging attention mechanisms to capture context effectively. Our project evaluated three open-source models:
 
-### Rough Timeline
-#### Week 1 (Nov 15 - Nov 21):
-- Model Selection: Choose GPT-2, GPT-Neo, and GPT-J for comparison.
-- Dataset Preparation: Collect and preprocess a dataset of natural language descriptions and corresponding code snippets.
-#### Week 2 (Nov 22 - Nov 28):
-- Model Fine-Tuning: Fine-tune each model on the prepared dataset.
-- Benchmarking: Establish baseline performance metrics using standard evaluation datasets.
-#### Week 3 (Nov 29 - Dec 5):
-- Performance Evaluation:
-  - Assess models based on accuracy (code correctness), latency (response time), and resource utilization (memory and compute requirements).
-- Real-Time Testing: Deploy models in a simulated real-time environment to evaluate practical performance.
-- Analysis & Comparison: Analyze the strengths and weaknesses of each model.
-- Reporting: Compile findings into a comprehensive report with recommendations for future work.
+1. Starcoder: Trained on multilingual programming datasets, it produces accurate outputs for detailed prompts but struggles with vague inputs.
+2. Qwencoder: Optimized for lightweight inference, it delivers fast responses but requires detailed specifications for complex tasks.
+3. Gemma: With advanced decoding strategies, it handles high-level prompts effectively, outperforming others in usability and real-time scenarios.
+
 
 ## Summary of individual contributions
 <table>
@@ -70,15 +68,15 @@ The project is appropriately scoped for the course, focusing on fine-tuning exis
 <tbody>
   <tr>
     <th><b>Likith Kumar Dundigalla</b></th>
-    <td>Responsible for model selection, prompt engineering, and dataset preparation.</td>
+    <td>Selected the open-source GPT models (Starcoder, Qwencoder, Gemma) for evaluation based on project goals. - Conducted initial functionality testing to ensure models could generate usable code snippets. - Designed and tested the API integration using Postman, verifying that the models generated code snippets effectively from given prompts. - Managed the initial code generation process and refined prompts to optimize model outputs </td>
   </tr>
   <tr>
     <th><b>Tejashwini Kasa</b></th>
-    <td>Responsible for model fine-tuning and analysis.</td>
+    <td>- Generated functional implementations from the models, refining and formatting outputs for consistency and correctness. - Filtered and adjusted generated code contexts to ensure they met task requirements and aligned with the evaluation framework. - Focused on improving the clarity and quality of code generated by each model. </td>
   </tr>
   <tr>
     <th><b>Vamsi Vadala</b></th>
-    <td>Responsible for real-time testing and performance evaluation of the generated code snippets.</td>
+    <td> - Developed and executed test cases (`test.py`) to systematically evaluate the generated code snippets across all models. - Ensured reproducibility of results by setting up a standardized testing and validation framework. - Measured performance metrics such as latency and computational efficiency to assess model suitability for real-time applications.</td>
   </tr>
 </tbody>
 </table>
@@ -86,17 +84,79 @@ The project is appropriately scoped for the course, focusing on fine-tuning exis
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
+### Functional Accuracy
+We tested the models’ outputs for correctness across a range of functions:
+
+- Factorial: Evaluated for correctness across multiple inputs. All models produced the correct results, but their implementations differ:
+  - Gemma used a recursive but flawed implementation.
+  - Qwencoder employed an iterative approach, ensuring robust handling of edge cases.
+  - Starcoder used recursion but lacked explicit error handling for invalid inputs.
+
+- Palindrome: Accuracy was high across models, though implementations varied. Qwencoder had the simplest and most robust code.
+  - Gemma: Works for strings but has a direct and functional approach.
+  - Qwencoder: The simplest and most robust solution, directly comparing the string to its reverse.
+  - Starcoder: Contains an error in its logic for dividing the string into halves, which makes it incorrect for some cases.
+
+- Sort by Key: All models performed well for the tested cases, producing correctly sorted outputs.
+  - Gemma: The implementation works but has minor inefficiencies.
+  - Qwencoder: A robust implementation using Python’s sorted() with a lambda.
+  - Starcoder: Adds unnecessary complexity by modifying the list with a rank key before sorting, which works but is less clean.
+
+- BankAccount: Methods like deposit, withdraw, and get_balance were tested thoroughly. Minor logical inconsistencies were observed in Qwencoder's handling of withdrawal limits.
+  - Gemma: Works correctly for basic functionality (deposit, withdraw, get_balance).
+  - Qwencoder: Contains issues in withdrawal logic, incorrectly raising an exception for insufficient funds in some cases.
+  - Starcoder: Functional but lacks nuanced handling of errors (e.g., negative deposits or withdrawals).
+
+### Performance Metrics
+- Gemma: Recursive implementation introduces inefficiencies, leading to higher latency for larger inputs.
+- Qwencoder: Iterative approach ensures the best performance.
+- Starcoder: Recursive but slightly better-optimized than Gemma.
+
+### Observations
+- Accuracy: All models met baseline correctness criteria.
+- Efficiency: Qwencoder was the fastest in performance testing, followed by Starcoder, then Gemma.
+- Robustness: Qwencoder handled edge cases more reliably, especially for factorial and BankAccount.Functional Accuracy
 
 ## Error analysis
-
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+#### Observed flaws:
+- Factorial Function
+  - Gemma:  Generated code has recursive functions and while loop
+  - Starcoder : Starcoder: Performed well for small inputs but exhibited inefficiency for larger numbers due to naive recursion.
+- Palindrome Function
+  - Starcoder: Fails to produce correct results and implements function that is not even related.
+- Sorting Function
+  - Gemma: The sorting function raised a TypeError due to a conflict with the key parameter name in the sorted function. Specifically, key was passed as a string instead of a callable function, leading to the error.
+- BankAccount Class
+  - Gemma: Handled basic operations like deposit, withdraw, and get_balance correctly. However, the implementation did not adequately manage edge cases, such as over-withdrawal scenarios, leading to exceptions being raised without proper validation.
+  - Qwencoder: Encountered a critical logic error in the withdraw method. Specifically, the function raised an Exception: Insufficient funds even when the account balance was sufficient to cover the withdrawal amount.
+  - Starcoder: Successfully managed all basic operations, including edge cases, but lacked robust exception handling for invalid inputs like negative withdrawal amounts.
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+You can find how to run the file in the readme file:
+
+ - <a href='https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-live-action-thinkers-elite-li-va-te/blob/main/README.md'></a>
 
 ## Future improvements
+#### Limitations
+- Model-Specific Challenges:
+Gemma often encountered logical errors and struggled with recursion, making it less dependable for handling complex tasks. Similarly, Starcoder performed well in general but faced challenges with deeply recursive computations.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
+- Lack of Fine-Tuning:
+These models were evaluated in their default, pre-trained state. Without additional training tailored to specific tasks, their full potential for code generation might not have been realized.
+
+- Narrow Testing Scope:
+The evaluation was limited to a fixed set of functions and scenarios, which may not reflect how well the models perform in diverse or real-world situations.
+
+#### Avenues for Improvement
+- Fine-Tuning for Specialization:
+Training these models with domain-specific datasets could significantly boost their ability to handle specialized tasks effectively.
+
+- Broader Testing Frameworks:
+Including more varied and complex functions, as well as edge-case scenarios, would provide a better understanding of the models' strengths and weaknesses.
+
+- Optimizing Performance:
+Techniques like optimized decoding strategies or model pruning could enhance the models’ real-time usability while maintaining accuracy.
+
+- Reducing Errors:
+Implementing wrapper functions or additional logic to address model-specific weaknesses can make outputs more reliable and user-friendly.
