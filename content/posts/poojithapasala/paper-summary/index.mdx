@@ -1,9 +1,9 @@
 ---
-title: "Uncovering Alzheimer’s Clues with Advanced Language Analysis"
+title: "Uncovering Alzheimer's Clues with Advanced Language Analysis"
 slug: "/poojithapasala/paper-summary"
-date: 2024-11-13
+date: 2024-12-07
 author: Poojitha Pasala
-description: "This paper presents a CNN-LSTM model leveraging BERT embeddings to analyze language patterns for Alzheimer’s Disease diagnosis"
+description: "This paper presents a CNN-LSTM model leveraging BERT embeddings to analyze language patterns for Alzheimer's Disease diagnosis"
 tags:
   - paper summary
 ---
@@ -53,7 +53,7 @@ tags:
 
 ## Description
 
-- The authors of this paper present an NLP approach to help diagnose Alzheimer’s Disease by analyzing language patterns linked to the condition. They use a combination of CNN and LSTM to capture both local and global textual features from patient speech data, specifically from the DementiaBank's Pitt corpus. TextCNN extracts short-term, local text features, while LSTM captures long-term dependencies in the language, effectively identifying patterns associated with Alzheimer’s Disease.  This model leverages BERT embeddings for initial word representation and combines CNN and LSTM outputs to enhance classification accuracy. Their model achieves a competitive accuracy of 89.3%, outperforming other traditional machine learning and deep learning models in Alzheimer’s Disease detection, making it a promising tool for diagnosis.
+- The authors of this paper present an NLP approach to help diagnose Alzheimer's Disease by analyzing language patterns linked to the condition. They use a combination of CNN and LSTM to capture both local and global textual features from patient speech data, specifically from the DementiaBank's Pitt corpus. TextCNN extracts short-term, local text features, while LSTM captures long-term dependencies in the language, effectively identifying patterns associated with Alzheimer's Disease.  This model leverages BERT embeddings for initial word representation and combines CNN and LSTM outputs to enhance classification accuracy. Their model achieves a competitive accuracy of 89.3%, outperforming other traditional machine learning and deep learning models in Alzheimer's Disease detection, making it a promising tool for diagnosis.
 
 ## Motivation
 
@@ -74,19 +74,19 @@ tags:
 <tbody>
   <tr>
     <th><b>LLM model</b></th>
-    <td>???</td>
+    <td>meta-llama</td>
   </tr>
   <tr>
     <th><b>LLM model version</b></th>
-    <td>???</td>
+    <td>Llama-3.1-70B-Instruct</td>
   </tr>
   <tr>
     <th><b>Model/service URL</b></th>
-    <td>???</td>
+    <td>https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct</td>
   </tr>
   <tr>
     <th><b>Why this model?</b></th>
-    <td>???</td>
+    <td>I chose this model because it's great at understanding detailed text, like research papers and giving clear answers. Its advanced capabilities make it well-suited for handling complex tasks like this question-and-answer task.</td>
   </tr>
 </tbody>
 </table>
@@ -94,96 +94,166 @@ tags:
 
 #### Description (LLM)
 
-_In the LLM's words, what is this paper about?_
 
+##### Prompt
+####  _what is this paper about?_
+```markdown
+what is this paper about?
+```
+
+The paper proposes a deep learning model that combines TextCNN and LSTM for the diagnosis of Alzheimer's disease (AD) using natural language processing (NLP). The model uses the Pitt datasets, which are balanced in gender and age, and employs the BERT pre-trained model to acquire word vectors. The model extracts local features using TextCNN and global features using LSTM, and then concatenates these features to generate feature vectors containing rich semantics. The model achieves a best accuracy of 89.3% in classifying AD patients and healthy controls.
+####  _What are the authors proposing?_
 ##### Prompt
 
 ```markdown
-prompt here
+What are the authors proposing?
 ```
 
-#### What are the authors proposing?
+The authors are proposing a novel deep learning model that combines TextCNN and LSTM for the diagnosis of Alzheimer's disease (AD) using natural language processing (NLP). They are suggesting that this combined model can effectively extract both local and global features from text data, which can be used to improve the accuracy of AD diagnosis.
 
+####  _What is the motivation for the work?_
 ##### Prompt
 
 ```markdown
-prompt here
+What is the motivation for the work?
 ```
 
-#### What is the motivation for the work?
+The motivation for the work is to develop a more reliable and simple method for diagnosing Alzheimer's disease (AD), which is a chronic and progressive disease that affects linguistic function, memory, cognitive, and visual spatial ability of patients. The authors note that traditional methods of diagnosis, such as cognitive test scales, can be time-consuming and inaccurate, and that natural language processing (NLP) can be used to extract features from text data that can aid in diagnosis. They aim to leverage the capabilities of deep learning models, specifically the combination of TextCNN and LSTM, to improve the accuracy of AD diagnosis.
 
+####  _What is the approach or innovation?_
 ##### Prompt
 
 ```markdown
-prompt here
+What is the approach or innovation?
 ```
 
-#### What is the approach or innovation?
+The approach or innovation in this paper is the combination of two deep learning models, TextCNN and LSTM, for the diagnosis of Alzheimer's disease (AD) using natural language processing (NLP). Specifically, the authors propose a novel architecture that:
+1. Uses BERT pre-trained model to acquire word vectors
+2. Employs TextCNN to extract local features from text data
+3. Employs LSTM to extract global features from text data
+4. Concatenates the local and global features to generate feature vectors containing rich semantics
+5. Uses a softmax classifier for classification
+The innovation lies in the combination of TextCNN and LSTM, which allows the model to capture both short-term and long-term dependencies in text data, and the use of BERT pre-trained model to acquire word vectors, which provides a strong starting point for feature extraction.
 
+####  _What are the results and how do they compare with competing approaches?_
 ##### Prompt
 
 ```markdown
-prompt here
+What are the results and how do they compare with competing approaches?
 ```
 
-#### What are the results and how do they compare with competing approaches?
+The results of the proposed approach are:
+- The model achieves the best accuracy of 89.3% in classifying Alzheimer's disease (AD) patients and healthy controls.
+- The authors compare their results with other competing approaches, including:
+  - TextCNN: The proposed approach outperforms TextCNN, which achieves an accuracy of [not specified in the text].
+  - LSTM: The proposed approach also outperforms LSTM, which achieves an accuracy of [not specified in the text].
+  - Other studies: The authors mention that their approach achieves a competitive result compared to other studies, including:  
+    - Aparna et al. (2021): 83.33% accuracy  
+    - Amit et al. (2021): 83.3% accuracy  
+    - Fritsch et al. (2019): 85.6% accuracy  
+    - Guo et al. (2021): [not specified in the text]  
+The authors claim that their approach achieves the best accuracy among the compared approaches, but they do not provide a comprehensive comparison table or detailed analysis of the results.
 
+####  _Is the comparison fair?_
 ##### Prompt
 
 ```markdown
-prompt here
+Is the comparison fair?
 ```
 
-#### Is the comparison fair?
+The comparison is fair, as the authors compare the results of different approaches on the same dataset. The authors only provide comparison with the following approaches:
+-	TextCNN
+-	LSTM
+-	Other studies that use different models or architectures, such as Fritsch et al. (2019) and Aparna et al. (2021), and Amit et al. (2021).
+However, the authors do not provide a comprehensive comparison table of the results.
 
+####  _What are the takeaways according to the authors?_
 ##### Prompt
 
 ```markdown
-prompt here
+What are the takeaways according to the authors?
 ```
 
-#### What are the takeaways according to the authors?
+The authors mention the following takeaways:
+- The proposed approach of combining TextCNN and LSTM with BERT pre-trained model achieves a competitive result in diagnosing Alzheimer's disease (AD) with an accuracy of 89.3%.
+- The approach demonstrates the feasibility of using acoustic and linguistic datasets for AD diagnosis.
+- The approach is more effective than using TextCNN or LSTM alone.
+- The approach achieves a better result than some other studies that use different models or architectures.
+Overall, the authors suggest that their approach is a promising method for AD diagnosis using natural language processing (NLP) and deep learning techniques.
 
+####  _What are the takeaways according to you?_
 ##### Prompt
 
 ```markdown
-prompt here
+What are the takeaways according to you?
 ```
 
-#### What are the takeaways according to you?
+Based on the text, here are my takeaways:
+- The authors propose a novel approach for diagnosing Alzheimer's disease (AD) using a combination of TextCNN and LSTM with BERT pre-trained model, which achieves a competitive result.
+- The approach highlights the potential of using NLP and deep learning techniques for AD diagnosis, which could lead to more accurate and efficient diagnosis methods.
+- The comparison with other approaches is limited, and a more comprehensive evaluation with other state-of-the-art methods would be necessary to fully assess the effectiveness of the proposed approach.
+- The use of BERT pre-trained model seems to be a key component of the approach, and further research on the impact of pre-trained language models on AD diagnosis could be valuable.
+- The study suggests that multimodal approaches, combining multiple sources of information (e.g., text, speech, and linguistic features), could lead to more accurate AD diagnosis.
+Overall, the study provides a promising approach for AD diagnosis using NLP and deep learning, but further research is needed to fully evaluate its effectiveness and potential applications.
 
+####  _Would you use this?_
 ##### Prompt
 
 ```markdown
-prompt here
+Would you use this?
 ```
 
-#### Would you use this?  If so, how/where would you use this?
+I would use this approach in a research setting where a large dataset is available, and the cost of collecting and labeling the data is relatively low. The approach combines multiple sources of information, including text data, which could lead to more accurate diagnosis and monitoring of AD progression.
+However, the approach requires a large amount of computational resources and expertise in NLP and deep learning, which might not be feasible in all settings, especially in low-resource or low-data environments.
+In addition, I would consider the following factors before using this approach:
 
+1. **Data availability and quality**: I would need a large dataset of labeled text data, which could be challenging to obtain, especially in low-resource settings.
+2. **Computational resources**: The approach requires significant computational resources, which could be a limitation in low-resource settings.
+3. **Expertise in NLP and deep learning**: The approach requires specialized knowledge and expertise in NLP and deep learning, which could be a limitation for non-experts in the field.
+
+####  _If so, how/where would you use this?_
 ##### Prompt
 
 ```markdown
-prompt here
+If so, how/where would you use this?
 ```
 
+Considering these factors, I would use this approach in a setting where:
+1. A large dataset of labeled text data is available.
+2. Computational resources are sufficient to support the approach.
+3. Expertise in NLP and deep learning is available, either in-house or through collaboration with experts.
+In this setting, the approach could be a valuable tool for diagnosing AD and monitoring its progression.
+
+####  _What problems remain and what are the next steps?_
 ##### Prompt
 
 ```markdown
-prompt here
+What problems remain and what are the next steps?
 ```
 
-#### What problems remain and what are the next steps?
+Based on the text, the problems that remain are:
+1. **Data quality and availability**: The authors mention that a large dataset of labeled text data is required for training and testing the model, which could be a challenge in low-resource settings.
+2. **Computational resources**: The authors mention that the approach requires significant computational resources, which could be a limitation in low-resource settings.
+The next steps to improve the approach could be:
+1. **Data collection and labeling**: Collecting and labeling a large dataset of text data, which is a challenging task, especially in low-resource settings.
+2. **Model optimization**: Optimizing the model to reduce computational resources and improve its performance in low-resource settings.
+3. **Model deployment**: Deploying the model in a real-world setting, which could be a challenge, especially in low-resource settings.
+Overall, the approach is a promising start, but further work is needed to improve its practicality in real-world settings.
 
-##### Prompt
 
-```markdown
-prompt here
-```
+#### Experience using the LLM
 
-### Experience using the LLM
-
-_Describe your process for using the LLM.  How did the LLM perform?_
+I wanted to use the model Llama-3.2-3B-Instruct,but in the Jan UI,it was not responding,so i switched to the model Llama-3.1-70B-Instruct in hugging chat.The LLM answered basic questions, but it mentioned problems and limitations that were very generic and not actually discussed in the paper. When I asked why it brought up those issues, even though they weren't in the paper, it admitted, "it shouldn't have listed them" and then gave me more generic problems and next steps instead.
+When I questioned why it didn't include the accuracy values for LSTM and TextCNN, even though they were mentioned in the paper, it replied: _"I should have been more accurate (pun intended!) in my previous response and explicitly stated that the accuracy values for TextCNN and LSTM were not provided in the paper."_ Its response was interesting because it sounded very human-like.
  
 #### Errors and limitations of the LLM 
 
-_Where did it fall short or make mistakes?_
+1.	Missing Key Details
+- The LLM didn't mention the accuracy values for TextCNN (80.7%) and LSTM (78.7%), even though these were clearly mentioned in the paper.
+- This makes it harder to compare the models.
+2.	Dataset Labeling and Limitations
+- The paper doesn't mention anything about dataset labeling issues, but the LLM talked about them.
+- The LLM also said the model needs a lot of computational resources, but the paper says it's cheap and reliable, so this doesn't match.
+3.	Deployment challenges
+- The LLM said deploying the model in real-world settings could be hard, especially in low-resource areas. But the paper focuses on making a low-cost tool and doesn't say deployment would be a challenge.
+- The LLM's point about optimizing the model is vague because the paper already says the model doesn't need much computational power.
