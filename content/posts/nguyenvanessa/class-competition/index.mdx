@@ -1,7 +1,7 @@
 ---
 title: "Author Classification"
 slug: "/nguyenvanessa/class-competition"
-date: 2024-11-15
+date: 2024-12-08
 author: Vanessa Nguyen
 description: "My approach can be summarized as a classifier using a tf-idf vectorizer and other forms of feature engineering along with logistic regression."
 tags:
@@ -22,7 +22,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>0.40331</td>
+    <td>0.51549</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -42,32 +42,51 @@ tags:
 
 ## Task summary
 
-The task is to be able to determine if two given pieces of text were produced by the same author. Given a csv file of several spans of text, each span should be labeled 0 or 1 depending on whether it is the same author.
+The task is to be able to determine if two given pieces of text were produced by the same author. Given a csv file of several spans of text, each span should be labeled 0 or 1 depending on whether it is the same author. The training dataset is a .csv file that is 1.7MB in size, while the test dataset is a .csv file that is 917.2kB in size.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
+The training dataset has 3 columns, labeled "ID," "TEXT," and "LABEL." The ID column assigns each datapoint a unique ID number, the TEXT column contains the pair of texts to be analyzed, and the LABEL column indicates 0 or 1 based on whether the texts are from different authors or the same author. The test dataset is similarly formatted but lacks the "LABEL" column. The objective of this task is to produce a .csv file with two columns, "ID" and "LABEL," that assigns a label to each datapoint in the test file.
+
+One challenge of this task is that it is possible for a model to misinterpret the TEXT column. A basic approach to identifying whether a datapoint contains two excerpts from the same author might be to check if both excerpts contain a high overlap in words. However, this would require the model to be able to differentiate between the first excerpt and second excerpt within the same datapoint. Without a way to discern between the two, the model might rely simply on overall term frequency, which may not be an accurate reflection of same authorship if the first excerpt happens to have an overabundance of the term while the second excerpt does not. For example, datapoint 1330 includes "CHAPTER I" several times in the first excerpt and not at all in the second excerpt. It is labeled 0, indicating different authors, but plain term frequency might assume the phrase is used in both excerpts and thus label the datapoint as same author. There is also the challenge of identifying same authorship for excerpts that may be on entirely different topics and contain little to no vocabulary overlap. For example, datapoint 10 indicates the two excerpts are by the same author, but there is little overlap between
+
+```
+"What shall we do now, Major? Walk? Maybe your nose can smell out another friend for us." They had gone hardly two blocks when it came to him that there was a more useful way of spending their time. The library!
+```
+and
+```
+It knocked him down. Before he could get his breath, a red, wet tongue was licking his face and hands, and he was looking up into the face of a police dog! Frantic with joy at seeing another in this city of death, the dog would scarcely let Miller rise. It stood up to plant big paws on his shoulders and try to lick his face. Miller laughed out loud, a laugh with a throaty catch in it. "Where'd you come from, boy?" he asked. " Won't they talk to you, either? What's your name, boy?"
+```
+This would require a reliance on techniques other than simple term frequency.
 
 ## Exploratory data analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+There are 1601 rows of datapoints in the training dataset. The ID for the first datapoint is 0, and the ID number increases by 1 for each datapoint. However, the last datapoint is labeled 1999.
 
-## Exploratory data analysis
+The TEXT column contains two texts excerpts separated by [SNIPPET]. The excerpts vary in length but tend to be a few sentences. Most datapoints appear to be excerpts from literature, such as in datapoint 967, whose text contains
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+```
+"His heart climbed up into his mouth and threatened to choke him. He had thought he was shock-proof, that nothing could jar him. But here was something that made his mind reel. Walking across the water toward the raft were three men. [SNIPPET] B'ronth swung the whip-sword. He was no duelist. A duelist would lunge and thrust with the whip-sword, allowing its mobile point some degree of freedom by controlling it deftly. A non-duelist like B'ronth would hack and slash, the deadly sword-point whipping about, curling, slashing, striking."
+```
+
+Most of the texts are also in English, though datapoints 576 and 1070 include non-English text. Datapoint 609 is also unusual in that its second text includes a series of codes that may be department numbers, as it mentions "Dept. F774" and at the end lists "F783 F771 F742 F733 F732 F722 F703 F698 F693 F." While datapoint 576 is labeled 1, datapoints 1070 and 609 are labeled 0.
+
+1245 of the datapoints are labeled "0," meaning their excerpts are from different authors, and 356 datapoints are labeled "1," meaning that for 356 datapoints, the pair of texts is written by the same author. There are more than three times as many datapoints for the different author class than there are for the same author class.
+
+## Approach
+
+I used a logistic regression model with a tf-idf vectorizer for classification. The tf-idf vectorizer from the sci-kit package had parameters for n-grams of lengths 1 to 2 and a vocabulary that only considers the top five features ordered by term frequency. I split the training data using train_test_split() to set aside held-out data for error analysis. I used this approach because I had failed to implement it correctly in a similar assignment for an earlier class and wished to try again.
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
+My model classified 784 of the test datapoints as 0, different authors, and 115 of the datapoints as 1, same author. My Kaggle leaderboard score is 0.51549 which is just above the baseline and 24th place at the time of writing this post. The baseline is 0.50901, resulting in a delta of 0.00648.
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+Using classification_report() from the sklearn library, I calculated the precision, recall, and f1-score for my model's predictions on the held-out data. For the different author class, the precision was 0.81, recall was 0.88, and f1-score was 0.84. For the same author class, the precision was 0.24, recall was 0.16, and f1-score was 0.19. The overall f1-score accuracy was calculated to be 0.73.
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
-
+Please see [README](https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-vmn25/blob/main/README.md) for instructions for how to reproduce results.
 
 ## Future Improvements
 
-_Describe how you might best improve your approach_
+My approach was extremely simple, so I would like to improve it by trying other models and doing more preprocessing. In the future, I would like to try incorporating BERT in my approach. Gathering additional data to augment the training dataset would also be beneficial.
