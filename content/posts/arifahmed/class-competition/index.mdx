@@ -3,11 +3,10 @@ title: "EXAMPLE: My clever approach to the class-wide shared task"
 slug: "/arifahmed/class-competition"
 date: 2024-11-13
 author: Arif Ahmed
-description: "My approach can be summarized as ..."
+description: "My approach can be summarized as using by directional LSTM model for author profiling."
 tags:
   - class competition
 ---
-
 
 <table>
   <caption>
@@ -22,7 +21,8 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>0.46133</td>
+
+    <td>0.54051</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -42,30 +42,35 @@ tags:
 
 ## Task summary
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
+
+The given task is about author profiling and the training datasets provide the texts and binary label. And this task of classifying text by author is closely related to various other NLP tasks. These include authorship attribution, which involves assigning a piece of text to the correct author based on stylistic and content-based features, commonly used in forensics, literary analysis, and plagiarism detection. Similar tasks include fake news detection, where the goal is to differentiate between genuine and fabricated news articles, and sentiment analysis, which categorizes text into sentiment classes such as positive, negative, or neutral. Other related tasks are spam detection, which distinguishes spam from legitimate messages, style classification, where texts are classified based on stylistic attributes (such as genre or time period), and language identification, where the language of the text is detected.
+The challenges of classifying text by author are multifaceted. A common issue is data imbalance, where one author's texts dominate the dataset, leading to biased predictions. For instance, a dataset with 80% of texts from Author A and 20% from Author B might cause the model to skew toward Author A. And for the given dataset in the training set, there are Around 1600 examples in training dataset and out of those 356 is labeled as 1 and the rest is 0. Another challenge is limited data, as deep learning models, such as LSTMs, require large datasets to generalize well. Additionally, subtle stylistic differences between authors can make classification difficult, especially if they write in similar genres or use comparable vocabulary and syntax. Challenges also arise in text preprocessing, particularly with noisy data, such as typos, abbreviations, or informal writing styles. Furthermore, overfitting can occur in deep learning models with high capacity, especially when the dataset is small. Lastly, the problem of out-of-domain texts emerges when authors vary their style based on context or subject matter, making consistent pattern recognition harder.
+State-of-the-art (SotA) approaches for this task have evolved significantly. Traditionally, classical machine learning methods like Support Vector Machines (SVM) or Logistic Regression with hand-crafted features such as TF-IDF or stylometric attributes were widely used. More recent advancements in deep learning leverage models like LSTMs and GRUs, which are particularly effective for capturing sequential dependencies in text. Additionally, CNNs have been applied to detect local patterns in text, particularly useful for shorter sequences. However, modern transformer-based architectures, such as BERT (Bidirectional Encoder Representations from Transformers) and its derivatives like RoBERTa, have set the benchmark for text classification tasks. These models are pre-trained on vast corpora and fine-tuned on specific datasets, achieving significantly better performance by understanding context in a bidirectional manner. Hybrid methods combining traditional NLP techniques with deep learning models, as well as semi-supervised and unsupervised learning approaches that leverage unlabeled data, are also gaining popularity.
 
 ## Exploratory data analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+The exploratory data analysis reveals several important insights about the dataset. First, the dataset is imbalanced, with Class 0 (label 0) comprising 1,245 samples, significantly outnumbering Class 1 (label 1), which has only 356 samples. This imbalance could pose challenges for model training and may require mitigation strategies, such as class weighting or data augmentation. In terms of text length, the entries vary widely, with an average length of approximately 1,048 characters. The shortest text is 164 characters, while the longest spans 5,491 characters. The 25th percentile text length is 688 characters, the median is 920 characters, and the 75th percentile is 1,243 characters, indicating variability in the dataset's content length. Examples from Class 0 include excerpts such as "When his speaker remained silent Dirrul assumed he had been understood..." (892 characters) and "If she had only come to me and said she desired her freedom..." (759 characters). Examples from Class 1 include "gasped Robbins, and without a word he turned and fled, leaving the Nice Girl transfixed..." (1,190 characters) and "What shall we do now, Major? Walk? Maybe your nose can smell out another friend for us..." (707 characters). Overall, the dataset's imbalance and variability in text length suggest the need for careful preprocessing, such as balancing classes and truncating or padding sequences, to ensure effective model performance.
 
-## Exploratory data analysis
+## Approach
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+The approach uses a multi-layer bidirectional LSTM model for binary text classification, chosen for its ability to capture long-term dependencies and contextual relationships in text. The model includes an embedding layer, a bidirectional LSTM layer with 512 units, and a global max-pooling layer for feature extraction. It also incorporates two fully connected layers and a sigmoid output for binary classification. This approach addresses challenges such as text length variability and class imbalance, with preprocessing steps like tokenization, padding, and TF-IDF vectorization. Dropout layers help prevent overfitting, ensuring the model generalizes well despite the small dataset size for Class 1.
+The motivation for this approach lies in addressing the challenges posed by the dataset's characteristics, such as text length variability and class imbalance. Preprocessing steps like tokenization, padding ensures that text data is standardized before inputting it into the model. Additionally, dropout layers are included to mitigate overfitting, particularly given the relatively small dataset size for Class 1. Overall, the approach balances robust feature extraction with the need to generalize effectively, while leveraging LSTM's strengths for sequential data classification.
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
+In this task, the model's results are evaluated quantitatively, with the focus on providing a robust analysis of its performance. The approach includes evaluating the model using methods like stratified k-fold cross-validation to ensure that performance is consistent across different subsets of the data and that the model generalizes well. This also helps mitigate the impact of class imbalance, ensuring that both classes are adequately represented in each fold.
+For the quantitative results, performance metrics such as accuracy, precision, recall, and F1 score are reported. These metrics allow for a detailed evaluation of the model's classification capabilities, particularly with respect to how well it distinguishes between the two classes. Additionally, a comparison of the current model's performance (0.54051) against a baseline (0.5000)can highlight the improvements brought by the deep learning model. A delta  (0.04) difference between the new model's performance and the baseline provides an understanding of the relative benefit of using more advanced methods like LSTM over simpler models.
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+Error analysis involves identifying and characterizing the misclassified instances in the model's predictions on the held-out data. To start, we focus on false positives (where the model predicted Class 1 when the true label was Class 0) and false negatives (where the model predicted Class 0 when the true label was Class 1). For example, false positives might occur if the model associates neutral or ambiguous terms with the wrong class, such as predicting Class 1 for a sentence like "He seemed quite upset but stayed calm." In this case, the model might incorrectly link the word "upset" to Class 1, even though the context doesn't support it. Conversely, false negatives could happen when subtle indications of the target class are missed, as in predicting Class 0 for "Despite his protestations, the task was assigned to him," where passive-aggressive language suggests Class 1. Additionally, class imbalance may contribute to these errors, with the model being biased toward the majority class, resulting in more false negatives for the minority class. To address this, techniques such as oversampling the minority class or using cost-sensitive learning can be applied. Based on the error analysis, potential improvements might include fine-tuning the model with more domain-specific data, adding preprocessing steps like sentiment analysis, and enhancing training datasets to capture more subtle patterns. This analysis helps pinpoint areas of weakness in the model's predictions and guides steps to enhance its performance.
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
-
+To ensure the reproducibility of the model's results, it is essential to provide a clear, step-by-step approach for replicating the leaderboard numbers. This includes outlining the setup of the environment with a list of dependencies, such as TensorFlow, Keras, scikit-learn, pandas, and numpy, ensuring that all necessary libraries and their versions are explicitly mentioned. The model implementation, including the architecture setup (such as the LSTM layers and dropout), are already provided with code along with training and evaluation scripts. The docstring comments is also provided in the code.
 
 ## Future Improvements
 
-_Describe how you might best improve your approach_
+To improve the performance of the classification, we could fine-tune a pre-trained transformer model like BERT or RoBERTa, which often achieves higher accuracy than LSTM-based models. Additionally, data augmentation techniques such as paraphrasing or synonym replacement can enhance dataset diversity. Domain adaptation, where unlabeled texts from the authors are used for pre-training, followed by fine-tuning, can also be beneficial. Ensemble methods that combine predictions from multiple models, such as LSTM and BERT, might further improve results. Leveraging advanced embeddings from models like GloVe, FastText, or transformer-based token embeddings can also capture richer semantic relationships. These strategies could address the challenges of subtle stylistic variations, limited data, and overfitting, leading to more accurate author classification.
+
+

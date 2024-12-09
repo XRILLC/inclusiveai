@@ -62,101 +62,74 @@ _Why did you select this paper?_
 
 I choose this paper as for my research I am planning to apply few shot learning on the simplification of healthcare text data.
 
+d
+_What LLM did you select (model and version) and why?_
 
+I have used Llama 3.1 70B model. I choose this model because it provides balance between performance and resource efficiency.
 
 
 #### Description (LLM)
 
 _In the LLM's words, what is this paper about?_
-This paper is about generating code summary by LLM. And the authors used selected few shot example to generate the summary from LLMs. 
-##### Prompt
 
-```markdown
-prompt here
-```
+This research paper explores using large language models (like Codex) for code summarization with very few training examples. The key innovation is showing that these models can generate accurate code summaries using just 10 sample pairs, outperforming traditional models trained on thousands of examples. The researchers found that using project-specific samples can further improve performance, demonstrating the impressive sample efficiency of large language models in software engineering tasks.
 
 #### What are the authors proposing?
 
-##### Prompt
+The authors are proposing an innovative approach to code summarization using large language models' (LLMs) remarkable few-shot learning capabilities. Their research aims to investigate how the Codex model can perform code summarization by using very few training samples, with a particular focus on exploring project-specific training data. 
 
-```markdown
-prompt here
-```
+This paper is about generating code summary by LLM. And the authors used selected few shot example to generate the summary from LLMs. 
 
 #### What is the motivation for the work?
 
 The motivation behind their approach is the LLM often time performs poorly without having prior examples. So the author came up with a new few shot training selected example to improve the LLM's outcome. 
 
-```markdown
-prompt here
-```
-
 #### What is the approach or innovation?
 
-##### Prompt
-
-```markdown
-prompt here
-```
+The authors' innovative approach centers on leveraging the few-shot learning capabilities of large language models, specifically the Codex model, to tackle code summarization with unprecedented efficiency. Unlike traditional machine learning approaches that require thousands of training examples, this method demonstrates how a large language model can generate accurate code summaries using just a handful of examples—as few as 10. The key innovation lies in two primary strategies: cross-project and same-project few-shot learning, where the model is trained on a minimal set of code-summary pairs.
+The researchers explored how the Codex model could adapt to generating code summaries by exposing it to a small number of example pairs, either from different projects or from within the same project. This approach is particularly powerful because it can capture project-specific nuances like unique identifier names, coding patterns, and terminology that are often challenging for traditional models to learn. By showing that the model can outperform existing state-of-the-art approaches trained on massive datasets, the researchers highlight the remarkable adaptability of large language models.
 
 #### What are the results and how do they compare with competing approaches?
 
-##### Prompt
-
-```markdown
-prompt here
-```
+The research revealed remarkable results that challenge traditional machine learning approaches for code summarization. Using the Codex model with just 10 training examples, the researchers consistently outperformed existing state-of-the-art models that were trained on thousands of samples across six programming languages. The performance improvements were significant, with some languages like JavaScript and Go seeing over 2 BLEU-4 point increases—a metric considered indicative of human-perceptible improvements.
+Even more compelling was the same-project few-shot learning approach, where using 10 samples from within the same project further enhanced performance. The model's overall performance jumped from 21.65 to 24.37 BLEU-4, representing a 12.56% improvement. Notably, this approach worked successfully across all eight projects studied, with one Java project experiencing a dramatic 46.31% performance boost. While not every improvement was statistically significant, the overall trend demonstrated the model's ability to quickly adapt to project-specific coding and documentation styles.
+In contrast, zero-shot and one-shot learning attempts proved largely unsuccessful, achieving only 2.96 and 6.22 BLEU-4 on average. This underscored the importance of having multiple training examples. The results fundamentally challenge existing machine learning paradigms by showing that large language models can achieve superior performance with minimal, targeted training data—a potentially transformative approach for software engineering tasks where comprehensive training datasets are often unavailable or expensive to create.
 
 #### Is the comparison fair?
 
-##### Prompt
-
-```markdown
-prompt here
-```
+The study's fairness is somewhat compromised by several important limitations. The researchers had restricted access to the Codex model and could only analyze a small subset of the CodeXGLUE dataset, comprising 1000 random test samples. They also could not comprehensively explore hyper-parameter tuning due to API access constraints. To mitigate these limitations, they employed rigorous statistical testing, used the Wilcoxon-rank test to validate results, and compared against the best-performing pre-trained models across multiple programming languages.
 
 #### What are the takeaways according to the authors?
 
-##### Prompt
-
-```markdown
-prompt here
-```
+According to the authors key insights from the study is large language models in code summarization. The study found that models like Codex can significantly improve performance using just ten training examples, outperforming traditional approaches that require thousands of samples.
+The research highlighted the potential of project-specific few-shot training, demonstrating how models can quickly adapt to unique coding and documentation styles. While zero-shot and one-shot training proved ineffective, the study revealed the models' ability to genuinely learn and generalize from minimal contextual data.
+The authors see this work as more than just a technical achievement - it represents a promising direction for machine learning in software engineering, suggesting future models could become more adaptive, context-aware, and efficient in understanding and generating code-related content.
 
 #### What are the takeaways according to you?
 
-##### Prompt
-
-```markdown
-prompt here
-```
+For me the key takeaways is to selective appropriate few shot examples can enhance the LLM output with the expected result in code summarization problem.
 
 #### Would you use this?  If so, how/where would you use this?
 
-##### Prompt
+I used the method for health care text simplification. In my case I have a gold standard database for the original and simplified text pairs with over 10000 texts pair. I used BM 25 search algorithm for the best matched examples and selected 2 examples for each new text that I want to simplify using the LLM. However, the simplified texts generated by the LLM doesn't get better after using this method. I compare using the syntactic and semantic text features of the generated texts.
 
-```markdown
-prompt here
-```
-
-##### Prompt
-
-```markdown
-prompt here
-```
 
 #### What problems remain and what are the next steps?
 
-##### Prompt
-
-```markdown
-prompt here
-```
+The study concludes with unresolved challenges and future research directions emerging from the study on large language models in code summarization. The research revealed significant methodological limitations, including restricted dataset access and uncertainty about model learning mechanisms.
+Key areas for future investigation include understanding how models truly learn and generalize, improving zero-shot and one-shot training performance, and developing more sophisticated techniques for project-specific machine learning. The study identified critical challenges in distinguishing between genuine learning and data memorization.
+The authors see their work as an initial exploration, opening up promising avenues for creating more adaptive and context-aware machine learning models across software engineering and potentially other domains. The research underscores the need for continued investigation into the capabilities and limitations of large language models.
 
 ### Experience using the LLM
 
 _Describe your process for using the LLM.  How did the LLM perform?_
+
+
+I directly download the Llama from the Meta and install it on Mac using the CLI. In most cases LLM performs really well.  
  
 #### Errors and limitations of the LLM 
 
 _Where did it fall short or make mistakes?_
+
+When it comes to critical reasoning and summarization it misses some of the key points. It can provide a good draft to start with but requires modification and in some cases addition of the key information.
+
