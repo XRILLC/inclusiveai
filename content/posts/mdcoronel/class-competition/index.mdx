@@ -1,9 +1,9 @@
 ---
 title: "Distinguishing Literature Patterns in Single Author Dataset"
 slug: "/mdcoronel/class-competition"
-date: 2024-11-14
+date: 2024-12-07
 author: Moises Coronel
-description: "binary classification of text segments to determine if two spans of text were produced by the same author"
+description: "binary classification of text segments to determine author attributions"
 tags:
   - class competition
 ---
@@ -50,15 +50,23 @@ tags:
 
  Embedding-based models, especially those using Convolutional Neural Networks (CNNs), have shown promise in recent author identification tasks. This approach was taken as the first step towards creating a competitive submission. 
 
+
+ Upon further testing and the implementation of a BERT model, the chosen model is not a modified version of BERT, DistilBERT. 
+
+
 ## Exploratory data analysis
 
 The dataset includes 1,245 instances labeled `0` and 356 labeled `1`, showing a significant imbalance.
 
 Text lengths vary widely, with an average length of around 1,048 characters. The range of text lengths (from 164 to 5,491 characters) suggests a high variability in text samples, which could impact feature representation and model performance.
 
+
+A data analysis was done and found calculated linguistic metrics such as average word length, average sentence length, punctuation counts, and ratios (e.g., capital letters, stopwords, pronouns), as well as features like sentiment scores, reading ease, and verb tense usage. These features quantify stylistic and structural properties of the texts, making them suitable for this author classification task. Unfortunately, upon further analysis, there was no standout feature that between class 0 and 1, would make a distinct feature difference. Only did first person pronoun have some kind of difference. 
 ## Approach
 
-The Jupyter notebook takes advantage of a CNN-based model to extract features from embeddings, chosen for its ability to capture local patterns within text. Various machine learning libraries were used in order to create a CNN tailored to this dataset. CNNs could suitable for this task as they are efficient in processing sequential data and can be less computationally intensive than alternatives.
+The approach in this code combines a pre-trained DistilBERT model with stylometric features to create a hybrid text classification model. DistilBERT is used to extract contextual embeddings from input text, leveraging its pre-trained capability to understand language patterns and semantic relationships. Alongside this, stylometric features—quantifiable linguistic metrics such as average sentence length, word length, and pronoun counts—are extracted from the text to capture stylistic and structural nuances. These stylometric features are normalized and then processed in a dedicated feedforward layer before being fused with the BERT embeddings. The combined representation of linguistic and contextual data is used to make classification predictions, aiming to enhance the model's ability to capture both content-based and stylistic aspects of text.
+
+The pipeline begins with preprocessing the text, extracting stylometric features, and normalizing them to ensure numerical consistency. A custom PyTorch dataset class handles tokenized text and stylometric features, making them compatible with the model. The model architecture integrates these features by processing the DistilBERT embeddings and stylometric features separately, then concatenating them to form a joint representation. This combined vector is passed through a dense classification layer to output probabilities for the target classes. The training loop manages loss computation, gradient updates, and evaluation metrics while validating the model's performance on a separate validation set. This dual-input design ensures that the model learns from both semantic context and stylistic patterns.
 
 ## Results
 
@@ -66,9 +74,17 @@ The results from the first pass, using CNN, were not ideal. As output only came 
 
 ## Error analysis
 
-- This code had to balance the class imbalance of `0` and `1` due to minimal data being available in the test set. 
-- Hyperparameter tuning may also have contributed to a lower accuracy score.
-- There could also have been errors stemming from the variation in text passsage lengths.
+
+- Epoch 1: The initial performance is poor, with low precision and recall for both classes. Class 1 (minority class) has better recall (0.70), but this comes at the cost of precision (0.23), indicating a high false positive rate. The accuracy is low at 40%.
+- Epoch 2: The model improves in classifying Class 0, achieving a higher recall (0.66) and better balance between precision and recall. Class 1, however, suffers with reduced recall (0.31) and very low precision (0.20). Overall accuracy increases to 58%.
+- Epoch 3: The model heavily favors Class 0, achieving high precision (0.82) and recall (0.90). However, Class 1 performance lowers further, with a recall of only 0.30 and precision of 0.47. The accuracy peaks at 77%.
+
+While Class 0 achieves excellent performance by the third epoch, Class 1 is poorly predicted, with consistently low F1-scores across all epochs. This imbalance is reflected in the low macro average scores, despite improvements in weighted averages due to Class 0's dominance.
+
+Training loss decreases consistently across epochs, but validation loss increases in the final epoch, suggesting potential overfitting. The model is learning patterns in the training data but failing to generalize effectively for the minority class.
+
+The contribution of stylometric features may be limited, especially if they do not effectively differentiate the two classes as I have found in my analysis. They added a very minor improvement so were left in. 
+
 
 ## Reproducibility
 
@@ -77,4 +93,5 @@ _See [README.md](https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-c
 
 ## Future Improvements
 
-Future improvements would look at exploring Hyperparameter tuning, the results of an RNN with transformers, addressing the text passage lenths more thoroughly, and looking into more state-of-the-art approaches for this particular task.
+- Add or refine stylometric features, focusing on metrics that better capture differences between the classes.
+
