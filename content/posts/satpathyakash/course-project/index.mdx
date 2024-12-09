@@ -1,9 +1,9 @@
 ---
-title: "Can Transformers _learn_ how to play the Knight's Tour?"
+title: "Can Transformers 'learn' how to play the Knight's Tour?"
 slug: "/satpathyakash/course-project"
-date: 2024-11-15
+date: 2024-12-08
 author: Akash Satpathy
-description: "I plan to train a Transformer model on millions of Knight's Tour puzzle
+description: "I trained a Transformer model on millions of Knight's Tour puzzle
 solutions to investigate model performance and generalization."
 tags:
   - course project
@@ -102,10 +102,59 @@ which I won't get to investigate deeply in the next three weeks, but it could be
 interesting to explore them later. For instance, if models do learn, at which training
 epoch or scale doesn't this learning ability emerge? When exactly do they [grok](https://arxiv.org/abs/2201.02177) the puzzle?
 
-This project is both feasible and interesting, and I am looking forward to working on it!
+### Related Works
 
-(This project is inspired by [Ruoss et al., 2024](https://arxiv.org/pdf/2402.04494v1).)
+The Knight's tour is an under-explored problem in the broad realm of machine learning.
+While [some have used graph neural networks to solve the Traveling salesman problem](https://medium.com/stanford-cs224w/tackling-the-traveling-salesman-problem-with-graph-neural-networks-b86ef4300c6e), there
+aren't any known attempts to tackle the knight's tour using such an algorithms.
 
+The conceptually closest example to this project is the paper by [Li et al. (2022)](https://arxiv.org/pdf/2210.13382). The authors wanted to gauge if an autoregressive
+transformer model trained on sequences of Othello game moves could learn how to play
+the game and if such a model had an emergent representation of the board state
+post-training. Their model, trained on around 20 million synthetically generated and
+publicly available Othello games showed near-perfect correctness of moves. The model
+was only trained on linear indices of the games (i.e., the board position A1 was 0, B2
+was marked as 9, and so on). Using top-down interpretability methods, the authors also
+found that the model showed some understanding of the two-dimensional board state,
+despite not explicitly knowing that it was trained on a game which required a 2D
+chessboard.
+
+The Knight's tour is a vastly different problem compared to games like Othello or
+Chess. The challenge of the puzzle lies in the vast combination of successful moves
+required for completion. While it is easy to  It is hard or forsee if a sequence of moves
+will or will not lead to dead end. Thus, randomly guessing the next move would rarely
+lead to the right solution.
+
+### Data generation and updates to the approach
+
+Review of literature and algorithms and data generation took the most of the time for
+this project. To train the model, the initial goal was to generate hundreds of million
+of solutions; however some road blocks were identified.
+
+During the first attempt, a Warnsdorff-rule based algorithm was used to find solution.
+The Warnsdorff rule is a heuristic which states that in order to solve the game, the
+Knight should move to a square with the least number of subsequent next moves (i.e., a
+square with the smallest degree). This algorithm, when run parallel-y, was successful
+at solution generation initially. It took merely ~30 minutes to generate the first 2
+million solutions. However, the rate at which it could find new solutions dropped
+precipitously after the 4 million mark (from ~4000 solutions per second to ~100
+solutions per second). After 5 million solutions, this algorithm was terminated.
+
+This algorithm was then modified to include backtracking along with Warnsdorff.
+Backtracking ensures more complete exploration of the solution space; when the Knight
+hits a dead end, backtrack retraces its steps and attempts other possible paths,
+leading to successful solutions. Around 1.5 million solutions were created using this
+method (there was a similar drop-off )
+
+A recursion-based backtracking-only algorithm ended up being the most successful one
+as it was able to generate a million solutions in just ten minutes for most
+starting positions. For certain starting positions, notably (2, 2) on the chessboard,
+it did take around five hours. 17 million solutions were generated using this method.
+
+Later, the tours were augmented by a factor of eight. Since every tour has four
+reflections and four rotations, the effective data size was increased to 136 million.
+Of this, ~100 million were reserved for training, ~8 million for validation, and 28
+million for testing. All tours starting from index 9 were completely removed.
 
 ## Summary of individual contributions
 <table>
@@ -126,17 +175,37 @@ This project is both feasible and interesting, and I am looking forward to worki
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
+Due to computational (the HPC only allows the usage of 2 GPUs at once) and
+time limitations (around 95% of time was spent on dataset curation), the model was
+trained on 1%, 10%, and 25% of the training set.
 
-## Error analysis
+Key observations:
+1. None of the models ever make illegal Knight moves. Due to the diversity of examples,
+the models have learned the probabilistically most likely next moves.
+2. All the models are able to solve tours from unseen starting positions (i.e., index
+number 9). While this seemed initially impressive, upon later introspection, it seems
+that since other tours contain tours where the model moves from position 9 to other
+squares, it is able to do the same for the first move.
+3. The model defaults to one tour per starting index; it is hard to generate diverse
+number of tours. This shows that the model has approximated some an "optimal" tour
+that occurs a lot in the dataset.
+4. The model does generalize a bit as it able to solve completely unseen parberry tours.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+![](parberry_example2_model3.png)
+
+![](parberry_example3_model3.png)
+
+![](standard_example1_model3.png)
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+1. Clone the repository from github
+2. With a python environment setup, run `pip install requirements.txt` to download the necessary packages
+3. All data generation, augmentation, and training files are present in the repository.
 
 ## Future improvements
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
+1. Masked modeling to make the model predict moves in the middle of the tour
+2. Training on varying sequence lengths to test if the model can learn tours of
+varying lengths on different sized chessboards
+3. Polluting a portion of the training tours to gauge model robustness to illegal moves
