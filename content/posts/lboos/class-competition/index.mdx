@@ -1,13 +1,12 @@
 ---
-title: "Something with Deep Learning"
+title: "Don't Stop Believing"
 slug: "/lboos/class-competition"
-date: 2024-11-06
+date: 2024-12-08
 author: Lynette Boos
-description: "My approach involves trying out the neural network options in PyTorch"
+description: "My approach involves stop words and a PyTorch neural network"
 tags:
   - class competition
 ---
-
 
 <table>
   <caption>
@@ -22,7 +21,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>0.40634</td>
+    <td>55.96</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -39,35 +38,138 @@ tags:
 </tbody>
 </table>
 
+[Code repository link](https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-lboos) (for convenience)
 
 ## Task summary
 
-If I can get it to work, I'm hoping to use TorchText to process the data; otherwise, I guess I'll stick with Scikit Learn and NLTK. Then I plan to use a (open-source decoder-only) transformer like Mistral 7B or Llama 3.2 to encode the features and figure out a good neural network for classification. Hopefully I'll also be able to try out some of PyTorch's optimization modules.
+The task is to classify two snippets of text as either written by the same author or two different authors. We are given 1601 pairs of snippets as training data, which comprises 356 pairs by the same author (labeled with a 1) and 1245 pairs by different authors (labeled with a 0). Our goal is to classify the 899 pairs of test data snippets similarly, and to pass the random baseline score of 50.901% on Kaggle.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
+One challenge is that the pairs can be from the same author but from different books. Another challenge is that the task involves a type of authorship attribution involving many different authors. That is, the notion of 'same' varies because a pair of texts by the one author may not be by the same author as any other pair of texts. 
+
+While a modern approach would involve feeding the texts into a pre-trained transformer for processing and deep learning for classification, I used instead a simpler neural network with a 'state of the art' approach from 10-15 years ago.
+
+
 
 ## Exploratory data analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+The training data consists of 1601 pairs of texts labeled with zeros (for different authors) or ones (for the same author). There are 356 ones and 1245 zeros, so the data is imbalanced. Each row in the training CSV file comprises  an ID column, a column containing a string of text with no space at the beginning or end, and finally a  column for the label of 0 or 1. The string of text in the middle column is two pairs of text excerpts separated with ' [SNIPPET] ' (exactly one space on each side of '[SNIPPET]'). The average number of characters in a text excerpt is 517, with a minimum of 35 and a maximum of 4547 characters. The IDs for the training data are contiguous starting at 0, except for the last one which is 1999 instead of 1600. 
 
-## Exploratory data analysis
+The test data consists of 899 similar pairs of texts along with their IDs. In the test data the average number of characters in the text excerpt is 496 with a minimum of 2 and maximum of 3488 characters. The IDs for the test data start at 1600, skip 1999 and end at 2499.
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+The following two rows of training data are unhelpful, and I deleted them in the proceess of improving the training data (see my approach below):
+  * row 706 where the second snippet of text is "Wheelbarrow.  CHAPTER 14. Nantucket.  CHAPTER 15. Chowder."
+  * row 970 where the first snippet of text is "Chapter V  Chapter V  Chapter I  Chapter X  Chapter X  Chapter X  Chapter X  Chapter X"
+
+
+
+## Approach
+
+(**TL:DNR Version:** I augmented the training data and trained a logistic regression classifier on vectors representing the difference of the bag-of-stop-words for each pair of text snippets.)
+
+I split the training data into pairs of text snippets (texts a and texts b) and used NLTK's list of stop words to extract the stop words from each snippet. Using Scikit learn's CountVectorizer I fit and transformed each text's stop words into (nonbinary) vectors Xa and Xb using 1-4 ngrams. Finally I took the difference of these two vectors and fed it into a simple logistic regression neural network in PyTorch. This did not succeed in passing the baseline on Kaggle. At this point, following the wisdom of "garbage in, garbage out",  I decided the most efficient way for me to improve my classification was to augment the data.
+
+Thus I downloaded the text of 16 books from Project Gutenberg. (The books are listed at the bottom of this post.) I chose unique snippets of text from each book that conformed to the minimum,  maximum, and approximately average length of the existing training data. I shuffled this into the original training data and then hand edited  to delete unhelpful rows such as those that accidentally included only one text snippet. (To avoid repeats I cut each text snippet out of the texts as I selected them, and thus for shorter books I eventually ran out of text to use.)
+  The resulting augmented training data has an additional 417 rows of 298 ones and 119 zeros for a total of 2016 rows. (As mentioned above, two rows of the original training data were deleted.) 
+
+Training a logistic regression model on the augmented data with 300 epochs, binary cross entropy loss, the Adam optimizer, and a learning rate of 0.0001 produced an unwieghted F1 score of 60% on the held-out data. On the test data it produced a score of 55.96%. I experimented with various learning rates and number of epochs, but a final loss of less than 10% produced lower F1 scores; i.e. the model was overfitting the training data. So I settled on the number of epochs and learning rate above and then tuned the threshold for the binarize function that rounds  the predictions up to 1 or down to 0. One measure I used to calibrate the binarize was the total number of ones in my predictions versus the total number of true ones (see error analysis below). Erring toward more ones with a binarize cutoff of 33% yiedled my best results on Kaggle.
+
+My motivation for using stop words came from Yoav Goldberg's **Neural Network Methods for Natural Language Processing**. In section 7.3 *Document Classification: Authorship Attribution* he writes, "...our choice of features should shy away from content words and focus more on stylistic properties. A good set for such tasks focus [*sic*] on *parts of speech (POS) tags* and *function words*."
+
+I initially experimented with using POS tags or stop words (in separate classifiers) with a plan to combine them if necessary. Stop words gave better performance than POS tags and--in combination with the augemented training data--surpassed the random baseline on Kaggle. So in the interest of simplicity I focused on fine-tuning a classifier that only used stop words.
+
+
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
+<table>
+  <caption>
+Kaggle Results
+  </caption>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+<tbody>
+
+  <tr>
+    <th><b>Leaderboard score</b></th>
+    <td>55.96</td>
+  </tr>
+  <tr>
+    <th><b>Baseline score</b></th>
+    <td>50.901</td>
+  </tr>
+  <tr>
+    <th><b>Delta</b></th>
+    <td>5.059</td>
+  </tr>
+</tbody>
+</table>
+
+
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+I held out 20% of the training data for tuning parameters. Aiming for smaller (less than 10%) loss meant the model was overfitting the training data because it performed badly on the held-out data. So instead of trying to achieve a small loss, I trained the model for only 300 epochs and then adjusted the cutoff in the binarize function to get approximately the correct amount of ones in the held-out data. For my highest Kaggle score, the classifier prediced 160 ones out of 130 true ones in the 404 rows of held-out data. In addition to many false positives, the classifier still had false negatives. This is evident from the first five and last five rows of the results on held-out data:
+
+           y_true    y_pred
+     0         0       1
+     1         0       0
+     2         1       1
+     3         1       0
+     4         0       0
+     ..      ...     ...
+     399       0       0
+     400       1       1
+     401       0       0
+     402       1       1
+     403       1       0
+
+Overall there were 59 false positives and 89 false negatives on the 404 rows of held-out data. This resulted in the following classification metrics:
+
+
+                    precision    recall  f1-score   support
+
+               0       0.76      0.68      0.71       274
+               1       0.44      0.55      0.49       130
+
+        accuracy                           0.63       404
+       macro avg       0.60      0.61      0.60       404
+    weighted avg       0.66      0.63      0.64       404
+
+
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+See [README.md](https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-lboos/blob/main/README.md) in contest code repository for a containerized version of the classifier code.
+
 
 
 ## Future Improvements
 
-_Describe how you might best improve your approach_
+To improve the results I could add even more training data, including both zeros and ones. I could also use other features, such as punctuation, POS tags, or even raw text, and combinations of these features. These combined features could all be fed into one neural network, or the results of separate classifiers could be fed into a final classifier to combine the results. (Full disclosure: I also experimented with classifying the raw text and stop words separately and then combining them with a simple linear model. The results were worse than either model individually and seemed to indicate that the classifiers "canceled" each other out with opposite results. I didn't spend much time trying to improve this method, though.)  
+
+In addition I could try different types of neural networks. (Although I did try writing my own basic neural network with two hidden layers, and it tended to overfit the data. For my approach the simpler logistic regression model worked just as well.)
+
+## Addendum
+
+__List of books used to augment training data__
+  * 2BR02B-Kurt Vonnegut
+  * The Big Trip up Yonder-Kurt Vonnegut
+  * The Yellow Wallpaper-Charlotte Perkins Gilman
+  * Herland-Charlotte Perkins Gilman
+  * The Mysterious Island-Jules Verne
+  * An Antarctic Mystery-Jules Verne
+  * Otto of the Silver Hand-Howard Pyle
+  * The Merry Adventures of Robin Hood-Howard Pyle
+  * The Eyes Have It-Philip K. Dick
+  * Second Variety-Philip K. Dick
+  * At the Mountains of Madness-H.P. Lovecraft
+  * The Dunwich Horror-H.P. Lovecraft
+  * Tom Sawyer-Mark Twain
+  * A CT Yankee-Mark Twain
+  * The War of the Worlds-H.G. Wells
+  * The Island of Doctor Moreau-H.G. Wells
+  
