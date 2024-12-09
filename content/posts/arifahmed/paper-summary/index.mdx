@@ -55,6 +55,7 @@ Ahmed, T., & Devanbu, P. (2022, October). Few-shot training LLMs for project-spe
 
 _In your own words, what is this paper about?_
 
+
 This paper is about few shot learning of the LLM and how this method improves the outcome of LLM in terms of code summarization. The study explores few-shot training with the Codex model for code summarization, demonstrating that leveraging project-specific training data can significantly outperform existing state-of-the-art models.
 
 _Why did you select this paper?_
@@ -62,10 +63,37 @@ _Why did you select this paper?_
 
 I choose this paper as for my research I am planning to apply few shot learning on the simplification of healthcare text data.
 
-d
-_What LLM did you select (model and version) and why?_
+## LLM
 
-I have used Llama 3.1 70B model. I choose this model because it provides balance between performance and resource efficiency.
+<table>
+  <caption>
+    LLM model summary
+  </caption>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <th><b>LLM model</b></th>
+    <td>Llama</td>
+  </tr>
+  <tr>
+    <th><b>LLM model version</b></th>
+    <td>3.1 70B</td>
+  </tr>
+  <tr>
+    <th><b>Model/service URL</b></th>
+    <td>https://www.llama.com/llama-downloads/</td>
+  </tr>
+  <tr>
+    <th><b>Why this model?</b></th>
+    <td>I choose this model because it provides balance between performance and resource efficiency.</td>
+  </tr>
+</tbody>
+</table>
 
 
 #### Description (LLM)
@@ -78,11 +106,10 @@ This research paper explores using large language models (like Codex) for code s
 
 The authors are proposing an innovative approach to code summarization using large language models' (LLMs) remarkable few-shot learning capabilities. Their research aims to investigate how the Codex model can perform code summarization by using very few training samples, with a particular focus on exploring project-specific training data. 
 
-This paper is about generating code summary by LLM. And the authors used selected few shot example to generate the summary from LLMs. 
-
 #### What is the motivation for the work?
 
 The motivation behind their approach is the LLM often time performs poorly without having prior examples. So the author came up with a new few shot training selected example to improve the LLM's outcome. 
+
 
 #### What is the approach or innovation?
 
@@ -124,7 +151,6 @@ The authors see their work as an initial exploration, opening up promising avenu
 
 _Describe your process for using the LLM.  How did the LLM perform?_
 
-
 I directly download the Llama from the Meta and install it on Mac using the CLI. In most cases LLM performs really well.  
  
 #### Errors and limitations of the LLM 
@@ -132,4 +158,3 @@ I directly download the Llama from the Meta and install it on Mac using the CLI.
 _Where did it fall short or make mistakes?_
 
 When it comes to critical reasoning and summarization it misses some of the key points. It can provide a good draft to start with but requires modification and in some cases addition of the key information.
-
