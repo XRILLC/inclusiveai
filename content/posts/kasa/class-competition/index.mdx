@@ -1,7 +1,7 @@
 ---
 title: "My approach to the author identification task"
 slug: "/kasa/class-competition"
-date: 2024-11-15
+date: 2024-12-08
 author: Tejashwini Kasa
 description: "My approach can be summarized as a machine learning pipeline that uses TF-IDF vectorization to transform the text spans and logistic regression for binary classification. I focused on text preprocessing, feature engineering, and performance optimization to improve accuracy and achieve a balanced F1 score."
 tags:
@@ -22,7 +22,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>0.48688</td>
+    <td>0.53442</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -34,7 +34,7 @@ tags:
   </tr>
   <tr>
     <th><b>Code Repository URL</b></th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-kasa</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-TejashwiniKasa</td>
   </tr>
 </tbody>
 </table>
@@ -42,72 +42,77 @@ tags:
 
 ## Task summary
 
-In this task, we are required to determine if two spans of text were written by the same author. This task falls under author profiling and authorship identification. The dataset is a collection of text pairs joined by a [SNIPPET] delimiter, and the objective is to classify these pairs as either "same author" (1) or "not the same author" (0).
-
-The training data is provided in CSV format, with a test set for final evaluation. Performance is measured using the macro F1 score to ensure balanced precision and recall for both classes.
+- In this task, we are required to determine if two spans of text were written by the same author. 
+- This task falls under author profiling and authorship identification. 
+- The dataset is a collection of text pairs joined by a [SNIPPET] delimiter, and the objective is to classify these pairs as either "same author" (1) or "not the same author" (0).
+- The training data is provided in CSV format, with a test set for final evaluation. Performance is measured using the macro F1 score to ensure balanced precision and recall for both classes.
 
 ## Exploratory Data Analysis
 
-### Dataset Overview
+#### Dataset Overview
 
-The dataset contains two partitions: a training set (`train.csv`) and a test set (`test.csv`). Each document contains a pair of text spans joined by the `[SNIPPET]` delimiter. Our target is binary (0 or 1), indicating whether both spans were authored by the same individual.
+- The dataset contains two partitions: a training set (`train.csv`) and a test set (`test.csv`). 
+- Each document contains a pair of text spans joined by the `[SNIPPET]` delimiter. 
+- Our target is binary (0 or 1), indicating whether both spans were authored by the same individual.
+- The dataset consists of a training set and a test set. 
+- Each entry contains two text spans, with a binary label indicating whether the spans were authored by the same individual.
 
-Key observations:
-- Span lengths vary considerably, ranging from short sentences to longer paragraphs.
-- The dataset exhibits some class imbalance, with slightly more examples labeled "not the same author" (0).
-- Most text is well-formed, but some examples show differences in punctuation or capitalization, which could signal author identity.
+#### Key observations
 
-**Class distribution:**
-
-```python
-train_data['LABEL'].value_counts().plot(kind='bar')
-```
+- Text span lengths vary significantly, ranging from short sentences to entire paragraphs.
+- The class distribution is imbalanced: the majority of the labels in the dataset are "not the same author."
+- The dataset includes variations in punctuation, capitalization, and stylistic choices that could signal different authorship, making it important to account for these features during preprocessing.
+#### Additional Analysis
+- I computed various stylometric features, such as average sentence length, word length, lexical diversity, readability score, and counts of key punctuation marks. 
+- These features are important for distinguishing between writing styles.
 
 ## Approach
-### Preprocessing
-- Text Cleaning: 
-  - I removed punctuation, digits, and extra whitespace from both text spans. I also converted everything to lowercase to ensure case insensitivity.
+#### Preprocessing:
 
-- Feature Engineering:
-  - I used TF-IDF vectorization to transform text data into numerical form. This representation captures word importance based on its frequency in the dataset, with n-grams ranging from unigrams to trigrams.
-  - I applied the vectorizer to both training and test sets, limiting the vocabulary size to 5000 features for computational efficiency.
-- Model:
-  - I employed Logistic Regression with balanced class weights to handle slight class imbalance.
-  - After experimenting with hyperparameters, I used the 'liblinear' solver for better convergence.
-  - I used a train-test split on the training data to perform cross-validation and monitor performance.
-- Evaluation:
-    - I used the macro F1 score as the primary metric to ensure balanced performance across both classes.
+- I cleaned the text by removing punctuation, digits, and extra whitespace. 
+- I converted the text to lowercase for consistency.
+#### Feature Engineering:
+
+- I applied TF-IDF vectorization (up to trigrams) to capture the frequency-based importance of words in the text spans. 
+- The vocabulary size was capped at 10,000 to balance performance and computational efficiency.
+- I engineered stylometric features, including average sentence length, word length, lexical diversity, readability score, and punctuation counts (e.g., commas, periods, exclamation marks). 
+- These features capture writing style characteristics, which are crucial for distinguishing authorship.
+#### Model:
+
+- I combined TF-IDF features with stylometric features and trained a neural network model with two hidden layers, each followed by dropout for regularization.
+- I used logistic regression with balanced class weights to address class imbalance.
+- After testing multiple configurations, I selected a neural network with 128, 64, and 32 neurons across layers, using ReLU activations and a sigmoid output for binary classification.
+#### Evaluation:
+
+- I employed the macro F1 score to evaluate model performance, ensuring balanced precision and recall between both classes.
+- Novelty: In addition to standard TF-IDF features, incorporating stylometric features like lexical diversity and readability added richness to the model’s understanding of writing style, which improved classification accuracy.
 ## Results
 
-The final macro F1 score on the validation set is 0.48688
-
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
-
-## Exploratory data analysis
-
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
-
-## Exploratory data analysis
-
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
-
-## Results
-
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
+- The model achieved an F1 score of 0.53442 on the training set. 
+- To validate the robustness of the approach, I used train-test splits and cross-validation to monitor performance and reduce overfitting.
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+- The model struggled with certain text pairs where stylistic differences were subtle. 
+
+For example:
+- Texts with similar sentence structures but different punctuation usage often led to misclassifications.
+- False Positives: The model occasionally classified two text spans as being written by the same author when stylistic features like sentence length and punctuation counts were similar, despite differences in content or tone.
+- False Negatives: Shorter text spans led to challenges in identifying authorship, especially when limited vocabulary or sentence structure information was available.
+- In future iterations, I plan to further investigate the model's errors by focusing on such borderline cases and potentially incorporating more advanced linguistic features like syntactic structure or sentiment.
 
 ## Reproducibility
 
+You can find how to run the file in the readme file:
 
-https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-TejashwiniKasa/blob/main/README.md
-
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+- <a href='https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-TejashwiniKasa/blob/main/README.md'></a>
 
 
 ## Future Improvements
 
-_Describe how you might best improve your approach_
+To further improve model performance, I plan to:
+
+- Experiment with transformer-based models like BERT or GPT for capturing more nuanced context in the text spans.
+- Try additional data augmentation techniques to handle class imbalance.
+- Introduce syntactic and semantic features, which could capture deeper differences in writing styles beyond surface-level features like word frequency or sentence length.
+- Investigate different feature selection methods to reduce the dimensionality of the TF-IDF features while preserving important information.
