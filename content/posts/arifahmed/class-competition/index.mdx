@@ -7,7 +7,6 @@ description: "My approach can be summarized as using by directional LSTM model f
 tags:
   - class competition
 ---
-
 <table>
   <caption>
     Class Competition Info
@@ -21,7 +20,6 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-
     <td>0.54051</td>
   </tr>
   <tr>
@@ -39,9 +37,7 @@ tags:
 </tbody>
 </table>
 
-
 ## Task summary
-
 
 The given task is about author profiling and the training datasets provide the texts and binary label. And this task of classifying text by author is closely related to various other NLP tasks. These include authorship attribution, which involves assigning a piece of text to the correct author based on stylistic and content-based features, commonly used in forensics, literary analysis, and plagiarism detection. Similar tasks include fake news detection, where the goal is to differentiate between genuine and fabricated news articles, and sentiment analysis, which categorizes text into sentiment classes such as positive, negative, or neutral. Other related tasks are spam detection, which distinguishes spam from legitimate messages, style classification, where texts are classified based on stylistic attributes (such as genre or time period), and language identification, where the language of the text is detected.
 The challenges of classifying text by author are multifaceted. A common issue is data imbalance, where one author's texts dominate the dataset, leading to biased predictions. For instance, a dataset with 80% of texts from Author A and 20% from Author B might cause the model to skew toward Author A. And for the given dataset in the training set, there are Around 1600 examples in training dataset and out of those 356 is labeled as 1 and the rest is 0. Another challenge is limited data, as deep learning models, such as LSTMs, require large datasets to generalize well. Additionally, subtle stylistic differences between authors can make classification difficult, especially if they write in similar genres or use comparable vocabulary and syntax. Challenges also arise in text preprocessing, particularly with noisy data, such as typos, abbreviations, or informal writing styles. Furthermore, overfitting can occur in deep learning models with high capacity, especially when the dataset is small. Lastly, the problem of out-of-domain texts emerges when authors vary their style based on context or subject matter, making consistent pattern recognition harder.
