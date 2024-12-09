@@ -15,7 +15,8 @@ tags:
 <tbody>
   <tr>
     <th>Code Repository URL</th>
-    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-lwdozal_project</td>
+    <td>https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-lwdozal_project/</td>
+
   </tr>
   <tr>
     <th>Demo URL (optional)</th>
@@ -37,7 +38,81 @@ _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/co
 The goal of this project is to identify the best multimodal LLM for classifying image and (multi-lingual) text based data from Instagram. The data was collected using Selenium and Beautiful soup for my dissertation project. The content of the data is of a Mexican social movement and is therefore multi-lingual as a small portion of the posts are in English, the rest in Spanish.
 - A secondary goal would be to turn the outputs of the classification into a graph database for further analysis. I think the first goal is a sufficient enough project to pursue in two weeks.
 
-### Project Outline
+I initially thought I'd use LlAMP, but that proved difficult because llama is a large model, so I ended up using BLIP as a base and BLIP-2 to finetune.
+
+## Summary of individual contributions
+<table>
+  <thead>
+  <tr>
+    <th>Laura W. Dozal</th>
+    <th>Role/contributions: Identified Project and implemented a Multimodal (Image-Text) LLM that was open source and 'small' enough to run on a CPU</th>
+  </tr>
+    <tr>
+    <th><b>Project Scope</b></th>
+    <td>Worked with the BLIP and BLIP2 models to compare on images with multilingual captions. The images were a set of Italian dishes, pizza, pasta, dessert, and steak and came with descriptions in Italian language. </td>
+    <th>Role/contributions: sole memeber of project</th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <th><b>Model</b></th>
+    <td>BLIP and BLIP2: 
+    - https://huggingface.co/docs/transformers/en/model_doc/blip
+    - https://huggingface.co/blog/blip-2
+    </td>
+  </tr>
+  <tr>
+    <th><b>Sources</b></th>
+    <td>Code, data, and Support taken from: https://github.com/enrico310786/image_text_retrieval_BLIP_BLIP2/tree/main, https://medium.com/@enrico.randellini/image-and-text-features-extraction-with-blip-and-blip-2-how-to-build-a-multimodal-search-engine-a4ceabf51fbe</td>
+  </tr>
+
+</tbody>
+</table>
+
+## Overview
+
+This model was specifically created to provide an optimal text prompt, in different languages. With respect to this project, it helps identify the different clusters of images and image-caption pairs within a food dataset.
+
+*BLIP-2 leverages frozen pre-trained image encoders and large language models (LLMs) by training a lightweight, 12-layer Transformer encoder in between them, achieving state-of-the-art performance on various vision-language tasks. Most notably, BLIP-2 improves upon Flamingo, an 80 billion parameter model, by 8.7% on zero-shot VQAv2 with 54x fewer trainable parameters.* - https://huggingface.co/docs/transformers/en/model_doc/blip-2
+
+
+
+## Results
+
+_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
+
+Here I looked at the various similarities and losses from the BLIP2 model trained with ViT. I compared the image, text, and multimodal (Image-text pair) embeddings and found that clusters of Image-Images performed best, loss = .55. And output the best similarity scores With pizza and meat plates categories having the highest similarity scores, (.894 and .879)
+
+t-SNE, t-Distributed Stochastic Neighbor Embedding, shows the diffent modals in a 2-d space and has a 'fuzzy' correlation to the similarity matrix plots (shown in the notebook), where the image embeddings show shapes of loose clusters opposed to the other embedding spaces.
+
+
+[More information can be found here.](https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-lwdozal_project) 
+
+## Error analysis
+
+_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
+
+Contrastive loss was used here to compare the vector similarites using euclidean disctance. The loss function used here was with torch's corss_entropy model.
+Images with Images has the smalled loss, .55; multimodal with multimodal had a 1.08 loss; images, and multimodal had a 2.39 loss; and images with text had a 2.96 loss
+
+[More information can be found here.](https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-lwdozal_project) 
+
+## Reproducibility
+
+_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
+_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
+
+
+[Find the notesbooks in the readme here.](https://github.com/uazhlt-ms-program/ling-582-fall-2024-course-project-code-lwdozal_project) 
+
+## Future improvements
+
+_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_
+
+Future work would be to implement my own dataset with Spanish captions and better utilize the caption generation feature of the BLIP-2 model.
+Other types of error analysis and evaluation metrics like BLEU or ROUGE (for generated captions) would be usefull as well.
+
+## Initial Project Outline that was to support my dissertation
 - Identify a multimodal LMM that works with my data. i.e. GPT-4o, Phi3, LLama, etc.
 - Clean and process collected Instagram data. Create subset for testing on the model
   - Mostly unsupervised data unless we finess it into hashtags or general themes but I'd like to not do that.
@@ -49,45 +124,3 @@ The goal of this project is to identify the best multimodal LLM for classifying 
   - look at batch sizes, epochs etc
 - Evaluate overall and document your process.
 - Set-up data for database creation.
-
-## Summary of individual contributions
-<table>
-  <thead>
-  <tr>
-    <th>Laura W. Dozal</th>
-    <th>Role/contributions: sole memeber of project</th>
-  </tr>
-  </thead>
-<tbody>
-  <tr>
-    <th><b>???</b></th>
-    <td>???</td>
-  </tr>
-  <tr>
-    <th><b>???</b></th>
-    <td>???</td>
-  </tr>
-  <tr>
-    <th><b>???</b></th>
-    <td>???</td>
-  </tr>
-</tbody>
-</table>
-
-
-## Results
-
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#results)_
-
-## Error analysis
-
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#error-analysis)_
-
-## Reproducibility
-
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
-
-## Future improvements
-
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/course-project/final/#proposal-for-future-improvements)_

@@ -3,7 +3,7 @@ title: "Class competition"
 slug: "/lwdozal/class-competition"
 date: 2024-11-15
 author: Laura W. Dozal
-description: "Started by using Naive Bayes - The results are based on feature engineering where here I use tokens as features. I've been playing around with chracters as features and might use that for the final project, along with another model."
+description: "Started by using Naive Bayes, then found out CNN was the better approach."
 tags:
   - class competition
 ---
@@ -22,7 +22,8 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>.39451</td>
+    <td>.47223</td>
+
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -43,7 +44,12 @@ tags:
 ## Task summary
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#task-summary)_
+Started by using Naive Bayes - The results are based on feature engineering where here I use tokens as features. I've been playing around with chracters as features and might use that for the final project, along with another model. 
+Another model for the second attempt can possibly be decision tree as it's an example in chapter 5 of the O'Reilly Book, Getting started with NLP
+https://learning.oreilly.com/library/view/getting-started-with/9781617296765/OEBPS/Text/05.htm
 
+CNN predictions = .47223 score
+Naive Bayes predictions = .42843 score
 Started by using Naive Bayes - The results are based on feature engineering where here I use tokens as features. I've been playing around with chracters as features and might use that for the final project, along with another model. 
 Another model for the second attempt can possibly be decision tree as it's an example in chapter 5 of the O'Reilly Book, Getting started with NLP
 https://learning.oreilly.com/library/view/getting-started-with/9781617296765/OEBPS/Text/05.htm
@@ -72,26 +78,128 @@ Instance based learning like k-nearest neighbors or LSTM might be a good startin
 
 ## Exploratory data analysis
 
+Problems:
+- Wide variation in lengths of texts used
+- Class imbalance in data
+
+So ML models are SVMs; Naive Bayes Classifiers; Deep averaging layers in a cycle of machine learning that uses the mean of word embeddings within a text; also long short-term memory.
+- for Blogs Instance based learning and random decision forests worked. 
+
+Other possible implementations include 
+Feature Engineering: identify the set of distinguishable characteristics which uniquely describe each author class.
+    - Define the task in terms of classes
+    - Get and preprocess the data
+    - Extract features
+    - Apply ML algo
+    - Evaluate results
+Instance based learning like k-nearest neighbors or LSTM might be a good starting point for the draft leaderboard. Then I might use Naive Bayes Classifiers or some type of graph NN because I want to practice implementing.
+
+## Exploratory data analysis
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#exploratory-data-analysis)_
+
+Started by using Naive Bayes - The results are based on feature engineering where here I use tokens as features. I've been playing around with chracters as features and might use that for the final project, along with another model. 
+Another model for the second attempt can possibly be decision tree as it's an example in chapter 5 of the O'Reilly Book, Getting started with NLP
+https://learning.oreilly.com/library/view/getting-started-with/9781617296765/OEBPS/Text/05.htm
+
+Based on the wikipedia page on author profiling there are various techniques that can be applied to predict information about the author, which in turn can help with identifying an author from text.
+Usual process:
+- Identifying specific features to be extracted from text
+- Building an adopted, standard representation (Bag of Words model) for the target profile
+- Building a classification model using a standard classifier (SVM) for the target profile.
+
 
 ## Exploratory data analysis
 
+Training set labels (Unbalanced):
+0   1245
+1   356
+
+**Naive Bayes**
+Created sentences: 19854 in the dataset
+Split the data into training (17471 sentences) and 12% validation (2383 sentences)
+Got an F1-Score of 0.538 using the validation data
+
+![Most information features] ('most informative features training set.png')
+![Evaluation Metrics] ('evaluation metrics.png')
+
+
+**CNN**
+Vocabulary size after tokenization: 22222
+
+The evaluation metrics for the validation set from the training data are:
+Metrics for validation data
+Accuracy: 0.7103
+Precision: 0.1333
+Recall: 0.0563
+F1-score: 0.0792
+
+
+## Approach
+
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#approach)_
+
+Data Processing:
+I removed stopwords from the data, and segmented the TEXT column into sentences.
+Then I pulled out the features from the data for the Naive Bayes model, and the tokenized the data via word embeddings for the other models.
+
+Model implementation:
+First began with Naive Bayes, Random Forest and BERT. Naive Bayes was the most accurate of all 3 models.
+Then I moved to CNN. This created the most accurate predictions.
 
 ## Results
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
 
+CNN proved to provided the best accuracy .47223, but only by about .05 ponts more than my other top model. The second best was the Naive Bayes Model .42843.
+
+The evaluation metrics for the validation set from the training data are:
+Metrics for validation data
+Accuracy: 0.7102803738317757
+Precision: 0.13333333333333333
+Recall: 0.056338028169014086
+F1-score: 0.07920792079207921
+
 ## Error analysis
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+
+The accuracy and loss from the CNN epochs were actually way higher than Naive Bayes, which I think is a bit interesting when viewing the prediciton output.
+Epoch 1/5
+41/41 ━━━━━━━━━━━━━━━━━━━━ 4s 41ms/step - accuracy: 0.7156 - loss: 0.5877 - val_accuracy: 0.7788 - val_loss: 0.5296
+Epoch 2/5
+41/41 ━━━━━━━━━━━━━━━━━━━━ 2s 36ms/step - accuracy: 0.7710 - loss: 0.5164 - val_accuracy: 0.7788 - val_loss: 0.5263
+Epoch 3/5
+41/41 ━━━━━━━━━━━━━━━━━━━━ 1s 35ms/step - accuracy: 0.7866 - loss: 0.4638 - val_accuracy: 0.7788 - val_loss: 0.5273
+Epoch 4/5
+41/41 ━━━━━━━━━━━━━━━━━━━━ 1s 28ms/step - accuracy: 0.7764 - loss: 0.3682 - val_accuracy: 0.7664 - val_loss: 0.6618
+Epoch 5/5
+41/41 ━━━━━━━━━━━━━━━━━━━━ 1s 34ms/step - accuracy: 0.9852 - loss: 0.1404 - val_accuracy: 0.7103 - val_loss: 0.9938
 
 ## Reproducibility
 
 _See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
 _If you'ved covered this in your code repository's README, you can simply link to that document with a note._
 
+Please see this repository's README: https://github.com/lwdozal/ling-582-fall-2024-class-competition-code-lwdozal
 
 ## Future Improvements
 
 _Describe how you might best improve your approach_
+In the future I will probably include ways to account for the imbalanced data. Maybe synthetic data, SMOTE, or something basic to include in the analysis.
+Another way to deal with imbalanced data is by undersampleing as noted in the course blog page.
+Problems:
+- Wide variation in lengths of texts used
+- Class imbalance in data
+
+So ML models are SVMs; Naive Bayes Classifiers; Deep averaging layers in a cycle of machine learning that uses the mean of word embeddings within a text; also long short-term memory.
+- for Blogs Instance based learning and random decision forests worked. 
+
+Other possible implementations include 
+Feature Engineering: identify the set of distinguishable characteristics which uniquely describe each author class.
+    - Define the task in terms of classes
+    - Get and preprocess the data
+    - Extract features
+    - Apply ML algo
+    - Evaluate results
+Instance based learning like k-nearest neighbors or LSTM might be a good starting point for the draft leaderboard. Then I might use Naive Bayes Classifiers or some type of graph NN because I want to practice implementing.
+
