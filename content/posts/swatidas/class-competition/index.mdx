@@ -1,7 +1,7 @@
 ---
 title: "Authorship Attribution Using Writing Style Analysis"
 slug: "/swatidas/class-competition"
-date: 2024-11-15
+date: 2024-12-08
 author: Swati Das
 description: "This project combines Word2Vec embeddings and n-gram features to analyze text. These features are then input into a Support Vector Machine(SVM) model to predict whether two pieces of text were written by the same author."
 tags:
@@ -22,7 +22,7 @@ tags:
 <tbody>
   <tr>
     <th><b>Leaderboard score</b></th>
-    <td>0.47074</td>
+    <td>0.56822</td>
   </tr>
   <tr>
     <th><b>Leaderboard team name</b></th>
@@ -44,35 +44,80 @@ tags:
 
 - The goal of this project is to determine if two spans of text were written by the same author. Given two text spans, the task is to classify them as either being from the same author(label 1) or from different authors(label 0).
 
+### Discussion of related tasks
+
+- In the paper "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding" by Jacob Devlin and others, BERT is described as a model that revolutionizes how we process language. Unlike traditional models, BERT can understand the context of a sentence by looking at both the words before and after a specific word at the same time. This helps BERT perform better in tasks like answering questions and understanding relationships between words.
+    _BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding by Jacob Devlin Ming-Wei Chang Kenton Lee Kristina Toutanova (https://arxiv.org/pdf/1810.04805)_
+- On the other hand, EDA (Easy Data Augmentation), proposed by Jason Wei and Kai Zou in "EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks", improves text classification by creating new training data. It does this by using simple techniques like replacing words with synonyms, swapping words or adding duplicate entries. This is especially helpful when there is not much data available and can even make the model perform as well as if it had more data.
+    _EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks by Jason Wei & Kai Zou (https://arxiv.org/pdf/1901.11196)_
+
+### Challenges of task
+
+- One challenge I faced in this task was the imbalance in the training data, where label 0 had a lot more samples than label 1. Out of 1601 samples, Class 0 has 1245 samples whereas Class 1 has 356 samples. This imbalance made classification difficult because the model didn't have enough data for Class 1. To address this, I used data augmentation by duplicating samples from the underrepresented class to help balance the dataset.
+- Text data can have extra symbols, numbers or special characters that might confuse the model. To fix this, I used BERT's tokenizer to break down the text into smaller parts and turn it into useful features. I also created a custom preprocessing function to clean the text by removing unwanted characters, normalizing it and breaking it into words while getting rid of common stopwords. This helped make the data cleaner and easier for the model to understand.
+
+### Discusiion of SotA Approach
+
+- I have used below methods for my task:
+1. BERT (Bidirectional Encoder Representations from Transformers): BERT is a powerful model used for understanding text. It reads a sentence from both directions (left to right and right to left), so it can better understand the meaning of words in context. This makes it especially good for tasks like text classification, sentiment analysis and answering questions, where understanding the full meaning of the text is important.
+2. Text Preprocessing: To make the text ready for the model, I cleaned it up using custom steps. I removed unwanted characters, fixed the format of the text, broke it into smaller part and removed stopwords. This helps improve the quality of the data, making it easier for the model to learn.
+3. Data Augmentation: Since the dataset was imbalanced (one class had more data points than the other), I used data augmentation. This technique duplicates examples from the less common class to balance things out. This way, the model gets a fair chance to learn from both classes, making it less likely to favor the majority class.
+4. Stratified K-Fold Cross-Validation: To make sure the model works well, I used stratified K-fold cross-validation. This method splits the data into several parts (folds) while keeping the proportion of classes the same in each fold. It helps in getting a better and more reliable performance evaluation by training and testing the model on different data each time. It also helps prevent the model from overfitting.
+
 ## Exploratory data analysis
 
 - The Training Dataset has 1,601 rows and 3 columns: ID, TEXT and LABEL. The ID column gives each text sample a unique number. The TEXT column contains the actual text we’ll analyze to determine authorship. The LABEL column shows whether the texts have the same author(1) or different authors(0). There are no missing values in this dataset, so each row has values in all three columns. Additionally, the TEXT column is of type object(string), while ID and LABEL columns are of type int64.
+
+- I also noticed that the training dataset is imbalanced, with Class 0 having 1245 samples and Class 1 only 356 samples. Class 0 has 37,231 unique words, while Class 1 has 15,742 unique words. This shows that Class 0 has a wider variety of words, possibly indicating more general language, while Class 1 may use more specific words.
 
 - The test dataset has 899 rows and 2 columns: ID and TEXT. The ID column gives each text sample a unique number, while the TEXT column contains the text samples which will be used to predict if they share the same author. Like the training dataset, this one has no missing values, all rows have data in both columns. The TEXT column is of type object(string) and the ID column is of type int64.
 
 ## Planned Approach
 
-- Text Preprocessing - The texts are cleaned and normalized by tokenizing, removing punctuations and stopwords and lemmatizing. This is applied to both training and test datasets, converting each text entry into a cleaned list of words.
-- Feature Enginnering - Word2Vec is used to create vector embedding from the preprocessed training data, capturing semantic details. The average  of Word2Vec embedding vector is computed for a document based on its tokens. CountVectorizer is applied to generate unigram features, adding frequency information to complement the embeddings. And the Word2Vec embeddings are combined with unigram features, producing a unified feature matrix for training and test data.
-- Model Training - The SVM classifier is trained using the combined features, with the LABEL column serving as the target. This enabled the model to learn to distinguish author labels based on the processed text data.
-- Prediction - The trained SVM model is used to predict the labels for the test dataset. These predictions are saved into a CSV file.
+- Data Preprocessing - The text is cleaned by removing unnecessary characters, numbers and punctuation. Dialogues are replaced with special tags like [DIALOGUE] and [END_DIALOGUE] to keep their structure. Stopwords like "the", "is" and "and" are removed to focus on the important words that carry meaning.
+- Data Augmentation - To solve the issue of class imabalance, the training data is increased by duplicating existing underrepresented samples. This helps balance the number of samples in each class and improves the model's learning ability, making it more robust.
+- BERT Embeddings - Instead of manually extracting features from the text, BERT embeddings are used. These embeddings represent the text in a way that captures its meaning. The [CLS] token represents the entire text, while individual word meanings are captured by averaging the token embeddings. This makes the model understand the context of the text better.
+- Stratified K-Fold Cross-Validation - To ensure the model is tested fairly, Stratified K-Fold Cross-Validation is used. This method splits the data into several parts (or folds) while keeping the same balance of classes in each fold. This helps the model generalize better and avoids overfitting.
+- Linear SVM Classifier - Once the BERT embeddings are obtained, a Linear Support Vector Machine (SVM) is used for classification. SVM is good at handling complex, high-dimensional data like text and helps the model make accurate predictions. Class weights are used to balance the influence of each class, addressing the class imbalance.
+- Final Model Training and Prediction - After cross-validation, the final model is trained using all the data and then makes predictions on the test data. These predictions are saved in a CSV file for evaluation.
 
-- For the final submission, I plan to split the training set into a validation set to evaluate the model’s performance using accuracy and other metrics. This will help me understand how well the model predicts the correct labels.  Additionally, I will focus on improving feature engineering to refine the data and boost the model’s performance. Additionally, I will try advanced machine learning models like BERT as these transformer-based models.
+### Novelty
+
+- Combining BERT with SVM: This approach combines BERT, a powerful tool for understanding text, with SVM, a machine learning model. This combination is effective, especially when working with small or medium-sized datasets.
+- Augmented Data: The approach uses data augmentation to balance the classes, ensuring the model has enough examples from both classes. This helps improve the model's performance, particularly when there is an imbalance in the dataset.
+- Use of Pre-trained Models: By using a pre-trained BERT model and fine-tuning it, the approach saves time and resources. This is an efficient way to achieve high-quality results, making it an effective solution for text classification tasks.
 
 ## Results
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#results)_
+- After running 5-fold cross-validation, the model performed well, with accuracy between 91% and 93% and an average F1 score of 0.92. It did a good job identifying the minority class (class 1) and had strong precision for the majority class (class 0). Fold 3 performed best, with good precision for class 0 and high recall for class 1. Overall, the model balanced precision and recall well, achieving an average accuracy of 92% and a weighted F1 score of 0.92. However, the test score of 0.56822 suggests the model doesn't perform as well on the test data, possibly because the test data is diverse or the model overfitted to the training data.
 
 ## Error analysis
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#error-analysis)_
+- The model performed well, with accuracy between 91% and 93% across all folds, but there were some issues:
+
+1. Class Imbalance: The dataset is imbalanced, with 1245 instances of class 0 and 356 instances of class 1. This led the model to predict the majority class (class 0) more often.
+2. Class 0 (Majority Class) Performance:
+    High Precision: The model showed strong precision for class 0 (0.97 to 1.00), accurately identifying most class 0 instances.
+    Moderate Recall: Recall for class 0 was lower (0.90 to 0.93), meaning the model missed some class 0 instances, especially in Fold 5.
+3. Class 1 (Minority Class) Performance:
+    High Recall: The model had good recall for class 1 (0.91 to 0.99), identifying most of the minority class.
+    Lower Precision: Precision for class 1 was lower (0.73 to 0.79), meaning some class 1 predictions were actually class 0, especially in folds with higher recall for class 1 (e.g., Fold 3).
+4. Folds with Significant Variation:
+    Fold 3: Precision for class 0 was perfect (1.00), but precision for class 1 dropped to 0.75, indicating many false positives. However, recall for class 1 was high (0.99), meaning the model correctly identified most class 1 instances.
+    Fold 5: This fold had the lowest accuracy (90.83%) and the lowest precision for class 1 (0.73), suggesting the model struggled with the minority class due to data issues or noise.
+5. Misclassified Sentence - When looking at the misclassified sentences, it seems that longer and more complex sentences are more likely to be wrongly classified by the model. For example, while evaluating my task in fold 1, the misclassified sentence had 66 tokens and included both dialogue and narrative parts. Long sentences like this, with a mix of conversation and description, can confuse the model because they have a lot of information and multiple ideas, making it harder for the model to focus on the key parts.
 
 ## Reproducibility
 
-_See [the rubric](https://parsertongue.org/courses/snlp-2/assignments/rubrics/class-competition/final/#reproducibility)_
-_If you'ved covered this in your code repository's README, you can simply link to that document with a note._
-
+- The code has been uploaded to the code repository. Please refer to the README.md(https://github.com/uazhlt-ms-program/ling-582-fall-2024-class-competition-code-Swati09Das/blob/main/README.md) file for instructions on how to reproduce the results.
 
 ## Future Improvements
 
-_Describe how you might best improve your approach_
+1. Model Fine-Tuning with More Data: The model could perform better if it is trained on a larger and more varied dataset. A bigger dataset can help the model make better predictions by learning from a wider range of examples.
+
+2. Ensemble Methods: Using a combination of multiple models might improve the results. For example, combining BERT with other models like Random Forest or XGBoost can help balance out the weaknesses of individual models and lead to better overall performance.
+
+3. Contextual Features: Besides using BERT embeddings, adding other features like writing style, sentence length, punctuation patterns and how often certain words are used could help the model better understand the author's unique style and improve the accuracy of predictions.
+
+4. Handling Imbalanced Classes More Effectively: To deal with the problem of having more data from one class than the other, other techniques like SMOTE (Synthetic Minority Over-sampling Technique) or adjusting the class weights during training could help improve the model’s ability to predict the minority class more accurately.
+
