@@ -1,10 +1,14 @@
 certifi==2024.12.14
 charset-normalizer==3.4.1
+et_xmlfile==2.0.0
 filelock==3.16.1
 fsspec==2024.12.0
 huggingface-hub==0.27.0
 idna==3.10
+Jinja2==3.1.5
+MarkupSafe==3.0.2
 numpy==2.2.1
+openpyxl==3.1.5
 packaging==24.2
 pandas==2.2.3
 python-dateutil==2.9.0.post0
@@ -16,3 +20,4 @@ tqdm==4.67.1
 typing_extensions==4.12.2
 tzdata==2024.2
 urllib3==2.3.0
+XlsxWriter==3.2.0
