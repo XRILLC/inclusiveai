@@ -19,11 +19,12 @@ def create_spreadsheet(datasets, init=False):
 	data = []
 
 	for dataset in datasets:
-		langs = [lang[9:] for lang in dataset.tags if "language:" in lang]
+		if 'modality:text' in dataset.tags and 'language:code' not in dataset.tags:
+			langs = [lang[9:] for lang in dataset.tags if "language:" in lang]
 
-		data.append([dataset.id, dataset.created_at.date(), dataset.last_modified.date(),
-						f"https://huggingface.co/datasets/{dataset.id}", 
-						dataset.downloads, dataset.likes, len(langs), langs])
+			data.append([dataset.id, dataset.created_at.date(), dataset.last_modified.date(),
+							f"https://huggingface.co/datasets/{dataset.id}", 
+							dataset.downloads, dataset.likes, len(langs), langs])
 	df = pd.DataFrame(data, columns=COLS)
 
 	if init:
@@ -108,7 +109,7 @@ if __name__ == "__main__":
 
 	api = HfApi()
 	data = api.list_datasets(filter='task_categories:translation')
-	mt_data = [dataset for dataset in data]
+	mt_data = [dataset for dataset in data] #update the modalities!
 
 	if args.scrape == 'initialize':
 		df = create_spreadsheet(mt_data, init=True)
