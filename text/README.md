@@ -22,3 +22,8 @@ Refresh the data:
 ```
 python get_data.py refresh
 ```
+
+Retrieve the simple language pairs:
+```
+python get_data.py lang-pairs
+```
