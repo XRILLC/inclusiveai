@@ -1,0 +1,908 @@
+Author/Dataset,Date of Creation,Last Modified,Dataset Type,Hugging Face Link,Downloads Last Month,# Likes,# Languages,Supported Languages
+0x22almostEvil/tatoeba-mt-llama-only,2023-05-08,2023-05-10,Multilingual Parallel,https://huggingface.co/datasets/0x22almostEvil/tatoeba-mt-llama-only,39,0,20,"['sv', 'bg', 'en', 'es', 'hu', 'uk', 'pl', 'ru', 'da', 'ca', 'ro', 'sr', 'fr', 'hr', 'cs', 'pt', 'de', 'it', 'nl', 'sl']"
+0x22almostEvil/tatoeba-mt-qna-oa,2023-05-07,2023-05-12,Unsupported,https://huggingface.co/datasets/0x22almostEvil/tatoeba-mt-qna-oa,35,2,20,"['sv', 'bg', 'en', 'es', 'hu', 'uk', 'pl', 'ru', 'da', 'ca', 'ro', 'sr', 'fr', 'hr', 'cs', 'pt', 'de', 'it', 'nl', 'sl']"
+1-800-SHARED-TASKS/english-to-telugu-mt,2024-09-26,2024-09-26,Parallel,https://huggingface.co/datasets/1-800-SHARED-TASKS/english-to-telugu-mt,45,0,2,"['en', 'te']"
+1TuanPham/T-VisEx26-dataset-uncensored,2024-05-29,2024-05-29,Unsupported,https://huggingface.co/datasets/1TuanPham/T-VisEx26-dataset-uncensored,32,0,2,"['en', 'vi']"
+1TuanPham/Vietnamese-magpie-ultra-v0.1,2024-08-13,2024-09-21,Unsupported,https://huggingface.co/datasets/1TuanPham/Vietnamese-magpie-ultra-v0.1,39,1,2,"['en', 'vi']"
+2A2I/Arabic_Aya,2024-02-13,2024-03-15,Multilingual Parallel,https://huggingface.co/datasets/2A2I/Arabic_Aya,559,13,1,['ar']
+AAhad/countries-names-in-thai,2024-05-15,2024-05-15,Parallel,https://huggingface.co/datasets/AAhad/countries-names-in-thai,41,0,2,"['en', 'th']"
+AAhad/thailand-cities,2024-05-15,2024-05-15,Parallel,https://huggingface.co/datasets/AAhad/thailand-cities,42,0,2,"['en', 'th']"
+AAhad/thailand-provinces,2024-05-15,2024-05-15,Parallel,https://huggingface.co/datasets/AAhad/thailand-provinces,35,0,2,"['en', 'th']"
+AWeirdDev/confucius,2024-04-12,2024-04-12,Unsupported,https://huggingface.co/datasets/AWeirdDev/confucius,42,0,1,['zh']
+AbderrahmanSkiredj1/ahadith_translation_34k,2024-04-12,2024-07-15,Unsupported,https://huggingface.co/datasets/AbderrahmanSkiredj1/ahadith_translation_34k,37,1,1,['ar']
+AbderrahmanSkiredj1/arabml_darija_english_parallel_dataset,2023-03-19,2024-07-15,Parallel,https://huggingface.co/datasets/AbderrahmanSkiredj1/arabml_darija_english_parallel_dataset,116,1,2,"['en', 'ary']"
+AbderrahmanSkiredj1/data_translation_quran_yusufali_10k,2024-04-12,2024-07-15,Unsupported,https://huggingface.co/datasets/AbderrahmanSkiredj1/data_translation_quran_yusufali_10k,31,0,2,"['en', 'ar']"
+AbderrahmanSkiredj1/data_un_parallel_ar_fr_40k,2024-04-12,2025-01-03,Unsupported,https://huggingface.co/datasets/AbderrahmanSkiredj1/data_un_parallel_ar_fr_40k,37,1,2,"['ar', 'fr']"
+AbderrahmanSkiredj1/hadiths_ar_fr_extracted_from_hadeethenc_dot_com_2k5,2024-04-16,2025-01-03,Parallel,https://huggingface.co/datasets/AbderrahmanSkiredj1/hadiths_ar_fr_extracted_from_hadeethenc_dot_com_2k5,34,0,2,"['ar', 'fr']"
+Abdulmohsena/Classic-Arabic-English-Language-Pairs,2024-08-15,2024-11-04,Parallel,https://huggingface.co/datasets/Abdulmohsena/Classic-Arabic-English-Language-Pairs,46,0,2,"['en', 'ar']"
+Achitha/simple_tamil,2023-01-13,2023-01-13,Unsupported,https://huggingface.co/datasets/Achitha/simple_tamil,46,0,2,"['en', 'ta']"
+Achitha/tamil_eng_data,2023-02-12,2023-02-12,Unsupported,https://huggingface.co/datasets/Achitha/tamil_eng_data,54,1,2,"['en', 'ta']"
+AfriMM/AfriMMD,2024-09-13,2024-09-27,Multilingual Parallel,https://huggingface.co/datasets/AfriMM/AfriMMD,69,0,0,[]
+Agisight/tyvan-russian-parallel-50k,2023-10-17,2023-10-17,Parallel,https://huggingface.co/datasets/Agisight/tyvan-russian-parallel-50k,47,2,2,"['tyv', 'ru']"
+AiMijie/EC-Guide,2024-07-30,2024-08-12,Unsupported,https://huggingface.co/datasets/AiMijie/EC-Guide,70,1,7,"['zh', 'fr', 'en', 'ja', 'es', 'de', 'it']"
+AigizK/bashkir-russian-parallel-corpora,2023-02-19,2024-02-26,Parallel,https://huggingface.co/datasets/AigizK/bashkir-russian-parallel-corpora,44,9,2,"['ba', 'ru']"
+AigizK/mari-russian-parallel-corpora,2023-02-23,2024-05-31,Parallel,https://huggingface.co/datasets/AigizK/mari-russian-parallel-corpora,79,9,2,"['mhr', 'ru']"
+AlienKevin/yue-cmn-eng,2024-03-12,2024-03-12,Parallel,https://huggingface.co/datasets/AlienKevin/yue-cmn-eng,34,2,3,"['yue', 'cmn', 'eng']"
+Amani27/massive_translation_dataset,2023-07-20,2023-07-25,Multilingual Parallel,https://huggingface.co/datasets/Amani27/massive_translation_dataset,80,8,10,"['fr', 'en', 'ar', 'nl', 'es', 'ja', 'pt', 'hi', 'de', 'it']"
+AmineNumeric/zinditranslate,2024-06-27,2024-06-27,Parallel,https://huggingface.co/datasets/AmineNumeric/zinditranslate,33,0,2,"['bm', 'fr']"
+AnasAber/DoDA_sentences_darija_english,2024-09-06,2024-09-06,Parallel,https://huggingface.co/datasets/AnasAber/DoDA_sentences_darija_english,113,1,2,"['en', 'ar']"
+AndreasThinks/welsh-translation-instruction,2024-07-20,2024-07-21,Unsupported,https://huggingface.co/datasets/AndreasThinks/welsh-translation-instruction,31,0,2,"['en', 'cy']"
+Armaan-Arif/number,2024-06-26,2024-06-26,Parallel,https://huggingface.co/datasets/Armaan-Arif/number,33,0,1,['en']
+Aryan2406/english-marathi,2024-03-21,2024-03-21,Parallel,https://huggingface.co/datasets/Aryan2406/english-marathi,32,0,2,"['en', 'mr']"
+Ayaka/MoeDict-cmn-hak-10k,2023-06-13,2023-06-13,Parallel,https://huggingface.co/datasets/Ayaka/MoeDict-cmn-hak-10k,34,1,3,"['hak', 'cmn', 'zh']"
+BatsResearch/planetarium,2024-06-12,2024-07-05,Unsupported,https://huggingface.co/datasets/BatsResearch/planetarium,36,8,1,['en']
+Benzinga/Financial_News_Translation_Spanish_Finetune,2024-01-06,2024-02-06,Unsupported,https://huggingface.co/datasets/Benzinga/Financial_News_Translation_Spanish_Finetune,277,2,0,[]
+BillBao/Yue-Benchmark,2024-08-31,2024-08-31,Unsupported,https://huggingface.co/datasets/BillBao/Yue-Benchmark,99,5,2,"['yue', 'multilingual']"
+BlackKakapo/multitask-ro,2023-04-16,2023-09-21,Unsupported,https://huggingface.co/datasets/BlackKakapo/multitask-ro,66,5,1,['ro']
+Bohanlu/TAIDE-14-tasks-Hokkien,2024-08-01,2024-08-08,Unsupported,https://huggingface.co/datasets/Bohanlu/TAIDE-14-tasks-Hokkien,37,1,0,[]
+Bohanlu/iCorpus-100,2024-05-10,2024-08-13,Multilingual Parallel,https://huggingface.co/datasets/Bohanlu/iCorpus-100,36,1,0,[]
+BounharAbdelaziz/English-to-Moroccan-Darija,2023-10-07,2024-04-05,Parallel,https://huggingface.co/datasets/BounharAbdelaziz/English-to-Moroccan-Darija,123,10,1,['ar']
+Bretagne/Apertium_dictionary_br_fr,2024-10-31,2024-10-31,Parallel,https://huggingface.co/datasets/Bretagne/Apertium_dictionary_br_fr,30,0,2,"['fr', 'br']"
+Bretagne/Arbres_inventaires_translation,2024-10-30,2024-10-30,Multilingual Parallel,https://huggingface.co/datasets/Bretagne/Arbres_inventaires_translation,34,0,3,"['en', 'fr', 'br']"
+Bretagne/Autogramm_Breton_translation,2024-10-29,2024-10-30,Parallel,https://huggingface.co/datasets/Bretagne/Autogramm_Breton_translation,30,0,2,"['fr', 'br']"
+Bretagne/GNOME_br_fr,2024-10-29,2024-10-30,Parallel,https://huggingface.co/datasets/Bretagne/GNOME_br_fr,34,0,2,"['fr', 'br']"
+Bretagne/KDE_br_fr,2024-10-29,2024-10-30,Parallel,https://huggingface.co/datasets/Bretagne/KDE_br_fr,34,0,2,"['fr', 'br']"
+Bretagne/Korpus-br-fr,2022-09-17,2024-10-16,Parallel,https://huggingface.co/datasets/Bretagne/Korpus-br-fr,37,0,2,"['fr', 'br']"
+Bretagne/MultiCCAligned_br_fr,2024-10-29,2024-10-30,Parallel,https://huggingface.co/datasets/Bretagne/MultiCCAligned_br_fr,34,0,2,"['fr', 'br']"
+Bretagne/OpenSubtitles_br_fr,2024-10-29,2024-10-30,Parallel,https://huggingface.co/datasets/Bretagne/OpenSubtitles_br_fr,50,0,2,"['fr', 'br']"
+Bretagne/QED_br_fr,2024-10-29,2024-10-30,Parallel,https://huggingface.co/datasets/Bretagne/QED_br_fr,29,0,2,"['fr', 'br']"
+Bretagne/Tatoeba_br_fr,2024-10-29,2024-10-30,Parallel,https://huggingface.co/datasets/Bretagne/Tatoeba_br_fr,32,0,2,"['fr', 'br']"
+Bretagne/UD_Breton-KEB_translation,2024-10-28,2024-10-30,Parallel,https://huggingface.co/datasets/Bretagne/UD_Breton-KEB_translation,30,0,2,"['fr', 'br']"
+Bretagne/Ubuntu_br_fr,2024-10-29,2024-10-30,,https://huggingface.co/datasets/Bretagne/Ubuntu_br_fr,32,0,2,"['fr', 'br']"
+Bretagne/WikiMatrix_br_fr,2024-10-29,2024-10-30,,https://huggingface.co/datasets/Bretagne/WikiMatrix_br_fr,31,0,2,"['fr', 'br']"
+Bretagne/XLEnt_br_fr,2024-10-29,2024-10-30,,https://huggingface.co/datasets/Bretagne/XLEnt_br_fr,33,0,2,"['fr', 'br']"
+Bretagne/br_fr_en_translation,2024-10-23,2024-10-24,,https://huggingface.co/datasets/Bretagne/br_fr_en_translation,32,0,3,"['en', 'fr', 'br']"
+Bretagne/cronfa-cy-br-fr,2024-11-05,2024-11-05,,https://huggingface.co/datasets/Bretagne/cronfa-cy-br-fr,32,0,3,"['cy', 'fr', 'br']"
+Bretagne/cvqa_br_fr_en,2024-10-23,2024-10-24,,https://huggingface.co/datasets/Bretagne/cvqa_br_fr_en,31,0,3,"['en', 'fr', 'br']"
+Bretagne/gatitos_br_fr_en,2024-10-28,2024-10-28,,https://huggingface.co/datasets/Bretagne/gatitos_br_fr_en,30,0,3,"['en', 'fr', 'br']"
+Bretagne/ofis_publik_br-fr,2024-10-16,2024-10-16,,https://huggingface.co/datasets/Bretagne/ofis_publik_br-fr,75,0,2,"['fr', 'br']"
+Bretagne/opus-100_br_en,2024-10-29,2024-10-30,,https://huggingface.co/datasets/Bretagne/opus-100_br_en,30,0,2,"['en', 'br']"
+Bretagne/pontoon_br_en,2024-10-29,2024-10-30,,https://huggingface.co/datasets/Bretagne/pontoon_br_en,33,0,2,"['en', 'br']"
+Bretagne/wikimedia_br_fr,2024-10-29,2024-10-30,,https://huggingface.co/datasets/Bretagne/wikimedia_br_fr,35,0,2,"['fr', 'br']"
+CLEAR-Global/Gamayun-kits,2023-10-26,2023-10-26,,https://huggingface.co/datasets/CLEAR-Global/Gamayun-kits,34,1,10,"['ln', 'fr', 'en', 'sw', 'ti', 'rhg', 'nnd', 'kr', 'swc', 'ha']"
+CohereForAI/aya_collection,2024-01-31,2024-06-28,,https://huggingface.co/datasets/CohereForAI/aya_collection,17717,217,115,"['sna', 'ibo', 'ron', 'spa', 'wol', 'kat', 'swa', 'mlg', 'deu', 'ell', 'taq', 'hat', 'hrv', 'ben', 'man', 'rus', 'pus', 'tel', 'nor', 'ceb', 'pol', 'tha', 'nya', 'pes', 'jpn', 'bbc', 'msa', 'ita', 'slk', 'urd', 'eus', 'eng', 'aze', 'guj', 'tgk', 'bul', 'fra', 'fon', 'mya', 'zul', 'amh', 'ukr', 'afr', 'bem', 'isl', 'kas', 'mal', 'cat', 'snd', 'nep', 'vie', 'cym', 'hau', 'ltz', 'mri', 'kur', 'swe', 'kan', 'kau', 'sin', 'gla', 'hin', 'nij', 'epo', 'por', 'sqi', 'mar', 'tur', 'lit', 'nso', 'ind', 'srp', 'mlt', 'kir', 'bjn', 'ces', 'ace', 'smo', 'slv', 'hye', 'est', 'mon', 'uzb', 'sot', 'pan', 'lij', 'ara', 'gle', 'kaz', 'tam', 'khm', 'bel', 'som', 'zho', 'dan', 'kor', 'glg', 'lao', 'ban', 'twi', 'lav', 'min', 'jav', 'yor', 'nld', 'hun', 'fil', 'yid', 'kin', 'mad', 'xho', 'heb', 'sun', 'fin', 'mkd']"
+Coldog2333/JMedBench,2024-08-17,2024-12-23,,https://huggingface.co/datasets/Coldog2333/JMedBench,1179,4,1,['ja']
+ConseggioLigure/lijnews-instruct-ita-lij,2023-12-14,2024-01-26,,https://huggingface.co/datasets/ConseggioLigure/lijnews-instruct-ita-lij,33,1,0,[]
+ConseggioLigure/lijnews-instruct-lij-ita,2023-12-14,2024-01-26,,https://huggingface.co/datasets/ConseggioLigure/lijnews-instruct-lij-ita,30,0,0,[]
+ConseggioLigure/seed-instruct-eng-lij,2023-12-14,2024-01-26,,https://huggingface.co/datasets/ConseggioLigure/seed-instruct-eng-lij,30,0,0,[]
+ConseggioLigure/seed-instruct-lij-eng,2023-12-14,2024-01-26,,https://huggingface.co/datasets/ConseggioLigure/seed-instruct-lij-eng,36,0,0,[]
+DEEPAK70681/CryptoSendIntentv2,2024-08-29,2024-12-18,,https://huggingface.co/datasets/DEEPAK70681/CryptoSendIntentv2,40,0,1,['en']
+DEEPAK70681/CryptoSendintent,2024-08-29,2024-08-29,,https://huggingface.co/datasets/DEEPAK70681/CryptoSendintent,35,0,1,['en']
+Daemontatox/translation2,2025-01-02,2025-01-04,,https://huggingface.co/datasets/Daemontatox/translation2,9,0,2,"['en', 'ar']"
+Dauren-Nur/kaz_eng_parallel,2024-02-22,2024-03-14,,https://huggingface.co/datasets/Dauren-Nur/kaz_eng_parallel,37,4,2,"['en', 'kk']"
+Dauren-Nur/kaz_rus_parallel_corpora_KAZNU,2024-03-14,2024-03-14,,https://huggingface.co/datasets/Dauren-Nur/kaz_rus_parallel_corpora_KAZNU,36,3,2,"['kk', 'ru']"
+Dddixyy/latin-greek-hebrew-english-dataset,2024-12-02,2024-12-02,,https://huggingface.co/datasets/Dddixyy/latin-greek-hebrew-english-dataset,59,0,4,"['en', 'he', 'el', 'la']"
+Dddixyy/latin_italian_parallel,2024-11-29,2024-12-02,,https://huggingface.co/datasets/Dddixyy/latin_italian_parallel,156,0,2,"['it', 'la']"
+Dddixyy/latino_italiano_traduzioni_DIRETTE,2024-12-01,2024-12-01,,https://huggingface.co/datasets/Dddixyy/latino_italiano_traduzioni_DIRETTE,63,0,2,"['it', 'la']"
+Dddixyy/translation_latin_to_italian,2024-11-28,2025-01-05,,https://huggingface.co/datasets/Dddixyy/translation_latin_to_italian,32,1,2,"['it', 'la']"
+DebasishDhal99/German_Names_Central_And_Eastern_Europe,2023-12-24,2024-01-03,,https://huggingface.co/datasets/DebasishDhal99/German_Names_Central_And_Eastern_Europe,63,0,8,"['pl', 'lv', 'sk', 'lt', 'cs', 'sl', 'de', 'et']"
+DebasishDhal99/IAST-corpus,2024-12-25,2024-12-29,,https://huggingface.co/datasets/DebasishDhal99/IAST-corpus,21,0,9,"['ta', 'kn', 'ml', 'gu', 'pa', 'te', 'bn', 'or', 'hi']"
+DebasishDhal99/german-czech-paired-placenames,2023-09-17,2023-12-17,,https://huggingface.co/datasets/DebasishDhal99/german-czech-paired-placenames,50,0,2,"['cs', 'de']"
+DebasishDhal99/german-polish-paired-placenames,2023-09-26,2024-02-26,,https://huggingface.co/datasets/DebasishDhal99/german-polish-paired-placenames,31,0,2,"['pl', 'de']"
+DebasishDhal99/hindi-eval-dataset,2024-03-04,2024-03-04,,https://huggingface.co/datasets/DebasishDhal99/hindi-eval-dataset,32,0,1,['hi']
+Deepakvictor/tan-tam,2023-08-15,2023-08-15,,https://huggingface.co/datasets/Deepakvictor/tan-tam,34,0,2,"['en', 'ta']"
+Deepakvictor/tanglish-tamil,2023-08-15,2023-08-15,,https://huggingface.co/datasets/Deepakvictor/tanglish-tamil,34,0,2,"['en', 'ta']"
+Deysi/spanish-chinese,2023-03-11,2023-03-11,,https://huggingface.co/datasets/Deysi/spanish-chinese,69,10,2,"['es', 'zh']"
+DigitalUmuganda/NMT_Rwandan-Gazette_parallel_data_en_kin,2024-01-18,2024-01-26,,https://huggingface.co/datasets/DigitalUmuganda/NMT_Rwandan-Gazette_parallel_data_en_kin,30,2,2,"['en', 'rw']"
+DrAliGomaa/ar-eg-dataset,2024-09-05,2024-12-07,,https://huggingface.co/datasets/DrAliGomaa/ar-eg-dataset,37,0,1,['ar']
+EgesaWO/Eng2sheng,2024-09-08,2024-09-08,,https://huggingface.co/datasets/EgesaWO/Eng2sheng,31,0,2,"['en', 'sw']"
+EgesaWO/Sheng_sml,2024-08-18,2024-08-18,,https://huggingface.co/datasets/EgesaWO/Sheng_sml,31,0,2,"['en', 'sw']"
+Ehtisham1328/urdu-idioms-with-english-translation,2024-02-15,2024-02-16,,https://huggingface.co/datasets/Ehtisham1328/urdu-idioms-with-english-translation,201,2,2,"['ur', 'en']"
+Elsoudy/test,2024-05-14,2024-05-15,,https://huggingface.co/datasets/Elsoudy/test,34,0,0,[]
+EmnaBou/DataTranslationDT,2022-12-05,2022-12-12,,https://huggingface.co/datasets/EmnaBou/DataTranslationDT,31,0,1,['ar']
+Exploration-Lab/IL-TUR,2024-06-18,2024-09-08,,https://huggingface.co/datasets/Exploration-Lab/IL-TUR,97,6,10,"['ta', 'en', 'ml', 'gu', 'pa', 'te', 'mr', 'bn', 'or', 'hi']"
+Exploration-Lab/MM-TelecoBench,2024-12-02,2024-12-31,,https://huggingface.co/datasets/Exploration-Lab/MM-TelecoBench,89,1,1,['en']
+Exploration-Lab/iSign,2024-07-03,2024-08-31,,https://huggingface.co/datasets/Exploration-Lab/iSign,72,6,0,[]
+Exqrch/IndonesianNMT,2024-01-22,2024-10-16,,https://huggingface.co/datasets/Exqrch/IndonesianNMT,52,0,5,"['ban', 'id', 'min', 'su', 'jv']"
+FBK-MT/GeNTE,2024-04-30,2024-12-20,,https://huggingface.co/datasets/FBK-MT/GeNTE,118,13,2,"['en', 'it']"
+FBK-MT/MAGNETbenchmark4CALAMITA24,2024-09-03,2024-10-29,,https://huggingface.co/datasets/FBK-MT/MAGNETbenchmark4CALAMITA24,34,0,2,"['en', 'it']"
+FBK-MT/MAGNETprivateBenchmark4CALAMITA24,2024-09-10,2024-10-29,,https://huggingface.co/datasets/FBK-MT/MAGNETprivateBenchmark4CALAMITA24,45,0,2,"['en', 'it']"
+FBK-MT/Neo-GATE,2024-04-30,2024-10-28,,https://huggingface.co/datasets/FBK-MT/Neo-GATE,154,11,2,"['en', 'it']"
+FBK-MT/gender-bias-PE,2024-09-18,2024-11-09,,https://huggingface.co/datasets/FBK-MT/gender-bias-PE,47,3,4,"['en', 'es', 'de', 'it']"
+FrameNetBrasil/FM30K,2024-05-28,2024-12-17,,https://huggingface.co/datasets/FrameNetBrasil/FM30K,38,5,2,"['en', 'pt']"
+FrancophonIA/Bitextes_wikipedia,2024-10-18,2024-10-18,,https://huggingface.co/datasets/FrancophonIA/Bitextes_wikipedia,46,0,2,"['en', 'fr']"
+FrancophonIA/English-French,2024-10-11,2024-10-11,,https://huggingface.co/datasets/FrancophonIA/English-French,36,0,2,"['en', 'fr']"
+FrancophonIA/FFR,2024-10-02,2024-10-11,,https://huggingface.co/datasets/FrancophonIA/FFR,30,0,2,"['fon', 'fr']"
+FrancophonIA/Fon_French_Daily_Dialogues_Parallel_Data,2024-12-28,2024-12-28,,https://huggingface.co/datasets/FrancophonIA/Fon_French_Daily_Dialogues_Parallel_Data,10,0,2,"['fon', 'fr']"
+FrancophonIA/Hearthstone,2024-10-07,2024-10-11,,https://huggingface.co/datasets/FrancophonIA/Hearthstone,34,0,12,"['pl', 'fr', 'ru', 'en', 'ko', 'th', 'zh', 'es', 'ja', 'pt', 'de', 'it']"
+FrancophonIA/Kabyle-French-pairs,2024-10-07,2024-10-11,,https://huggingface.co/datasets/FrancophonIA/Kabyle-French-pairs,33,0,2,"['kab', 'fr']"
+FrancophonIA/OG2021,2024-11-29,2024-11-29,,https://huggingface.co/datasets/FrancophonIA/OG2021,30,0,9,"['fr', 'ru', 'en', 'ar', 'zh', 'sl', 'es', 'pt', 'de']"
+FrancophonIA/RELX,2024-10-02,2024-10-11,,https://huggingface.co/datasets/FrancophonIA/RELX,45,0,5,"['fr', 'en', 'es', 'tr', 'de']"
+FrancophonIA/TED_talks,2024-10-11,2024-10-11,,https://huggingface.co/datasets/FrancophonIA/TED_talks,34,0,11,"['fr', 'ru', 'en', 'ko', 'zh', 'es', 'ja', 'tr', 'he', 'pt', 'it']"
+FrancophonIA/Tiranige_lexicon,2024-12-29,2024-12-29,,https://huggingface.co/datasets/FrancophonIA/Tiranige_lexicon,10,0,3,"['en', 'dte', 'fr']"
+FrancophonIA/Vikidia-EnFr,2024-10-02,2024-10-13,,https://huggingface.co/datasets/FrancophonIA/Vikidia-EnFr,135,0,2,"['en', 'fr']"
+FrancophonIA/bambara-french,2024-10-11,2024-10-11,,https://huggingface.co/datasets/FrancophonIA/bambara-french,31,0,2,"['bm', 'fr']"
+FrancophonIA/english-to-french,2024-10-11,2024-10-11,,https://huggingface.co/datasets/FrancophonIA/english-to-french,33,0,2,"['en', 'fr']"
+FrancophonIA/english_french,2024-10-11,2024-10-11,,https://huggingface.co/datasets/FrancophonIA/english_french,34,0,2,"['en', 'fr']"
+FrancophonIA/french-to-english,2024-10-11,2024-10-11,,https://huggingface.co/datasets/FrancophonIA/french-to-english,48,1,2,"['en', 'fr']"
+GaborMadarasz/ocr_silver,2024-01-13,2024-01-14,,https://huggingface.co/datasets/GaborMadarasz/ocr_silver,54,0,1,['hu']
+Gokulm/astro-final,2025-01-02,2025-01-02,,https://huggingface.co/datasets/Gokulm/astro-final,13,0,5,"['ta', 'en', 'ml', 'te', 'hi']"
+Gopal1853/trainingandtest,2024-03-18,2024-03-18,,https://huggingface.co/datasets/Gopal1853/trainingandtest,35,0,2,"['en', 'ru']"
+Govardhan-06/flores_eng_mal,2024-07-04,2024-07-04,,https://huggingface.co/datasets/Govardhan-06/flores_eng_mal,31,0,2,"['en', 'ml']"
+GroNLP/divemt,2022-05-23,2023-02-10,,https://huggingface.co/datasets/GroNLP/divemt,120,2,7,"['en', 'nl', 'vi', 'ar', 'tr', 'uk', 'it']"
+HBorea/mydataset,2024-06-05,2024-11-06,,https://huggingface.co/datasets/HBorea/mydataset,42,1,0,[]
+HKAllen/cantonese-chinese-parallel-corpus,2024-12-12,2024-12-12,,https://huggingface.co/datasets/HKAllen/cantonese-chinese-parallel-corpus,27,0,1,['zh']
+HaiderSultanArc/MT-Urdu-English,2023-11-07,2023-11-07,,https://huggingface.co/datasets/HaiderSultanArc/MT-Urdu-English,67,2,2,"['en', 'ur']"
+Harcuracy/my_dataset_yo_asr,2024-12-12,2024-12-12,,https://huggingface.co/datasets/Harcuracy/my_dataset_yo_asr,74,0,1,['yo']
+HausaNLP/HausaVG,2023-06-16,2023-06-16,,https://huggingface.co/datasets/HausaNLP/HausaVG,38,4,1,['ha']
+Helsinki-NLP/bianet,2022-03-02,2024-02-23,,https://huggingface.co/datasets/Helsinki-NLP/bianet,86,1,3,"['en', 'tr', 'ku']"
+Helsinki-NLP/eitb_parcc,2022-03-02,2024-02-23,,https://huggingface.co/datasets/Helsinki-NLP/eitb_parcc,67,1,2,"['es', 'eu']"
+Helsinki-NLP/euconst,2022-03-02,2024-02-27,,https://huggingface.co/datasets/Helsinki-NLP/euconst,5652,8,21,"['sv', 'el', 'en', 'es', 'hu', 'pl', 'lv', 'sk', 'da', 'fi', 'mt', 'ga', 'fr', 'cs', 'pt', 'de', 'it', 'nl', 'lt', 'sl', 'et']"
+Helsinki-NLP/europarl,2022-03-02,2024-02-27,,https://huggingface.co/datasets/Helsinki-NLP/europarl,2233,22,21,"['sv', 'bg', 'el', 'en', 'es', 'hu', 'pl', 'lv', 'sk', 'da', 'fi', 'ro', 'fr', 'cs', 'pt', 'de', 'it', 'nl', 'lt', 'sl', 'et']"
+Helsinki-NLP/multiun,2022-03-02,2024-02-27,,https://huggingface.co/datasets/Helsinki-NLP/multiun,1145,9,7,"['fr', 'ru', 'en', 'ar', 'zh', 'es', 'de']"
+Helsinki-NLP/news_commentary,2022-03-02,2024-02-29,,https://huggingface.co/datasets/Helsinki-NLP/news_commentary,4830,31,12,"['fr', 'ru', 'en', 'ar', 'nl', 'zh', 'cs', 'es', 'ja', 'pt', 'de', 'it']"
+Helsinki-NLP/opus-100,2022-03-02,2024-02-28,,https://huggingface.co/datasets/Helsinki-NLP/opus-100,13021,166,100,"['si', 'el', 'pa', 'ms', 'te', 'an', 'uk', 'gd', 'pl', 'oc', 'ru', 'mk', 'id', 'fi', 'ca', 'ig', 'fr', 'th', 'li', 'zh', 'nn', 'ug', 'pt', 'de', 'it', 'tt', 'kk', 'uz', 'no', 'he', 'sv', 'km', 'es', 'eu', 'hu', 'bs', 'hy', 'am', 'da', 'ne', 'mt', 'ro', 'br', 'se', 'my', 'hr', 'ha', 'nb', 'mr', 'ku', 'as', 'fa', 'bg', 'ar', 'mg', 'gu', 'ur', 'lv', 'ml', 'af', 'sk', 'ja', 'zu', 'rw', 'wa', 'yo', 'bn', 'sh', 'ky', 'ka', 'nl', 'lt', 'sq', 'tr', 'or', 'et', 'ta', 'kn', 'yi', 'en', 'tg', 'is', 'vi', 'xh', 'dz', 'az', 'ps', 'ga', 'fy', 'sr', 'ko', 'cs', 'be', 'hi', 'gl', 'tk', 'eo', 'sl', 'cy', 'mn']"
+Helsinki-NLP/opus_books,2022-03-02,2024-03-29,,https://huggingface.co/datasets/Helsinki-NLP/opus_books,15549,58,16,"['sv', 'pl', 'fr', 'el', 'en', 'ca', 'nl', 'no', 'ru', 'eo', 'es', 'hu', 'fi', 'pt', 'de', 'it']"
+Helsinki-NLP/opus_dgt,2022-03-02,2024-02-26,,https://huggingface.co/datasets/Helsinki-NLP/opus_dgt,113,1,25,"['sv', 'bg', 'el', 'en', 'es', 'hu', 'pl', 'lv', 'sk', 'da', 'fi', 'mt', 'ga', 'ro', 'fr', 'hr', 'cs', 'sh', 'pt', 'de', 'it', 'nl', 'lt', 'sl', 'et']"
+Helsinki-NLP/opus_dogc,2022-03-02,2024-02-14,,https://huggingface.co/datasets/Helsinki-NLP/opus_dogc,52,0,2,"['es', 'ca']"
+Helsinki-NLP/opus_elhuyar,2022-03-02,2024-02-14,,https://huggingface.co/datasets/Helsinki-NLP/opus_elhuyar,48,1,2,"['es', 'eu']"
+Helsinki-NLP/opus_finlex,2022-03-02,2024-02-15,,https://huggingface.co/datasets/Helsinki-NLP/opus_finlex,59,2,2,"['sv', 'fi']"
+Helsinki-NLP/opus_fiskmo,2022-03-02,2024-02-22,,https://huggingface.co/datasets/Helsinki-NLP/opus_fiskmo,59,0,2,"['sv', 'fi']"
+Helsinki-NLP/opus_gnome,2022-03-02,2024-02-22,,https://huggingface.co/datasets/Helsinki-NLP/opus_gnome,100,1,137,"['lo', 'bo', 'si', 'el', 'tl', 'pa', 'ms', 'te', 'quz', 'an', 'uk', 'gd', 'ts', 'pl', 'oc', 'ru', 'mk', 'id', 'fi', 'ca', 'ig', 'fr', 'jbo', 'li', 'th', 'nn', 'zh', 'ug', 'mi', 'mus', 'pt', 'de', 'it', 'tt', 'brx', 'kk', 'uz', 'lg', 'nhn', 'no', 'he', 'kg', 'mai', 'sv', 'nqo', 'km', 'es', 'eu', 'hu', 'bs', 'tyj', 'csb', 'hy', 'io', 'am', 'da', 'ne', 'bem', 'mt', 'ang', 'ro', 'br', 'fo', 'hr', 'my', 'fur', 'nds', 'ha', 'nb', 'mr', 'kr', 'ku', 'as', 'fa', 'bg', 'ar', 'mg', 'gu', 'nr', 'nso', 'ur', 'lv', 'ml', 'af', 'sk', 'ja', 'ia', 'zu', 'rw', 'wa', 'yo', 'so', 'bn', 'ky', 'ka', 'la', 'nl', 'lt', 'sq', 'os', 'tr', 'or', 'et', 'ta', 'gv', 'kn', 'ast', 'crh', 'en', 'tg', 'yi', 'st', 'szl', 'dv', 'bal', 'is', 'vi', 'xh', 'dz', 'az', 'ps', 'ga', 'gn', 'fy', 'sr', 'ko', 'cs', 'be', 'hi', 'ks', 'gl', 'sw', 'tk', 'eo', 'sl', 'cy', 'mn']"
+Helsinki-NLP/opus_infopankki,2022-03-02,2024-02-22,,https://huggingface.co/datasets/Helsinki-NLP/opus_infopankki,2869,3,12,"['fa', 'sv', 'fr', 'ru', 'en', 'ar', 'zh', 'es', 'so', 'fi', 'tr', 'et']"
+Helsinki-NLP/opus_memat,2022-03-02,2024-02-22,,https://huggingface.co/datasets/Helsinki-NLP/opus_memat,48,1,2,"['en', 'xh']"
+Helsinki-NLP/opus_montenegrinsubs,2022-03-02,2024-02-22,,https://huggingface.co/datasets/Helsinki-NLP/opus_montenegrinsubs,51,0,2,"['en', 'cnr']"
+Helsinki-NLP/opus_openoffice,2022-03-02,2024-02-22,,https://huggingface.co/datasets/Helsinki-NLP/opus_openoffice,1368,7,8,"['sv', 'fr', 'ru', 'en', 'zh', 'es', 'ja', 'de']"
+Helsinki-NLP/opus_paracrawl,2022-03-02,2024-02-22,,https://huggingface.co/datasets/Helsinki-NLP/opus_paracrawl,157,5,41,"['sv', 'bg', 'si', 'el', 'en', 'tl', 'km', 'es', 'eu', 'hu', 'uk', 'pl', 'ru', 'is', 'lv', 'sk', 'da', 'ne', 'fi', 'mt', 'ga', 'ca', 'ro', 'fr', 'zh', 'ko', 'nn', 'my', 'hr', 'cs', 'so', 'pt', 'de', 'it', 'gl', 'nl', 'sw', 'nb', 'lt', 'sl', 'et']"
+Helsinki-NLP/opus_rf,2022-03-02,2024-02-22,,https://huggingface.co/datasets/Helsinki-NLP/opus_rf,118,0,5,"['sv', 'fr', 'en', 'es', 'de']"
+Helsinki-NLP/opus_tedtalks,2022-03-02,2024-02-22,,https://huggingface.co/datasets/Helsinki-NLP/opus_tedtalks,105,0,2,"['en', 'hr']"
+Helsinki-NLP/opus_ubuntu,2022-03-02,2024-02-22,,https://huggingface.co/datasets/Helsinki-NLP/opus_ubuntu,216,4,206,"['lo', 'bo', 'ny', 'kw', 'si', 'el', 'kok', 'tl', 'pa', 'ms', 'te', 'an', 'om', 'xal', 'uk', 'gd', 'byn', 'ts', 'pl', 'vec', 'oc', 'qu', 'ru', 'mk', 'mhr', 'rom', 'id', 'fi', 'sco', 'ca', 'ig', 'fr', 'jbo', 'li', 'sd', 'nn', 'th', 'trv', 'zh', 'tet', 'haw', 'ug', 'mi', 'mus', 'pt', 'de', 'it', 'tt', 'brx', 'kk', 'ceb', 'uz', 'lg', 'nhn', 'no', 'pmy', 'he', 'bho', 'kg', 'mai', 'sv', 'km', 've', 'es', 'eu', 'hu', 'nap', 'bs', 'pam', 'csb', 'hy', 'io', 'am', 'da', 'ne', 'bem', 'hsb', 'chr', 'mt', 'ang', 'ro', 'br', 'se', 'fo', 'hr', 'my', 'ltg', 'fur', 'nds', 'ha', 'ksh', 'mh', 'nb', 'ti', 'ckb', 'mr', 'sm', 'frm', 'ku', 'as', 'lb', 'fa', 'bg', 'sa', 'ar', 'mg', 'gu', 'shn', 'pap', 'nso', 'syr', 'frp', 'ur', 'lv', 'ml', 'af', 'sk', 'ja', 'shs', 'zza', 'ia', 'ace', 'bua', 'zu', 'ff', 'rw', 'wa', 'guc', 'yo', 'dsb', 'sn', 'so', 'bn', 'pms', 'hil', 'ky', 'ht', 'ka', 'la', 'nl', 'tlh', 'lt', 'sq', 'lij', 'os', 'tr', 'or', 'wo', 'et', 'ta', 'gv', 'kn', 'ast', 'crh', 'en', 'tg', 'yi', 'st', 'ak', 'szl', 'ber', 'sc', 'ce', 'dv', 'nan', 'bal', 'hne', 'is', 'vi', 'xh', 'dz', 'son', 'az', 'ps', 'ga', 'gn', 'ln', 'ba', 'rm', 'fy', 'ary', 'lld', 'sml', 'sr', 'ko', 'grc', 'kab', 'co', 'cs', 'miq', 'fil', 'be', 'iu', 'hi', 'ks', 'jv', 'gl', 'sw', 'tk', 'eo', 'cv', 'sl', 'cy', 'mn', 'kl', 'wae']"
+Helsinki-NLP/opus_wikipedia,2022-03-02,2024-02-22,,https://huggingface.co/datasets/Helsinki-NLP/opus_wikipedia,108,8,20,"['fa', 'bg', 'el', 'en', 'ar', 'es', 'hu', 'pl', 'ru', 'vi', 'ro', 'he', 'fr', 'cs', 'pt', 'de', 'it', 'nl', 'sl', 'tr']"
+Helsinki-NLP/opus_xhosanavy,2022-03-02,2024-02-22,,https://huggingface.co/datasets/Helsinki-NLP/opus_xhosanavy,82,4,2,"['en', 'xh']"
+Helsinki-NLP/un_ga,2022-03-02,2024-04-02,,https://huggingface.co/datasets/Helsinki-NLP/un_ga,1888,1,6,"['fr', 'ru', 'en', 'ar', 'zh', 'es']"
+Helsinki-NLP/un_pc,2022-03-02,2024-04-03,,https://huggingface.co/datasets/Helsinki-NLP/un_pc,5450,17,6,"['fr', 'ru', 'en', 'ar', 'zh', 'es']"
+Hemanth-thunder/english-to-bengali-mt,2024-09-08,2024-09-08,,https://huggingface.co/datasets/Hemanth-thunder/english-to-bengali-mt,42,0,2,"['en', 'bn']"
+Hemanth-thunder/english-to-gujarati-mt,2024-09-08,2024-09-08,,https://huggingface.co/datasets/Hemanth-thunder/english-to-gujarati-mt,64,0,2,"['en', 'gu']"
+Hemanth-thunder/english-to-kannada-mt,2024-09-07,2024-09-07,,https://huggingface.co/datasets/Hemanth-thunder/english-to-kannada-mt,133,0,2,"['en', 'kn']"
+Hemanth-thunder/english-to-malayalam-mt,2024-09-07,2024-09-07,,https://huggingface.co/datasets/Hemanth-thunder/english-to-malayalam-mt,75,0,2,"['en', 'ml']"
+Hemanth-thunder/english-to-marathi-mt,2024-09-08,2024-09-08,,https://huggingface.co/datasets/Hemanth-thunder/english-to-marathi-mt,34,0,2,"['en', 'mr']"
+Hemanth-thunder/english-to-telugu-mt-155k,2024-09-08,2024-09-08,,https://huggingface.co/datasets/Hemanth-thunder/english-to-telugu-mt-155k,75,0,2,"['en', 'te']"
+Heng666/MultiCCAligned-TW-Corpus,2024-02-02,2024-02-19,,https://huggingface.co/datasets/Heng666/MultiCCAligned-TW-Corpus,33,4,8,"['tw', 'zh', 'th', 'en', 'ko', 'vi', 'ja', 'id']"
+Heng666/OpenSubtitles-TW-Corpus,2024-02-02,2024-02-20,,https://huggingface.co/datasets/Heng666/OpenSubtitles-TW-Corpus,34,3,7,"['zh', 'th', 'en', 'ko', 'vi', 'ja', 'id']"
+Heng666/TED2020-TW-Corpus,2024-02-02,2024-02-02,,https://huggingface.co/datasets/Heng666/TED2020-TW-Corpus,32,3,7,"['tw', 'th', 'en', 'ko', 'vi', 'ja', 'id']"
+Heng666/Traditional_Chinese-aya_collection,2024-02-19,2024-02-19,,https://huggingface.co/datasets/Heng666/Traditional_Chinese-aya_collection,3308,6,1,['zh']
+Heng666/Traditional_Chinese-aya_dataset,2024-02-19,2024-02-19,,https://huggingface.co/datasets/Heng666/Traditional_Chinese-aya_dataset,105,3,1,['zh']
+Heng666/Traditional_Chinese-aya_evaluation_suite,2024-02-19,2024-02-19,,https://huggingface.co/datasets/Heng666/Traditional_Chinese-aya_evaluation_suite,71,3,1,['zh']
+HeshamHaroon/ArzEn-MultiGenre,2023-12-31,2023-12-31,,https://huggingface.co/datasets/HeshamHaroon/ArzEn-MultiGenre,1137,8,2,"['en', 'ar']"
+HiTZ/EusParallel,2024-10-30,2024-10-30,,https://huggingface.co/datasets/HiTZ/EusParallel,159,2,3,"['en', 'eu', 'es']"
+HiTZ/basqueparl,2024-03-08,2024-03-08,,https://huggingface.co/datasets/HiTZ/basqueparl,38,0,2,"['es', 'eu']"
+HistoryTrans/Dataset,2024-01-07,2024-01-09,,https://huggingface.co/datasets/HistoryTrans/Dataset,52,1,1,['zh']
+Horeknad/komi-russian-parallel-corpora,2023-04-25,2023-04-27,,https://huggingface.co/datasets/Horeknad/komi-russian-parallel-corpora,41,2,2,"['kv', 'ru']"
+Hoshikuzu/JESC,2024-08-24,2024-08-27,,https://huggingface.co/datasets/Hoshikuzu/JESC,47,1,2,"['en', 'ja']"
+Hoshikuzu/JParaCrawl,2024-08-24,2024-08-25,,https://huggingface.co/datasets/Hoshikuzu/JParaCrawl,34,1,2,"['en', 'ja']"
+Hoshikuzu/Japanese-Law-Translation,2024-08-24,2024-08-25,,https://huggingface.co/datasets/Hoshikuzu/Japanese-Law-Translation,41,0,2,"['en', 'ja']"
+Hoshikuzu/KFTT,2024-08-24,2024-08-27,,https://huggingface.co/datasets/Hoshikuzu/KFTT,33,1,2,"['en', 'ja']"
+Hoshikuzu/TEDtalk-en-ja,2024-08-24,2024-08-25,,https://huggingface.co/datasets/Hoshikuzu/TEDtalk-en-ja,53,2,2,"['en', 'ja']"
+Hoshikuzu/Tanaka-corpus,2024-08-24,2024-08-25,,https://huggingface.co/datasets/Hoshikuzu/Tanaka-corpus,34,1,2,"['en', 'ja']"
+Hoshikuzu/ccmatrix-en-ja,2024-08-01,2024-08-03,,https://huggingface.co/datasets/Hoshikuzu/ccmatrix-en-ja,32,1,2,"['en', 'ja']"
+HowMannyMore/urdu-audiodataset,2023-10-29,2023-10-29,,https://huggingface.co/datasets/HowMannyMore/urdu-audiodataset,33,0,1,['ur']
+IWSLT/IWSLT.OfflineTask,2024-01-03,2024-03-26,,https://huggingface.co/datasets/IWSLT/IWSLT.OfflineTask,56,2,2,"['en', 'de']"
+Iftitahu/indonesian_instruct_stories,2023-12-18,2024-01-25,,https://huggingface.co/datasets/Iftitahu/indonesian_instruct_stories,39,3,4,"['en', 'id', 'su', 'jv']"
+Iftitahu/javanese_instruct_stories,2023-12-18,2024-01-25,,https://huggingface.co/datasets/Iftitahu/javanese_instruct_stories,59,2,4,"['en', 'id', 'su', 'jv']"
+Iftitahu/sundanese_instruct_stories,2023-12-18,2024-01-25,,https://huggingface.co/datasets/Iftitahu/sundanese_instruct_stories,39,1,4,"['en', 'id', 'su', 'jv']"
+Iker/Colossal-Instruction-Translation-EN-ES,2024-05-05,2024-05-05,,https://huggingface.co/datasets/Iker/Colossal-Instruction-Translation-EN-ES,35,1,2,"['en', 'es']"
+Iker/Document-Translation-en-es,2024-04-16,2024-04-16,,https://huggingface.co/datasets/Iker/Document-Translation-en-es,82,6,2,"['en', 'es']"
+Iker/InstructTranslation-EN-ES,2024-03-06,2024-04-16,,https://huggingface.co/datasets/Iker/InstructTranslation-EN-ES,33,0,2,"['en', 'es']"
+Iker/InstructTranslation-EN-ES-Raw,2024-03-06,2024-03-06,,https://huggingface.co/datasets/Iker/InstructTranslation-EN-ES-Raw,34,0,2,"['en', 'es']"
+Iker/OpenHermes-2.5-English-Spanish,2024-05-05,2024-05-05,,https://huggingface.co/datasets/Iker/OpenHermes-2.5-English-Spanish,38,2,2,"['en', 'es']"
+Iker/Reddit-Post-Translation,2024-06-02,2024-06-03,,https://huggingface.co/datasets/Iker/Reddit-Post-Translation,33,1,2,"['en', 'es']"
+ImruQays/Quran-Classical-Arabic-English-Parallel-texts,2023-12-29,2023-12-29,,https://huggingface.co/datasets/ImruQays/Quran-Classical-Arabic-English-Parallel-texts,31,6,2,"['en', 'ar']"
+ImruQays/Rasaif-Classical-Arabic-English-Parallel-texts,2023-12-24,2024-03-22,,https://huggingface.co/datasets/ImruQays/Rasaif-Classical-Arabic-English-Parallel-texts,77,5,2,"['en', 'ar']"
+ImruQays/Thaqalayn-Classical-Arabic-English-Parallel-texts,2023-12-24,2024-03-22,,https://huggingface.co/datasets/ImruQays/Thaqalayn-Classical-Arabic-English-Parallel-texts,31,7,2,"['en', 'ar']"
+Inioluwa/nigerianLanguageTranslator,2024-07-03,2024-07-03,,https://huggingface.co/datasets/Inioluwa/nigerianLanguageTranslator,32,0,2,"['en', 'yo']"
+Instinct-AI/Xerxes-Instruct-700K,2024-04-01,2024-04-01,,https://huggingface.co/datasets/Instinct-AI/Xerxes-Instruct-700K,36,10,1,['en']
+IoanRazvan/ro-romani,2024-03-14,2024-03-15,,https://huggingface.co/datasets/IoanRazvan/ro-romani,31,0,1,['ro']
+IsmaelMousa/libri-in-italiano,2024-08-11,2024-08-18,,https://huggingface.co/datasets/IsmaelMousa/libri-in-italiano,37,0,1,['it']
+JBPERM42/en_uk,2023-12-07,2023-12-07,,https://huggingface.co/datasets/JBPERM42/en_uk,35,0,2,"['en', 'uk']"
+JTBTechnology/taoyuan_travel_qa,2024-02-27,2024-03-26,,https://huggingface.co/datasets/JTBTechnology/taoyuan_travel_qa,30,0,7,"['zh', 'th', 'en', 'ko', 'vi', 'ja', 'id']"
+JerrySweeney/Irish_Translations,2024-06-08,2024-06-09,,https://huggingface.co/datasets/JerrySweeney/Irish_Translations,32,0,2,"['ga', 'en']"
+JoseLuis95/adv-ele,2024-02-22,2024-02-22,,https://huggingface.co/datasets/JoseLuis95/adv-ele,34,0,1,['en']
+KE-AI/translation,2023-08-28,2024-03-11,,https://huggingface.co/datasets/KE-AI/translation,33,0,0,[]
+Ka-Set/sva-kat,2024-08-25,2024-09-01,,https://huggingface.co/datasets/Ka-Set/sva-kat,33,1,1,['ka']
+KaifengGGG/WenYanWen_English_Parallel,2024-04-11,2025-01-08,,https://huggingface.co/datasets/KaifengGGG/WenYanWen_English_Parallel,89,2,3,"['en', 'lzh', 'zh']"
+KaleidoSG/Helix,2023-09-23,2023-09-23,,https://huggingface.co/datasets/KaleidoSG/Helix,32,1,1,['en']
+KaleidoSG/Seaskull,2023-09-23,2024-05-14,,https://huggingface.co/datasets/KaleidoSG/Seaskull,31,0,1,['en']
+Karzan/en-ku-12k,2023-08-03,2024-01-15,,https://huggingface.co/datasets/Karzan/en-ku-12k,59,3,2,"['en', 'ku']"
+KasaiDanto/vietnamese_nom_scripts,2024-11-24,2024-11-24,,https://huggingface.co/datasets/KasaiDanto/vietnamese_nom_scripts,34,0,1,['vi']
+Ketan3101/English-Hindi-Translation,2024-04-17,2024-04-17,,https://huggingface.co/datasets/Ketan3101/English-Hindi-Translation,35,0,2,"['en', 'hi']"
+Ki-Seki/llm-failure-dataset,2024-12-20,2024-12-20,,https://huggingface.co/datasets/Ki-Seki/llm-failure-dataset,20,0,2,"['en', 'zh']"
+Kittech/kittech_shona_dataset,2024-02-02,2024-05-12,,https://huggingface.co/datasets/Kittech/kittech_shona_dataset,32,0,2,"['en', 'sn']"
+KomeijiForce/Text2Emoji,2023-11-06,2023-11-06,,https://huggingface.co/datasets/KomeijiForce/Text2Emoji,261,10,1,['en']
+Kyudan/MathBridge,2024-07-30,2024-08-05,,https://huggingface.co/datasets/Kyudan/MathBridge,33,1,1,['en']
+LIACC/Emakhuwa-Monolingual,2024-11-01,2024-11-11,,https://huggingface.co/datasets/LIACC/Emakhuwa-Monolingual,50,0,2,"['pt', 'vmw']"
+LIACC/Emakhuwa-News-Topic-Classification,2024-08-05,2024-11-11,,https://huggingface.co/datasets/LIACC/Emakhuwa-News-Topic-Classification,38,0,2,"['pt', 'vmw']"
+LIACC/Emakhuwa-Portuguese-News-MT,2024-07-30,2024-11-11,,https://huggingface.co/datasets/LIACC/Emakhuwa-Portuguese-News-MT,99,0,2,"['pt', 'vmw']"
+LIACC/Emakhuwa-Portuguese-OCR-post-correction,2024-11-01,2024-11-11,,https://huggingface.co/datasets/LIACC/Emakhuwa-Portuguese-OCR-post-correction,58,0,2,"['pt', 'vmw']"
+Logii33/Indic_south_langs,2024-07-24,2024-07-25,,https://huggingface.co/datasets/Logii33/Indic_south_langs,63,0,5,"['ta', 'kn', 'ml', 'te', 'hi']"
+Lynxpda/back-translated-veps-russian,2024-05-27,2024-05-29,,https://huggingface.co/datasets/Lynxpda/back-translated-veps-russian,34,0,2,"['vep', 'ru']"
+Lynxpda/dic-veps-russian,2024-05-28,2024-05-29,,https://huggingface.co/datasets/Lynxpda/dic-veps-russian,30,0,2,"['vep', 'ru']"
+Lynxpda/original-veps-russian,2024-05-28,2024-05-31,,https://huggingface.co/datasets/Lynxpda/original-veps-russian,31,0,2,"['vep', 'ru']"
+M-A-D/DarijaBridge,2023-11-26,2023-11-26,,https://huggingface.co/datasets/M-A-D/DarijaBridge,41,5,2,"['en', 'ar']"
+M-A-D/Mixed-Arabic-Dataset-Main,2023-09-25,2023-10-06,,https://huggingface.co/datasets/M-A-D/Mixed-Arabic-Dataset-Main,88,5,1,['ar']
+M-A-D/Mixed-Arabic-Datasets-Repo,2023-08-27,2023-10-16,,https://huggingface.co/datasets/M-A-D/Mixed-Arabic-Datasets-Repo,2429,29,1,['ar']
+MBZUAI-Paris/DODa-10K,2024-06-05,2024-09-27,,https://huggingface.co/datasets/MBZUAI-Paris/DODa-10K,123,2,4,"['en', 'ar', 'fr', 'ma']"
+MLDataScientist/fleurs_En_Uz,2024-06-02,2024-06-02,,https://huggingface.co/datasets/MLDataScientist/fleurs_En_Uz,41,0,2,"['en', 'uz']"
+MLRS/OPUS-MT-EN-Fixed,2024-07-04,2024-09-11,,https://huggingface.co/datasets/MLRS/OPUS-MT-EN-Fixed,56,1,2,"['en', 'mt']"
+MaCoCu/parallel_data,2023-05-29,2023-05-30,,https://huggingface.co/datasets/MaCoCu/parallel_data,61,0,12,"['sr', 'bg', 'en', 'mk', 'is', 'hr', 'cnr', 'sl', 'sq', 'mt', 'bs', 'tr']"
+MahtaFetrat/KaamelDict,2024-09-09,2024-09-17,,https://huggingface.co/datasets/MahtaFetrat/KaamelDict,41,3,1,['fa']
+MahtaFetrat/SentenceBench,2024-09-09,2025-01-01,,https://huggingface.co/datasets/MahtaFetrat/SentenceBench,33,3,1,['fa']
+Marianoleiras/voxpopuli_es-ja,2024-12-08,2024-12-09,,https://huggingface.co/datasets/Marianoleiras/voxpopuli_es-ja,313,1,2,"['es', 'ja']"
+Mavkif/Roman-Urdu-Parl-split,2024-11-10,2024-11-10,,https://huggingface.co/datasets/Mavkif/Roman-Urdu-Parl-split,62,1,1,['ur']
+Maximofn/opus100,2024-04-07,2024-06-09,,https://huggingface.co/datasets/Maximofn/opus100,38,0,2,"['en', 'es']"
+Maxscha/commitbench_long,2024-01-15,2024-02-14,,https://huggingface.co/datasets/Maxscha/commitbench_long,31,0,1,['en']
+Mitsua/wikidata-parallel-descriptions-en-ja,2024-05-13,2024-05-17,,https://huggingface.co/datasets/Mitsua/wikidata-parallel-descriptions-en-ja,54,5,2,"['en', 'ja']"
+MohamedRashad/rasaif-translations,2024-03-19,2024-03-19,,https://huggingface.co/datasets/MohamedRashad/rasaif-translations,35,2,2,"['en', 'ar']"
+Moleys/Filtered-Japanese-English-Parallel-Corpus,2025-01-02,2025-01-07,,https://huggingface.co/datasets/Moleys/Filtered-Japanese-English-Parallel-Corpus,8,1,2,"['en', 'ja']"
+Moo/korean-parallel-corpora,2022-05-16,2022-07-01,,https://huggingface.co/datasets/Moo/korean-parallel-corpora,142,17,2,"['en', 'ko']"
+Mouwiya/SANAD,2024-05-15,2024-05-24,,https://huggingface.co/datasets/Mouwiya/SANAD,32,1,2,"['en', 'ar']"
+Murtazali/bible-dargwa-russian,2024-12-11,2024-12-11,,https://huggingface.co/datasets/Murtazali/bible-dargwa-russian,50,1,2,"['dar', 'ru']"
+Mxode/BiST,2024-09-09,2024-09-19,,https://huggingface.co/datasets/Mxode/BiST,158,1,2,"['en', 'zh']"
+Mxode/NT-mini,2024-09-11,2024-09-11,,https://huggingface.co/datasets/Mxode/NT-mini,36,1,2,"['en', 'zh']"
+Mxode/NanoExperiment-Data-Mix-10M,2024-09-13,2024-09-13,,https://huggingface.co/datasets/Mxode/NanoExperiment-Data-Mix-10M,56,0,2,"['en', 'zh']"
+NITHUB-AI/Ehn-bible-bbc-gpt3.5,2023-09-04,2023-09-04,,https://huggingface.co/datasets/NITHUB-AI/Ehn-bible-bbc-gpt3.5,49,1,0,[]
+NLPC-UOM/nllb-top25k-ensi-cleaned,2024-02-02,2024-06-17,,https://huggingface.co/datasets/NLPC-UOM/nllb-top25k-ensi-cleaned,46,2,2,"['en', 'si']"
+NLPC-UOM/nllb-top25k-enta-cleaned,2024-02-02,2024-06-17,,https://huggingface.co/datasets/NLPC-UOM/nllb-top25k-enta-cleaned,38,0,2,"['en', 'ta']"
+Nart/parallel_ab-ru,2022-06-10,2024-09-17,,https://huggingface.co/datasets/Nart/parallel_ab-ru,137,1,2,"['ab', 'ru']"
+Nav-Navillera/num2txt,2024-11-24,2024-11-24,,https://huggingface.co/datasets/Nav-Navillera/num2txt,31,0,1,['id']
+Nekofox/ja-zh-twitter-translate,2023-05-08,2023-05-08,,https://huggingface.co/datasets/Nekofox/ja-zh-twitter-translate,42,3,2,"['ja', 'zh']"
+Nexdata/English-Japanese_Parallel_Corpus_Data,2023-11-08,2024-08-05,,https://huggingface.co/datasets/Nexdata/English-Japanese_Parallel_Corpus_Data,39,3,2,"['en', 'ja']"
+NickyNicky/Colossal_Translation_EN_ES_ORPO_DPO_Gemma,2024-05-06,2024-05-06,,https://huggingface.co/datasets/NickyNicky/Colossal_Translation_EN_ES_ORPO_DPO_Gemma,32,2,2,"['en', 'es']"
+NickyNicky/Colossal_Translation_Spanish_to_English_AND_English_to_Spanish_ORPO_DPO_Gemma,2024-05-06,2024-05-06,,https://huggingface.co/datasets/NickyNicky/Colossal_Translation_Spanish_to_English_AND_English_to_Spanish_ORPO_DPO_Gemma,34,3,2,"['en', 'es']"
+NickyNicky/DIBT_prompts_ranked_English_to_Spanish_translator,2024-05-10,2024-05-11,,https://huggingface.co/datasets/NickyNicky/DIBT_prompts_ranked_English_to_Spanish_translator,35,1,2,"['en', 'es']"
+NickyNicky/Finance_sentiment_and_topic_classification_Translation_English_to_Spanish_v1,2024-05-21,2024-05-21,,https://huggingface.co/datasets/NickyNicky/Finance_sentiment_and_topic_classification_Translation_English_to_Spanish_v1,39,0,2,"['en', 'es']"
+NickyNicky/Iker-Colossal-Instruction-Translation-EN-ES_deduplicated,2024-05-05,2024-05-13,,https://huggingface.co/datasets/NickyNicky/Iker-Colossal-Instruction-Translation-EN-ES_deduplicated,56,2,2,"['en', 'es']"
+NickyNicky/Iker-Colossal-Instruction-Translation-EN-ES_deduplicated_length_3600,2024-05-06,2024-05-06,,https://huggingface.co/datasets/NickyNicky/Iker-Colossal-Instruction-Translation-EN-ES_deduplicated_length_3600,33,2,2,"['en', 'es']"
+NickyNicky/financial_phrasebank_traslate_En_Es,2024-05-09,2024-05-10,,https://huggingface.co/datasets/NickyNicky/financial_phrasebank_traslate_En_Es,38,3,2,"['en', 'es']"
+NickyNicky/neovalle_H4rmony_dpo_translated_English_to_Spanish,2024-05-17,2024-05-17,,https://huggingface.co/datasets/NickyNicky/neovalle_H4rmony_dpo_translated_English_to_Spanish,31,4,2,"['en', 'es']"
+Nicolas-BZRD/English_French_Songs_Lyrics_Translation_Original,2023-09-12,2024-02-08,,https://huggingface.co/datasets/Nicolas-BZRD/English_French_Songs_Lyrics_Translation_Original,720,11,38,"['sv', 'bg', 'el', 'en', 'ar', 'tl', 'es', 'hu', 'pl', 'ru', 'vi', 'af', 'sk', 'da', 'ja', 'id', 'fi', 'ca', 'ro', 'he', 'fr', 'zh', 'th', 'ko', 'hr', 'cs', 'so', 'pt', 'de', 'it', 'sw', 'nl', 'no', 'sl', 'cy', 'sq', 'tr', 'et']"
+Nicolas-BZRD/English_French_Webpages_Scraped_Translated,2023-09-21,2023-09-21,,https://huggingface.co/datasets/Nicolas-BZRD/English_French_Webpages_Scraped_Translated,91,1,2,"['en', 'fr']"
+Nicolas-BZRD/Parallel_Global_Voices_English_French,2023-09-21,2023-09-21,,https://huggingface.co/datasets/Nicolas-BZRD/Parallel_Global_Voices_English_French,38,0,2,"['en', 'fr']"
+NilanE/ParallelFiction-Ja_En-100k,2024-03-25,2024-06-02,,https://huggingface.co/datasets/NilanE/ParallelFiction-Ja_En-100k,156,65,2,"['en', 'ja']"
+NilanE/SmallParallelDocs-Ja_En-6k,2024-03-04,2024-03-05,,https://huggingface.co/datasets/NilanE/SmallParallelDocs-Ja_En-6k,40,2,2,"['en', 'ja']"
+Nothingger/kaz-rus-eng-literature-parallel-corpus,2024-06-25,2024-07-13,,https://huggingface.co/datasets/Nothingger/kaz-rus-eng-literature-parallel-corpus,41,4,3,"['en', 'kk', 'ru']"
+Omarrran/Sentence_wise_urdu_text_dataset,2024-11-22,2025-01-02,,https://huggingface.co/datasets/Omarrran/Sentence_wise_urdu_text_dataset,31,0,1,['ur']
+Oumar199/French_Wolof_Various_Parallel_Corpus,2023-10-22,2024-09-11,,https://huggingface.co/datasets/Oumar199/French_Wolof_Various_Parallel_Corpus,56,0,2,"['wo', 'fr']"
+PNLPhub/FarsInstruct,2024-09-10,2024-09-26,,https://huggingface.co/datasets/PNLPhub/FarsInstruct,598,8,1,['fa']
+ParsBench/parsinlu-machine-translation-en-fa-alpaca-style,2024-07-19,2024-07-22,,https://huggingface.co/datasets/ParsBench/parsinlu-machine-translation-en-fa-alpaca-style,34,2,2,"['en', 'fa']"
+ParsBench/parsinlu-machine-translation-fa-en-alpaca-style,2024-07-19,2024-07-22,,https://huggingface.co/datasets/ParsBench/parsinlu-machine-translation-fa-en-alpaca-style,30,3,2,"['en', 'fa']"
+PaulLerner/oscar_inclure,2023-10-05,2023-10-05,,https://huggingface.co/datasets/PaulLerner/oscar_inclure,35,0,1,['fr']
+PaulineSanchez/Dataset_food_translation_fr_en,2023-05-15,2023-05-16,,https://huggingface.co/datasets/PaulineSanchez/Dataset_food_translation_fr_en,55,2,2,"['en', 'fr']"
+PaulineSanchez/Trad_food,2023-05-04,2023-06-06,,https://huggingface.co/datasets/PaulineSanchez/Trad_food,66,0,2,"['en', 'fr']"
+PaulineSanchez/Traduction_en_fr_food,2023-04-24,2023-04-24,,https://huggingface.co/datasets/PaulineSanchez/Traduction_en_fr_food,46,1,2,"['en', 'fr']"
+PaulineSanchez/Translation_words_and_sentences_english_french,2023-04-27,2023-04-27,,https://huggingface.co/datasets/PaulineSanchez/Translation_words_and_sentences_english_french,128,1,2,"['en', 'fr']"
+PawanKrd/corpus-ckb,2024-05-15,2024-05-21,,https://huggingface.co/datasets/PawanKrd/corpus-ckb,30,0,1,['ckb']
+PedroDKE/LibriS2S,2022-06-23,2023-03-23,,https://huggingface.co/datasets/PedroDKE/LibriS2S,388,2,2,"['en', 'de']"
+ProgComp/NeuripsHS,2024-04-14,2024-04-15,,https://huggingface.co/datasets/ProgComp/NeuripsHS,128,0,5,"['bh', 'en', 'pa', 'hi', 'as']"
+PrompTartLAB/PTT_advanced_en_ko,2024-11-13,2024-11-13,,https://huggingface.co/datasets/PrompTartLAB/PTT_advanced_en_ko,44,1,2,"['en', 'ko']"
+PrompTartLAB/PTT_en_ko,2024-09-28,2024-10-06,,https://huggingface.co/datasets/PrompTartLAB/PTT_en_ko,35,3,2,"['en', 'ko']"
+Proyag/paracrawl_context,2024-05-28,2024-08-13,,https://huggingface.co/datasets/Proyag/paracrawl_context,376,1,6,"['pl', 'fr', 'ru', 'en', 'cs', 'de']"
+QIRIM/crh-parallel-corpora,2024-08-17,2024-12-04,,https://huggingface.co/datasets/QIRIM/crh-parallel-corpora,32,1,4,"['en', 'uk', 'ru', 'crh']"
+QIRIM/crh-parallel-corpora-document-level-noisy,2024-09-11,2024-12-07,,https://huggingface.co/datasets/QIRIM/crh-parallel-corpora-document-level-noisy,37,0,4,"['en', 'uk', 'ru', 'crh']"
+Qilex/EN-ME,2022-08-04,2022-08-11,,https://huggingface.co/datasets/Qilex/EN-ME,29,2,2,"['en', 'me']"
+Qilex/EN-MEspecialChars,2022-08-06,2022-08-06,,https://huggingface.co/datasets/Qilex/EN-MEspecialChars,33,0,2,"['en', 'me']"
+R0k1e/UltraLink,2024-02-07,2024-11-06,,https://huggingface.co/datasets/R0k1e/UltraLink,119,6,5,"['rus', 'eng', 'spa', 'zho', 'fra']"
+RSTV-24/torgo-audio-dataset-with-audio,2024-09-18,2024-09-18,,https://huggingface.co/datasets/RSTV-24/torgo-audio-dataset-with-audio,31,0,1,['en']
+Rashmi21/vtdataset,2024-04-16,2024-04-23,,https://huggingface.co/datasets/Rashmi21/vtdataset,30,0,1,['en']
+ReDUB/SoundHarvest,2023-11-20,2023-12-14,,https://huggingface.co/datasets/ReDUB/SoundHarvest,49,2,13,"['fr', 'ru', 'th', 'ar', 'ko', 'vi', 'en', 'es', 'ja', 'id', 'pt', 'tr', 'hi']"
+ReadingTimeMachine/rtm-sgt-ocr-v1,2024-01-05,2024-01-05,,https://huggingface.co/datasets/ReadingTimeMachine/rtm-sgt-ocr-v1,30,1,1,['en']
+ReliableAI/Irish-English-Parallel-Collection,2024-07-16,2024-07-16,,https://huggingface.co/datasets/ReliableAI/Irish-English-Parallel-Collection,36,1,2,"['ga', 'en']"
+ReliableAI/irish_aya_evaluation_suite,2024-09-06,2024-10-17,,https://huggingface.co/datasets/ReliableAI/irish_aya_evaluation_suite,29,0,1,['ga']
+ReySajju742/Quran,2024-08-08,2024-08-08,,https://huggingface.co/datasets/ReySajju742/Quran,57,1,11,"['sv', 'fr', 'ru', 'en', 'ar', 'ur', 'zh', 'es', 'bn', 'id', 'tr']"
+RiTA-nlp/GeNTE_ita-eval,2024-04-29,2024-12-03,,https://huggingface.co/datasets/RiTA-nlp/GeNTE_ita-eval,57,1,2,"['en', 'it']"
+RobotsMaliAI/bayelemabaga,2022-12-04,2023-04-24,,https://huggingface.co/datasets/RobotsMaliAI/bayelemabaga,38,4,2,"['bm', 'fr']"
+Rogendo/English-Swahili-Sentence-Pairs,2024-01-27,2024-01-27,,https://huggingface.co/datasets/Rogendo/English-Swahili-Sentence-Pairs,305,12,2,"['en', 'sw']"
+RuterNorway/Fleurs-Alpaca-EN-NO,2023-08-23,2023-08-23,,https://huggingface.co/datasets/RuterNorway/Fleurs-Alpaca-EN-NO,30,4,2,"['en', 'no']"
+SCIR-HI/PseudoMD-1M,2023-12-20,2023-12-20,,https://huggingface.co/datasets/SCIR-HI/PseudoMD-1M,34,1,1,['en']
+SPRINGLab/BPCC_cleaned,2024-05-16,2024-11-12,,https://huggingface.co/datasets/SPRINGLab/BPCC_cleaned,34,0,8,"['ta', 'kn', 'ml', 'gu', 'te', 'mr', 'bn', 'hi']"
+SPRINGLab/shiksha,2024-08-20,2024-12-16,,https://huggingface.co/datasets/SPRINGLab/shiksha,68,0,8,"['ta', 'kn', 'gu', 'ml', 'te', 'mr', 'bn', 'hi']"
+SWHL/table_rec_test_dataset,2024-04-12,2024-10-22,,https://huggingface.co/datasets/SWHL/table_rec_test_dataset,57,3,2,"['en', 'zh']"
+Sakalti/Tylbass,2024-10-17,2024-10-17,,https://huggingface.co/datasets/Sakalti/Tylbass,33,1,2,"['sah', 'ja']"
+Salman95s/Balochi-Multilingual-dataset,2024-12-15,2024-12-19,,https://huggingface.co/datasets/Salman95s/Balochi-Multilingual-dataset,57,0,4,"['ur', 'bal', 'en', 'fa']"
+SalomonMetre13/nnd_fr_14k,2023-10-22,2023-10-27,,https://huggingface.co/datasets/SalomonMetre13/nnd_fr_14k,33,0,1,['nnd']
+SalomonMetre13/nnd_fr_26k,2023-11-12,2025-01-06,,https://huggingface.co/datasets/SalomonMetre13/nnd_fr_26k,31,1,2,"['nnd', 'fr']"
+SaranaAbidueva/buryat-russian_parallel_corpus,2023-05-09,2024-06-19,,https://huggingface.co/datasets/SaranaAbidueva/buryat-russian_parallel_corpus,38,4,1,['ru']
+SatyamDev/alpaca_data_cleaned_bhojpuri,2024-05-21,2024-05-21,,https://huggingface.co/datasets/SatyamDev/alpaca_data_cleaned_bhojpuri,35,1,2,"['bh', 'hi']"
+Saugatkafley/Nepali-Roman-Transliteration,2024-01-22,2024-01-30,,https://huggingface.co/datasets/Saugatkafley/Nepali-Roman-Transliteration,35,2,2,"['en', 'ne']"
+Shantanu42/shantanu42-question-dataset,2024-12-19,2024-12-26,,https://huggingface.co/datasets/Shantanu42/shantanu42-question-dataset,24,0,0,[]
+Sharathhebbar24/awesome_chatgpt_prompts_kannada,2024-01-27,2024-01-27,,https://huggingface.co/datasets/Sharathhebbar24/awesome_chatgpt_prompts_kannada,35,0,2,"['en', 'kn']"
+ShynBui/Vietnamese_spelling_error,2024-08-09,2024-08-09,,https://huggingface.co/datasets/ShynBui/Vietnamese_spelling_error,88,1,1,['vi']
+SiguienteGlobal/ESX,2024-06-17,2024-06-19,,https://huggingface.co/datasets/SiguienteGlobal/ESX,60,0,1,['es']
+Sin2pi/JA_audio_JA_text_180k_samples,2024-10-06,2024-10-10,,https://huggingface.co/datasets/Sin2pi/JA_audio_JA_text_180k_samples,98,5,1,['ja']
+Smarneh/NIT,2024-08-20,2024-10-05,,https://huggingface.co/datasets/Smarneh/NIT,34,1,1,['en']
+SoccerNet/SN-echoes,2024-06-13,2024-06-13,,https://huggingface.co/datasets/SoccerNet/SN-echoes,37,2,10,"['bs', 'pl', 'fr', 'ru', 'en', 'es', 'hu', 'tr', 'de', 'it']"
+SocialHackathonsEFELIA/opus_books,2024-10-28,2024-10-28,,https://huggingface.co/datasets/SocialHackathonsEFELIA/opus_books,39,0,0,[]
+Sp1786/multiclass-sentiment-analysis-dataset,2023-06-21,2023-06-25,,https://huggingface.co/datasets/Sp1786/multiclass-sentiment-analysis-dataset,568,6,1,['en']
+Studeni/AMAZON-Products-2023-Arabic,2024-05-21,2025-01-06,,https://huggingface.co/datasets/Studeni/AMAZON-Products-2023-Arabic,34,0,2,"['en', 'arb']"
+Suchinthana/Sinhala-QA-Translate,2023-08-11,2023-09-07,,https://huggingface.co/datasets/Suchinthana/Sinhala-QA-Translate,41,2,2,"['en', 'si']"
+SugoiLoki/TranslationTraining,2024-11-14,2024-11-14,,https://huggingface.co/datasets/SugoiLoki/TranslationTraining,40,1,2,"['en', 'ko']"
+Sunbird/salt,2024-12-03,2024-12-11,,https://huggingface.co/datasets/Sunbird/salt,86,0,7,"['lg', 'ach', 'lgg', 'sw', 'eng', 'nyn', 'teo']"
+Supa-AI/Indonesian_Dataset,2024-12-16,2024-12-20,,https://huggingface.co/datasets/Supa-AI/Indonesian_Dataset,19,1,1,['id']
+Supa-AI/Indonesian_dataset_evaluation_round1,2024-12-16,2024-12-20,,https://huggingface.co/datasets/Supa-AI/Indonesian_dataset_evaluation_round1,24,1,1,['id']
+Svngoku/xP3x-Kongo,2024-06-24,2024-06-24,,https://huggingface.co/datasets/Svngoku/xP3x-Kongo,40,2,220,"['ee', 'lo', 'bo', 'lmo', 'kw', 'ny', 'si', 'el', 'ss', 'tl', 'apc', 'pa', 'war', 'ms', 'te', 'ie', 'gd', 'uk', 'ts', 'pl', 'vec', 'oc', 'qu', 'ru', 'kmb', 'mk', 'taq', 'id', 'fi', 'ca', 'ki', 'bm', 'tw', 'ig', 'fr', 'th', 'zh', 'kea', 'nn', 'li', 'sd', 'tzm', 'ug', 'sat', 'mi', 'luo', 'pt', 'de', 'it', 'tt', 'kk', 'ceb', 'uz', 'lg', 'vo', 'no', 'quy', 'pes', 'ayr', 'plt', 'he', 'bho', 'kg', 'mai', 'lua', 'sv', 'dik', 'km', 'bug', 'es', 'eu', 'hu', 'swh', 'bs', 'acq', 'ch', 'ars', 'fon', 'hy', 'lus', 'io', 'awa', 'am', 'da', 'sg', 'mt', 'bem', 'ro', 'br', 'fo', 'hr', 'my', 'yue', 'ltg', 'fur', 'mos', 'ha', 'khk', 'nb', 'kbp', 'ckb', 'ti', 'mr', 'sm', 'ku', 'lb', 'as', 'fa', 'bg', 'sa', 'uzn', 'ar', 'mni', 'gu', 'knc', 'zsm', 'mar', 'kac', 'shn', 'pap', 'nso', 'ur', 'lv', 'ml', 'acm', 'af', 'als', 'dyu', 'sk', 'ja', 'bjn', 'ia', 'ace', 'ory', 'ilo', 'zu', 'kam', 'rw', 'yo', 'sn', 'azb', 'bn', 'so', 'ydd', 'sh', 'ky', 'ka', 'arz', 'ht', 'tpi', 'la', 'nl', 'lvs', 'gaz', 'lt', 'nus', 'rn', 'sq', 'lij', 'ajp', 'tr', 'wo', 'et', 'fj', 'aeb', 'ta', 'kmr', 'kn', 'ast', 'cjk', 'yi', 'en', 'crh', 'pbt', 'scn', 'tg', 'st', 'ak', 'szl', 'prs', 'sc', 'is', 'vi', 'hne', 'mag', 'ban', 'xh', 'dz', 'npi', 'az', 'min', 'ga', 'gn', 'ln', 'ba', 'fy', 'ary', 'sr', 'ko', 'pag', 'kab', 'cs', 'umb', 'azj', 'be', 'hi', 'ks', 'jv', 'gl', 'sw', 'tk', 'eo', 'cv', 'sl', 'cy', 'tn', 'tum', 'mn', 'fuv', 'su']"
+Sylvana/qa_en_translation,2023-08-17,2023-08-18,,https://huggingface.co/datasets/Sylvana/qa_en_translation,32,2,1,['ar']
+TSjB/dictionary_krc_rus,2024-05-05,2024-05-05,,https://huggingface.co/datasets/TSjB/dictionary_krc_rus,33,0,2,"['krc', 'ru']"
+TSjB/qarachay-malqar_russian_parallel_corpora,2024-02-27,2024-04-14,,https://huggingface.co/datasets/TSjB/qarachay-malqar_russian_parallel_corpora,39,1,2,"['krc', 'ru']"
+TSjB/qarachay-malqar_russian_parallel_corpora_dialectic-free,2024-02-27,2024-04-14,,https://huggingface.co/datasets/TSjB/qarachay-malqar_russian_parallel_corpora_dialectic-free,36,0,2,"['krc', 'ru']"
+TaiMingLu/Multilingual-Benchmark,2024-07-06,2024-12-01,,https://huggingface.co/datasets/TaiMingLu/Multilingual-Benchmark,65,2,31,"['el', 'en', 'ar', 'pa', 'es', 'te', 'uk', 'pl', 'ru', 'ur', 'lv', 'is', 'af', 'ja', 'ne', 'id', 'fr', 'zh', 'th', 'ko', 'bn', 'hi', 'pt', 'ha', 'de', 'it', 'nl', 'sw', 'cy', 'mr', 'tr']"
+Tamazight-NLP/AmaWar,2023-11-25,2024-01-07,,https://huggingface.co/datasets/Tamazight-NLP/AmaWar,47,1,3,"['ber', 'ar', 'tzm']"
+Tamazight-NLP/DGLAI,2024-02-23,2024-02-23,,https://huggingface.co/datasets/Tamazight-NLP/DGLAI,44,2,4,"['ber', 'ar', 'zgh', 'fr']"
+Tamazight-NLP/NLLB-Seed_Standard-Moroccan-Tamazight,2023-08-02,2023-08-08,,https://huggingface.co/datasets/Tamazight-NLP/NLLB-Seed_Standard-Moroccan-Tamazight,123,0,3,"['en', 'zgh', 'ber']"
+Tamazight-NLP/NLLB-Seed_Tamasheq-Latin-Script,2023-08-04,2023-08-08,,https://huggingface.co/datasets/Tamazight-NLP/NLLB-Seed_Tamasheq-Latin-Script,37,0,3,"['en', 'ber', 'taq']"
+Tamazight-NLP/NLLB-Seed_Tamasheq-Tifinagh-Script,2023-08-04,2023-08-08,,https://huggingface.co/datasets/Tamazight-NLP/NLLB-Seed_Tamasheq-Tifinagh-Script,101,2,3,"['en', 'ber', 'taq']"
+Tamazight-NLP/Pontoon-Translations,2023-11-26,2024-01-15,,https://huggingface.co/datasets/Tamazight-NLP/Pontoon-Translations,33,2,6,"['en', 'kab', 'tzm', 'shi', 'ber', 'zgh']"
+Tamazight-NLP/Weblate-Translations,2024-01-02,2024-04-02,,https://huggingface.co/datasets/Tamazight-NLP/Weblate-Translations,95,0,5,"['en', 'kab', 'tzm', 'ber', 'zgh']"
+Tamazight-NLP/translatewiki,2024-01-28,2024-01-28,,https://huggingface.co/datasets/Tamazight-NLP/translatewiki,48,1,8,"['en', 'rif', 'kab', 'tzm', 'shy', 'shi', 'ber', 'zgh']"
+Thermostatic/parallel_corpus_europarl_english_spanish,2024-02-04,2024-02-04,,https://huggingface.co/datasets/Thermostatic/parallel_corpus_europarl_english_spanish,83,1,2,"['en', 'es']"
+Thermostatic/parallel_corpus_webcrawl_english_spanish_1,2024-02-04,2024-02-04,,https://huggingface.co/datasets/Thermostatic/parallel_corpus_webcrawl_english_spanish_1,74,1,2,"['en', 'es']"
+Thermostatic/texts_parallel_corpus_europarl_english_spanish,2024-04-18,2024-04-18,,https://huggingface.co/datasets/Thermostatic/texts_parallel_corpus_europarl_english_spanish,39,1,2,"['en', 'es']"
+Tommy0201/WebScraped_Igbo_To_Eng,2024-06-17,2024-07-02,,https://huggingface.co/datasets/Tommy0201/WebScraped_Igbo_To_Eng,37,1,2,"['en', 'ig']"
+Tommy0201/igbo-to-english,2024-02-23,2024-02-23,,https://huggingface.co/datasets/Tommy0201/igbo-to-english,33,1,2,"['en', 'ig']"
+Tsunnami/who-en-th,2024-10-21,2024-10-21,,https://huggingface.co/datasets/Tsunnami/who-en-th,30,1,2,"['en', 'th']"
+UWV/Leesplank_NL_wikipedia_simplifications,2024-01-25,2024-03-20,,https://huggingface.co/datasets/UWV/Leesplank_NL_wikipedia_simplifications,41,5,1,['nl']
+VIITPune/Deshika,2024-10-12,2024-10-12,,https://huggingface.co/datasets/VIITPune/Deshika,33,0,0,[]
+VLSP2023-MT/ViBidirectionMT-Eval,2024-05-03,2024-11-08,,https://huggingface.co/datasets/VLSP2023-MT/ViBidirectionMT-Eval,30,0,3,"['lo', 'vi', 'zh']"
+VanessaSchenkel/handmade-dataset,2022-08-06,2022-08-06,,https://huggingface.co/datasets/VanessaSchenkel/handmade-dataset,30,1,2,"['en', 'pt']"
+Verah/JParaCrawl-Filtered-English-Japanese-Parallel-Corpus,2024-03-01,2024-03-07,,https://huggingface.co/datasets/Verah/JParaCrawl-Filtered-English-Japanese-Parallel-Corpus,48,1,2,"['en', 'ja']"
+Verah/tatoeba_dedupe_en-jp_2024-March-01,2024-03-05,2024-03-06,,https://huggingface.co/datasets/Verah/tatoeba_dedupe_en-jp_2024-March-01,38,4,2,"['en', 'ja']"
+WelfCrozzo/kupalinka,2023-06-10,2023-09-03,,https://huggingface.co/datasets/WelfCrozzo/kupalinka,129,1,3,"['en', 'be', 'ru']"
+WhissleAI/covost-es-en,2024-09-19,2024-09-21,,https://huggingface.co/datasets/WhissleAI/covost-es-en,37,0,2,"['en', 'es']"
+WorkinehW/eng-wol3.csv,2024-02-28,2024-02-28,,https://huggingface.co/datasets/WorkinehW/eng-wol3.csv,28,0,0,[]
+a3ahmad/smdb_derivatives,2023-06-25,2023-06-30,,https://huggingface.co/datasets/a3ahmad/smdb_derivatives,155,0,0,[]
+achrafothman/aslg_pc12,2022-03-02,2024-01-09,,https://huggingface.co/datasets/achrafothman/aslg_pc12,124,4,2,"['en', 'ase']"
+adaca001/adv-int,2024-02-25,2024-02-25,,https://huggingface.co/datasets/adaca001/adv-int,33,0,1,['en']
+aehrm/dtaec-lexicon,2024-05-31,2024-08-08,,https://huggingface.co/datasets/aehrm/dtaec-lexicon,37,0,1,['de']
+agatha-duzan/advanced_algebra_af,2025-01-05,2025-01-05,,https://huggingface.co/datasets/agatha-duzan/advanced_algebra_af,2,0,0,[]
+agatha-duzan/number_theory_af,2024-09-28,2024-11-29,,https://huggingface.co/datasets/agatha-duzan/number_theory_af,33,0,0,[]
+agentlans/cantonese-chinese,2024-09-26,2024-09-26,,https://huggingface.co/datasets/agentlans/cantonese-chinese,32,0,1,['zh']
+agentlans/en-translations,2024-12-05,2024-12-14,,https://huggingface.co/datasets/agentlans/en-translations,93,0,1,['en']
+agentlans/tatoeba-english-translations,2024-10-12,2024-10-12,,https://huggingface.co/datasets/agentlans/tatoeba-english-translations,38,1,1,['en']
+ahazeemi/opus-medical-en-de,2023-06-11,2023-07-16,,https://huggingface.co/datasets/ahazeemi/opus-medical-en-de,60,2,2,"['en', 'de']"
+ai4bharat/samanantar,2022-03-02,2024-12-24,,https://huggingface.co/datasets/ai4bharat/samanantar,311,24,12,"['ta', 'kn', 'en', 'gu', 'ml', 'pa', 'te', 'mr', 'bn', 'or', 'hi', 'as']"
+ai4privacy/pii-masking-200k,2023-11-06,2024-04-21,,https://huggingface.co/datasets/ai4privacy/pii-masking-200k,1545,86,4,"['en', 'de', 'fr', 'it']"
+ai4privacy/pii-masking-300k,2024-03-27,2024-04-21,,https://huggingface.co/datasets/ai4privacy/pii-masking-300k,751,48,6,"['fr', 'en', 'nl', 'es', 'de', 'it']"
+ai4privacy/pii-masking-400k,2024-08-29,2024-09-13,,https://huggingface.co/datasets/ai4privacy/pii-masking-400k,898,23,6,"['fr', 'en', 'nl', 'es', 'de', 'it']"
+aiana94/polynews-parallel,2024-05-17,2024-06-21,,https://huggingface.co/datasets/aiana94/polynews-parallel,694,10,64,"['ee', 'fa', 'sv', 'bg', 'el', 'en', 'ar', 'mg', 'gu', 'km', 'pa', 'pcm', 'ay', 'hu', 'es', 'bbj', 'pl', 'fon', 'ru', 'ur', 'mk', 'lv', 'am', 'da', 'ja', 'ne', 'id', 'fi', 'wo', 'ca', 'ro', 'bm', 'sr', 'tw', 'ig', 'zu', 'fr', 'zh', 'ko', 'my', 'yo', 'cs', 'bn', 'fil', 'tet', 'luo', 'mos', 'tr', 'hi', 'de', 'ha', 'it', 'pt', 'kk', 'lg', 'nl', 'sw', 'lt', 'tn', 'sq', 'he', 'or', 'ku', 'et']"
+aiana94/xMINDlarge,2024-06-25,2024-10-25,,https://huggingface.co/datasets/aiana94/xMINDlarge,100,4,14,"['ro', 'ta', 'ht', 'ka', 'zh', 'th', 'sw', 'vi', 'ja', 'so', 'id', 'fi', 'tr', 'gn']"
+aiana94/xMINDsmall,2024-06-20,2024-10-25,,https://huggingface.co/datasets/aiana94/xMINDsmall,53,4,14,"['ro', 'ta', 'ht', 'ka', 'zh', 'th', 'sw', 'vi', 'ja', 'so', 'id', 'fi', 'tr', 'gn']"
+aimagic/eng_hi_idioms_csv,2024-12-19,2024-12-19,,https://huggingface.co/datasets/aimagic/eng_hi_idioms_csv,73,0,2,"['en', 'hi']"
+ajaysadhu02/bhagavath-gita-telugu,2024-04-24,2024-04-24,,https://huggingface.co/datasets/ajaysadhu02/bhagavath-gita-telugu,35,0,2,"['te', 'sa']"
+akahana/id-en-dirty,2024-11-19,2024-11-19,,https://huggingface.co/datasets/akahana/id-en-dirty,31,0,2,"['en', 'id']"
+alayaran/bodo_english_parallel,2023-08-26,2023-08-26,,https://huggingface.co/datasets/alayaran/bodo_english_parallel,37,0,2,"['en', 'brx']"
+alexantonov/chuvash_english_parallel,2024-05-06,2024-05-06,,https://huggingface.co/datasets/alexantonov/chuvash_english_parallel,32,0,2,"['en', 'cv']"
+alexantonov/chuvash_mono,2024-05-06,2024-06-30,,https://huggingface.co/datasets/alexantonov/chuvash_mono,55,1,1,['cv']
+alexantonov/chuvash_russian_parallel,2024-05-06,2024-05-22,,https://huggingface.co/datasets/alexantonov/chuvash_russian_parallel,41,1,2,"['ru', 'cv']"
+allandclive/Luganda_Sci-Math-Bio_Translations,2024-02-15,2024-02-15,,https://huggingface.co/datasets/allandclive/Luganda_Sci-Math-Bio_Translations,42,2,2,"['en', 'lg']"
+allandclive/UgandaLex,2023-07-09,2023-07-10,,https://huggingface.co/datasets/allandclive/UgandaLex,32,1,20,"['en', 'adh', 'laj', 'tjl', 'kdj', 'rub', 'luc', 'gwr', 'lgg', 'kbo', 'alz', 'teo', 'myx', 'lg', 'xog', 'ach', 'keo', 'kin', 'nyn', 'nuj']"
+allandclive/UgandaLex2,2023-07-12,2023-07-12,,https://huggingface.co/datasets/allandclive/UgandaLex2,30,1,23,"['en', 'adh', 'laj', 'tjl', 'kdj', 'ndp', 'rub', 'luc', 'gwr', 'lgg', 'kbo', 'alz', 'teo', 'myx', 'lg', 'xog', 'ach', 'keo', 'lsm', 'kin', 'nyn', 'nuj', 'nyo']"
+alxcarln/codons,2023-12-20,2024-01-13,,https://huggingface.co/datasets/alxcarln/codons,29,0,0,[]
+andyofheroes/Shukuru_Yesu_v1,2024-09-21,2024-12-11,,https://huggingface.co/datasets/andyofheroes/Shukuru_Yesu_v1,79,0,1,['en']
+anujsahani01/English-Marathi,2023-06-23,2023-06-29,,https://huggingface.co/datasets/anujsahani01/English-Marathi,87,6,2,"['en', 'mr']"
+anujsahani01/MarEng_TransLoom,2023-07-26,2023-07-26,,https://huggingface.co/datasets/anujsahani01/MarEng_TransLoom,30,2,2,"['en', 'mr']"
+anzorq/kbd-ru,2022-07-27,2023-07-20,,https://huggingface.co/datasets/anzorq/kbd-ru,34,2,2,"['kbd', 'ru']"
+anzorq/kbd_lat-ru,2022-07-27,2022-07-31,,https://huggingface.co/datasets/anzorq/kbd_lat-ru,31,2,2,"['kbd', 'ru']"
+arielogg/anki_globalvoices_en_fr,2024-01-19,2024-01-24,,https://huggingface.co/datasets/arielogg/anki_globalvoices_en_fr,47,0,2,"['en', 'fr']"
+armantunga/en-tr-translation,2024-10-11,2024-10-11,,https://huggingface.co/datasets/armantunga/en-tr-translation,38,0,2,"['en', 'tr']"
+aronlp/aromanian-romanian-MT-corpus,2024-07-14,2024-10-11,,https://huggingface.co/datasets/aronlp/aromanian-romanian-MT-corpus,31,1,2,"['ro', 'rup']"
+artyomboyko/Yandex_ML_training_20_HW_3,2024-11-20,2024-11-20,,https://huggingface.co/datasets/artyomboyko/Yandex_ML_training_20_HW_3,32,0,1,['en']
+arubenruben/cnn_dailymail_azure_pt_pt,2023-06-06,2023-06-06,,https://huggingface.co/datasets/arubenruben/cnn_dailymail_azure_pt_pt,48,3,1,['pt']
+arubenruben/cnn_dailymail_google_translator,2023-06-06,2023-06-06,,https://huggingface.co/datasets/arubenruben/cnn_dailymail_google_translator,31,0,1,['pt']
+asas-ai/financial_news,2023-10-31,2023-11-01,,https://huggingface.co/datasets/asas-ai/financial_news,30,1,2,"['en', 'ar']"
+ascolda/ru_en_Crystallography_and_Spectroscopy,2024-01-14,2024-01-14,,https://huggingface.co/datasets/ascolda/ru_en_Crystallography_and_Spectroscopy,44,1,2,"['en', 'ru']"
+aslawliet/flan2021-full,2024-02-16,2024-04-19,,https://huggingface.co/datasets/aslawliet/flan2021-full,110,0,1,['en']
+atasoglu/flickr30k-turkish,2024-07-02,2024-07-03,,https://huggingface.co/datasets/atasoglu/flickr30k-turkish,31,2,2,"['en', 'tr']"
+atasoglu/flickr8k-turkish-mt,2024-07-03,2024-07-03,,https://huggingface.co/datasets/atasoglu/flickr8k-turkish-mt,53,2,2,"['en', 'tr']"
+atlasia/Synthetic-Data-English-Darija,2024-03-31,2024-11-03,,https://huggingface.co/datasets/atlasia/Synthetic-Data-English-Darija,37,1,2,"['en', 'ar']"
+atlasia/darija-translation,2024-03-05,2024-04-25,,https://huggingface.co/datasets/atlasia/darija-translation,46,15,3,"['en', 'ar', 'fr']"
+atlasia/darija_english,2024-05-16,2024-05-16,,https://huggingface.co/datasets/atlasia/darija_english,143,8,2,"['en', 'ar']"
+ayymen/Pontoon-Translations,2023-12-03,2024-01-19,,https://huggingface.co/datasets/ayymen/Pontoon-Translations,548,14,229,"['ee', 'lo', 'bo', 'ny', 'kw', 'si', 'ss', 'el', 'tl', 'pa', 'ms', 'te', 'an', 'om', 'ie', 'gd', 'uk', 'ts', 'pl', 'vec', 'oc', 'ru', 'mk', 'mhr', 'xcl', 'nhe', 'id', 'cak', 'fi', 'nia', 'sco', 'ca', 'trs', 'bm', 'tw', 'jiv', 'ig', 'udm', 'azz', 'fr', 'jbo', 'myv', 'nn', 'sd', 'th', 'zh', 'tzm', 'ixl', 'pai', 'sat', 'ug', 'pt', 'de', 'it', 'tt', 'brx', 'kk', 'ceb', 'uz', 'lg', 'ach', 'tyv', 'quy', 'shi', 'he', 'mai', 'sv', 'km', 've', 'ay', 'es', 'eu', 'hu', 'bs', 'mix', 'csb', 'hy', 'lus', 'am', 'da', 'zam', 'ne', 'hsb', 'ady', 'mt', 'ro', 'hyw', 'skr', 'bas', 'br', 'fo', 'hr', 'my', 'yue', 'mrj', 'ltg', 'tok', 'fur', 'gor', 'ha', 'yua', 'nb', 'ti', 'ckb', 'mr', 'fuf', 'sah', 'kbd', 'as', 'lb', 'fa', 'bg', 'tsz', 'tig', 'ar', 'mg', 'gu', 'mni', 'nv', 'gom', 'nr', 'snk', 'pap', 'nhi', 'dag', 'nso', 'cnh', 'frp', 'syr', 'ur', 'lv', 'ml', 'dyu', 'af', 'sk', 'ja', 'ab', 'zza', 'ace', 'ia', 'ilo', 'zu', 'ff', 'rw', 'guc', 'hye', 'dsb', 'sn', 'yo', 'azb', 'bn', 'hil', 'ky', 'ht', 'ka', 'nl', 'lt', 'quc', 'nyn', 'lij', 'sq', 'os', 'mdf', 'tr', 'or', 'ewo', 'wo', 'et', 'kmr', 'ta', 'gv', 'kn', 'anp', 'ast', 'crh', 'en', 'kaa', 'tg', 'scn', 'yi', 'st', 'szl', 'sc', 'dv', 'nan', 'is', 'meh', 'vi', 'ann', 'ban', 'xh', 'son', 'az', 'ps', 'ga', 'zgh', 'gn', 'ln', 'ba', 'ppl', 'rm', 'fy', 'sr', 'ko', 'kab', 'co', 'cs', 'ses', 'arn', 'vot', 'be', 'lzz', 'hi', 'ks', 'jv', 'gl', 'sw', 'tk', 'eo', 'cv', 'sl', 'cy', 'tn', 'mn', 'su', 'kpv', 'bxr', 'qvi', 'hus']"
+ayymen/Weblate-Translations,2024-01-07,2024-04-02,,https://huggingface.co/datasets/ayymen/Weblate-Translations,1961,9,285,"['lo', 'bo', 'mnc', 'kw', 'ny', 'si', 'el', 'kok', 'tl', 'apc', 'me', 'pa', 'vls', 'ms', 'te', 'an', 'by', 'rue', 'om', 'aii', 'ie', 'gd', 'uk', 'pbb', 'sdh', 'pl', 'vec', 'oc', 'krl', 'ru', 'cmn', 'mk', 'ua', 'mhr', 'rom', 'glk', 'id', 'fi', 'sco', 'ca', 'bm', 'tw', 'udm', 'ig', 'dum', 'fr', 'jbo', 'li', 'sd', 'nn', 'th', 'trv', 'zh', 'tzm', 'tet', 'haw', 'guw', 'sat', 'mi', 'ug', 'dev', 'pt', 'de', 'it', 'tt', 'brx', 'kk', 'ceb', 'uz', 'lg', 'ach', 'dua', 'gmh', 'no', 'ayc', 'frs', 'jpn', 'ji', 'bho', 'he', 'kg', 'mai', 'sv', 'nqo', 'ryu', 'bd', 'mnw', 'km', 'eng', 'peo', 'ay', 'es', 'eu', 'hu', 'nap', 'bs', 'bul', 'pam', 'ars', 'fra', 'csb', 'hy', 'ota', 'io', 'am', 'da', 'jp', 'ne', 'bem', 'hsb', 'mt', 'afh', 'ang', 'ro', 'skr', 'br', 'se', 'fo', 'hr', 'ext', 'jam', 'my', 'rcf', 'yue', 'ltg', 'tok', 'mo', 'fur', 'lk', 'nds', 'ha', 'gb', 'np', 'prg', 'ksh', 'nb', 'ti', 'ckb', 'gr', 'iw', 'oj', 'mr', 'kr', 'sah', 'sm', 'frm', 'ku', 'as', 'lb', 'fa', 'bg', 'ain', 'eg', 'hrx', 'sa', 'ty', 'ar', 'mg', 'gu', 'mni', 'hz', 'pk', 'cz', 'shn', 'pap', 'us', 'und', 'frp', 'ur', 'lv', 'in', 'ml', 'af', 'sk', 'cn', 'to', 'ja', 'ab', 'ace', 'ia', 'zu', 'rw', 'wa', 'guc', 'nah', 'yo', 'dsb', 'sn', 'azb', 'bn', 'so', 'pms', 'sh', 'pu', 'ky', 'ht', 'ka', 'la', 'nl', 'tlh', 'lt', 'bp', 'sq', 'os', 'aa', 'ajp', 'tr', 'bqi', 'lfn', 'or', 'wo', 'et', 'kmr', 'ta', 'gv', 'kn', 'anp', 'ast', 'crh', 'en', 'tg', 'yi', 'gum', 'na', 'tam', 'mjw', 'st', 'ak', 'szl', 'ber', 'sc', 'ce', 'sma', 'dv', 'nan', 'qt', 'hne', 'is', 'vi', 'gug', 'xh', 'dz', 'az', 'ps', 'ga', 'zgh', 'gn', 'ln', 'ba', 'bar', 'doi', 'fy', 'rm', 'sr', 'ko', 'gsw', 'kab', 'co', 'cnr', 'cs', 'arn', 'enm', 'sai', 'fil', 'be', 'fu', 'hi', 'ks', 'jv', 'cr', 'pr', 'gl', 'wae', 'sw', 'tk', 'eo', 'cv', 'sl', 'cy', 'lzh', 'tn', 'mn', 'tum', 'kl', 'su']"
+barbaroo/news_en_fo,2025-01-02,2025-01-02,,https://huggingface.co/datasets/barbaroo/news_en_fo,5,0,2,"['en', 'fo']"
+bbaaaa/iwslt14-de-en,2023-03-07,2023-04-04,,https://huggingface.co/datasets/bbaaaa/iwslt14-de-en,44,1,2,"['en', 'de']"
+bbaaaa/iwslt14-de-en-preprocess,2023-03-27,2023-03-28,,https://huggingface.co/datasets/bbaaaa/iwslt14-de-en-preprocess,155,1,2,"['en', 'de']"
+bentrevett/multi30k,2023-03-19,2023-03-24,,https://huggingface.co/datasets/bentrevett/multi30k,1411,5,2,"['en', 'de']"
+beratcmn/tatoeba-tr-en,2024-01-01,2024-01-01,,https://huggingface.co/datasets/beratcmn/tatoeba-tr-en,36,2,2,"['en', 'tr']"
+berhaan/LLaVA-595K-Translation-TR-EN,2024-12-24,2024-12-24,,https://huggingface.co/datasets/berhaan/LLaVA-595K-Translation-TR-EN,49,0,2,"['en', 'tr']"
+bidkhori/faradars,2023-10-17,2023-10-31,,https://huggingface.co/datasets/bidkhori/faradars,126,3,1,['fa']
+billingsmoore/phonetic-tibetan-to-english-translation-pairs,2024-09-25,2024-09-30,,https://huggingface.co/datasets/billingsmoore/phonetic-tibetan-to-english-translation-pairs,35,0,2,"['en', 'bo']"
+billingsmoore/tibetan-phonetic-transliteration-dataset,2024-09-10,2024-09-30,,https://huggingface.co/datasets/billingsmoore/tibetan-phonetic-transliteration-dataset,30,1,1,['bo']
+billingsmoore/tibetan-to-english-translation-dataset,2024-09-30,2024-09-30,,https://huggingface.co/datasets/billingsmoore/tibetan-to-english-translation-dataset,83,1,2,"['en', 'bo']"
+billingsmoore/tibetan-to-french-translation-dataset,2024-10-11,2024-10-11,,https://huggingface.co/datasets/billingsmoore/tibetan-to-french-translation-dataset,32,0,2,"['bo', 'fr']"
+billingsmoore/tibetan-to-german-translation-dataset,2024-10-11,2024-10-11,,https://huggingface.co/datasets/billingsmoore/tibetan-to-german-translation-dataset,30,0,2,"['bo', 'de']"
+billingsmoore/tibetan-to-spanish-translation-dataset,2024-10-11,2024-10-11,,https://huggingface.co/datasets/billingsmoore/tibetan-to-spanish-translation-dataset,34,1,2,"['es', 'bo']"
+binjang/NIKL-korean-english-dictionary,2024-02-24,2024-02-24,,https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary,48,4,2,"['en', 'ko']"
+blindsubmissions/GH_text2code,2023-06-06,2023-08-08,,https://huggingface.co/datasets/blindsubmissions/GH_text2code,85,4,1,['en']
+blindsubmissions/M2CRB,2023-06-05,2023-08-08,,https://huggingface.co/datasets/blindsubmissions/M2CRB,33,1,4,"['fr', 'es', 'pt', 'de']"
+bot-yaya/parallel_corpus_game,2024-12-09,2024-12-09,,https://huggingface.co/datasets/bot-yaya/parallel_corpus_game,62,1,20,"['sv', 'en', 'ar', 'es', 'pl', 'ru', 'vi', 'ja', 'id', 'zh', 'fr', 'th', 'ko', 'tr', 'pt', 'de', 'it', 'nl', 'eo', 'he']"
+botisan-ai/cantonese-mandarin-translations,2022-03-02,2024-01-13,,https://huggingface.co/datasets/botisan-ai/cantonese-mandarin-translations,93,18,1,['zh']
+brjezierski/benchmark-pl-szl,2024-04-12,2024-04-12,,https://huggingface.co/datasets/brjezierski/benchmark-pl-szl,30,0,1,['pl']
+bstraehle/en-to-es-auto-finance,2024-03-22,2024-03-31,,https://huggingface.co/datasets/bstraehle/en-to-es-auto-finance,47,0,2,"['en', 'es']"
+bytel0rd/yoruba_audio_translated,2024-09-07,2024-09-07,,https://huggingface.co/datasets/bytel0rd/yoruba_audio_translated,63,0,2,"['en', 'yo']"
+cahya/nusa-mt,2023-12-24,2023-12-24,,https://huggingface.co/datasets/cahya/nusa-mt,43,0,2,"['en', 'id']"
+caostworks/iigjeid,2024-08-26,2024-08-26,,https://huggingface.co/datasets/caostworks/iigjeid,31,0,0,[]
+caoyq/caoyq_en2zh_dataset,2023-04-03,2023-04-03,,https://huggingface.co/datasets/caoyq/caoyq_en2zh_dataset,30,0,2,"['en', 'zh']"
+cartesinus/iva_mt_wslot-exp,2023-04-26,2023-04-26,,https://huggingface.co/datasets/cartesinus/iva_mt_wslot-exp,76,0,5,"['sv', 'pl', 'en', 'es', 'de']"
+casey-martin/multilingual-mathematical-autoformalization,2023-12-01,2023-12-02,,https://huggingface.co/datasets/casey-martin/multilingual-mathematical-autoformalization,55,1,1,['en']
+cdleong/piglatin-mt,2022-03-02,2022-10-24,,https://huggingface.co/datasets/cdleong/piglatin-mt,118,0,1,['en']
+chenyouyou/translation-en-de,2023-03-21,2023-03-22,,https://huggingface.co/datasets/chenyouyou/translation-en-de,30,0,2,"['en', 'de']"
+chinesetest/chinese_class,2024-08-30,2024-08-30,,https://huggingface.co/datasets/chinesetest/chinese_class,32,0,1,['zh']
+cibfaye/wolof-english-bible,2024-06-14,2024-06-14,,https://huggingface.co/datasets/cibfaye/wolof-english-bible,52,0,1,['wo']
+cibfaye/wolof-french-alxuraan,2024-06-06,2024-06-06,,https://huggingface.co/datasets/cibfaye/wolof-french-alxuraan,31,0,2,"['wo', 'fr']"
+cis-lmu/GlotStoryBook,2023-10-13,2024-05-27,,https://huggingface.co/datasets/cis-lmu/GlotStoryBook,65,6,178,"['kok', 'gaa', 'nbl', 'sck', 'ron', 'spa', 'lin', 'tuv', 'saq', 'miu', 'swa', 'mlg', 'deu', 'ell', 'nhe', 'hat', 'ben', 'rus', 'crk', 'alz', 'pus', 'tel', 'tet', 'nzi', 'luo', 'nor', 'xog', 'ach', 'keo', 'ewe', 'nob', 'pol', 'kik', 'nya', 'tha', 'jpn', 'kua', 'nch', 'nyu', 'mhw', 'msa', 'ita', 'urd', 'mnw', 'mmc', 'eng', 'pcm', 'guj', 'nno', 'ttj', 'fra', 'mya', 'zul', 'ndo', 'old', 'amh', 'kpz', 'afr', 'ukr', 'guz', 'bem', 'luc', 'lun', 'lwg', 'zne', 'lgg', 'fas', 'jam', 'kri', 'tir', 'yue', 'mal', 'dga', 'cat', 'anu', 'mhi', 'nep', 'vie', 'yua', 'kru', 'hau', 'mas', 'ckb', 'mfe', 'gur', 'swe', 'sag', 'lat', 'kan', 'fat', 'kau', 'hin', 'epo', 'por', 'koo', 'sqi', 'her', 'mar', 'tur', 'adh', 'ctu', 'dag', 'lit', 'ind', 'nso', 'srp', 'kwn', 'lug', 'kdj', 'xsm', 'kam', 'san', 'ssw', 'tsc', 'rki', 'naq', 'maz', 'myx', 'mqu', 'bxk', 'lsm', 'din', 'lue', 'sot', 'pan', 'nyn', 'nuj', 'loz', 'ara', 'ven', 'sme', 'kmr', 'aeb', 'lko', 'bod', 'kln', 'tam', 'kqn', 'khm', 'som', 'cce', 'prs', 'toi', 'zho', 'mat', 'dan', 'tgl', 'laj', 'toh', 'ada', 'dje', 'csw', 'kor', 'orm', 'pmq', 'twi', 'ocu', 'asm', 'nle', 'ktz', 'ori', 'nhw', 'hbs', 'hch', 'yor', 'ful', 'hun', 'nld', 'teo', 'gjn', 'gyn', 'kin', 'mer', 'xho', 'tum', 'tso', 'tsn', 'hus']"
+cis-lmu/bavarian_to_english,2024-08-04,2024-08-04,,https://huggingface.co/datasets/cis-lmu/bavarian_to_english,55,2,2,"['bar', 'eng']"
+cjvt/rsdo4_en_sl,2022-09-20,2022-09-20,,https://huggingface.co/datasets/cjvt/rsdo4_en_sl,29,1,2,"['en', 'sl']"
+cmarkea/mmarco-contrastive,2024-04-18,2024-04-19,,https://huggingface.co/datasets/cmarkea/mmarco-contrastive,96,2,2,"['en', 'fr']"
+cobrayyxx/FLEURS_INDO-ENG_Speech_Translation,2024-12-06,2024-12-14,,https://huggingface.co/datasets/cobrayyxx/FLEURS_INDO-ENG_Speech_Translation,266,0,2,"['en', 'id']"
+cointegrated/panlex-meanings,2024-03-23,2024-03-24,,https://huggingface.co/datasets/cointegrated/panlex-meanings,177,10,1012,"['ido', 'mnh', 'akv', 'nih', 'sna', 'zav', 'sbk', 'crt', 'ron', 'byn', 'mpm', 'kat', 'non', 'clm', 'ell', 'pgd', 'ddo', 'xug', 'rom', 'xcl', 'fro', 'kmw', 'taq', 'yij', 'ben', 'inh', 'pdt', 'mfm', 'krc', 'kea', 'hla', 'pnw', 'shg', 'caf', 'tet', 'bfw', 'mww', 'akl', 'ttt', 'nyy', 'ceb', 'kgp', 'bis', 'heh', 'kjc', 'lbk', 'nya', 'pmt', 'jpn', 'shi', 'ayr', 'fip', 'kap', 'ozm', 'ajz', 'gww', 'djk', 'ryu', 'kit', 'bkw', 'car', 'dbu', 'moz', 'bag', 'swh', 'wbi', 'huu', 'fiu', 'ahk', 'jit', 'lap', 'pam', 'bul', 'qxs', 'ryn', 'fra', 'wun', 'ksb', 'mya', 'csb', 'dlm', 'swt', 'dhg', 'ket', 'mam', 'kaw', 'tay', 'guz', 'mge', 'nfu', 'dmn', 'rhg', 'yad', 'kgo', 'mrw', 'tuk', 'dts', 'zne', 'azo', 'bas', 'piw', 'ale', 'bez', 'kff', 'mal', 'cng', 'mrz', 'nds', 'rap', 'rup', 'hdn', 'khk', 'yua', 'prg', 'hau', 'dtt', 'mas', 'yaa', 'ckb', 'doe', 'mfe', 'thf', 'qub', 'vep', 'mvb', 'sah', 'njy', 'kbd', 'kan', 'thq', 'srd', 'snn', 'lea', 'ina', 'uzn', 'suj', 'gla', 'gom', 'epo', 'kig', 'mbc', 'zsm', 'tli', 'rob', 'sbp', 'msn', 'gui', 'val', 'cor', 'lug', 'dbq', 'mlt', 'rub', 'yao', 'lad', 'guq', 'gqr', 'lez', 'bgn', 'dym', 'kuz', 'guk', 'igs', 'bbw', 'cdo', 'msm', 'kiv', 'hye', 'dsb', 'wap', 'zyg', 'bmu', 'nyv', 'drl', 'zak', 'ivv', 'maz', 'myx', 'biy', 'wbv', 'ivb', 'roh', 'con', 'kuj', 'tpi', 'sjn', 'smk', 'ven', 'lmn', 'nov', 'hnj', 'sme', 'zku', 'ata', 'mwm', 'bod', 'cji', 'ast', 'zyb', 'bji', 'kln', 'lai', 'sgs', 'cyb', 'kpt', 'tab', 'omq', 'qvs', 'som', 'ndj', 'enx', 'lui', 'tgl', 'waq', 'nci', 'kor', 'bal', 'glg', 'npi', 'thk', 'tsd', 'frk', 'wau', 'akk', 'ary', 'kjj', 'tbc', 'gvc', 'tat', 'nau', 'pag', 'gsw', 'bpy', 'pbr', 'arn', 'nim', 'erk', 'gjn', 'bon', 'dma', 'ggw', 'sxn', 'nzz', 'pqw', 'ruf', 'kin', 'xho', 'nav', 'rut', 'alt', 'vun', 'wae', 'kpv', 'arb', 'mkd', 'yle', 'esi', 'lim', 'irk', 'ncu', 'gaa', 'luy', 'bzt', 'fuc', 'hit', 'war', 'zga', 'ztu', 'wmt', 'quz', 'nrl', 'egy', 'kiu', 'rui', 'vin', 'rmv', 'auc', 'vec', 'krl', 'deu', 'chn', 'isk', 'pum', 'ikz', 'smn', 'gwi', 'sco', 'mgv', 'crx', 'acu', 'udm', 'azz', 'jbo', 'cab', 'mxb', 'oro', 'trv', 'wdd', 'bxj', 'pcd', 'xsl', 'iii', 'kyh', 'tkr', 'haw', 'luo', 'gmh', 'dua', 'ewe', 'jmc', 'meu', 'nob', 'rmc', 'sbf', 'quy', 'bzp', 'tyv', 'ked', 'kek', 'got', 'bck', 'mem', 'urd', 'str', 'kpx', 'ybb', 'dgr', 'gin', 'mla', 'tek', 'mzn', 'xww', 'ddj', 'ile', 'srq', 'yau', 'iku', 'yur', 'nuy', 'gue', 'aus', 'cos', 'qvw', 'oym', 'kal', 'hsn', 'afr', 'kva', 'hsb', 'ady', 'bam', 'chr', 'isl', 'ogc', 'src', 'wln', 'tsi', 'bre', 'alq', 'bqt', 'jam', 'odu', 'tir', 'kdr', 'yue', 'dhl', 'bsk', 'cat', 'udi', 'ttv', 'suk', 'dob', 'ese', 'gwe', 'ksh', 'lkt', 'ava', 'chy', 'fuf', 'kxv', 'ker', 'gbj', 'ngj', 'xno', 'sin', 'bhg', 'chm', 'che', 'nnb', 'tna', 'bri', 'nij', 'zap', 'cdc', 'aka', 'koo', 'hoc', 'sux', 'nyh', 'swg', 'pap', 'und', 'wca', 'fmp', 'zun', 'als', 'ctz', 'kir', 'zin', 'fao', 'qvc', 'ign', 'ces', 'paa', 'gby', 'tvu', 'akj', 'ilo', 'kde', 'pwn', 'chv', 'luq', 'fuh', 'bgj', 'naq', 'snc', 'bkm', 'bjg', 'hil', 'mpj', 'bxk', 'arz', 'frc', 'sot', 'ort', 'wim', 'tlh', 'zag', 'nyn', 'mkn', 'xto', 'pot', 'loz', 'haq', 'mdf', 'pib', 'gup', 'aht', 'mah', 'srb', 'chk', 'wyb', 'abk', 'crh', 'bdk', 'tmf', 'tam', 'hak', 'gag', 'rou', 'bmv', 'mgr', 'poz', 'jaa', 'cag', 'szl', 'zho', 'sma', 'cwe', 'bph', 'tzo', 'yae', 'mde', 'nrn', 'cwg', 'agr', 'que', 'vai', 'hub', 'bar', 'dbw', 'iba', 'evn', 'ium', 'jav', 'hbs', 'tfn', 'hun', 'rop', 'knn', 'vot', 'fil', 'rmq', 'akz', 'kye', 'nna', 'yml', 'fli', 'chu', 'dcr', 'tah', 'bbq', 'ute', 'sun', 'sid', 'bjw', 'fin', 'bxr', 'kiz', 'qvi', 'gvf', 'tdt', 'mua', 'lmo', 'gld', 'ton', 'srm', 'kwv', 'klb', 'ldi', 'spa', 'dib', 'xal', 'tin', 'bbj', 'wol', 'now', 'nic', 'boa', 'kne', 'bvr', 'cas', 'ksr', 'gyd', 'lmp', 'myw', 'gqa', 'cbi', 'bef', 'oco', 'zaj', 'jiv', 'rus', 'sei', 'pui', 'gwd', 'alh', 'tue', 'tzm', 'glv', 'bni', 'bxn', 'kum', 'shh', 'lag', 'kdc', 'sat', 'sga', 'txg', 'ani', 'brx', 'txb', 'goh', 'pol', 'poi', 'wuu', 'cao', 'pes', 'stq', 'plt', 'bbc', 'gvl', 'mbb', 'gnd', 'hnn', 'cha', 'ita', 'lua', 'slk', 'bch', 'tar', 'zdj', 'arp', 'yan', 'bug', 'pmf', 'one', 'guj', 'nap', 'tgk', 'ttj', 'sef', 'nfa', 'cbs', 'kun', 'ota', 'see', 'zul', 'pli', 'ukr', 'kld', 'div', 'gdr', 'ndg', 'sel', 'bos', 'xkv', 'kas', 'bfj', 'dmb', 'kqi', 'pit', 'pau', 'top', 'kjh', 'sjd', 'gbd', 'arg', 'cym', 'cap', 'dhr', 'fub', 'moc', 'bej', 'ltz', 'jup', 'aym', 'mak', 'cof', 'zoh', 'bnt', 'mim', 'dar', 'sag', 'swe', 'zlm', 'waw', 'ssp', 'ain', 'ndh', 'kav', 'knc', 'sim', 'rmy', 'myb', 'por', 'qxn', 'shb', 'mar', 'tur', 'wrz', 'ktb', 'lit', 'ind', 'mgu', 'kck', 'ngk', 'nsk', 'ynd', 'arc', 'acw', 'aro', 'nmc', 'ekg', 'plj', 'syc', 'vma', 'chb', 'arl', 'gwr', 'agx', 'ory', 'ghl', 'smo', 'qve', 'ktg', 'bdy', 'slv', 'awc', 'dyb', 'bcc', 'xtc', 'pms', 'mgs', 'ngf', 'kdi', 'mrq', 'agq', 'lsm', 'ibb', 'lvs', 'cau', 'asa', 'ami', 'wrh', 'djd', 'diq', 'fry', 'gle', 'ktw', 'mmy', 'bcj', 'mzp', 'kaz', 'mzj', 'bou', 'mye', 'wic', 'mtp', 'wno', 'cgg', 'mns', 'mwn', 'qus', 'kuu', 'dan', 'cnx', 'lbe', 'rtm', 'rof', 'nyb', 'cav', 'cop', 'gug', 'abe', 'tlj', 'cho', 'tvl', 'hay', 'kfm', 'shr', 'lld', 'ote', 'ktz', 'grc', 'rif', 'kab', 'ses', 'art', 'miq', 'run', 'sas', 'ltc', 'soz', 'ave', 'fij', 'lac', 'xsr', 'bla', 'heb', 'kqc', 'yrk', 'tzl', 'nyo', 'ing', 'mnc', 'crj', 'bot', 'oar', 'wbh', 'ibo', 'vls', 'nog', 'koh', 'sxb', 'nde', 'lin', 'wbt', 'rwr', 'abt', 'spn', 'lme', 'pbb', 'smj', 'mlg', 'cmn', 'dtk', 'bcl', 'anv', 'huz', 'kcu', 'mhr', 'xan', 'gil', 'hat', 'hrv', 'men', 'dav', 'quh', 'nid', 'emy', 'rnw', 'tai', 'unr', 'zpq', 'myv', 'hbo', 'nym', 'tel', 'koi', 'kfc', 'kew', 'abq', 'ifk', 'aqt', 'myk', 'yaq', 'sms', 'xog', 'tha', 'mcx', 'kik', 'ahg', 'mic', 'dgz', 'qul', 'kha', 'eus', 'ihp', 'wkw', 'crs', 'eng', 'dze', 'viv', 'nno', 'wny', 'biw', 'ake', 'vif', 'new', 'oss', 'lus', 'pny', 'amh', 'kca', 'ybh', 'bem', 'mgq', 'zad', 'act', 'ang', 'orh', 'hyw', 'mph', 'oci', 'pml', 'poy', 'ulw', 'aqc', 'mxx', 'ccc', 'hvn', 'ldn', 'tde', 'ltg', 'bjb', 'pem', 'fur', 'snd', 'vie', 'ekk', 'mvi', 'rim', 'rjs', 'shp', 'mri', 'han', 'aoi', 'mzh', 'xpq', 'ksp', 'uig', 'abz', 'bak', 'lat', 'mjg', 'hdy', 'tsz', 'nit', 'mpa', 'pqe', 'tao', 'nly', 'hin', 'plg', 'snk', 'ntk', 'tqo', 'sja', 'buw', 'leh', 'sqi', 'opm', 'srp', 'ayo', 'frp', 'gdo', 'cuh', 'chc', 'sba', 'hig', 'xsv', 'yns', 'ngo', 'nys', 'nmm', 'yak', 'kam', 'san', 'guc', 'kmg', 'skt', 'nmn', 'gym', 'bva', 'pbu', 'azb', 'suw', 'ydd', 'mec', 'ngp', 'swb', 'reg', 'wsg', 'ziw', 'teg', 'lev', 'mog', 'cla', 'gaz', 'rwk', 'pan', 'vmw', 'cjs', 'quc', 'lij', 'mca', 'nuj', 'cku', 'mwe', 'won', 'lfn', 'nnq', 'dnj', 'vol', 'kmr', 'gan', 'cub', 'sac', 'wiv', 'kaa', 'pbt', 'scn', 'xbr', 'pqm', 'kya', 'khm', 'bel', 'prs', 'kxj', 'fkv', 'ngq', 'dje', 'bdd', 'npl', 'rag', 'quf', 'djm', 'wbp', 'hup', 'ban', 'lao', 'sje', 'ciw', 'mqy', 'pbh', 'twq', 'sue', 'wlk', 'asm', 'cbr', 'ebu', 'dzo', 'mbq', 'mov', 'map', 'yor', 'vro', 'bjv', 'apy', 'nld', 'pak', 'azj', 'enm', 'ikx', 'mcd', 'kjd', 'qxw', 'gcf', 'yai', 'aar', 'mer', 'srn', 'khv', 'dws', 'lzh', 'otk', 'xte', 'tsn', 'liv', 'bje', 'bkh']"
+colesimmons/SumTablets,2024-03-11,2024-08-01,,https://huggingface.co/datasets/colesimmons/SumTablets,44,4,0,[]
+collectivat/amazic,2023-01-26,2024-05-17,,https://huggingface.co/datasets/collectivat/amazic,68,5,7,"['ary', 'fr', 'en', 'ar', 'es', 'zgh', 'ca']"
+collectivat/una-fraza-al-diya,2022-09-14,2022-10-25,,https://huggingface.co/datasets/collectivat/una-fraza-al-diya,36,1,4,"['tr', 'es', 'en', 'lad']"
+community-datasets/europa_eac_tm,2022-03-02,2024-06-24,,https://huggingface.co/datasets/community-datasets/europa_eac_tm,111,5,26,"['sv', 'bg', 'el', 'en', 'es', 'hu', 'pl', 'is', 'lv', 'sk', 'da', 'fi', 'mt', 'ro', 'fr', 'hr', 'cs', 'pt', 'de', 'it', 'nl', 'no', 'lt', 'sl', 'tr', 'et']"
+community-datasets/europa_ecdc_tm,2022-03-02,2024-06-24,,https://huggingface.co/datasets/community-datasets/europa_ecdc_tm,69,2,25,"['sv', 'bg', 'el', 'en', 'es', 'hu', 'pl', 'is', 'lv', 'sk', 'da', 'fi', 'mt', 'ga', 'ro', 'fr', 'cs', 'pt', 'de', 'it', 'nl', 'no', 'lt', 'sl', 'et']"
+community-datasets/hrenwac_para,2022-03-02,2024-06-25,,https://huggingface.co/datasets/community-datasets/hrenwac_para,38,0,2,"['en', 'hr']"
+community-datasets/scielo,2022-03-02,2024-06-26,,https://huggingface.co/datasets/community-datasets/scielo,56,2,3,"['en', 'es', 'pt']"
+community-datasets/setimes,2022-03-02,2024-06-26,,https://huggingface.co/datasets/community-datasets/setimes,15824,2,10,"['ro', 'sr', 'bg', 'el', 'en', 'mk', 'hr', 'sq', 'bs', 'tr']"
+community-datasets/tapaco,2022-03-02,2024-06-26,,https://huggingface.co/datasets/community-datasets/tapaco,734,42,73,"['sv', 'bg', 'kw', 'el', 'en', 'ar', 'tl', 'war', 'es', 'eu', 'hu', 'cbk', 'ber', 'vo', 'ie', 'uk', 'pl', 'hy', 'cmn', 'mk', 'io', 'is', 'ota', 'af', 'da', 'ru', 'ur', 'ja', 'vi', 'id', 'fi', 'az', 'ia', 'ca', 'ro', 'sr', 'fr', 'br', 'jbo', 'ko', 'hr', 'cs', 'kab', 'yue', 'bn', 'be', 'tok', 'ug', 'tr', 'hi', 'de', 'it', 'nds', 'pt', 'tt', 'gl', 'la', 'nl', 'orv', 'tk', 'nb', 'gos', 'eo', 'lt', 'sl', 'pes', 'rn', 'mr', 'tlh', 'wuu', 'he', 'lfn', 'et']"
+community-datasets/um005,2022-03-02,2024-06-26,,https://huggingface.co/datasets/community-datasets/um005,97,0,2,"['en', 'ur']"
+croissantllm/croissant_dataset,2024-02-08,2024-10-03,,https://huggingface.co/datasets/croissantllm/croissant_dataset,809,6,2,"['en', 'fr']"
+croissantllm/croissant_dataset_no_web_data,2024-02-01,2024-02-15,,https://huggingface.co/datasets/croissantllm/croissant_dataset_no_web_data,217,4,2,"['en', 'fr']"
+csebuetnlp/BanglaNMT,2022-08-21,2023-02-24,,https://huggingface.co/datasets/csebuetnlp/BanglaNMT,105,6,2,"['en', 'bn']"
+cw1521/nl-st,2023-07-09,2023-07-12,,https://huggingface.co/datasets/cw1521/nl-st,341,0,0,[]
+cw1521/nl-st-lg,2023-07-09,2023-07-12,,https://huggingface.co/datasets/cw1521/nl-st-lg,550,0,0,[]
+d0rj/ru-mhr-parallel,2023-10-25,2023-10-25,,https://huggingface.co/datasets/d0rj/ru-mhr-parallel,31,1,2,"['mhr', 'ru']"
+dadashzadeh/Manufacturers-Persian,2023-12-29,2024-06-12,,https://huggingface.co/datasets/dadashzadeh/Manufacturers-Persian,31,1,1,['fa']
+dadashzadeh/Persian_abbreviations,2024-06-13,2024-06-13,,https://huggingface.co/datasets/dadashzadeh/Persian_abbreviations,29,1,1,['fa']
+danijelkorzinek/PINC,2024-10-22,2024-10-22,,https://huggingface.co/datasets/danijelkorzinek/PINC,32,0,2,"['en', 'pl']"
+dap305/processed_europarlv7_subset50k,2024-01-23,2024-01-23,,https://huggingface.co/datasets/dap305/processed_europarlv7_subset50k,37,0,2,"['en', 'es']"
+darkproger/flores-uk-beams,2024-01-13,2024-01-13,,https://huggingface.co/datasets/darkproger/flores-uk-beams,41,0,2,"['en', 'uk']"
+davidstap/NTREX,2024-04-23,2024-04-23,,https://huggingface.co/datasets/davidstap/NTREX,58,2,107,"['ee', 'lo', 'bo', 'ny', 'ss', 'si', 'el', 'pa', 'ms', 'te', 'om', 'uk', 'gd', 'ru', 'mk', 'id', 'fi', 'ca', 'ig', 'fr', 'th', 'zh', 'sd', 'nn', 'mi', 'pt', 'de', 'it', 'tt', 'kk', 'uz', 'shi', 'he', 'sv', 'km', 've', 'eu', 'hu', 'bs', 'hy', 'am', 'da', 'ne', 'mt', 'ro', 'fo', 'hr', 'my', 'ha', 'nb', 'mr', 'nd', 'sm', 'ku', 'lb', 'fa', 'bg', 'ty', 'ar', 'gu', 'hmn', 'ur', 'lv', 'af', 'sk', 'to', 'ja', 'zu', 'rw', 'yo', 'sn', 'so', 'bn', 'sh', 'ky', 'nl', 'lt', 'sq', 'tr', 'wo', 'fj', 'et', 'ta', 'kn', 'tg', 'st', 'dv', 'is', 'vi', 'xh', 'dz', 'az', 'ps', 'ba', 'sr', 'ko', 'cs', 'oy', 'fil', 'be', 'hi', 'sw', 'tk', 'sl', 'tn', 'cy', 'mn']"
+dddfffdswsrewrf/aaaAAA,2024-05-15,2024-05-15,,https://huggingface.co/datasets/dddfffdswsrewrf/aaaAAA,236,0,1,['en']
+deepmind/code_contests,2022-07-19,2023-06-11,,https://huggingface.co/datasets/deepmind/code_contests,5269,128,1,['en']
+demelin/wino_x,2022-07-14,2022-07-15,,https://huggingface.co/datasets/demelin/wino_x,44,1,4,"['en', 'fr', 'de', 'ru']"
+devesh5/codeconv-fortran-to-rust,2024-03-10,2024-03-10,,https://huggingface.co/datasets/devesh5/codeconv-fortran-to-rust,30,0,0,[]
+dichmau/ja_vi_translation,2024-03-13,2024-04-08,,https://huggingface.co/datasets/dichmau/ja_vi_translation,94,1,2,"['ja', 'vi']"
+din0s/ccmatrix_en-ro,2022-09-18,2022-09-19,,https://huggingface.co/datasets/din0s/ccmatrix_en-ro,31,0,2,"['en', 'ro']"
+divyasharma0795/AppleVisionPro_Tweets,2024-03-18,2024-05-04,,https://huggingface.co/datasets/divyasharma0795/AppleVisionPro_Tweets,59,13,1,['en']
+dmatekenya/chichewa-machine-translation,2024-05-08,2024-05-08,,https://huggingface.co/datasets/dmatekenya/chichewa-machine-translation,71,2,1,['ny']
+dofbi/jolof,2024-08-21,2025-01-03,,https://huggingface.co/datasets/dofbi/jolof,47,5,2,"['wo', 'fr']"
+dot-ammar/AR-dotless-small,2023-09-04,2023-09-11,,https://huggingface.co/datasets/dot-ammar/AR-dotless-small,38,0,1,['ar']
+dsfsi/gov-za-monolingual,2023-08-16,2023-08-16,,https://huggingface.co/datasets/dsfsi/gov-za-monolingual,74,1,11,"['nso', 'sot', 'zul', 'nbl', 'ssw', 'xho', 'eng', 'afr', 'tso', 'tsn', 'ven']"
+dsfsi/vukuzenzele-monolingual,2023-08-16,2023-12-06,,https://huggingface.co/datasets/dsfsi/vukuzenzele-monolingual,161,4,11,"['nso', 'zul', 'nbl', 'ssw', 'xho', 'eng', 'sep', 'afr', 'tso', 'tsn', 'ven']"
+dsfsi/vukuzenzele-sentence-aligned,2023-07-03,2023-11-27,,https://huggingface.co/datasets/dsfsi/vukuzenzele-sentence-aligned,3571,1,11,"['nso', 'sot', 'zul', 'nbl', 'ssw', 'xho', 'eng', 'afr', 'tso', 'tsn', 'ven']"
+duongttr/LPM-24-extend,2024-06-04,2024-11-02,,https://huggingface.co/datasets/duongttr/LPM-24-extend,30,1,1,['en']
+duongttr/chebi-20-new,2024-05-07,2024-11-02,,https://huggingface.co/datasets/duongttr/chebi-20-new,72,0,1,['en']
+duwuonline/en_vi_advanced_sentences,2023-09-05,2023-09-05,,https://huggingface.co/datasets/duwuonline/en_vi_advanced_sentences,37,1,2,"['en', 'vi']"
+dvgodoy/yoda_sentences,2024-08-07,2024-08-10,,https://huggingface.co/datasets/dvgodoy/yoda_sentences,39,2,1,['en']
+dynopii/IndicVarna-100k,2024-05-24,2024-05-24,,https://huggingface.co/datasets/dynopii/IndicVarna-100k,33,3,10,"['ta', 'kn', 'en', 'ur', 'gu', 'pa', 'te', 'mr', 'bn', 'hi']"
+eaglewatch/Korean_Wikipedia_Dataset_for_GPT2_August_2022,2023-08-25,2024-06-03,,https://huggingface.co/datasets/eaglewatch/Korean_Wikipedia_Dataset_for_GPT2_August_2022,42,6,1,['ko']
+ecoue/nordmann2023,2023-02-20,2023-02-21,,https://huggingface.co/datasets/ecoue/nordmann2023,72,1,2,"['en', 'de']"
+efederici/mc-translation,2024-11-03,2024-11-05,,https://huggingface.co/datasets/efederici/mc-translation,41,1,13,"['zh', 'en', 'sw', 'ko', 'ar', 'es', 'ja', 'bn', 'pt', 'id', 'hi', 'de', 'it']"
+efederici/mt_nap_it,2022-10-28,2022-10-28,,https://huggingface.co/datasets/efederici/mt_nap_it,35,2,1,['it']
+enimai/MuST-C-fr,2022-03-20,2022-11-21,,https://huggingface.co/datasets/enimai/MuST-C-fr,114,0,2,"['en', 'fr']"
+erfanzar/GPT-4-Prompts,2024-02-24,2024-02-24,,https://huggingface.co/datasets/erfanzar/GPT-4-Prompts,38,8,5,"['fa', 'fr', 'zh', 'en', 'es']"
+erfanzar/GPT4-8K,2023-09-06,2023-09-07,,https://huggingface.co/datasets/erfanzar/GPT4-8K,39,5,1,['en']
+erfanzar/UltraChat-Mixin,2023-09-07,2023-09-07,,https://huggingface.co/datasets/erfanzar/UltraChat-Mixin,289,6,2,"['en', 'zh']"
+espnet/floras,2024-10-24,2024-11-29,,https://huggingface.co/datasets/espnet/floras,536,3,47,"['sv', 'fa', 'bg', 'ta', 'el', 'en', 'ar', 'ms', 'es', 'hu', 'bs', 'uk', 'pl', 'ru', 'ur', 'vi', 'sk', 'da', 'ja', 'id', 'fi', 'az', 'ca', 'ro', 'fr', 'th', 'zh', 'hr', 'cs', 'bn', 'mi', 'pt', 'de', 'it', 'ky', 'hi', 'gl', 'ka', 'uz', 'la', 'nl', 'eo', 'sl', 'cy', 'tr', 'ku', 'et']"
+evilfreelancer/golang-en-ru,2024-06-08,2024-06-08,,https://huggingface.co/datasets/evilfreelancer/golang-en-ru,35,1,2,"['en', 'ru']"
+evilfreelancer/opus-php-en-ru-cleaned,2024-05-18,2024-06-08,,https://huggingface.co/datasets/evilfreelancer/opus-php-en-ru-cleaned,36,1,2,"['en', 'ru']"
+facebook/2M-Flores-ASL,2024-12-18,2024-12-19,,https://huggingface.co/datasets/facebook/2M-Flores-ASL,2712,1,1,['ase']
+fdelucaf/IdioTS,2024-03-25,2024-11-29,,https://huggingface.co/datasets/fdelucaf/IdioTS,64,0,2,"['en', 'es']"
+felixludos/babel-briefings,2024-03-21,2024-03-29,,https://huggingface.co/datasets/felixludos/babel-briefings,98,3,30,"['sv', 'bg', 'el', 'en', 'ar', 'es', 'hu', 'uk', 'pl', 'ru', 'lv', 'sk', 'ja', 'id', 'ro', 'sr', 'zh', 'fr', 'th', 'ko', 'cs', 'tr', 'pt', 'de', 'it', 'nl', 'no', 'lt', 'sl', 'he']"
+festvox/cmu_hinglish_dog,2022-03-02,2024-01-18,,https://huggingface.co/datasets/festvox/cmu_hinglish_dog,139,7,2,"['en', 'hi']"
+findnitai/english-to-hinglish,2023-06-21,2023-06-21,,https://huggingface.co/datasets/findnitai/english-to-hinglish,135,22,2,"['en', 'hi']"
+fmi-unibuc/RoRuDi,2023-01-27,2024-04-24,,https://huggingface.co/datasets/fmi-unibuc/RoRuDi,72,6,1,['ro']
+fnnerd/Baatcheet_Hinglish_English_Translation_Corpus,2024-04-16,2024-04-16,,https://huggingface.co/datasets/fnnerd/Baatcheet_Hinglish_English_Translation_Corpus,32,0,2,"['en', 'hi']"
+fpan/text-to-ocl-from-ecore,2024-06-17,2024-07-02,,https://huggingface.co/datasets/fpan/text-to-ocl-from-ecore,131,0,1,['en']
+fpan/uml-nl-ocl-100,2024-05-02,2024-05-21,,https://huggingface.co/datasets/fpan/uml-nl-ocl-100,43,0,1,['en']
+g0ster/TinyStories-Korean,2024-05-14,2024-05-15,,https://huggingface.co/datasets/g0ster/TinyStories-Korean,42,7,2,"['en', 'ko']"
+g8a9/europarl_en-it,2022-09-05,2022-09-07,,https://huggingface.co/datasets/g8a9/europarl_en-it,74,3,2,"['en', 'it']"
+gabeorlanski/bc-transcoder,2023-06-27,2023-07-18,,https://huggingface.co/datasets/gabeorlanski/bc-transcoder,59,5,1,['en']
+gabeorlanski/tp3,2023-03-22,2023-07-18,,https://huggingface.co/datasets/gabeorlanski/tp3,139,0,1,['en']
+gabrielchua/singlish-to-english-synthetic,2024-01-14,2024-01-14,,https://huggingface.co/datasets/gabrielchua/singlish-to-english-synthetic,61,1,1,['en']
+gallantVN/en_vi_DPO,2024-02-26,2025-01-07,,https://huggingface.co/datasets/gallantVN/en_vi_DPO,38,0,2,"['en', 'vi']"
+ghomasHudson/muld,2022-03-02,2022-11-02,,https://huggingface.co/datasets/ghomasHudson/muld,91,5,2,"['en', 'de']"
+google/code_x_glue_tt_text_to_text,2022-03-02,2024-01-24,,https://huggingface.co/datasets/google/code_x_glue_tt_text_to_text,145,1,5,"['zh', 'en', 'lv', 'nb', 'da']"
+google/mittens,2024-01-17,2024-01-17,,https://huggingface.co/datasets/google/mittens,42,5,23,"['fa', 'ar', 'te', 'es', 'om', 'pl', 'ru', 'am', 'ja', 'id', 'fi', 'zh', 'th', 'fr', 'cs', 'bn', 'pt', 'de', 'hi', 'it', 'lg', 'tr', 'as']"
+gretelai/synthetic_multilingual_llm_prompts,2024-06-09,2024-07-03,,https://huggingface.co/datasets/gretelai/synthetic_multilingual_llm_prompts,64,9,7,"['fr', 'zh', 'en', 'nl', 'es', 'pt', 'de']"
+grosenthal/latin_english_parallel,2023-04-07,2023-04-28,,https://huggingface.co/datasets/grosenthal/latin_english_parallel,437,7,2,"['en', 'la']"
+grosenthal/latin_english_translation,2023-02-28,2023-07-17,,https://huggingface.co/datasets/grosenthal/latin_english_translation,89,6,2,"['en', 'la']"
+gsarti/flores_101,2022-03-02,2022-10-27,,https://huggingface.co/datasets/gsarti/flores_101,4540,23,101,"['lo', 'ny', 'el', 'tl', 'pa', 'ms', 'te', 'om', 'uk', 'pl', 'oc', 'ru', 'mk', 'id', 'fi', 'ca', 'ig', 'fr', 'kea', 'th', 'sd', 'luo', 'mi', 'pt', 'de', 'it', 'kk', 'ceb', 'uz', 'lg', 'no', 'he', 'sv', 'km', 'es', 'hu', 'bs', 'hy', 'am', 'da', 'ne', 'mt', 'ro', 'my', 'hr', 'ha', 'mr', 'ku', 'lb', 'as', 'fa', 'bg', 'ar', 'gu', 'ur', 'lv', 'ml', 'af', 'sk', 'ja', 'zu', 'ff', 'kam', 'yo', 'sn', 'so', 'bn', 'ky', 'ka', 'nl', 'lt', 'tr', 'or', 'wo', 'et', 'ta', 'kn', 'ast', 'en', 'tg', 'ns', 'zho', 'is', 'vi', 'xh', 'az', 'ps', 'ga', 'ln', 'sr', 'ko', 'cs', 'umb', 'be', 'hi', 'jv', 'gl', 'sw', 'sl', 'cy', 'mn']"
+gsarti/iwslt2017_context,2023-05-07,2023-05-07,,https://huggingface.co/datasets/gsarti/iwslt2017_context,133,1,10,"['ro', 'fr', 'zh', 'en', 'ar', 'ko', 'nl', 'ja', 'de', 'it']"
+gsarti/magpie,2022-06-13,2022-10-27,,https://huggingface.co/datasets/gsarti/magpie,116,3,1,['en']
+gsarti/mt_geneval,2022-11-21,2022-11-21,,https://huggingface.co/datasets/gsarti/mt_geneval,79,6,9,"['fr', 'ru', 'en', 'ar', 'es', 'pt', 'hi', 'de', 'it']"
+gsarti/qe4pe,2024-09-28,2024-12-17,,https://huggingface.co/datasets/gsarti/qe4pe,490,0,3,"['en', 'nl', 'it']"
+gshbao/DocNMT,2023-05-12,2023-05-12,,https://huggingface.co/datasets/gshbao/DocNMT,29,1,2,"['en', 'de']"
+halitefe/lima-tr,2024-03-08,2024-03-11,,https://huggingface.co/datasets/halitefe/lima-tr,40,4,1,['tr']
+haohaa/shan-blogspots,2024-04-28,2024-06-19,,https://huggingface.co/datasets/haohaa/shan-blogspots,38,1,1,['shn']
+haohaa/shanf,2024-04-28,2024-06-19,,https://huggingface.co/datasets/haohaa/shanf,31,0,1,['shn']
+haoranxu/ALMA-R-Preference,2024-01-17,2024-06-04,,https://huggingface.co/datasets/haoranxu/ALMA-R-Preference,335,13,5,"['zh', 'ru', 'is', 'cs', 'de']"
+harouzie/vi_en-translation,2023-08-19,2023-08-19,,https://huggingface.co/datasets/harouzie/vi_en-translation,246,5,2,"['en', 'vi']"
+haryoaw/stif-indonesia,2023-10-30,2023-10-30,,https://huggingface.co/datasets/haryoaw/stif-indonesia,90,7,1,['id']
+hieunguyenminh/baseTextData,2023-09-02,2023-09-02,,https://huggingface.co/datasets/hieunguyenminh/baseTextData,34,0,0,[]
+higgood/BioWMT18_zh2en,2024-09-06,2024-09-06,,https://huggingface.co/datasets/higgood/BioWMT18_zh2en,31,0,2,"['en', 'zh']"
+higgood/BioWMT19_zh2en,2024-09-06,2024-09-06,,https://huggingface.co/datasets/higgood/BioWMT19_zh2en,31,0,2,"['en', 'zh']"
+higgood/BioWMT20_zh2en,2024-09-06,2024-09-06,,https://huggingface.co/datasets/higgood/BioWMT20_zh2en,35,0,2,"['en', 'zh']"
+higgood/BioWMT21_zh2en,2024-09-06,2024-09-06,,https://huggingface.co/datasets/higgood/BioWMT21_zh2en,36,0,2,"['en', 'zh']"
+higgood/BioWMT22_zh2en,2024-09-06,2024-09-06,,https://huggingface.co/datasets/higgood/BioWMT22_zh2en,32,0,2,"['en', 'zh']"
+hiimbach/mtet,2024-05-26,2024-06-19,,https://huggingface.co/datasets/hiimbach/mtet,30,2,2,"['en', 'vi']"
+hmar-lang/hmar-bible-dataset,2024-12-20,2025-01-06,,https://huggingface.co/datasets/hmar-lang/hmar-bible-dataset,3,2,2,"['en', 'hmr']"
+hmar-lang/hmar-language-basic-words,2024-12-12,2025-01-06,,https://huggingface.co/datasets/hmar-lang/hmar-language-basic-words,3,2,2,"['en', 'hmr']"
+hpprc/TALPCo,2024-12-01,2024-12-01,,https://huggingface.co/datasets/hpprc/TALPCo,55,2,2,"['en', 'ja']"
+hpprc/alt-parallel-en-ja,2024-03-21,2024-03-21,,https://huggingface.co/datasets/hpprc/alt-parallel-en-ja,87,3,2,"['en', 'ja']"
+hpprc/honyaku,2024-11-20,2024-11-20,,https://huggingface.co/datasets/hpprc/honyaku,34,2,2,"['en', 'ja']"
+hpprc/kaken-translations-ja-en,2024-11-29,2025-01-06,,https://huggingface.co/datasets/hpprc/kaken-translations-ja-en,365,0,2,"['en', 'ja']"
+hpprc/tanaka-corpus,2024-03-21,2024-03-21,,https://huggingface.co/datasets/hpprc/tanaka-corpus,80,7,2,"['en', 'ja']"
+huangqingming/scholaread,2024-06-17,2024-07-05,,https://huggingface.co/datasets/huangqingming/scholaread,33,0,2,"['en', 'zh']"
+hugfaceguy0001/LyricsTranslation,2024-11-20,2024-11-23,,https://huggingface.co/datasets/hugfaceguy0001/LyricsTranslation,44,0,2,"['ja', 'zh']"
+iamwille/igbo-translation,2023-04-01,2023-04-01,,https://huggingface.co/datasets/iamwille/igbo-translation,45,2,2,"['en', 'ig']"
+igoranoni/It-to-En-translations-alpaca,2024-08-03,2024-08-03,,https://huggingface.co/datasets/igoranoni/It-to-En-translations-alpaca,31,1,2,"['en', 'it']"
+ihalage/sinhala-finetune-qa-eli5,2024-06-12,2024-06-12,,https://huggingface.co/datasets/ihalage/sinhala-finetune-qa-eli5,49,0,2,"['en', 'si']"
+ilsp/flores200_en-el,2024-01-09,2024-01-23,,https://huggingface.co/datasets/ilsp/flores200_en-el,40,1,2,"['en', 'el']"
+ilsp/scipar_parallel_docs,2024-02-23,2024-03-27,,https://huggingface.co/datasets/ilsp/scipar_parallel_docs,56,1,6,"['fr', 'el', 'en', 'es', 'de', 'it']"
+imomayiz/darija-english,2024-02-04,2024-04-17,,https://huggingface.co/datasets/imomayiz/darija-english,1198,8,2,"['en', 'ar']"
+indiejoseph/yue-zh-translation,2023-08-28,2023-10-08,,https://huggingface.co/datasets/indiejoseph/yue-zh-translation,39,1,2,"['yue', 'zh']"
+indrad123/flickr30k-google-translate-id,2024-06-09,2024-06-09,,https://huggingface.co/datasets/indrad123/flickr30k-google-translate-id,30,0,1,['id']
+indrad123/flickr30k-transformed-captions-indonesia,2024-06-08,2024-06-09,,https://huggingface.co/datasets/indrad123/flickr30k-transformed-captions-indonesia,31,0,1,['id']
+innova-ai/Human-Style-Answers,2024-04-20,2024-05-01,,https://huggingface.co/datasets/innova-ai/Human-Style-Answers,136,9,1,['en']
+intone/horror_stories_reddit,2023-10-24,2023-10-24,,https://huggingface.co/datasets/intone/horror_stories_reddit,59,4,1,['en']
+iryneko571/CCMatrix-v1-Ja_Zh-fused,2024-07-01,2024-07-01,,https://huggingface.co/datasets/iryneko571/CCMatrix-v1-Ja_Zh-fused,33,1,2,"['ja', 'zh']"
+ismaildlml/Spoken2TSL,2024-03-14,2024-03-31,,https://huggingface.co/datasets/ismaildlml/Spoken2TSL,41,0,1,['tr']
+issai/kazparc,2023-11-29,2024-04-12,,https://huggingface.co/datasets/issai/kazparc,97,5,4,"['en', 'tr', 'kk', 'ru']"
+itzune/basque-parallel-corpus,2024-02-17,2024-02-22,,https://huggingface.co/datasets/itzune/basque-parallel-corpus,83,2,4,"['en', 'eu', 'es', 'fr']"
+iulusoy/test-transformers-pipeline,2024-05-23,2024-05-24,,https://huggingface.co/datasets/iulusoy/test-transformers-pipeline,30,0,1,['en']
+ivangtorre/second_americas_nlp_2022,2024-05-13,2024-05-14,,https://huggingface.co/datasets/ivangtorre/second_americas_nlp_2022,106,0,4,"['bzd', 'gn', 'gvc', 'qu']"
+jakartaresearch/inglish,2022-08-19,2022-08-19,,https://huggingface.co/datasets/jakartaresearch/inglish,33,0,2,"['en', 'id']"
+jdapaah/asante-twi-bible,2024-04-13,2024-04-15,,https://huggingface.co/datasets/jdapaah/asante-twi-bible,32,1,2,"['tw', 'ak']"
+jhu-clsp/kreyol-mt,2024-05-30,2024-10-24,,https://huggingface.co/datasets/jhu-clsp/kreyol-mt,1143,7,48,"['pre', 'djk', 'acf', 'srm', 'crs', 'eng', 'pcm', 'fab', 'aze', 'por', 'spa', 'zho', 'svc', 'gcr', 'pap', 'fra', 'ktu', 'deu', 'bah', 'gul', 'mue', 'cri', 'hat', 'gpe', 'trf', 'bzk', 'pov', 'fpe', 'kea', 'jam', 'kri', 'rcf', 'sag', 'fng', 'nep', 'gyn', 'lou', 'ceb', 'gcf', 'tpi', 'wes', 'srn', 'dcr', 'mfe', 'icr', 'ara', 'aoa', 'bzj']"
+jinglishi0206/Maori_English_New_Zealand,2024-03-28,2024-04-02,,https://huggingface.co/datasets/jinglishi0206/Maori_English_New_Zealand,32,4,2,"['en', 'mi']"
+joelniklaus/SwissLawTranslations,2024-09-09,2024-11-25,,https://huggingface.co/datasets/joelniklaus/SwissLawTranslations,203,0,5,"['fr', 'en', 'rm', 'de', 'it']"
+joelniklaus/SwissSupremeCourtPressReleaseTranslations,2024-11-04,2024-11-21,,https://huggingface.co/datasets/joelniklaus/SwissSupremeCourtPressReleaseTranslations,97,0,3,"['fr', 'de', 'it']"
+johnearlesullivan/capitol,2023-07-14,2023-07-14,,https://huggingface.co/datasets/johnearlesullivan/capitol,53,0,1,['en']
+jonavila/DRAL,2023-10-19,2023-10-23,,https://huggingface.co/datasets/jonavila/DRAL,35,0,2,"['en', 'es']"
+jslin09/news_commentary_tw,2023-07-22,2023-07-22,,https://huggingface.co/datasets/jslin09/news_commentary_tw,37,2,2,"['en', 'zh']"
+juancavallotti/multilingual-gec,2023-01-06,2023-01-06,,https://huggingface.co/datasets/juancavallotti/multilingual-gec,46,5,4,"['en', 'es', 'de', 'fr']"
+juanjucm/FLEURS-SpeechT-GL-EN,2024-12-08,2024-12-18,,https://huggingface.co/datasets/juanjucm/FLEURS-SpeechT-GL-EN,128,0,2,"['en', 'gl']"
+juanjucm/OpenSLR-SpeechT-GL-EN,2024-12-05,2024-12-20,,https://huggingface.co/datasets/juanjucm/OpenSLR-SpeechT-GL-EN,104,0,2,"['en', 'gl']"
+junyeong-nero/KMA-term,2024-12-27,2025-01-06,,https://huggingface.co/datasets/junyeong-nero/KMA-term,12,0,2,"['en', 'ko']"
+jurasova/newscrawl_enhanced_gender_balance,2024-05-13,2024-05-13,,https://huggingface.co/datasets/jurasova/newscrawl_enhanced_gender_balance,36,0,4,"['de', 'es', 'pl', 'cs']"
+kalese/opus-mt-en-bkm,2023-11-17,2024-03-31,,https://huggingface.co/datasets/kalese/opus-mt-en-bkm,39,0,0,[]
+kartikagg98/HINMIX_hi-en,2024-03-24,2024-04-29,,https://huggingface.co/datasets/kartikagg98/HINMIX_hi-en,175,2,2,"['en', 'hi']"
+khondoker/reveal-bangla,2025-01-07,2025-01-07,,https://huggingface.co/datasets/khondoker/reveal-bangla,0,0,2,"['en', 'bn']"
+kingkaung/Quran_English_Myanmar_Parrelel_Corpus,2024-12-29,2024-12-29,,https://huggingface.co/datasets/kingkaung/Quran_English_Myanmar_Parrelel_Corpus,16,0,1,['my']
+klei22/korean-english-jamon-parallel-corpora,2024-04-29,2024-07-31,,https://huggingface.co/datasets/klei22/korean-english-jamon-parallel-corpora,37,0,2,"['en', 'ko']"
+klima7/en-pl-translation,2024-01-23,2024-01-24,,https://huggingface.co/datasets/klima7/en-pl-translation,36,0,2,"['en', 'pl']"
+kobe73er/shiji-translation-dataset,2024-12-11,2024-12-11,,https://huggingface.co/datasets/kobe73er/shiji-translation-dataset,45,0,1,['zh']
+kristaller486/ALMA-prompt-completion,2023-11-14,2023-11-15,,https://huggingface.co/datasets/kristaller486/ALMA-prompt-completion,31,1,6,"['zh', 'ru', 'en', 'is', 'cs', 'de']"
+ku-nlp/speech-bsd-hf,2023-12-06,2023-12-06,,https://huggingface.co/datasets/ku-nlp/speech-bsd-hf,31,6,2,"['en', 'ja']"
+laelhalawani/opus_and_europarl_en_ro,2024-10-28,2024-10-28,,https://huggingface.co/datasets/laelhalawani/opus_and_europarl_en_ro,52,0,2,"['en', 'ro']"
+lamhieu/translate_tinystories_dialogue_envi,2024-02-05,2024-05-15,,https://huggingface.co/datasets/lamhieu/translate_tinystories_dialogue_envi,55,1,2,"['en', 'vi']"
+larryvrh/CCMatrix-v1-Ja_Zh-filtered,2023-04-08,2023-04-08,,https://huggingface.co/datasets/larryvrh/CCMatrix-v1-Ja_Zh-filtered,37,8,2,"['ja', 'zh']"
+larryvrh/WikiMatrix-v1-En_Zh-filtered,2023-08-13,2023-08-13,,https://huggingface.co/datasets/larryvrh/WikiMatrix-v1-En_Zh-filtered,59,5,2,"['en', 'zh']"
+larryvrh/WikiMatrix-v1-Ja_Zh-filtered,2023-04-08,2023-04-08,,https://huggingface.co/datasets/larryvrh/WikiMatrix-v1-Ja_Zh-filtered,33,12,2,"['ja', 'zh']"
+lbourdois/en-fr-nyu-dl-course-corpus,2023-03-25,2023-11-11,,https://huggingface.co/datasets/lbourdois/en-fr-nyu-dl-course-corpus,50,0,2,"['en', 'fr']"
+learningmachineaz/translate_enaz_10m,2023-04-06,2023-04-07,,https://huggingface.co/datasets/learningmachineaz/translate_enaz_10m,35,3,2,"['en', 'az']"
+leks-forever/The_Secret_of_Third_Planet_Rus_Lez,2024-09-22,2024-09-22,,https://huggingface.co/datasets/leks-forever/The_Secret_of_Third_Planet_Rus_Lez,31,1,2,"['lez', 'ru']"
+leks-forever/bible-lezghian-russian,2024-09-18,2024-09-18,,https://huggingface.co/datasets/leks-forever/bible-lezghian-russian,33,2,2,"['lez', 'ru']"
+leks-forever/corpus_of_cnal_lezgian_to_russian,2024-09-22,2024-09-22,,https://huggingface.co/datasets/leks-forever/corpus_of_cnal_lezgian_to_russian,30,2,2,"['lez', 'ru']"
+lemon-mint/korean_english_parallel_wiki_augmented_v1,2024-07-17,2024-07-17,,https://huggingface.co/datasets/lemon-mint/korean_english_parallel_wiki_augmented_v1,179,8,2,"['en', 'ko']"
+lemon-mint/korean_parallel_sentences_v1.1,2024-05-07,2024-06-21,,https://huggingface.co/datasets/lemon-mint/korean_parallel_sentences_v1.1,56,8,2,"['en', 'ko']"
+lesserfield/fgo-story,2024-04-15,2024-04-15,,https://huggingface.co/datasets/lesserfield/fgo-story,45,3,3,"['en', 'ja', 'id']"
+lesserfield/translate-en-ja-id,2024-07-01,2024-07-12,,https://huggingface.co/datasets/lesserfield/translate-en-ja-id,36,0,3,"['en', 'ja', 'id']"
+lewiswatson/YarraEsrever,2024-03-16,2024-03-16,,https://huggingface.co/datasets/lewiswatson/YarraEsrever,34,0,0,[]
+lgrobol/ARBRES-Kenstur,2023-11-30,2023-11-30,,https://huggingface.co/datasets/lgrobol/ARBRES-Kenstur,32,2,2,"['fr', 'br']"
+lianghsun/chinese-english-technical-patent-glossary-chat,2024-09-04,2024-09-06,,https://huggingface.co/datasets/lianghsun/chinese-english-technical-patent-glossary-chat,30,0,0,[]
+lianghsun/patent-translation-dpo,2024-11-25,2024-12-28,,https://huggingface.co/datasets/lianghsun/patent-translation-dpo,17,0,1,['zh']
+lianghsun/tw-ipo-bilingual-vocab,2024-09-23,2024-09-24,,https://huggingface.co/datasets/lianghsun/tw-ipo-bilingual-vocab,31,0,2,"['en', 'zh']"
+liboaccn/MIT-10M,2024-08-21,2024-12-11,,https://huggingface.co/datasets/liboaccn/MIT-10M,188,6,14,"['hi', 'fr', 'zh', 'en', 'ru', 'ar', 'ko', 'th', 'ja', 'es', 'tr', 'pt', 'de', 'it']"
+lightontech/tech-viet-translation,2024-07-21,2024-07-21,,https://huggingface.co/datasets/lightontech/tech-viet-translation,32,0,2,"['en', 'vi']"
+lingvanex/lingvanex_test_references,2023-10-24,2023-10-24,,https://huggingface.co/datasets/lingvanex/lingvanex_test_references,137,2,30,"['fa', 'sv', 'el', 'ar', 'es', 'hu', 'bs', 'uk', 'pl', 'ru', 'lv', 'af', 'da', 'id', 'fi', 'ro', 'sr', 'fr', 'cs', 'be', 'tr', 'pt', 'de', 'it', 'no', 'lt', 'bp', 'sq', 'he', 'et']"
+liswei/PromptPair-TW,2024-05-09,2024-06-02,,https://huggingface.co/datasets/liswei/PromptPair-TW,30,2,1,['zh']
+liswei/coct-en-zhtw-dedup,2024-05-06,2024-05-06,,https://huggingface.co/datasets/liswei/coct-en-zhtw-dedup,32,1,2,"['zh', 'zht']"
+liupf/ChEBI-20-MM,2024-01-09,2024-06-17,,https://huggingface.co/datasets/liupf/ChEBI-20-MM,164,1,0,[]
+ljcamargo/tachiwin_translate,2024-10-20,2024-11-24,,https://huggingface.co/datasets/ljcamargo/tachiwin_translate,32,0,1,['es']
+lmg-anon/VNTL,2023-11-15,2023-11-15,,https://huggingface.co/datasets/lmg-anon/VNTL,31,0,2,"['en', 'ja']"
+lmg-anon/VNTL-v2.5-1.6k-dpo-pairs,2024-02-01,2024-02-02,,https://huggingface.co/datasets/lmg-anon/VNTL-v2.5-1.6k-dpo-pairs,33,0,2,"['en', 'ja']"
+lmg-anon/vntl-leaderboard,2024-06-08,2025-01-02,,https://huggingface.co/datasets/lmg-anon/vntl-leaderboard,681,18,2,"['en', 'ja']"
+lordjia/Cantonese_English_Translation,2024-07-16,2024-07-16,,https://huggingface.co/datasets/lordjia/Cantonese_English_Translation,67,4,2,"['en', 'zh']"
+louam123/darja-tounsi1,2024-02-14,2024-02-14,,https://huggingface.co/datasets/louam123/darja-tounsi1,34,0,2,"['en', 'ar']"
+ltrciiith/bhashik-parallel-corpora-education,2024-11-22,2024-12-06,,https://huggingface.co/datasets/ltrciiith/bhashik-parallel-corpora-education,29,0,10,"['ta', 'kn', 'en', 'ur', 'gu', 'ml', 'te', 'mr', 'bn', 'hi']"
+ltrciiith/bhashik-parallel-corpora-health,2024-12-03,2024-12-06,,https://huggingface.co/datasets/ltrciiith/bhashik-parallel-corpora-health,30,0,8,"['ta', 'kn', 'en', 'gu', 'ml', 'te', 'mr', 'hi']"
+lunovian/vietnamese-nom-latin-translation,2024-10-30,2024-10-30,,https://huggingface.co/datasets/lunovian/vietnamese-nom-latin-translation,34,1,1,['vi']
+lunovian/vietnamese-nom-poetry-translation,2024-10-30,2024-10-30,,https://huggingface.co/datasets/lunovian/vietnamese-nom-poetry-translation,30,1,1,['vi']
+lunovian/vietnamese-poem-context,2024-10-31,2024-10-31,,https://huggingface.co/datasets/lunovian/vietnamese-poem-context,31,1,2,"['en', 'vi']"
+mabidan/econ_paper_abstracts_fa_translation,2024-05-09,2024-05-15,,https://huggingface.co/datasets/mabidan/econ_paper_abstracts_fa_translation,35,1,2,"['en', 'fa']"
+mabzak/anime_subtitle,2023-11-04,2023-11-04,,https://huggingface.co/datasets/mabzak/anime_subtitle,36,0,2,"['en', 'id']"
+maixbach/insert-vnese-accent,2024-04-05,2024-04-05,,https://huggingface.co/datasets/maixbach/insert-vnese-accent,36,0,0,[]
+marcusy/nlp_ah_dataset,2023-06-14,2023-06-15,,https://huggingface.co/datasets/marcusy/nlp_ah_dataset,35,0,1,['en']
+marcusy/qqq,2023-08-02,2023-08-02,,https://huggingface.co/datasets/marcusy/qqq,40,0,1,['en']
+masakhane/mafand,2022-08-22,2023-09-11,,https://huggingface.co/datasets/masakhane/mafand,343,14,22,"['ee', 'ny', 'en', 'pcm', 'bbj', 'fon', 'xh', 'am', 'bm', 'tw', 'zu', 'ig', 'fr', 'rw', 'yo', 'sn', 'mos', 'ha', 'lg', 'sw', 'tn', 'wo']"
+matekadlicsko/hungarian-news-translations,2024-01-17,2024-02-15,,https://huggingface.co/datasets/matekadlicsko/hungarian-news-translations,40,1,2,"['en', 'hu']"
+matheusrdgsf/re_dial_ptbr,2023-11-13,2023-11-13,,https://huggingface.co/datasets/matheusrdgsf/re_dial_ptbr,29,3,2,"['en', 'pt']"
+matiss/Latvian-Twitter-Eater-Corpus-Translation,2024-05-21,2024-05-22,,https://huggingface.co/datasets/matiss/Latvian-Twitter-Eater-Corpus-Translation,36,0,2,"['en', 'lv']"
+matjs/pt_to_an,2024-01-23,2024-02-03,,https://huggingface.co/datasets/matjs/pt_to_an,30,0,1,['pt']
+mbazaNLP/NMT_Tourism_parallel_data_en_kin,2023-08-23,2023-09-11,,https://huggingface.co/datasets/mbazaNLP/NMT_Tourism_parallel_data_en_kin,32,1,2,"['en', 'rw']"
+meenham/MSC_korean,2024-03-10,2024-03-10,,https://huggingface.co/datasets/meenham/MSC_korean,57,1,1,['ko']
+merchal/zhtext2emoji,2023-11-10,2023-11-13,,https://huggingface.co/datasets/merchal/zhtext2emoji,31,1,2,"['en', 'zh']"
+mertcobanov/all-nli-triplets-turkish,2024-11-20,2024-12-19,,https://huggingface.co/datasets/mertcobanov/all-nli-triplets-turkish,187,1,2,"['en', 'tr']"
+mesolitica/chatgpt4-noisy-translation-twitter-dialect,2023-12-19,2023-12-19,,https://huggingface.co/datasets/mesolitica/chatgpt4-noisy-translation-twitter-dialect,39,1,1,['ms']
+mesolitica/synthetic-word-switching-translation,2024-05-17,2024-06-03,,https://huggingface.co/datasets/mesolitica/synthetic-word-switching-translation,39,1,1,['ms']
+mikehemberger/darcai-life-on-earth,2023-11-04,2023-12-16,,https://huggingface.co/datasets/mikehemberger/darcai-life-on-earth,31,1,2,"['en', 'de']"
+miugod/qianyan_nmt,2024-01-23,2024-01-23,,https://huggingface.co/datasets/miugod/qianyan_nmt,58,2,4,"['vi', 'th', 'zh', 'ru']"
+mlsuny/LLM_dataset,2024-09-12,2024-09-15,,https://huggingface.co/datasets/mlsuny/LLM_dataset,35,1,2,"['en', 'bn']"
+mlsuny/test_suny,2024-09-12,2024-09-12,,https://huggingface.co/datasets/mlsuny/test_suny,32,0,0,[]
+moaimsong/english-phom,2024-06-17,2024-06-17,,https://huggingface.co/datasets/moaimsong/english-phom,30,0,0,[]
+mohamed-khalil/ATHAR,2024-07-18,2024-08-04,,https://huggingface.co/datasets/mohamed-khalil/ATHAR,70,7,2,"['en', 'ar']"
+momo22/eng2nep,2023-10-02,2023-10-02,,https://huggingface.co/datasets/momo22/eng2nep,29,1,2,"['en', 'ne']"
+mpasila/ParallelFiction-Ja_En-100k-alpaca,2024-03-26,2024-04-19,,https://huggingface.co/datasets/mpasila/ParallelFiction-Ja_En-100k-alpaca,41,3,2,"['en', 'ja']"
+mpasila/ParallelFiction-Ja_En-100k-alpaca-4k-context,2024-04-18,2024-04-18,,https://huggingface.co/datasets/mpasila/ParallelFiction-Ja_En-100k-alpaca-4k-context,33,1,2,"['en', 'ja']"
+mpasila/ParallelFiction-Ja_En-100k-json,2024-03-26,2024-04-02,,https://huggingface.co/datasets/mpasila/ParallelFiction-Ja_En-100k-json,35,3,2,"['en', 'ja']"
+mteb/IN22-Conv,2024-05-14,2024-05-14,,https://huggingface.co/datasets/mteb/IN22-Conv,72,0,23,"['ta', 'kn', 'sa', 'en', 'mni', 'gu', 'pa', 'te', 'gom', 'ur', 'ml', 'ne', 'doi', 'sd', 'bn', 'sat', 'hi', 'ks', 'brx', 'mr', 'or', 'mai', 'as']"
+mteb/IN22-Gen,2024-05-14,2024-05-14,,https://huggingface.co/datasets/mteb/IN22-Gen,156,0,23,"['ta', 'kn', 'sa', 'en', 'mni', 'gu', 'pa', 'te', 'gom', 'ur', 'ml', 'ne', 'doi', 'sd', 'bn', 'sat', 'hi', 'ks', 'brx', 'mr', 'or', 'mai', 'as']"
+mteb/NTREX,2024-05-14,2024-05-14,,https://huggingface.co/datasets/mteb/NTREX,359,0,107,"['ee', 'lo', 'bo', 'ny', 'ss', 'si', 'el', 'pa', 'ms', 'te', 'om', 'uk', 'gd', 'ru', 'mk', 'id', 'fi', 'ca', 'ig', 'fr', 'th', 'zh', 'sd', 'nn', 'mi', 'pt', 'de', 'it', 'tt', 'kk', 'uz', 'shi', 'he', 'sv', 'km', 've', 'eu', 'hu', 'bs', 'hy', 'am', 'da', 'ne', 'mt', 'ro', 'fo', 'hr', 'my', 'ha', 'nb', 'mr', 'nd', 'sm', 'ku', 'lb', 'fa', 'bg', 'ty', 'ar', 'gu', 'hmn', 'ur', 'lv', 'af', 'sk', 'to', 'ja', 'zu', 'rw', 'yo', 'sn', 'so', 'bn', 'sh', 'ky', 'nl', 'lt', 'sq', 'tr', 'wo', 'fj', 'et', 'ta', 'kn', 'tg', 'st', 'dv', 'is', 'vi', 'xh', 'dz', 'az', 'ps', 'ba', 'sr', 'ko', 'cs', 'oy', 'fil', 'be', 'hi', 'sw', 'tk', 'sl', 'tn', 'cy', 'mn']"
+mutiyama/alt,2022-03-02,2024-01-09,,https://huggingface.co/datasets/mutiyama/alt,764,17,13,"['lo', 'zh', 'th', 'en', 'vi', 'km', 'my', 'ms', 'ja', 'id', 'bn', 'fil', 'hi']"
+mxersion/SE-Chatting.en,2024-05-13,2024-10-03,,https://huggingface.co/datasets/mxersion/SE-Chatting.en,106,2,6,"['zh', 'fr', 'en', 'ru', 'ar', 'ja']"
+mxronga/gpt-teacher-yo,2024-02-29,2024-02-29,,https://huggingface.co/datasets/mxronga/gpt-teacher-yo,30,0,2,"['en', 'yo']"
+narizhny/test,2023-05-16,2023-09-22,,https://huggingface.co/datasets/narizhny/test,36,0,1,['en']
+nayan135/constitution,2024-11-20,2024-11-20,,https://huggingface.co/datasets/nayan135/constitution,31,0,2,"['en', 'ne']"
+nazimali/kurdish-english-bianet-magazine,2024-09-10,2024-09-10,,https://huggingface.co/datasets/nazimali/kurdish-english-bianet-magazine,34,0,2,"['en', 'ku']"
+nazimali/kurdish-english-opus-100,2024-09-08,2024-09-08,,https://huggingface.co/datasets/nazimali/kurdish-english-opus-100,54,0,2,"['en', 'ku']"
+nazimali/kurdish-news-headlines,2024-09-15,2024-09-15,,https://huggingface.co/datasets/nazimali/kurdish-news-headlines,67,0,2,"['en', 'ku']"
+nazimali/kurdish-turkish-bianet-magazine,2024-09-10,2024-09-10,,https://huggingface.co/datasets/nazimali/kurdish-turkish-bianet-magazine,61,0,2,"['tr', 'ku']"
+nazimali/quran,2024-09-08,2024-09-08,,https://huggingface.co/datasets/nazimali/quran,370,2,44,"['fa', 'sv', 'bg', 'ta', 'en', 'ar', 'tg', 'ms', 'es', 'bs', 'ber', 'pl', 'dv', 'ru', 'ur', 'ml', 'am', 'ja', 'id', 'az', 'ps', 'ro', 'zh', 'fr', 'th', 'ko', 'sd', 'cs', 'so', 'bn', 'ug', 'hi', 'de', 'it', 'ha', 'pt', 'tt', 'uz', 'nl', 'sw', 'no', 'sq', 'tr', 'ku']"
+neilshahnms/MultiNAM,2024-12-29,2024-12-29,,https://huggingface.co/datasets/neilshahnms/MultiNAM,10,0,1,['en']
+neilshahnms/StethoText,2024-12-29,2024-12-29,,https://huggingface.co/datasets/neilshahnms/StethoText,10,0,1,['en']
+neoneye/base64-decode-v1,2024-05-28,2024-06-06,,https://huggingface.co/datasets/neoneye/base64-decode-v1,37,0,1,['en']
+neoneye/base64-decode-v2,2024-06-06,2024-06-06,,https://huggingface.co/datasets/neoneye/base64-decode-v2,60,1,1,['en']
+neoneye/base64-encode-v1,2024-06-04,2024-06-04,,https://huggingface.co/datasets/neoneye/base64-encode-v1,44,0,1,['en']
+neulab/mconala,2023-02-10,2023-02-10,,https://huggingface.co/datasets/neulab/mconala,39,2,3,"['es', 'ru', 'ja']"
+neurotatarlar/tt-ru-mt,2024-04-25,2024-05-06,,https://huggingface.co/datasets/neurotatarlar/tt-ru-mt,36,0,2,"['tt', 'ru']"
+neverland-th/web-content,2024-09-29,2024-09-29,,https://huggingface.co/datasets/neverland-th/web-content,36,2,2,"['en', 'th']"
+new4u/AiDhamma,2024-07-10,2024-07-10,,https://huggingface.co/datasets/new4u/AiDhamma,33,0,2,"['zh', 'th']"
+nhuvo/MedEV,2024-03-06,2024-03-29,,https://huggingface.co/datasets/nhuvo/MedEV,177,6,2,"['en', 'vi']"
+nicety182/En-Id,2024-12-14,2024-12-14,,https://huggingface.co/datasets/nicety182/En-Id,23,0,2,"['en', 'id']"
+nikitam/ACES,2022-10-13,2024-02-06,,https://huggingface.co/datasets/nikitam/ACES,59,11,1,['multilingual']
+nirajandhakal/Devnagari-Romanized-Pair,2024-12-24,2024-12-24,,https://huggingface.co/datasets/nirajandhakal/Devnagari-Romanized-Pair,25,0,2,"['en', 'ne']"
+noxneural/kashaloti,2023-10-21,2024-07-20,,https://huggingface.co/datasets/noxneural/kashaloti,45,2,1,['sq']
+noxneural/lilium_albanicum_eng_alb,2023-11-05,2024-07-20,,https://huggingface.co/datasets/noxneural/lilium_albanicum_eng_alb,46,4,2,"['en', 'sq']"
+npvinHnivqn/VietEngDictionary,2023-07-15,2023-07-15,,https://huggingface.co/datasets/npvinHnivqn/VietEngDictionary,56,0,2,"['en', 'vi']"
+odiagenmllm/odia_vqa_en_odi_set,2024-08-22,2024-12-11,,https://huggingface.co/datasets/odiagenmllm/odia_vqa_en_odi_set,35,0,2,"['en', 'or']"
+oeg/CelebA_RoBERTa_Sp,2023-03-17,2024-02-05,,https://huggingface.co/datasets/oeg/CelebA_RoBERTa_Sp,37,1,1,['es']
+oeg/CelebA_Sent2Vect_Sp,2023-03-17,2024-02-05,,https://huggingface.co/datasets/oeg/CelebA_Sent2Vect_Sp,38,0,1,['es']
+openlanguagedata/flores_plus,2024-10-10,2024-11-15,,https://huggingface.co/datasets/openlanguagedata/flores_plus,886,13,196,"['ee', 'lo', 'bo', 'lmo', 'ny', 'si', 'ss', 'el', 'tl', 'apc', 'pa', 'war', 'te', 'uk', 'gd', 'ts', 'pl', 'vec', 'kmb', 'oc', 'ru', 'mk', 'taq', 'id', 'fi', 'ca', 'ki', 'bm', 'tw', 'ig', 'fr', 'kea', 'li', 'sd', 'nn', 'th', 'zh', 'tzm', 'sat', 'ug', 'luo', 'mi', 'pt', 'de', 'it', 'tt', 'kk', 'ceb', 'lg', 'quy', 'pes', 'ayr', 'plt', 'he', 'bho', 'kg', 'mai', 'lua', 'sv', 'dik', 'km', 'bug', 'eu', 'hu', 'es', 'swh', 'acq', 'bs', 'ars', 'fon', 'hy', 'lus', 'awa', 'am', 'da', 'sg', 'bem', 'mt', 'ro', 'fo', 'hr', 'my', 'yue', 'ltg', 'fur', 'mos', 'ha', 'khk', 'kbp', 'nb', 'ckb', 'ti', 'sm', 'as', 'lb', 'bg', 'sa', 'uzn', 'ar', 'mni', 'gu', 'knc', 'zsm', 'mar', 'kac', 'shn', 'pap', 'nso', 'ur', 'acm', 'ml', 'dyu', 'af', 'als', 'sk', 'bjn', 'ja', 'ace', 'ory', 'ilo', 'zu', 'kam', 'rw', 'yo', 'sn', 'azb', 'bn', 'so', 'ydd', 'ky', 'ht', 'arz', 'ka', 'tpi', 'nl', 'lvs', 'gaz', 'lt', 'nus', 'rn', 'lij', 'ajp', 'tr', 'wo', 'fj', 'et', 'aeb', 'kmr', 'ta', 'kn', 'ast', 'cjk', 'crh', 'en', 'tg', 'pbt', 'scn', 'st', 'ak', 'szl', 'prs', 'sc', 'is', 'hne', 'mag', 'vi', 'ban', 'xh', 'dz', 'npi', 'min', 'ga', 'gn', 'ln', 'ba', 'ary', 'sr', 'ko', 'pag', 'kab', 'cs', 'umb', 'azj', 'be', 'hi', 'ks', 'jv', 'gl', 'tk', 'eo', 'sl', 'tn', 'cy', 'tum', 'fuv', 'su']"
+openlanguagedata/oldi_seed,2024-11-08,2024-11-15,,https://huggingface.co/datasets/openlanguagedata/oldi_seed,261,6,0,[]
+ordaktaktak/machine_translation_daily_dialog_en_fa,2024-08-22,2024-09-29,,https://huggingface.co/datasets/ordaktaktak/machine_translation_daily_dialog_en_fa,34,2,2,"['en', 'fa']"
+oza75/bambara-mt,2024-11-12,2024-12-07,,https://huggingface.co/datasets/oza75/bambara-mt,80,1,3,"['en', 'bm', 'fr']"
+p1atdev/danbooru-ja-tag-pair-20241015,2024-10-15,2024-10-16,,https://huggingface.co/datasets/p1atdev/danbooru-ja-tag-pair-20241015,46,5,2,"['en', 'ja']"
+paindas/english-to-telugu,2024-07-28,2024-07-28,,https://huggingface.co/datasets/paindas/english-to-telugu,30,0,1,['te']
+parchiev/ingush-russian,2024-05-28,2025-01-02,,https://huggingface.co/datasets/parchiev/ingush-russian,36,0,2,"['inh', 'ru']"
+paulpall/Tallinn-L2-sentences_estonian,2024-08-15,2024-08-16,,https://huggingface.co/datasets/paulpall/Tallinn-L2-sentences_estonian,34,0,1,['et']
+paulpall/Tartu-L2-sentences_estonian,2024-08-15,2024-08-16,,https://huggingface.co/datasets/paulpall/Tartu-L2-sentences_estonian,29,0,1,['et']
+paulpall/legalese-sentences_estonian,2024-08-15,2024-08-16,,https://huggingface.co/datasets/paulpall/legalese-sentences_estonian,30,0,1,['et']
+paulpall/textbooks-sentences_estonian,2024-08-14,2024-08-19,,https://huggingface.co/datasets/paulpall/textbooks-sentences_estonian,30,0,1,['et']
+pavan-naik/en_to_kn,2024-10-05,2024-10-05,,https://huggingface.co/datasets/pavan-naik/en_to_kn,45,0,2,"['en', 'kn']"
+persiannlp/parsinlu_translation_en_fa,2022-03-02,2022-10-24,,https://huggingface.co/datasets/persiannlp/parsinlu_translation_en_fa,544,6,1,['fa']
+persiannlp/parsinlu_translation_fa_en,2022-03-02,2022-10-24,,https://huggingface.co/datasets/persiannlp/parsinlu_translation_fa_en,111,3,1,['fa']
+phiwi/bbaw_egyptian,2022-03-02,2024-01-10,,https://huggingface.co/datasets/phiwi/bbaw_egyptian,45,6,3,"['en', 'de', 'egy']"
+phongmt184172/mtet,2023-05-07,2023-05-08,,https://huggingface.co/datasets/phongmt184172/mtet,59,7,2,"['en', 'vi']"
+pkyoyetera/luganda_english_dataset,2023-03-25,2023-03-25,,https://huggingface.co/datasets/pkyoyetera/luganda_english_dataset,40,2,2,"['en', 'lg']"
+pollitoconpapass/cuzco-quechua-translation-spanish,2024-05-18,2024-05-28,,https://huggingface.co/datasets/pollitoconpapass/cuzco-quechua-translation-spanish,46,1,2,"['es', 'qu']"
+pollitoconpapass/eng-quz-translation-dataset,2024-05-25,2024-05-30,,https://huggingface.co/datasets/pollitoconpapass/eng-quz-translation-dataset,32,0,2,"['en', 'qu']"
+pourmand1376/persian-qa-translated,2023-08-19,2023-08-19,,https://huggingface.co/datasets/pourmand1376/persian-qa-translated,32,2,2,"['en', 'fa']"
+pritam3355/en-ga-dataset,2023-08-14,2023-08-14,,https://huggingface.co/datasets/pritam3355/en-ga-dataset,31,0,2,"['en', 'ga']"
+proadhikary/parallel-english-mizo,2024-09-09,2024-09-09,,https://huggingface.co/datasets/proadhikary/parallel-english-mizo,37,1,0,[]
+projecte-aina/CA-DE_Parallel_Corpus,2023-11-27,2024-11-13,,https://huggingface.co/datasets/projecte-aina/CA-DE_Parallel_Corpus,50,0,2,"['de', 'ca']"
+projecte-aina/CA-EN_Parallel_Corpus,2023-11-30,2024-09-25,,https://huggingface.co/datasets/projecte-aina/CA-EN_Parallel_Corpus,39,0,2,"['en', 'ca']"
+projecte-aina/CA-EU_Parallel_Corpus,2023-11-27,2024-10-04,,https://huggingface.co/datasets/projecte-aina/CA-EU_Parallel_Corpus,42,0,2,"['eu', 'ca']"
+projecte-aina/CA-FR_Parallel_Corpus,2023-11-27,2024-09-26,,https://huggingface.co/datasets/projecte-aina/CA-FR_Parallel_Corpus,103,0,2,"['fr', 'ca']"
+projecte-aina/CA-GL_Parallel_Corpus,2023-11-27,2024-10-04,,https://huggingface.co/datasets/projecte-aina/CA-GL_Parallel_Corpus,52,0,2,"['gl', 'ca']"
+projecte-aina/CA-IT_Parallel_Corpus,2023-11-27,2024-09-26,,https://huggingface.co/datasets/projecte-aina/CA-IT_Parallel_Corpus,33,0,2,"['ca', 'it']"
+projecte-aina/CA-PT_Parallel_Corpus,2023-11-24,2024-09-26,,https://huggingface.co/datasets/projecte-aina/CA-PT_Parallel_Corpus,54,0,2,"['pt', 'ca']"
+projecte-aina/CA-ZH_Parallel_Corpus,2023-11-29,2024-12-04,,https://huggingface.co/datasets/projecte-aina/CA-ZH_Parallel_Corpus,37,0,2,"['zh', 'ca']"
+projecte-aina/ES-AN_Parallel_Corpus,2024-08-15,2024-10-04,,https://huggingface.co/datasets/projecte-aina/ES-AN_Parallel_Corpus,58,0,2,"['es', 'an']"
+projecte-aina/ES-AST_Parallel_Corpus,2024-08-15,2024-10-04,,https://huggingface.co/datasets/projecte-aina/ES-AST_Parallel_Corpus,33,0,2,"['es', 'ast']"
+projecte-aina/ES-OC_Parallel_Corpus,2024-10-02,2024-10-04,,https://huggingface.co/datasets/projecte-aina/ES-OC_Parallel_Corpus,37,1,2,"['es', 'oc']"
+pythainlp/scb-mt-en-th-2020_mt-opus,2023-07-23,2023-07-23,,https://huggingface.co/datasets/pythainlp/scb-mt-en-th-2020_mt-opus,34,0,2,"['en', 'th']"
+pythainlp/thai-local-language-translation-dataset,2024-08-09,2024-08-09,,https://huggingface.co/datasets/pythainlp/thai-local-language-translation-dataset,48,0,1,['th']
+pythainlp/thai_usembassy,2023-10-14,2023-10-20,,https://huggingface.co/datasets/pythainlp/thai_usembassy,43,2,2,"['en', 'th']"
+qanastek/ECDC,2022-03-02,2022-10-23,,https://huggingface.co/datasets/qanastek/ECDC,143,2,1,['en']
+qanastek/ELRC-Medical-V2,2022-03-02,2022-10-24,,https://huggingface.co/datasets/qanastek/ELRC-Medical-V2,443,14,24,"['sv', 'bg', 'el', 'en', 'es', 'hu', 'pl', 'lv', 'sk', 'da', 'fi', 'mt', 'ga', 'ro', 'fr', 'hr', 'cs', 'pt', 'de', 'it', 'nl', 'lt', 'sl', 'et']"
+qanastek/EMEA-V3,2022-03-02,2022-10-22,,https://huggingface.co/datasets/qanastek/EMEA-V3,902,8,22,"['sv', 'bg', 'el', 'en', 'es', 'hu', 'pl', 'lv', 'sk', 'da', 'fi', 'mt', 'ro', 'fr', 'cs', 'pt', 'de', 'it', 'nl', 'lt', 'sl', 'et']"
+qanastek/WMT-16-PubMed,2022-03-02,2022-10-22,,https://huggingface.co/datasets/qanastek/WMT-16-PubMed,113,4,22,"['sv', 'bg', 'el', 'en', 'es', 'hu', 'pl', 'lv', 'sk', 'da', 'fi', 'mt', 'ro', 'fr', 'cs', 'pt', 'de', 'it', 'nl', 'lt', 'sl', 'et']"
+qwopqwop/ALMA-R-ko-en,2024-03-10,2024-03-10,,https://huggingface.co/datasets/qwopqwop/ALMA-R-ko-en,39,6,2,"['en', 'ko']"
+raeidsaqur/Hansard,2023-12-31,2024-01-01,,https://huggingface.co/datasets/raeidsaqur/Hansard,43,0,2,"['en', 'fr']"
+raft-security-lab/strongrejectPlusPlus,2024-12-20,2024-12-25,,https://huggingface.co/datasets/raft-security-lab/strongrejectPlusPlus,29,3,5,"['uz', 'ru', 'en', 'be', 'uk']"
+raptorkwok/cantonese-chinese-dataset-gen2,2024-07-26,2024-08-09,,https://huggingface.co/datasets/raptorkwok/cantonese-chinese-dataset-gen2,75,1,1,['zh']
+raptorkwok/cantonese-traditional-chinese-parallel-corpus,2023-07-19,2024-01-30,,https://huggingface.co/datasets/raptorkwok/cantonese-traditional-chinese-parallel-corpus,70,10,1,['zh']
+rasyosef/flores_english_amharic_mt,2024-11-12,2024-11-12,,https://huggingface.co/datasets/rasyosef/flores_english_amharic_mt,88,0,1,['am']
+rayliuca/WikidataLabels,2024-01-01,2024-01-11,,https://huggingface.co/datasets/rayliuca/WikidataLabels,12094,1,10,"['zh', 'fr', 'en', 'ar', 'ru', 'ja', 'es', 'bn', 'hi', 'de']"
+razqr1911/movie-tranlated,2024-04-25,2024-04-29,,https://huggingface.co/datasets/razqr1911/movie-tranlated,32,0,2,"['en', 'tr']"
+rbawden/DiaBLa,2022-03-02,2022-10-25,,https://huggingface.co/datasets/rbawden/DiaBLa,350,1,2,"['en', 'fr']"
+rcds/swiss_legislation,2023-01-22,2024-10-10,,https://huggingface.co/datasets/rcds/swiss_legislation,70,6,3,"['fr', 'de', 'it']"
+readerbench/ro-human-machine-60k,2024-01-08,2024-02-05,,https://huggingface.co/datasets/readerbench/ro-human-machine-60k,30,1,1,['ro']
+rhyliieee/tagalog-filipino-english-translation,2024-09-04,2024-09-04,,https://huggingface.co/datasets/rhyliieee/tagalog-filipino-english-translation,87,0,2,"['en', 'tl']"
+richard-park/aihub-contents-ko-only,2024-05-07,2024-05-07,,https://huggingface.co/datasets/richard-park/aihub-contents-ko-only,35,0,1,['ko']
+robinhad/UAlpaca2.0,2024-07-13,2024-07-13,,https://huggingface.co/datasets/robinhad/UAlpaca2.0,40,0,1,['uk']
+rqq/GLM-4-Instruct-4K-zh,2024-05-06,2024-05-06,,https://huggingface.co/datasets/rqq/GLM-4-Instruct-4K-zh,100,31,1,['zh']
+rvv-karma/English-Hinglish,2023-11-25,2023-11-25,,https://huggingface.co/datasets/rvv-karma/English-Hinglish,35,0,2,"['en', 'hi']"
+rvv-karma/English-Hinglish-TOP,2023-11-25,2023-11-26,,https://huggingface.co/datasets/rvv-karma/English-Hinglish-TOP,86,2,2,"['en', 'hi']"
+ryo0634/bsd_ja_en,2022-03-02,2024-01-11,,https://huggingface.co/datasets/ryo0634/bsd_ja_en,84,11,2,"['en', 'ja']"
+sagawa/ord-uniq-canonicalized,2022-09-03,2022-09-04,,https://huggingface.co/datasets/sagawa/ord-uniq-canonicalized,32,0,0,[]
+sahanruwantha/alpaca-sinhala,2024-02-16,2024-02-20,,https://huggingface.co/datasets/sahanruwantha/alpaca-sinhala,35,0,1,['si']
+samiesam/snd_eng,2023-10-26,2023-10-26,,https://huggingface.co/datasets/samiesam/snd_eng,31,1,2,"['en', 'sd']"
+samzirbo/SAMT2.en-es.gendered,2024-04-22,2024-05-01,,https://huggingface.co/datasets/samzirbo/SAMT2.en-es.gendered,37,0,2,"['en', 'es']"
+samzirbo/SAMT2.en-es.gendered_balanced,2024-04-22,2024-05-01,,https://huggingface.co/datasets/samzirbo/SAMT2.en-es.gendered_balanced,38,0,2,"['en', 'es']"
+samzirbo/ccmatrix_ro_en,2024-03-12,2024-03-12,,https://huggingface.co/datasets/samzirbo/ccmatrix_ro_en,32,0,2,"['ro', 'en']"
+samzirbo/europarl.en-es.balanced,2024-04-22,2024-04-22,,https://huggingface.co/datasets/samzirbo/europarl.en-es.balanced,31,0,2,"['en', 'es']"
+samzirbo/europarl.en-es.gendered,2024-04-22,2024-04-22,,https://huggingface.co/datasets/samzirbo/europarl.en-es.gendered,31,0,2,"['en', 'es']"
+sappho192/Tatoeba-Challenge-jpn-kor,2024-01-30,2024-01-30,,https://huggingface.co/datasets/sappho192/Tatoeba-Challenge-jpn-kor,131,0,2,"['ja', 'ko']"
+sarch7040/Deshika,2024-10-10,2024-10-10,,https://huggingface.co/datasets/sarch7040/Deshika,31,1,0,[]
+sawadogosalif/MooreFRCollections,2024-11-28,2025-01-06,,https://huggingface.co/datasets/sawadogosalif/MooreFRCollections,78,0,2,"['mos', 'fr']"
+sbmaruf/forai_ml_masakhane_mafand,2023-04-22,2023-05-25,,https://huggingface.co/datasets/sbmaruf/forai_ml_masakhane_mafand,232,2,22,"['ee', 'ny', 'en', 'pcm', 'bbj', 'fon', 'xh', 'am', 'bm', 'tw', 'zu', 'ig', 'fr', 'rw', 'yo', 'sn', 'mos', 'ha', 'lg', 'sw', 'tn', 'wo']"
+scbirlab/cyc-pep-6-12mer-650M-2024,2024-11-04,2024-11-04,,https://huggingface.co/datasets/scbirlab/cyc-pep-6-12mer-650M-2024,157,1,0,[]
+scbirlab/cyc-pep-6-12mer-70M-2024,2024-10-29,2024-11-01,,https://huggingface.co/datasets/scbirlab/cyc-pep-6-12mer-70M-2024,183,0,0,[]
+scbirlab/fang-2023-biogen-adme,2024-10-31,2024-10-31,,https://huggingface.co/datasets/scbirlab/fang-2023-biogen-adme,51,0,0,[]
+scbirlab/hudson-2023-dosedo,2024-12-30,2024-12-30,,https://huggingface.co/datasets/scbirlab/hudson-2023-dosedo,10,0,0,[]
+scbirlab/lyu-wang-balius-singh-2019-ampc,2024-10-07,2024-10-07,,https://huggingface.co/datasets/scbirlab/lyu-wang-balius-singh-2019-ampc,214,0,0,[]
+scbirlab/lyu-wang-balius-singh-2019-d4,2024-10-07,2024-10-07,,https://huggingface.co/datasets/scbirlab/lyu-wang-balius-singh-2019-d4,114,0,0,[]
+scbirlab/steshin-2023-lohi,2024-10-31,2024-10-31,,https://huggingface.co/datasets/scbirlab/steshin-2023-lohi,170,0,0,[]
+seara/ru_go_emotions,2023-08-25,2023-08-25,,https://huggingface.co/datasets/seara/ru_go_emotions,191,9,2,"['en', 'ru']"
+seongs/dell-qa-en-to-ko-translated-by-ke-t5-base,2024-04-28,2024-04-30,,https://huggingface.co/datasets/seongs/dell-qa-en-to-ko-translated-by-ke-t5-base,30,1,1,['ko']
+severo/flores_101,2023-06-20,2022-10-27,,https://huggingface.co/datasets/severo/flores_101,3303,2,101,"['lo', 'ny', 'el', 'tl', 'pa', 'ms', 'te', 'om', 'uk', 'pl', 'oc', 'ru', 'mk', 'id', 'fi', 'ca', 'ig', 'fr', 'kea', 'th', 'sd', 'luo', 'mi', 'pt', 'de', 'it', 'kk', 'ceb', 'uz', 'lg', 'no', 'he', 'sv', 'km', 'es', 'hu', 'bs', 'hy', 'am', 'da', 'ne', 'mt', 'ro', 'my', 'hr', 'ha', 'mr', 'ku', 'lb', 'as', 'fa', 'bg', 'ar', 'gu', 'ur', 'lv', 'ml', 'af', 'sk', 'ja', 'zu', 'ff', 'kam', 'yo', 'sn', 'so', 'bn', 'ky', 'ka', 'nl', 'lt', 'tr', 'or', 'wo', 'et', 'ta', 'kn', 'ast', 'en', 'tg', 'ns', 'zho', 'is', 'vi', 'xh', 'az', 'ps', 'ga', 'ln', 'sr', 'ko', 'cs', 'umb', 'be', 'hi', 'jv', 'gl', 'sw', 'sl', 'cy', 'mn']"
+sfrontull/autonomia-lld_valbadia-ita,2024-03-22,2024-08-13,,https://huggingface.co/datasets/sfrontull/autonomia-lld_valbadia-ita,35,0,2,"['lld', 'it']"
+sfrontull/la-usc_valbadia_loresmt24,2025-01-07,2025-01-07,,https://huggingface.co/datasets/sfrontull/la-usc_valbadia_loresmt24,0,0,1,['lld']
+sfrontull/lld_valbadia-ita,2024-03-11,2024-08-13,,https://huggingface.co/datasets/sfrontull/lld_valbadia-ita,50,0,2,"['lld', 'it']"
+sfrontull/pinocchio-lld_valbadia-ita,2024-03-22,2024-08-13,,https://huggingface.co/datasets/sfrontull/pinocchio-lld_valbadia-ita,34,0,2,"['lld', 'it']"
+sfrontull/stiftungsparkasse-lld_valbadia-ita,2024-07-07,2024-08-13,,https://huggingface.co/datasets/sfrontull/stiftungsparkasse-lld_valbadia-ita,32,0,2,"['lld', 'it']"
+sg69291/data_set_test,2024-02-02,2024-02-02,,https://huggingface.co/datasets/sg69291/data_set_test,29,0,1,['en']
+sherryibm/sas2py,2023-06-05,2023-06-06,,https://huggingface.co/datasets/sherryibm/sas2py,30,0,0,[]
+shiyue/chr_en,2022-03-02,2024-01-18,,https://huggingface.co/datasets/shiyue/chr_en,142,3,2,"['en', 'chr']"
+shounakpaul95/Benchmark-Testing,2024-06-14,2024-06-14,,https://huggingface.co/datasets/shounakpaul95/Benchmark-Testing,39,0,10,"['ta', 'en', 'ml', 'gu', 'pa', 'te', 'mr', 'bn', 'or', 'hi']"
+shrusti333/konkani_translation,2023-05-17,2023-05-17,,https://huggingface.co/datasets/shrusti333/konkani_translation,30,0,1,['en']
+skML/lexisyn-zh-en-1.0,2024-10-07,2024-10-07,,https://huggingface.co/datasets/skML/lexisyn-zh-en-1.0,33,0,2,"['en', 'zh']"
+sleeping-ai/Wattpad-Complete-data,2024-11-25,2024-11-29,,https://huggingface.co/datasets/sleeping-ai/Wattpad-Complete-data,31,0,1,['en']
+sleeping-ai/acl-paper,2024-12-08,2024-12-10,,https://huggingface.co/datasets/sleeping-ai/acl-paper,342,0,1,['en']
+slone/e-mordovia-articles-2023,2023-11-01,2024-09-28,,https://huggingface.co/datasets/slone/e-mordovia-articles-2023,37,2,2,"['myv', 'ru']"
+slone/myv-rus-2022-quality-annotated,2024-10-30,2024-10-30,,https://huggingface.co/datasets/slone/myv-rus-2022-quality-annotated,47,1,2,"['myv', 'ru']"
+slone/myv_ru_2022,2022-09-17,2024-04-14,,https://huggingface.co/datasets/slone/myv_ru_2022,52,2,2,"['myv', 'ru']"
+slone/nllb-200-10M-sample,2023-10-30,2023-11-20,,https://huggingface.co/datasets/slone/nllb-200-10M-sample,66,9,172,"['ee', 'lo', 'lmo', 'ny', 'ss', 'si', 'el', 'tl', 'pa', 'war', 'ms', 'te', 'uk', 'gd', 'ts', 'pl', 'vec', 'kmb', 'oc', 'qu', 'ru', 'mk', 'taq', 'id', 'fi', 'ca', 'ki', 'bm', 'tw', 'ig', 'fr', 'kea', 'li', 'sd', 'zh', 'tzm', 'sat', 'ug', 'luo', 'mi', 'pt', 'de', 'it', 'tt', 'kk', 'ceb', 'uz', 'lg', 'plt', 'he', 'bho', 'kg', 'mai', 'lua', 'sv', 'dik', 'km', 'bug', 'es', 'hu', 'fon', 'hy', 'lus', 'awa', 'am', 'da', 'sg', 'ne', 'bem', 'mt', 'ro', 'fo', 'hr', 'my', 'ltg', 'fur', 'mos', 'ha', 'kbp', 'nb', 'ckb', 'ti', 'mr', 'kr', 'sm', 'lb', 'fa', 'bg', 'sa', 'ar', 'mni', 'gu', 'kac', 'shn', 'pap', 'nso', 'ur', 'lv', 'ml', 'dyu', 'sk', 'bjn', 'ja', 'ory', 'ilo', 'zu', 'ff', 'kam', 'rw', 'yo', 'sn', 'so', 'bn', 'ky', 'ht', 'ka', 'tpi', 'nl', 'gaz', 'lt', 'nus', 'rn', 'lij', 'tr', 'wo', 'fj', 'kmr', 'et', 'ta', 'kn', 'cjk', 'crh', 'en', 'tg', 'pbt', 'scn', 'yi', 'st', 'ak', 'szl', 'prs', 'sc', 'hne', 'is', 'mag', 'vi', 'ban', 'xh', 'min', 'ga', 'gn', 'ln', 'sr', 'ko', 'pag', 'kab', 'cs', 'umb', 'azj', 'be', 'hi', 'ks', 'jv', 'gl', 'sw', 'tk', 'eo', 'sl', 'tn', 'tum', 'mn', 'su']"
+smartcat/MaCoCu_sr_en,2024-10-03,2024-10-03,,https://huggingface.co/datasets/smartcat/MaCoCu_sr_en,32,0,2,"['en', 'sr']"
+smartcat/STS_parallel_en_sr,2024-09-25,2024-09-25,,https://huggingface.co/datasets/smartcat/STS_parallel_en_sr,31,0,2,"['en', 'sr']"
+soarescmsa/capes,2022-03-02,2024-01-16,,https://huggingface.co/datasets/soarescmsa/capes,69,2,2,"['en', 'pt']"
+softcatala/Tilde-MODEL-Catalan,2022-03-02,2024-08-14,,https://huggingface.co/datasets/softcatala/Tilde-MODEL-Catalan,91,0,2,"['de', 'ca']"
+soketlabs/bhasha-sft,2024-03-18,2024-04-18,,https://huggingface.co/datasets/soketlabs/bhasha-sft,570,2,4,"['en', 'bn', 'gu', 'hi']"
+somosnlp-hackathon-2022/Axolotl-Spanish-Nahuatl,2022-03-30,2023-04-13,,https://huggingface.co/datasets/somosnlp-hackathon-2022/Axolotl-Spanish-Nahuatl,175,11,1,['es']
+somosnlp-hackathon-2022/neutral-es,2022-03-31,2022-10-25,,https://huggingface.co/datasets/somosnlp-hackathon-2022/neutral-es,69,7,1,['es']
+somosnlp-hackathon-2022/spanish-to-quechua,2022-04-03,2022-10-25,,https://huggingface.co/datasets/somosnlp-hackathon-2022/spanish-to-quechua,74,10,2,"['es', 'qu']"
+spitfire4794/BanglaNMT,2023-05-09,2023-05-09,,https://huggingface.co/datasets/spitfire4794/BanglaNMT,35,1,0,[]
+stfotso/french-ghomala-bandjoun,2024-12-04,2025-01-06,,https://huggingface.co/datasets/stfotso/french-ghomala-bandjoun,47,1,2,"['bbj', 'fr']"
+stfotso/mlx-french-ghomala-bandjoun,2024-12-22,2025-01-06,,https://huggingface.co/datasets/stfotso/mlx-french-ghomala-bandjoun,26,1,2,"['bbj', 'fr']"
+strombergnlp/bornholmsk_parallel,2022-05-11,2022-07-01,,https://huggingface.co/datasets/strombergnlp/bornholmsk_parallel,1536,2,0,[]
+strombergnlp/itu_faroese_danish,2022-05-11,2022-07-01,,https://huggingface.co/datasets/strombergnlp/itu_faroese_danish,51,3,2,"['fo', 'da']"
+sublime-security/babbelphish,2023-07-28,2023-08-04,,https://huggingface.co/datasets/sublime-security/babbelphish,42,0,0,[]
+sudoping01/english-wolof-translation,2024-07-08,2024-07-10,,https://huggingface.co/datasets/sudoping01/english-wolof-translation,46,0,2,"['en', 'wo']"
+sumuks/yourbench_fairytales,2024-12-05,2024-12-10,,https://huggingface.co/datasets/sumuks/yourbench_fairytales,71,0,3,"['en', 'es', 'pl']"
+sumukshashidhar-archive/yourbench_archived,2024-12-07,2024-12-13,,https://huggingface.co/datasets/sumukshashidhar-archive/yourbench_archived,55,0,1,['en']
+sungmogi/en2ko_hiphop,2023-08-19,2023-08-27,,https://huggingface.co/datasets/sungmogi/en2ko_hiphop,40,1,2,"['en', 'ko']"
+suyash2739/Hinglish,2024-05-24,2024-05-28,,https://huggingface.co/datasets/suyash2739/Hinglish,35,2,2,"['en', 'hi']"
+suyash2739/News_Hinglish_English,2024-05-25,2024-09-27,,https://huggingface.co/datasets/suyash2739/News_Hinglish_English,33,2,2,"['en', 'hi']"
+swaption2009/20k-en-zh-translation-pinyin-hsk,2023-01-31,2023-02-01,,https://huggingface.co/datasets/swaption2009/20k-en-zh-translation-pinyin-hsk,110,20,2,"['en', 'zh']"
+syubraj/roman2nepali-transliteration,2024-09-22,2024-09-22,,https://huggingface.co/datasets/syubraj/roman2nepali-transliteration,31,0,2,"['en', 'ne']"
+tahrirchi/dilmash,2024-08-19,2024-09-10,,https://huggingface.co/datasets/tahrirchi/dilmash,37,5,4,"['en', 'kaa', 'uz', 'ru']"
+talmp/en-vi-translation,2023-05-30,2023-05-31,,https://huggingface.co/datasets/talmp/en-vi-translation,75,8,2,"['en', 'vi']"
+tartuNLP/smugri-flores-testset,2023-04-17,2024-09-11,,https://huggingface.co/datasets/tartuNLP/smugri-flores-testset,47,4,9,"['liv', 'udm', 'myv', 'mhr', 'olo', 'mns', 'mrj', 'kpv', 'mdf']"
+tarudesu/IDiAT-vi-en-test,2024-12-01,2024-12-17,,https://huggingface.co/datasets/tarudesu/IDiAT-vi-en-test,147,0,2,"['en', 'vi']"
+tclopess/sinopsys_movies_portuguese,2024-03-15,2024-03-15,,https://huggingface.co/datasets/tclopess/sinopsys_movies_portuguese,35,1,1,['pt']
+techiaith/cofnodycynulliad_en-cy,2023-07-21,2023-08-14,,https://huggingface.co/datasets/techiaith/cofnodycynulliad_en-cy,87,2,2,"['en', 'cy']"
+techiaith/legislation-gov-uk_en-cy,2023-07-21,2023-08-12,,https://huggingface.co/datasets/techiaith/legislation-gov-uk_en-cy,62,1,2,"['en', 'cy']"
+tfft/translation_test,2024-01-03,2024-01-03,,https://huggingface.co/datasets/tfft/translation_test,34,0,2,"['en', 'zh']"
+thesaurus-linguae-aegyptiae/tla-Earlier_Egyptian_original-v18-premium,2023-12-21,2024-06-22,,https://huggingface.co/datasets/thesaurus-linguae-aegyptiae/tla-Earlier_Egyptian_original-v18-premium,151,3,2,"['de', 'egy']"
+thinkKenya/kenyan-low-resource-language-data,2024-10-11,2024-10-11,,https://huggingface.co/datasets/thinkKenya/kenyan-low-resource-language-data,32,0,1,['sw']
+tiagoblima/bible-ptbr-gun-gub-aligned,2023-08-21,2024-04-02,,https://huggingface.co/datasets/tiagoblima/bible-ptbr-gun-gub-aligned,35,4,2,"['gn', 'pt']"
+tj-solergibert/Europarl-ST,2023-02-08,2023-02-09,,https://huggingface.co/datasets/tj-solergibert/Europarl-ST,97,2,9,"['ro', 'pl', 'fr', 'en', 'nl', 'es', 'pt', 'de', 'it']"
+tollefj/massive-en-no-shorter-transfer,2023-08-23,2023-08-23,,https://huggingface.co/datasets/tollefj/massive-en-no-shorter-transfer,38,1,3,"['en', 'no', 'nb']"
+tollefj/subtitles-en-no-similar-shorter,2023-08-12,2023-08-12,,https://huggingface.co/datasets/tollefj/subtitles-en-no-similar-shorter,36,1,2,"['en', 'no']"
+tollefj/xsum-en-no-transfer,2023-08-15,2023-08-15,,https://huggingface.co/datasets/tollefj/xsum-en-no-transfer,31,1,3,"['en', 'no', 'nb']"
+tools4eu/albanian-english-bundled,2024-09-24,2024-09-24,,https://huggingface.co/datasets/tools4eu/albanian-english-bundled,30,0,2,"['en', 'sq']"
+traintogpb/aihub-flores-koen-integrated-prime-base-300k,2024-05-20,2024-05-23,,https://huggingface.co/datasets/traintogpb/aihub-flores-koen-integrated-prime-base-300k,32,0,2,"['en', 'ko']"
+traintogpb/aihub-flores-koen-integrated-prime-small-30k,2024-03-08,2024-05-23,,https://huggingface.co/datasets/traintogpb/aihub-flores-koen-integrated-prime-small-30k,96,7,2,"['en', 'ko']"
+traintogpb/aihub-koen-translation-integrated-base-1m,2024-01-05,2024-01-05,,https://huggingface.co/datasets/traintogpb/aihub-koen-translation-integrated-base-1m,125,3,2,"['en', 'ko']"
+traintogpb/aihub-koen-translation-integrated-large-10m,2024-01-05,2024-01-05,,https://huggingface.co/datasets/traintogpb/aihub-koen-translation-integrated-large-10m,113,16,2,"['en', 'ko']"
+traintogpb/aihub-koen-translation-integrated-small-100k,2024-01-05,2024-01-05,,https://huggingface.co/datasets/traintogpb/aihub-koen-translation-integrated-small-100k,79,3,2,"['en', 'ko']"
+traintogpb/aihub-koja-translation-integrated-base-1m,2024-05-30,2024-05-30,,https://huggingface.co/datasets/traintogpb/aihub-koja-translation-integrated-base-1m,63,0,2,"['ko', 'ja']"
+traintogpb/aihub-koja-translation-integrated-large-4.3m,2024-05-30,2024-05-30,,https://huggingface.co/datasets/traintogpb/aihub-koja-translation-integrated-large-4.3m,37,1,2,"['ko', 'ja']"
+traintogpb/aihub-koja-translation-integrated-small-100k,2024-05-30,2024-05-30,,https://huggingface.co/datasets/traintogpb/aihub-koja-translation-integrated-small-100k,48,0,2,"['ko', 'ja']"
+traintogpb/aihub-kozh-translation-integrated-base-1m,2024-05-30,2024-05-30,,https://huggingface.co/datasets/traintogpb/aihub-kozh-translation-integrated-base-1m,33,0,2,"['ko', 'zh']"
+traintogpb/aihub-kozh-translation-integrated-large-5.9m,2024-05-30,2024-05-30,,https://huggingface.co/datasets/traintogpb/aihub-kozh-translation-integrated-large-5.9m,117,1,2,"['ko', 'zh']"
+traintogpb/aihub-kozh-translation-integrated-small-100k,2024-05-30,2024-05-30,,https://huggingface.co/datasets/traintogpb/aihub-kozh-translation-integrated-small-100k,31,0,2,"['ko', 'zh']"
+trollek/ManyToDanishTranslations-flores,2024-08-30,2024-08-30,,https://huggingface.co/datasets/trollek/ManyToDanishTranslations-flores,33,0,1,['da']
+trollek/ManyToDanishTranslations-tatoeba,2024-08-30,2024-08-30,,https://huggingface.co/datasets/trollek/ManyToDanishTranslations-tatoeba,33,0,8,"['sv', 'fr', 'en', 'nl', 'no', 'da', 'es', 'de']"
+trondizzy/Tatoeba_v2022_03_03,2023-03-14,2023-03-14,,https://huggingface.co/datasets/trondizzy/Tatoeba_v2022_03_03,30,0,2,"['en', 'uk']"
+trondizzy/XLEnt_v1.2,2023-03-10,2023-03-10,,https://huggingface.co/datasets/trondizzy/XLEnt_v1.2,33,0,2,"['en', 'uk']"
+trondizzy/acts_laws,2023-03-09,2023-03-09,,https://huggingface.co/datasets/trondizzy/acts_laws,31,0,2,"['en', 'uk']"
+trondizzy/para_legal,2023-03-08,2023-03-08,,https://huggingface.co/datasets/trondizzy/para_legal,30,0,2,"['en', 'uk']"
+trondizzy/uk_en_combined_OPUS_sets,2023-03-14,2023-03-14,,https://huggingface.co/datasets/trondizzy/uk_en_combined_OPUS_sets,34,0,2,"['en', 'uk']"
+trondizzy/uk_en_combined_sets,2023-03-12,2023-03-12,,https://huggingface.co/datasets/trondizzy/uk_en_combined_sets,31,1,2,"['en', 'uk']"
+turuta/Multi30k-uk,2023-03-29,2023-05-04,,https://huggingface.co/datasets/turuta/Multi30k-uk,80,6,2,"['en', 'uk']"
+udmurtNLP/soviet-geography-book-rus-udm-parallel-corpora,2024-02-15,2024-02-15,,https://huggingface.co/datasets/udmurtNLP/soviet-geography-book-rus-udm-parallel-corpora,36,2,1,['udm']
+udmurtNLP/tatoeba-rus-udm-parallel-corpora,2023-09-28,2024-02-18,,https://huggingface.co/datasets/udmurtNLP/tatoeba-rus-udm-parallel-corpora,34,1,1,['udm']
+udmurtNLP/udmurt-bible-parallel-corpora,2023-09-25,2023-09-28,,https://huggingface.co/datasets/udmurtNLP/udmurt-bible-parallel-corpora,32,0,1,['udm']
+ufal/bilingual-abstracts-corpus,2024-03-03,2024-03-12,,https://huggingface.co/datasets/ufal/bilingual-abstracts-corpus,35,4,5,"['ru', 'en', 'sk', 'cs', 'de']"
+ugshanyu/1millionMongolianSentence,2023-10-17,2023-10-17,,https://huggingface.co/datasets/ugshanyu/1millionMongolianSentence,31,1,2,"['en', 'mn']"
+ugshanyu/3sentence,2023-10-17,2023-10-17,,https://huggingface.co/datasets/ugshanyu/3sentence,29,0,2,"['en', 'mn']"
+umarigan/turkish_wikipedia,2023-10-03,2024-02-05,,https://huggingface.co/datasets/umarigan/turkish_wikipedia,31,1,1,['tr']
+universitytehran/NLLB,2024-12-05,2024-12-05,,https://huggingface.co/datasets/universitytehran/NLLB,53,0,2,"['en', 'fa']"
+universitytehran/TED2020,2024-12-05,2024-12-05,,https://huggingface.co/datasets/universitytehran/TED2020,60,0,2,"['en', 'fa']"
+utkarsh2299/hindi_parsed_dict_1lakh,2024-08-29,2024-08-29,,https://huggingface.co/datasets/utkarsh2299/hindi_parsed_dict_1lakh,33,0,1,['hi']
+utkarsh2299/parsed_hindi_dictionary,2024-08-13,2024-08-22,,https://huggingface.co/datasets/utkarsh2299/parsed_hindi_dictionary,31,0,1,['hi']
+uvci/Koumankan_mt_dyu_fr,2024-03-25,2024-05-08,,https://huggingface.co/datasets/uvci/Koumankan_mt_dyu_fr,31,12,2,"['bm', 'fr']"
+uvci/koumankan4dyula,2024-04-29,2024-04-29,,https://huggingface.co/datasets/uvci/koumankan4dyula,49,3,1,['bm']
+veezbo/phinc,2023-09-26,2023-09-26,,https://huggingface.co/datasets/veezbo/phinc,37,1,2,"['en', 'hi']"
+vgaraujov/fapesp,2024-03-29,2024-03-29,,https://huggingface.co/datasets/vgaraujov/fapesp,39,1,3,"['en', 'es', 'pt']"
+vhtran/en-id,2023-08-20,2023-08-20,,https://huggingface.co/datasets/vhtran/en-id,37,5,2,"['en', 'id']"
+vietgpt/open_subtitles_envi,2023-02-21,2023-07-03,,https://huggingface.co/datasets/vietgpt/open_subtitles_envi,40,2,2,"['en', 'vi']"
+vietgpt/opus100_envi,2023-02-22,2023-07-03,,https://huggingface.co/datasets/vietgpt/opus100_envi,43,2,2,"['en', 'vi']"
+visheratin/laion-coco-nllb,2023-06-18,2024-04-11,,https://huggingface.co/datasets/visheratin/laion-coco-nllb,478,39,196,"['ee', 'lo', 'bo', 'lmo', 'ny', 'si', 'ss', 'el', 'tl', 'apc', 'pa', 'war', 'te', 'uk', 'gd', 'ts', 'pl', 'vec', 'kmb', 'oc', 'ru', 'mk', 'taq', 'id', 'fi', 'ca', 'ki', 'bm', 'tw', 'ig', 'fr', 'kea', 'li', 'sd', 'nn', 'th', 'zh', 'tzm', 'sat', 'ug', 'luo', 'mi', 'pt', 'de', 'it', 'tt', 'kk', 'ceb', 'lg', 'quy', 'pes', 'ayr', 'plt', 'he', 'bho', 'kg', 'mai', 'lua', 'sv', 'dik', 'km', 'bug', 'eu', 'hu', 'es', 'swh', 'acq', 'bs', 'ars', 'fon', 'hy', 'lus', 'awa', 'am', 'da', 'sg', 'bem', 'mt', 'ro', 'fo', 'hr', 'my', 'yue', 'ltg', 'fur', 'mos', 'ha', 'khk', 'kbp', 'nb', 'ckb', 'ti', 'sm', 'as', 'lb', 'bg', 'sa', 'uzn', 'ar', 'mni', 'gu', 'knc', 'zsm', 'mar', 'kac', 'shn', 'pap', 'nso', 'ur', 'acm', 'ml', 'dyu', 'af', 'als', 'sk', 'bjn', 'ja', 'ace', 'ory', 'ilo', 'zu', 'kam', 'rw', 'yo', 'sn', 'azb', 'bn', 'so', 'ydd', 'ky', 'ht', 'arz', 'ka', 'tpi', 'nl', 'lvs', 'gaz', 'lt', 'nus', 'rn', 'lij', 'ajp', 'tr', 'wo', 'fj', 'et', 'aeb', 'kmr', 'ta', 'kn', 'ast', 'cjk', 'crh', 'en', 'tg', 'pbt', 'scn', 'st', 'ak', 'szl', 'prs', 'sc', 'is', 'hne', 'mag', 'vi', 'ban', 'xh', 'dz', 'npi', 'min', 'ga', 'gn', 'ln', 'ba', 'ary', 'sr', 'ko', 'pag', 'kab', 'cs', 'umb', 'azj', 'be', 'hi', 'ks', 'jv', 'gl', 'tk', 'eo', 'sl', 'tn', 'cy', 'tum', 'fuv', 'su']"
+waleko/unarXive-en2ru,2023-11-01,2023-11-19,,https://huggingface.co/datasets/waleko/unarXive-en2ru,33,2,2,"['en', 'ru']"
+wckwan/M4LE,2023-10-28,2024-07-25,,https://huggingface.co/datasets/wckwan/M4LE,201,3,2,"['en', 'zh']"
+wecover/OPUS,2024-01-30,2024-05-23,,https://huggingface.co/datasets/wecover/OPUS,648,0,91,"['lo', 'si', 'el', 'tl', 'pa', 'ms', 'te', 'om', 'uk', 'gd', 'pl', 'ru', 'mk', 'id', 'fi', 'ca', 'fr', 'th', 'zh', 'sd', 'ug', 'pt', 'de', 'it', 'kk', 'uz', 'no', 'he', 'sv', 'km', 'es', 'eu', 'hu', 'bs', 'hy', 'am', 'da', 'ne', 'ro', 'br', 'my', 'hr', 'ha', 'mr', 'ku', 'as', 'fa', 'bg', 'sa', 'ar', 'mg', 'ur', 'ml', 'af', 'sk', 'ja', 'so', 'bn', 'ky', 'ka', 'la', 'nl', 'lt', 'sq', 'tr', 'or', 'et', 'ta', 'kn', 'yi', 'en', 'is', 'vi', 'xh', 'az', 'ps', 'ga', 'fy', 'sr', 'ko', 'cs', 'be', 'hi', 'jv', 'gl', 'sw', 'eo', 'sl', 'cy', 'mn', 'su']"
+werty1248/EnKo-Translation-LongTextOnly-dedup,2024-07-02,2024-07-02,,https://huggingface.co/datasets/werty1248/EnKo-Translation-LongTextOnly-dedup,66,6,2,"['en', 'ko']"
+werty1248/sentence-transformer-parallel-En-Ko-with-Similarity,2024-07-10,2024-07-10,,https://huggingface.co/datasets/werty1248/sentence-transformer-parallel-En-Ko-with-Similarity,36,1,2,"['en', 'ko']"
+westenfelder/InterCode-ALFA-Data,2024-08-08,2024-10-08,,https://huggingface.co/datasets/westenfelder/InterCode-ALFA-Data,33,0,1,['en']
+williamhtan/NusaBukuMT,2024-08-28,2024-08-28,,https://huggingface.co/datasets/williamhtan/NusaBukuMT,30,1,3,"['id', 'min', 'ban']"
+witfoo/syslog-to-artifact,2024-09-08,2024-09-14,,https://huggingface.co/datasets/witfoo/syslog-to-artifact,31,1,1,['en']
+wmt/wmt14,2022-03-02,2024-04-03,,https://huggingface.co/datasets/wmt/wmt14,5802,14,6,"['fr', 'ru', 'en', 'cs', 'hi', 'de']"
+wmt/wmt15,2022-03-02,2024-04-03,,https://huggingface.co/datasets/wmt/wmt15,2236,3,6,"['fr', 'ru', 'en', 'cs', 'fi', 'de']"
+wmt/wmt16,2022-03-02,2024-04-03,,https://huggingface.co/datasets/wmt/wmt16,8046,21,7,"['ro', 'ru', 'en', 'cs', 'fi', 'tr', 'de']"
+wmt/wmt17,2022-03-02,2024-04-03,,https://huggingface.co/datasets/wmt/wmt17,1019,7,8,"['zh', 'ru', 'en', 'lv', 'cs', 'fi', 'tr', 'de']"
+wmt/wmt18,2022-03-02,2024-04-03,,https://huggingface.co/datasets/wmt/wmt18,583,7,9,"['kk', 'zh', 'ru', 'en', 'cs', 'fi', 'tr', 'de', 'et']"
+wmt/wmt19,2022-03-02,2024-04-04,,https://huggingface.co/datasets/wmt/wmt19,1968,29,10,"['kk', 'fr', 'ru', 'en', 'zh', 'gu', 'cs', 'lt', 'fi', 'de']"
+wmt/wmt20_mlqe_task1,2022-03-02,2024-04-04,,https://huggingface.co/datasets/wmt/wmt20_mlqe_task1,578,3,8,"['ro', 'si', 'zh', 'ru', 'en', 'ne', 'de', 'et']"
+wmt/wmt20_mlqe_task2,2022-03-02,2024-04-04,,https://huggingface.co/datasets/wmt/wmt20_mlqe_task2,71,2,3,"['en', 'zh', 'de']"
+wmt/wmt20_mlqe_task3,2022-03-02,2024-04-04,,https://huggingface.co/datasets/wmt/wmt20_mlqe_task3,220,0,2,"['en', 'fr']"
+wmt/wmt_t2t,2022-03-02,2024-04-04,,https://huggingface.co/datasets/wmt/wmt_t2t,383,0,2,"['en', 'de']"
+wnkh/MultiMed,2024-09-26,2024-12-02,,https://huggingface.co/datasets/wnkh/MultiMed,840,1,5,"['zh', 'fr', 'en', 'vi', 'de']"
+worldboss/bank-of-ghana-rates,2023-11-25,2024-01-10,,https://huggingface.co/datasets/worldboss/bank-of-ghana-rates,44,0,1,['en']
+worldboss/bank-of-ghana-treasury-bills,2023-11-25,2024-01-10,,https://huggingface.co/datasets/worldboss/bank-of-ghana-treasury-bills,37,0,1,['en']
+worldboss/ewe_bible_v2_tts,2024-06-12,2024-06-12,,https://huggingface.co/datasets/worldboss/ewe_bible_v2_tts,39,0,1,['ee']
+worldboss/ghana-news,2023-11-23,2023-12-15,,https://huggingface.co/datasets/worldboss/ghana-news,58,2,1,['en']
+worldboss/twi_bible_v1,2024-06-11,2024-06-11,,https://huggingface.co/datasets/worldboss/twi_bible_v1,35,0,2,"['tw', 'ak']"
+xezpeleta/eitb_parcc_with_english,2024-10-22,2024-10-22,,https://huggingface.co/datasets/xezpeleta/eitb_parcc_with_english,36,0,3,"['en', 'eu', 'es']"
+xmanii/mauxi-mix-persian,2024-11-30,2024-11-30,,https://huggingface.co/datasets/xmanii/mauxi-mix-persian,53,3,1,['fa']
+xmj2002/Chinese_modern_classical,2023-05-28,2023-05-30,,https://huggingface.co/datasets/xmj2002/Chinese_modern_classical,33,28,1,['zh']
+xri/GayoNMT,2024-04-02,2024-04-02,,https://huggingface.co/datasets/xri/GayoNMT,36,1,2,"['en', 'id']"
+xzuyn/manythings-translations-alpaca,2023-08-01,2023-08-01,,https://huggingface.co/datasets/xzuyn/manythings-translations-alpaca,87,6,1,['en']
+yhavinga/open_subtitles_en_nl,2023-01-15,2023-01-15,,https://huggingface.co/datasets/yhavinga/open_subtitles_en_nl,93,2,2,"['en', 'nl']"
+ymoslem/BitesizeIrish-GA-EN,2024-04-07,2024-07-02,,https://huggingface.co/datasets/ymoslem/BitesizeIrish-GA-EN,37,1,2,"['ga', 'en']"
+ymoslem/CoVoST2-EN-AR,2024-03-30,2024-12-04,,https://huggingface.co/datasets/ymoslem/CoVoST2-EN-AR,101,3,2,"['en', 'ar']"
+ymoslem/CoVoST2-EN-AR-Text,2024-07-18,2024-12-04,,https://huggingface.co/datasets/ymoslem/CoVoST2-EN-AR-Text,47,1,2,"['en', 'ar']"
+ymoslem/EUbookshop-Speech-Irish,2024-06-13,2024-07-02,,https://huggingface.co/datasets/ymoslem/EUbookshop-Speech-Irish,69,0,2,"['ga', 'en']"
+ymoslem/FLEURS-GA-EN,2024-04-03,2024-06-24,,https://huggingface.co/datasets/ymoslem/FLEURS-GA-EN,44,1,2,"['ga', 'en']"
+ymoslem/IWSLT2023-GA-EN,2024-03-27,2024-06-15,,https://huggingface.co/datasets/ymoslem/IWSLT2023-GA-EN,36,1,2,"['ga', 'en']"
+ymoslem/MS-Glossary-EN-AR,2024-07-19,2024-08-12,,https://huggingface.co/datasets/ymoslem/MS-Glossary-EN-AR,97,0,2,"['en', 'ar']"
+ymoslem/MS-UI-EN-AR,2024-07-19,2024-12-15,,https://huggingface.co/datasets/ymoslem/MS-UI-EN-AR,21,0,2,"['en', 'ar']"
+ymoslem/SpokenWords-GA-EN-MTed,2024-04-06,2024-06-24,,https://huggingface.co/datasets/ymoslem/SpokenWords-GA-EN-MTed,42,1,2,"['ga', 'en']"
+ymoslem/Tatoeba-EN-AR,2024-12-15,2024-12-16,,https://huggingface.co/datasets/ymoslem/Tatoeba-EN-AR,90,0,2,"['en', 'ar']"
+ymoslem/Tatoeba-Speech-Irish,2024-04-13,2024-07-02,,https://huggingface.co/datasets/ymoslem/Tatoeba-Speech-Irish,42,1,2,"['ga', 'en']"
+ymoslem/Tatoeba-Translations,2024-12-17,2024-12-29,,https://huggingface.co/datasets/ymoslem/Tatoeba-Translations,33,0,152,"['ee', 'lo', 'bo', 'ny', 'kw', 'si', 'ss', 'el', 'tl', 'pa', 'te', 'an', 'ie', 'gd', 'uk', 'ts', 'pl', 'oc', 'qu', 'ru', 'mk', 'ii', 'id', 'fi', 'ca', 'bm', 'ig', 'fr', 'th', 'li', 'sd', 'nn', 'ug', 'mi', 'pt', 'de', 'it', 'tt', 'kk', 'uz', 'lg', 'vo', 'he', 'sv', 'km', 'ay', 'eu', 'hu', 'es', 'bs', 'ch', 'hy', 'io', 'am', 'da', 'sg', 'mt', 'ro', 'br', 'se', 'fo', 'hr', 'my', 'ha', 'mh', 'nb', 'ti', 'oj', 'mr', 'sm', 'as', 'lb', 'bg', 'sa', 'ty', 'ar', 'mg', 'gu', 'nv', 'ur', 'ml', 'af', 'sk', 'to', 'pi', 'ja', 'ab', 'ia', 'zu', 'rw', 'wa', 'yo', 'sn', 'so', 'bn', 'ky', 'ht', 'ka', 'la', 'nl', 'lt', 'rn', 'sq', 'os', 'tr', 'or', 'multilingual', 'wo', 'fj', 'et', 'ta', 'gv', 'kn', 'yi', 'en', 'tg', 'na', 'av', 'st', 'sc', 'ce', 'dv', 'is', 'vi', 'xh', 'az', 'ps', 'ga', 'gn', 'ln', 'ba', 'rm', 'fy', 'sr', 'ko', 'cs', 'co', 'be', 'hi', 'ks', 'jv', 'gl', 'tk', 'eo', 'cv', 'sl', 'cy', 'tn', 'mn', 'kl', 'su', 'bi']"
+ymoslem/UN-Arabic-English-Filtered,2024-07-09,2024-07-09,,https://huggingface.co/datasets/ymoslem/UN-Arabic-English-Filtered,73,1,2,"['en', 'ar']"
+ymoslem/Wikimedia-Speech-Irish,2024-04-14,2024-07-02,,https://huggingface.co/datasets/ymoslem/Wikimedia-Speech-Irish,55,1,2,"['ga', 'en']"
+yonathanstwn/ecolindo,2023-04-16,2023-04-16,,https://huggingface.co/datasets/yonathanstwn/ecolindo,32,0,2,"['en', 'id']"
+youdiniplays/tagalog_to_waray,2024-01-05,2024-01-06,,https://huggingface.co/datasets/youdiniplays/tagalog_to_waray,31,0,1,['tl']
+youdiniplays/tl-bic,2024-01-09,2024-01-09,,https://huggingface.co/datasets/youdiniplays/tl-bic,31,0,1,['tl']
+youdiniplays/tl-ceb,2024-01-09,2024-01-09,,https://huggingface.co/datasets/youdiniplays/tl-ceb,29,0,1,['tl']
+yudhaht/gkamus-id-en,2024-10-24,2024-10-24,,https://huggingface.co/datasets/yudhaht/gkamus-id-en,34,0,2,"['en', 'id']"
+zaanind/sinhala_englsih_parrel_corpus,2023-06-06,2024-07-16,,https://huggingface.co/datasets/zaanind/sinhala_englsih_parrel_corpus,48,5,2,"['en', 'si']"
+zeroyet/Classical_Modern_1,2024-08-20,2024-08-20,,https://huggingface.co/datasets/zeroyet/Classical_Modern_1,33,0,1,['zh']
+zetavg/coct-en-zh-tw-translations-twp-300k,2023-05-07,2023-05-07,,https://huggingface.co/datasets/zetavg/coct-en-zh-tw-translations-twp-300k,77,31,2,"['en', 'zh']"
+zetavg/mlqa_en_zh_tw,2023-04-27,2023-04-27,,https://huggingface.co/datasets/zetavg/mlqa_en_zh_tw,43,7,2,"['en', 'zh']"
+ziozzang/deepl-trans-ES-KO,2024-04-02,2024-04-02,,https://huggingface.co/datasets/ziozzang/deepl-trans-ES-KO,30,1,2,"['ko', 'es']"
+ziozzang/deepl-trans-FR-KO,2024-04-02,2024-04-02,,https://huggingface.co/datasets/ziozzang/deepl-trans-FR-KO,28,0,2,"['ko', 'fr']"
+ziozzang/deepl-trans-ID-KO,2024-04-02,2024-04-02,,https://huggingface.co/datasets/ziozzang/deepl-trans-ID-KO,30,1,2,"['ko', 'id']"
+ziozzang/deepl-trans-IT-KO,2024-04-02,2024-04-02,,https://huggingface.co/datasets/ziozzang/deepl-trans-IT-KO,36,0,2,"['ko', 'it']"
+ziozzang/deepl-trans-PT-KO,2023-11-10,2023-11-10,,https://huggingface.co/datasets/ziozzang/deepl-trans-PT-KO,31,0,2,"['ko', 'pt']"
+ziozzang/deepl_trans_DE-KO,2023-11-10,2024-04-02,,https://huggingface.co/datasets/ziozzang/deepl_trans_DE-KO,31,0,2,"['ko', 'de']"
+ziozzang/osx_dictionary_translation_pairs,2024-04-02,2024-04-02,,https://huggingface.co/datasets/ziozzang/osx_dictionary_translation_pairs,33,0,23,"['el', 'en', 'ar', 'te', 'hu', 'es', 'pl', 'ru', 'vi', 'ja', 'id', 'fi', 'fr', 'zh', 'th', 'ko', 'cs', 'pt', 'hi', 'de', 'it', 'nl', 'tr']"
+zouharvi/bio-mqm-dataset,2024-02-29,2024-07-23,,https://huggingface.co/datasets/zouharvi/bio-mqm-dataset,39,7,9,"['fr', 'ru', 'en', 'zh', 'es', 'eu', 'pt', 'de', 'it']"
+zouharvi/nmt-pe-effects,2024-03-04,2024-03-04,,https://huggingface.co/datasets/zouharvi/nmt-pe-effects,44,1,2,"['en', 'cs']"
+zouharvi/optimal-reference-translations,2024-03-03,2024-03-08,,https://huggingface.co/datasets/zouharvi/optimal-reference-translations,62,1,2,"['en', 'cs']"
+zouharvi/wmt-terminology-2023,2024-03-03,2024-03-04,,https://huggingface.co/datasets/zouharvi/wmt-terminology-2023,47,2,4,"['en', 'zh', 'de', 'cs']"
+zouharvi/wmt20-markables,2024-03-04,2024-03-04,,https://huggingface.co/datasets/zouharvi/wmt20-markables,36,1,2,"['en', 'cs']"
