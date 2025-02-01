@@ -1,0 +1,5 @@
+Author/Dataset,Date of Creation,Last Modified,Dataset Type,Link,# Downloads,# Likes,# Languages,Supported Languages
+LesanAI/HornMT,3/19/22,3/19/22,Multi-way Parallel,https://github.com/asmelashteka/HornMT,0,0,6,"['aa', 'am', 'en', 'om', 'so', 'ti']"
+AI4Bharat/BPCC,5/25/23,5/25/23,Multilingual ,https://ai4bharat.iitm.ac.in/datasets/bpcc,0,0,23,"['en', 'as', 'bn', 'brx', 'doi', 'gu', 'hi', 'kn', ks', 'kok', 'mai', 'ml', 'mni', 'mr', 'ne', 'or', 'pa', 'sa', 'sat', 'sd', 'ta', 'te', 'ur']"
+CE/TICO-19,7/1/20,7/1/20,Multilingual ,https://tico-19.github.io/,0,0,36,"['en', 'am', 'ar', 'bn', 'ku','din', 'es-LA', 'fa', 'fr', 'fuv', 'ha', 'hi', 'id', 'km', 'kr',]"
+machelreid/afromt,12/18/21,9/26/22,Multilingual ,https://github.com/machelreid/afromt,0,0,9,"['en', 'af', 'bem', 'ln', 'run', 'st', 'sw', 'xh', 'zu']"
