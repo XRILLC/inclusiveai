@@ -34,20 +34,30 @@ def test_null(read_data): # completenesss
 	null_2 = read_data[1].isnull().any()
 
 	if null_1.any():
-		assert False, f"The mt_ht.csv file contains null values.\n" \
+		assert False, f"The mt_hf.csv file contains null values.\n" \
 					  f"{read_data[0].isnull().sum()}"
 	if null_2.any():
 		assert False, f"The mt_external.csv file contains null values.\n" \
 					  f"{read_data[1].isnull().sum()}"
 
-
 def test_supported_languages(read_data): # consistency
-	#TODO
-	pass
+	empty_hf = read_data[0][read_data[0]['Supported Languages'] == '[]']
 
-def test_uniqueness_pairs(read_data): #directionality might matter here; pending! might not need.
-	#TODO
-	pass
+	if len(empty_hf) > 0:
+		assert False, f"The mt_hf.csv file contains {len(empty_hf)} instances of empty supported languages."
 
+def test_parallel(read_data): # consistency
+	edge_naught = read_data[0][(read_data[0]['Dataset Type'] == 'Parallel') & (read_data[0]['# Languages'] != 2)]
+	
+	if len(edge_naught) > 0:
+		assert False, f"The mt_hf.csv file contains {len(edge_naught)} instances of inconsistency" \
+					  f"A simple parallel dataset should contain two languages, no more and no less."
 
+def test_multilingual(read_data): # consistency
+	edge_one = read_data[0][(read_data[0]['Dataset Type'] == 'Multilingual Parallel') & (read_data[0]['# Languages'] <= 2)]
+	edge_one = edge_one[~edge_one['Supported Languages'].isin(("['Multilingual']", "['multilingual']"))]
+
+	if len(edge_one) > 0:
+		assert False, f"The mt_hf.csv file contains {len(edge_one)} instances of inconsistency. " \
+					  f"A multilingual dataset should contain more than two languages, not less."
 

@@ -25,7 +25,7 @@ The data dictionary for each split is below. Each split contains possible amendm
 | `Downloads Last Month`   | The number of times the dataset was downloaded in the past month.                             |
 | `# Likes`                | The number of likes or upvotes the dataset has received on Hugging Face.                      |
 | `# Languages`            | The total number of languages included in the dataset.                                        |
-| `Supported Languages`    | A list of specific languages available in the dataset in ISO 639-1 and ISO 639-3 format.                                        |
+| `Supported Languages`    | A list of specific languages available in the dataset in ISO 639-1 and ISO 639-3 format. Occasionally another language identifier may be present.                     |
 
 > The ```Dataset Type``` is missing information that requires tagging. We may consider the inclusion of domain metadata information; however that assumes more tagging is needed for each refresh update.
 
@@ -33,7 +33,7 @@ The data dictionary for each split is below. Each split contains possible amendm
 | **Variable**         | **Definition**                                                                      |
 |-----------------------|-------------------------------------------------------------------------------------|
 | `Author/Dataset`      | The creator of the dataset and/or the dataset name.                                |
-| `Language Pair`       | The source and target languages for the dataset (e.g., English-French).            |
+| `Language Pair`       | The source and target languages for the dataset (e.g., en-fr). Note there is no difference between en-fr and fr-en. The source and target shouldn't be inferred. Also the ISO codes/language identifiers may need normalization.       |
 | `# Train Set`         | The number of examples available in the training set of the dataset.               |
 | `# Development Set`   | The number of examples available in the development/validation set of the dataset. |
 | `# Test Set`          | The number of examples available in the test set of the dataset.                   |
