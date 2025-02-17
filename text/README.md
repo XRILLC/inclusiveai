@@ -46,7 +46,8 @@ There is no comprehensive survey on the available datasets for machine translati
   - **missing_datasets**, Datasets unable to be extracted from hf (e.g., gated or corrupted data)
   - **refresh.xlsx**, User-friendly file for viewing new, updated, and removed datasets from hf
 - **get_data.py**
-- **tests/**, data quality tests to assess uniqueness, completeness, and consistency
+- **tests/**
+  - **test_quality**, Data quality tests to assess uniqueness, completeness, and consistency
 - **Workbook.ipynb**, Workbook for handling or showcasing the datasets
 - **utils.py**, Helper program for making tagging tasks easier for manual tagging
 - **requirements.txt**
