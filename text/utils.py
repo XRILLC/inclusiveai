@@ -73,7 +73,7 @@ def list_languages(verbose=False) -> dict:
     languages = requests.get(endpoint, timeout=10).json()['sl']
     del languages['auto']
 
-    with open('references/languages-Google_v1.txt', 'w', encoding='utf-8') as file:
+    with open('references/models/GoogleTranslate_v1.txt', 'w', encoding='utf-8') as file:
         for language in languages:
             file.write(f"{language} {languages[language]}\n")
             if verbose:
@@ -88,7 +88,7 @@ def list_languages_google(verbose=False) -> dict:
     results = translate_client.get_languages()
     languages = {}
 
-    with open('references/languages-Google_v2.txt', 'w', encoding='utf-8') as file:
+    with open('references/models/GoogleTranslate_v2.txt', 'w', encoding='utf-8') as file:
         for language in results:
             iso_code, name = language['language'], language['name']
             languages.update({iso_code: name})
